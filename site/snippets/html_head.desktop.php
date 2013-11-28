@@ -109,11 +109,11 @@ if(!isset($prefetch)): $prefetch = false; endif;
 	endif;
 	?>
 
-	<!-- PNG favicon + Windows 8 IE10 tile icon (http://www.jonathantneal.com/?p=339) -->
-	<link rel="icon" href="<?php echo url('assets/images/favicon.png'); ?>">
-	<!--[if IE]><link rel="shortcut icon" href="favicon.ico"><![endif]-->
-	<!-- or, set /favicon.ico for IE10 win -->
-	<meta name="msapplication-TileImage" content="<?php echo url('assets/images/touch-icon-144x144-precomposed.png'); ?>">
+	<!-- Favicons (https://github.com/audreyr/favicon-cheat-sheet) -->
+	<link rel="icon" href="<?php echo url('assets/images/favicon-228.png'); ?>" sizes="228x228">
+	<link rel="icon" href="<?php echo url('assets/images/favicon-195.png'); ?>" sizes="195x195">
+	<link rel="icon" href="<?php echo url('assets/images/favicon-32.png'); ?>" sizes="32x32">
+	<meta name="msapplication-TileImage" content="<?php echo url('assets/images/favicon-144.png'); ?>">
 	<meta name="msapplication-TileColor" content="#222222">
 
 	<!-- Stylesheets -->

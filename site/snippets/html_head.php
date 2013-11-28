@@ -104,14 +104,13 @@ if(!isset($prefetch)): $prefetch = false; endif;
 	<!-- Custom (and shorter!) label for iOS6 home screen bookmarks -->
 	<meta name="apple-mobile-web-app-title" content="<?php echo smartypants($site->title()); ?>">
 
-	<!-- Touch icons + PNG favicon + Windows 8 IE10 tile icon (http://www.jonathantneal.com/?p=339) -->
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo url('assets/images/touch-icon-144x144-precomposed.png'); ?>">
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo url('assets/images/touch-icon-114x114-precomposed.png'); ?>">
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo url('assets/images/touch-icon-72x72-precomposed.png'); ?>">
-	<link rel="apple-touch-icon-precomposed" href="<?php echo url('assets/images/touch-icon-57x57-precomposed.png'); ?>">
-	<link rel="icon" href="<?php echo url('assets/images/favicon.png'); ?>">
-	<meta name="msapplication-TileImage" content="<?php echo url('assets/images/touch-icon-144x144-precomposed.png'); ?>">
-	<meta name="msapplication-TileColor" content="#222222">
+	<!-- Favicons (https://github.com/audreyr/favicon-cheat-sheet) -->
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="<?php echo url('assets/images/favicon-120.png'); ?>">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo url('assets/images/favicon-72.png'); ?>">
+	<link rel="apple-touch-icon-precomposed" href="<?php echo url('assets/images/favicon-57.png'); ?>">
+	<link rel="icon" href="<?php echo url('assets/images/favicon-32.png'); ?>">
+	<meta name="msapplication-TileImage" content="<?php echo url('assets/images/favicon-144.png'); ?>">
+	<meta name="msapplication-TileColor" content="#332C29">
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="<?php echo url('assets/stylesheets/' . $env_suffix . '/' . $mobile_css . '.css'); ?>">
