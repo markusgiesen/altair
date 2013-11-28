@@ -7,8 +7,6 @@
  */
 
 .Alert {
-	background-color: $alert-default-color;
-	color: $text-color;
 	position: relative;
 	z-index: 100;
 	display: block;
@@ -16,29 +14,60 @@
 	margin-bottom: $med;
 	padding: $med;
 	width: 100%;
-	border-bottom: 1px solid;
+	border: $x-small solid;
+	background: $alert-default-color;
+	color: $text-color;
+}
 
-	/**
-	 * On devices Modernizr test negative for touch, alerts slide over content,
-	 * while on devices that test positive, content is pushed down.
-	 */
+/**
+ * Inline alert
+ */
 
-	.no-touch & {
+.Alert--inline {
+	border-color: $gray-3;
+	border-radius: $border-radius;
+}
+
+/**
+ * Bar alert
+ */
+
+.Alert--bar {
+	border: none;
+	border-bottom: $x-small solid;
+
+	// Set animation
+	&.js-alertAnim {
+		transition: transform .64s ease-out;
+
 		@include breakpoint(medium) {
 			position: fixed;
-			top: -20%;
+			transform: translateY(-100%);
 			left: 0;
+		}
+	}
+	// Show animation
+	&.js-alertAnim--show {
+		display: block;
+
+		@include breakpoint(medium) {
+			transform: translateY(0);
+		}
+	}
+	// Hide animation
+	&.js-alertAnim--hide {
+		display: none;
+
+		@include breakpoint(medium) {
+			display: block;
+			transform: translateY(-100%);
 		}
 	}
 }
 
-/* Bar */
-
-.Alert--bar {
-	box-shadow: 0 1px 2px 0 $shadow-color-alpha;
-}
-
-/* Model */
+/**
+ * Model alert
+ */
 
 .Alert--modal {
 	position: fixed;
@@ -47,38 +76,40 @@
 	z-index: 9999;
 	padding: $med;
 	width: 50%;
-	border: 1px solid;
+
+	.csstransforms & {
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	// Set animation
+	&.js-alertAnim {
+		opacity: 0;
+		transition: opacity .24s ease-out;
+	}
+	// Show animation
+	&.js-alertAnim--show {
+		opacity: 1;
+
+		@if $oldie {
+			display: block;
+		}
+	}
+	// Hide animation
+	&.js-alertAnim--hide {
+		opacity: 0;
+		z-index: -1;
+
+		@if $oldie {
+			display: none;
+		}
+	}
 }
 
-/* Succes message */
-
-.Alert---succes {
-	background-color: tint($alert-succes-color,80%);
-	color: $alert-succes-color;
-}
-
-/* Danger (error) message */
-
-.Alert--error {
-	background-color: tint($alert-error-color,85%);
-	color: $alert-error-color;
-}
-
-/* Warning message */
-
-.Alert--warning {
-	background-color: tint($alert-warning-color,85%);
-	color: $alert-warning-color;
-}
-
-/* Info message */
-
-.Alert--info {
-	background-color: tint($alert-info-color,85%);
-	color: $alert-info-color;
-}
-
-/* Alert message */
+/**
+ * The alert message
+ */
 
 .Alert-message {
 	padding-right: $large;
@@ -91,79 +122,43 @@
 	}
 }
 
-/* Dismiss alert */
-
-.Alert--dismissable {
-	padding-right: $x-large;
-}
+/**
+ * Close alert ('times' text icon)
+ */
 
 .Alert-close {
-	@extend .grunt-icon-close;
-	@extend %u-isHiddenText;
+	@extend %u-linkPseudo;
 
-	position: absolute;
-	top: $med + .3em;
+	position: absolute !important;
+	top: $med;
 	right: $med;
 	display: block;
-	width: 15px;
-	height: 15px;
-	opacity: .2;
-
-	&:hover{
-		opacity: 1;
-	}
 }
 
 /**
- * Alert close (animation)
+ * Alert functions
  */
 
-.js-bar-alertAnim {
-	transition: top .64s ease-out; // @MARIJN: I DON'T BELIEVE IT"S OK TO ANIMATE 'TOP', SEE: http://j.mp/1eLKtgD
+.Alert---succes {
+	border-color: shade($alert-succes-color,8%);
+	background-color: tint($alert-succes-color,88%);
+	color: $alert-succes-color;
 }
 
-.js-bar-alertAnim--show {
-	display: block;
-
-	.no-touch & {
-		@include breakpoint(medium) {
-			top: 0;
-		}
-	}
+.Alert--error {
+	border-color: shade($alert-error-color,8%);
+	background-color: tint($alert-error-color,88%);
+	color: $alert-error-color;
 }
 
-.js-bar-alertAnim--hide {
-	display: none;
-
-	.no-touch & {
-		@include breakpoint(medium) {
-			display: block;
-			top: -20%;
-		}
-	}
+.Alert--warning {
+	border-color: shade($alert-warning-color,8%);
+	background-color: tint($alert-warning-color,88%);
+	color: $alert-warning-color;
 }
 
-/**
- * Modal close (animation)
- */
-
-.js-modal-alertAnim {
-	opacity: 0;
-	transition: opacity .24s ease-out;
-}
-
-.js-modal-alertAnim--show {
-	opacity: 1;
-
-	@if $oldie {
-		display: block;
-	}
-}
-
-.js-modal-alertAnim--hide {
-	opacity: 0;
-
-	@if $oldie {
-		display: none;
-	}
+.Alert--info {
+	border-color: shade($alert-info-color,8%);
+	background-color: tint($alert-info-color,88%);
+	color: $alert-info-color;
 }

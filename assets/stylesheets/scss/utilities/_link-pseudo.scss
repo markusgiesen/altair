@@ -27,9 +27,7 @@
  *
  * Example HTML:
  *
- * <button type="button" class="u-linkPseudo">
- *     <span role="presentation">Button content</span>
- * </button>
+ * <button type="button" class="Alert-close" data-dismiss="Alert" aria-hidden="true" role="presentation">&times;</button>
  */
 
 %u-linkPseudo {

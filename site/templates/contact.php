@@ -15,9 +15,7 @@
 				<div class="Alert-message">
 					<p>Declare us your love and you will receive eternal gratitude!</p>
 				</div>
-				<button type="button" class="Alert-close" data-dismiss="Alert" aria-hidden="true">
-					<span role="presentation">&times;</span>
-				</button>
+					<button type="button" class="Alert-close" data-dismiss="Alert" aria-hidden="true" role="presentation">&times;</button>
 			</div>
 
 		</div>

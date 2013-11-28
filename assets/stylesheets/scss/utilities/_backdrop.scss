@@ -16,4 +16,28 @@
 		background: $backdrop-color;
 		filter: alpha(opacity = 65);
 	}
+
+	// Set animation
+	&.js-alertAnim {
+		opacity: 0;
+		transition: opacity .24s ease-out;
+	}
+	// Show animation
+	&.js-alertAnim--show {
+		opacity: 1;
+
+		@if $oldie {
+			display: block;
+		}
+	}
+	// Hide animation
+	&.js-alertAnim--hide {
+		opacity: 0;
+		z-index: -1;
+
+		@if $oldie {
+			display: none;
+		}
+	}
+
 }

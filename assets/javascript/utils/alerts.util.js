@@ -49,7 +49,7 @@ var alerts = {
 		}
 
 		// Close messages when cliked on .bar__dismiss
-		$('body').on('click', '.js-dismiss', this.hideNotification );
+		$('body').on('click', '[data-dismiss]', this.hideNotification );
 
 	},
 
@@ -68,11 +68,11 @@ var alerts = {
 		$.extend(alerts.options, options);
 
 		if(alerts.options.type === 'bar'){
-			message_element = $('<div class="Alert Alert--bar Alert--' + alerts.options.status + ' js-alertAnim" data-element-type="bar"><div class="Alert-message">' + alerts.options.content + '</div><button type="button" class="Alert-close" data-dismiss="Alert" aria-hidden="true"><span role="presentation">&times;</span></button></div>');
+			message_element = $('<div class="Alert Alert--bar Alert--' + alerts.options.status + ' js-alertAnim" data-element-type="bar"><div class="Alert-message">' + alerts.options.content + '</div><button type="button" class="Alert-close" data-dismiss="Alert" aria-hidden="true" role="presentation">&times;</button></div>');
 			message_element.prependTo('body');
 		}
 		if(alerts.options.type === 'modal'){
-			message_element = $('<div class="u-backdrop js-alertAnim"></div><div class="Alert--modal Alert--' + alerts.options.status + ' js-alertAnim" data-element-type="modal"><div class="Alert-message">' + alerts.options.content + '</div><button class="Button Button--primary" data-dismiss="Alert">'+ this.settings.dismiss +'</button></div>');
+			message_element = $('<div class="u-backdrop js-alertAnim"></div><div class="Alert Alert--modal Alert--' + alerts.options.status + ' js-alertAnim" data-element-type="modal"><div class="Alert-message">' + alerts.options.content + '</div><button class="Button Button--primary" data-dismiss="Alert">'+ this.settings.dismiss +'</button></div>');
 			message_element.appendTo('body');
 		}
 
@@ -97,9 +97,9 @@ var alerts = {
 
 		// Use animate({ marginTop: 0 }),0) to create a chain, which makes the
 		// css animation go sweet and smooth
-		$notification.animate({ marginTop: 0 },0).addClass('js-'+ messages.options.type +'-alertAnim--show');
-		if(messages.options.type === 'modal'){
-			$('.u-backdrop').addClass('js-modal-alertAnim--show');
+		$notification.animate({ marginTop: 0 },0).addClass('js-alertAnim--show');
+		if(alerts.options.type === 'modal'){
+			$('.u-backdrop').addClass('js-alertAnim--show');
 		}
 	},
 
@@ -108,33 +108,41 @@ var alerts = {
 	*/
 	hideNotification: function(event) {
 
-		// TO DO: @MARIJN': I've added 'data-dismiss="Alert"' to all close
-		// buttons; yes it are buttons now, because the close 'links' don't go
-		// anywhere, but I think this way of using buttons is nice... look for
-		// yourself!
-		var elementtype = $(event.target).parents('.js-dismissable').attr('data-element-type');
-		var $notification = $(event.target).parents('.js-dismissable');
-
-		// Add ontransition end event handler to remove classes and such.
+		var dismissselector = $(event.target).attr('data-dismiss');
+		var $notification = $(event.target).parents('.'+dismissselector);
 
 		// remove and set classes for css animation
-		$notification.removeClass('js-'+ elementtype +'-alertAnim--show').addClass('js-'+ elementtype +'-alertAnim--hide');
-		if(messages.options.type === 'modal'){
-			$('.u-backdrop').first().removeClass('js-modal-alertAnim--show').addClass('js-modal-alertAnim--hide'); // Use first, because we possibly have more than one modal
+		$notification.removeClass('js-alertAnim--show').addClass('js-alertAnim--hide');
+		if(alerts.options.type === 'modal'){
+			$('.u-backdrop').first().removeClass('js-alertAnim--show').addClass('js-alertAnim--hide'); // Use first, because we possibly have more than one modal
 		}
 
-		// remove dom element, after a timeout
-		setTimeout(function() {
-			$notification.remove();
-			if(elementtype === 'modal'){
-				$('.u-backdrop').first().remove(); // Use first, because we possibly have more than one modal
-			}
-		}, 2000);
+		// Get the transform of an element via getComputedStyle
+		var notificationHasTransformSet = window.getComputedStyle($notification.get(0), null).getPropertyValue('transform');
+
+		// If browser doesn't support transitions or there is no transform set
+		if(!Modernizr.csstransitions || notificationHasTransformSet === 'none'){
+			alerts.removeNotificationElements($notification);
+		}
+		else {
+			// Wait for transition to end
+			$notification.on(transitionEnd, function(){
+				alerts.removeNotificationElements($(this));
+			});
+		}
 
 		return false;
 	},
 
+	removeNotificationElements: function(element) {
+		var elementtype = element.attr('data-element-type');
+		element.remove();
+		if(elementtype === 'modal'){
+			$('.u-backdrop').first().remove(); // Use first, because we possibly have more than one modal
+		}
+	},
+
 	onTimeoutNotification: function(element) {
-		element.find('.js-dismiss').click();
+		element.find('[data-dismiss]').click();
 	}
 };

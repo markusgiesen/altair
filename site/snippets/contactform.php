@@ -21,13 +21,11 @@ $form = new contactform(array(
 				push_message.push({status: 'succes', type: 'bar', text: 'Voila, your message is succesfully send! You will hear from us soon.'<?php if($_SESSION['isDesktop']){ echo ' , timeout: 6000';} ?>});
 			</script>
 			<noscript>
-				<div class="Alert Alert--inline Alert--succes js-dismissable">
+				<div class="Alert Alert--inline Alert--succes">
 					<div class="Alert-message">
 						<p>Voila, your message is succesfully send! You will hear from us soon.</p>
 					</div>
-					<button type="button" class="Alert-close" data-dismiss="Alert" aria-hidden="true">
-						<span role="presentation">&times;</span>
-					</button>
+					<button type="button" class="Alert-close" data-dismiss="Alert" aria-hidden="true" role="presentation">&times;</button>
 				</div>
 			</noscript>
 		<?php endif; ?>
@@ -41,9 +39,7 @@ $form = new contactform(array(
 					<div class="Alert-message">
 						<p>The email could not be sent. Please try again later.</p>
 					</div>
-					<button type="button" class="Alert-close" data-dismiss="Alert" aria-hidden="true">
-						<span role="presentation">&times;</span>
-					</button>
+					<button type="button" class="Alert-close" data-dismiss="Alert" aria-hidden="true" role="presentation">&times;</button>
 				</div>
 			</noscript>
 		<?php elseif($form->isError()): ?>
@@ -55,9 +51,7 @@ $form = new contactform(array(
 					<div class="Alert-message">
 						<p>The form could not be submitted. Please fill in all fields correctly.</p>
 					</div>
-					<button type="button" class="Alert-close" data-dismiss="Alert" aria-hidden="true">
-						<span role="presentation">&times;</span>
-					</button>
+					<button type="button" class="Alert-close" data-dismiss="Alert" aria-hidden="true" role="presentation">&times;</button>
 				</div>
 			</noscript>
 		<?php endif; ?>

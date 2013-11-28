@@ -18,7 +18,7 @@ var popup = {
 			event.data.w = 650;
 		}
 
-		window.open(url, 'kirbypopupwin', 'height='+ event.data.h +',width='+ event.data.w +',resizable=1,toolbar=0,menubar=0,status=0,location=0,scrollbars=1');
+		window.open(url, 'popupwin', 'height='+ event.data.h +',width='+ event.data.w +',resizable=1,toolbar=0,menubar=0,status=0,location=0,scrollbars=1');
 		event.preventDefault();
 	}
 };
