@@ -1,0 +1,22 @@
+/* ==========================================================================
+   Breadcrumb
+   ========================================================================== */
+
+/**
+ * Simple breadcrumb styling to apply to (ordered) lists, extends '.nav'
+ */
+
+.Breadcrumb {
+	li + li:before {
+		content: "» ";
+		// content:"/ ";
+	}
+}
+
+/**
+ * Denote the root of the tree
+ */
+
+.Breadcrumb-root {
+	font-weight: bold;
+}

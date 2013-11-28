@@ -1,0 +1,50 @@
+@import "math";
+
+// --------------------------------------------------------------------------
+// Golden typography
+// --------------------------------------------------------------------------
+// Optimized font size and line height related to line width (breakpoint width)
+// --------------------------------------------------------------------------
+// Based on Golden Ratio Typography and Calculator:
+// - http://www.pearsonified.com/2011/12/golden-ratio-typography.php
+// - http://www.pearsonified.com/typography/
+// --------------------------------------------------------------------------
+
+// Defaults
+// --------------------------------------------------------------------------
+
+$ratio-golden-type:             1.61803399 !default;
+$base-font-size:                16px !default;
+
+// Optimal typography for fiven font size in pixels
+// --------------------------------------------------------------------------
+
+@function optimal-content-width-px($font-size) {
+	@return round( pow( (($font-size/1px) * $ratio-golden-type), 2) * (1 + (2*$ratio-golden-type) * ((( round($font-size * $ratio-golden-type) / $font-size) - $ratio-golden-type)))) * 1px; // output pixels
+}
+
+@function optimal-content-width($font-size) {
+	@return floor(optimal-content-width-px($font-size) / $base-font-size) * 1em; // output ems
+}
+
+@function optimal-line-height($font-size) {
+	@return $ratio-golden-type - (1/(2 * $ratio-golden-type)) * (1 - (optimal-content-width-px($font-size)/1px) / pow((($font-size/1px) * $ratio-golden-type), 2) ); //output unitless
+}
+
+// Best typography for given content width in ems
+// --------------------------------------------------------------------------
+
+@function best-font-size($content-width) {
+	@return round( sqrt($content-width/1em * $base-font-size/1px) / $ratio-golden-type ) * 1px; // output pixels
+}
+
+@function best-line-height($content-width) {
+	@return $ratio-golden-type - (1/(2 * $ratio-golden-type)) * (1 - ($content-width/1em * $base-font-size/1px) / pow(( (best-font-size($content-width)/1px) * $ratio-golden-type), 2)); // output unitless
+}
+
+// Optimized typography for given font size + content width
+// --------------------------------------------------------------------------
+
+@function optimized-line-height($font-size, $content-width) {
+	@return $ratio-golden-type - (1/(2 * $ratio-golden-type)) * (1 - ($content-width/1em * $font-size/1px) / pow(( (best-font-size($content-width)/1px) * $ratio-golden-type), 2)); // output unitless
+}

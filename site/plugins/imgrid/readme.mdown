@@ -1,0 +1,24 @@
+# Imgrid 1.0
+
+## What is it?
+
+Imgrid creates a nice Google+ style grid for your images.
+
+## How to use it?
+
+### In template
+
+    <?php imgrid($page->images(), 800, .6, 3, true); ?>
+
+### In Kirbytext
+
+    (imgrid: foo.jpg | bar.jpg | gung.jpg | ho.jpg avg-per-row: 3 crop-last: true container: 800 hd: true caption: This is a caption!)
+
+## Author
+
+Based on Christoph Bach's imgrid (christoph-bach.net), adopted (among other things made responsive) by Marijn Tijhuis and Jonathan van Wunnik <http://www.studiodumbar.com>.
+
+## Credits
+
+A big thanks to Brett Jankord and his awesome [Categorizr](http://www.brettjankord.com/2012/01/16/categorizr-a-modern-device-detection-script/) device detection script we used as inspiration.
+And credits to [Mobile_Detect](https://github.com/serbanghita/Mobile-Detect) by Browserstack.com -- without this script this plugin wouldn't work.

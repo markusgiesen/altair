@@ -1,0 +1,52 @@
+/* ==========================================================================
+   Pseudo-link utilities
+   ========================================================================== */
+
+/**
+ * Another interactive element, e.g., `button`, styled to look like an anchor.
+ * Relies on the utility selector being added to the link base styles rule.
+ *
+ * `!important` is not used liberally because the root element, like normal
+ * links, is likely to be modified by components.
+ *
+ * Example base CSS:
+ *
+ * a,
+ * .u-linkPseudo {
+ *     color: lightblue;
+ * }
+ *
+ * a:hover,
+ * a:focus,
+ * a:active,
+ * .u-linkPseudo:hover,
+ * .u-linkPseudo:focus,
+ * .u-linkPseudo:active {
+ *     color: blue;
+ * }
+ *
+ * Example HTML:
+ *
+ * <button type="button" class="u-linkPseudo">
+ *     <span role="presentation">Button content</span>
+ * </button>
+ */
+
+%u-linkPseudo {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	cursor: pointer !important;
+
+	&:hover,
+	&:focus,
+	&:active {
+		background: transparent;
+		color: inherit;
+		outline: none;
+	}
+}

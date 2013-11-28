@@ -1,0 +1,152 @@
+/* ==========================================================================
+   Copy
+   ========================================================================== */
+
+/* Scoped styles of blocks of (body) content */
+
+.Copy {
+
+	/* Baseline margins */
+
+	& > p,
+	& > ul,
+	& > ol,
+	& > dl,
+	& > pre,
+	& > figure {
+		@include margin-trailer(1);
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	/* Hyphenation (see: http://bit.ly/JixVfL) */
+
+	p, ul, ol, dl, blockquote {
+		hyphens: auto;
+	}
+
+	/* For Kirbytext plugin 'nohyphen', usage: (nohyphen: <your text not to be hypjenated>) */
+
+	.u-noHyphen {
+		hyphens: none;
+	}
+
+	/* Headings
+	   ========================================================================== */
+
+	/* Scoped headings (see extend-selectors.scss for corresponding 'unscoped' classes) */
+
+	h1 {
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+
+	h1 { @extend %u-alphaHeading; }
+	h2 { @extend %u-betaHeading; }
+	h3 { @extend %u-gammaHeading; }
+	h4 { @extend %u-deltaHeading; }
+	h5 { @extend %u-epsilonHeading; }
+	h6 { @extend %u-zetaHeading; }
+
+	/* Block- and inline quotes
+	   ========================================================================== */
+
+	blockquote {
+		@extend %Blockquote;
+	}
+
+	q {
+		@extend %Quote;
+	}
+
+	/* Inline Elements
+	   ========================================================================== */
+
+	i,
+	em,
+	cite {
+		@extend %u-textItalic;
+	}
+
+	b,
+	strong {
+		@extend %u-textBold;
+	}
+
+	small {
+		@extend %u-textSmall;
+	}
+
+	/* Addresses styling not present in IE7/8/9 */
+
+	mark {
+		background: $mark-color;
+		color: $black;
+	}
+
+	ins {
+		background: $ins-color;
+		color: $black;
+	}
+
+	del {
+		background: $del-color;
+		color: $black;
+	}
+
+	/* Addresses styling not present in IE7/8/9, S5, Chrome */
+
+	abbr[title] {
+		cursor: help;
+		font-variant: small-caps;
+		letter-spacing: .1em;
+		text-transform: lowercase;
+	}
+
+	code,
+	kbd,
+	pre,
+	samp {
+		@include mono-font();
+	}
+
+	/* Lists
+	   ========================================================================== */
+
+	/* Unordered lists */
+
+	ul,
+	ol {
+		@extend .List;
+	}
+
+	/* Definition lists */
+
+	// dl { }
+
+	dt {
+		font-weight: 700;
+	}
+
+	dd {
+		margin-left: $med;
+	}
+
+	/* Links
+	   ========================================================================== */
+
+	a {
+		@extend .Link;
+	}
+
+	/* Tables
+	   ========================================================================== */
+
+	table {
+		@extend .Table;
+	}
+
+}

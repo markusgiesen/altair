@@ -1,0 +1,33 @@
+# Detect plugin 1.1
+
+## What is it?
+
+Load different snippets based on the detected device class, e.g. mobile, tablet or desktop.
+
+## How to use it?
+
+### Mobile_etect
+
+- Create device specific snippets by adding the ‘.desktop’ or ‘.tablet’ postfixes to snippets in the ‘/snippets’ folder (e.g. html_head.desktop.php, header.tablet.php, etc.)
+- Include a device-specific snippet:
+
+    `<?php snippet_detect('header'); ?>`
+
+- To only sometimes embed the desktop instead of the tablet version of a snippet: <?php snippet_detect('header','tablet=>desktop'); ?>
+- To only display certain parts of a template on desktop or mobile devices:
+
+    `<?php if($_SESSION['isDesktop']): ?>`  
+       `This is only displayed on desktop…`  
+    `<?php endif; ?>`
+   
+    `<?php if($_SESSION['isMobile']): ?>`  
+       `This is only displayed on mobile…`  
+    `<?php endif; ?>`
+
+## Author(s)
+Marijn Tijhuis, Jonathan van Wunnik  
+<http://www.studiodumbar.com>
+
+## Credits
+
+Credits go to [PHP Mobile Detect](https://github.com/serbanghita/Mobile-Detect) by Browserstack.com -- without this script this plugin wouldn't work.

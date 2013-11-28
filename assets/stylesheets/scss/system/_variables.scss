@@ -1,0 +1,280 @@
+// --------------------------------------------------------------------------
+// Variables
+// --------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------
+// Ratios
+// --------------------------------------------------------------------------
+
+$golden:                        1.61803399; // $ϕ
+$double-octave:                 (4 / 1);
+$major-twelfth:                 (3 / 1);
+$major-eleventh:                (8 / 3);
+$major-tenth:                   (5 / 2);
+$octave:                        (2 / 1);
+$major-seventh:                 (15 / 8);
+$minor-seventh:                 (16 / 9);
+$major-sixth:                   (5 / 3);
+$minor-sixth:                   (8 / 5);
+$perfect-fifth:                 (3 / 2);
+$augmented-fourth:              (1.4142135623730950488);                        // (1 / square root 2)
+$perfect-fourth:                (4 / 3);
+$major-third:                   (5 / 4);
+$minor-third:                   (6 / 5);
+$major-second:                  (9 / 8);
+$minor-second:                  (16 / 15);
+
+$ratio-default:                 $golden;                                        // ratios can be stacked, e.g. $major-third $fifth
+
+// --------------------------------------------------------------------------
+// Spacing
+// --------------------------------------------------------------------------
+
+$spacing-unit:                  1em;
+$size-ratio:                    $ratio-default;
+
+$x-small:                       ($spacing-unit / 4);
+$small:                         ($spacing-unit / 2);
+$med:                           $spacing-unit;
+$large:                         ($spacing-unit * 2);
+$x-large:                       ($spacing-unit * 4);
+
+// --------------------------------------------------------------------------
+// Breakpoints
+// --------------------------------------------------------------------------
+// Breakpoints (target width in em's = pixel width / base font size)
+// Apply proportional media queries (em's): http://bit.ly/JT9ZzI
+// Design from the content out, rather than the canvas in: http://bit.ly/JTa5aA
+// Maybe in the (near) future apply Responsive Viewport Units instead of
+// breakpoints: http://bit.ly/IXDtMb
+// Adjust the breakpoints to best fit content and (visual) design
+
+$break-small:                   20em;                                           // <= mobile
+$break-compact:                 30em;
+$break-medium:                  48em;                                           // <= desktop/tablet
+$break-large:                   65em;
+$break-wide:                    80em;
+$break-huge:                    90em;
+
+$breakpoints:                   "small"   $break-small,                         // <= mobile
+								"compact" $break-compact,
+								"medium"  $break-medium,                        // <= desktop/tablet
+								"large"   $break-large,
+								"wide"    $break-wide,
+								"huge"    $break-huge;
+
+// --------------------------------------------------------------------------
+// Typography
+// --------------------------------------------------------------------------
+
+// Defaults (typografic scale: http://type-scale.com, http://modularscale.com)
+
+$base-font-size:                16px;                                           // default font size for all text in pixels; better not to change, is browser default (100% = 1em ~= 16px ~= 14pt)
+$another-font-size:             16px;                                           // another (second) base font size besides $base-font-size used in the typographic scale; to disable two base fonts set to same size as same as $base-font-size
+$base-line-height:              round($base-font-size * $golden);               // distance between text baselines (vertical rhythm) in pixels
+$ratio-typographic-scale:       $perfect-fourth;                                // typographic scale for heading sizes (see: font-sizes.scss)
+$multple-base:                  0;                                              // starting number for the multiple scale value; value '1' is equivalent to base font size
+
+// Responsive sizes
+
+$font-size-small:               14px;                                           // <= mobile
+$font-size-compact:             15px;                                           // <= tablet portrait
+$font-size-medium:              16px;                                           // <= dektop/tablet // BASE font size ~ 1em ~ 100% ~ $multple-base = 1
+$font-size-large:               16px;
+$font-size-wide:                17px;
+$font-size-huge:                17px;
+
+// Line height
+
+$ratio-golden-type:             $golden;                                        // ratio to calculate optimized line height (see: golden-type.scss)
+
+$line-height-small:             optimized-line-height($font-size-small, $break-small);     // <= mobile
+$line-height-compact:           optimized-line-height($font-size-compact, $break-compact); // <= tablet (portrait?)
+$line-height-medium:            optimized-line-height($font-size-medium, $break-medium);   // <= desktop
+$line-height-large:             optimized-line-height($font-size-large, $break-large);
+$line-height-wide:              optimized-line-height($font-size-wide, $break-wide);
+$line-height-huge:              optimized-line-height($font-size-huge, $break-huge);
+
+// --------------------------------------------------------------------------
+// Font stacks
+// --------------------------------------------------------------------------
+
+$sans-font:                     "Helvetica Neue", Helvetica, Arial, sans-serif;
+$serif-font:                    "Lucida Bright", Georgia, serif;
+$mono-font:                     Monaco, "Courier New", monospace, serif;
+$heading-font:                  "Helvetica Neue", Helvetica, Arial, sans-serif;
+$icon-font:                     "Fontello";
+
+// --------------------------------------------------------------------------
+// Contain
+// --------------------------------------------------------------------------
+
+$contain-offset:               6%;
+$contain-width:                50em;
+$contain-width-copy:           28em;
+
+// --------------------------------------------------------------------------
+// Grid
+// --------------------------------------------------------------------------
+
+$grid-gutter:                  $spacing-unit;
+$grid-gutter-percentage:       .6%;
+
+// --------------------------------------------------------------------------
+// Vertical rhythm
+// --------------------------------------------------------------------------
+
+$rhythm-unit:                   'rem';                                          // length unit in which to output rhythm values, supported values are 'px', 'em' or 'rem'
+$min-line-padding:              2px;                                            // ensure there is at least this many pixels of vertical padding above and below the text
+
+// --------------------------------------------------------------------------
+// Lists
+// --------------------------------------------------------------------------
+
+$list-indent-level0:           28px;
+$list-indent-level1:           20px;
+
+// --------------------------------------------------------------------------
+// Border radius
+// --------------------------------------------------------------------------
+
+$border-radius:                $x-small;
+$border-radius-images:         $med;
+
+// --------------------------------------------------------------------------
+// Colors
+// --------------------------------------------------------------------------
+
+// Grays
+
+$pitch-black:                   rgb(0,0,0);
+$black:                         rgb(20,20,20);
+
+$gray-1:                        tint($pitch-black,24%);
+$gray-2:                        tint($pitch-black,48%);
+$gray-3:                        tint($pitch-black,72%);
+$gray-4:                        tint($pitch-black,96%);
+
+$white:                         rgb(254,254,254);
+$snow-white:                    rgb(255,255,255);
+
+// Accent colors
+
+$red:                           rgb(255,0,0);
+$green:                         rgb(0,255,0);
+$blue:                          rgb(0,0,255);
+$orange:                        rgb(255,128,0);
+$yellow:                        rgb(255,255,0);
+$pruple:                        rgb(128,0,255);
+
+// Aditional colors
+
+$banana:                        rgb(255,255,102);
+$carnation:                     rgb(255,111,207);
+$maroon:                        rgb(128,0,64);
+$mocha:                         rgb(128,64,0);
+$moss:                          rgb(0,128,64);
+$plum:                          rgb(128,0,128);
+$salmon:                        rgb(255,102,102);
+$sky:                           rgb(102,204,255);
+$tangerine:                     rgb(255,128,0);
+
+// Colors schemer (defaults)
+
+$main-color:                    rgb(0,0,255);
+
+$cs-primary:                    $main-color;
+$cs-color-model:                rgb;                                // possible options are 'rgb' or 'ryb'
+$cs-scheme:                     tetrad;                             // possible color schemes are 'mono', 'complement', 'triad', 'tetrad', 'analogic' and 'accented-analogic'
+
+// Complement colors
+
+$complement:                    ryb-adjust-hue($main-color,180);    // Determine a complementary color
+$split1:                        ryb-adjust-hue($main-color,158);    // Split complements
+$split2:                        ryb-adjust-hue($main-color,-158);
+$triad1:                        ryb-adjust-hue($main-color,135);    // Triads colors
+$triad2:                        ryb-adjust-hue($main-color,-135);
+$tetra1:                        ryb-adjust-hue($main-color,90);     // Tetra colors
+$tetra2:                        ryb-adjust-hue($main-color,-90);
+$analog1:                       ryb-adjust-hue($main-color,22);     // Analogs colors
+$analog2:                       ryb-adjust-hue($main-color,-22);
+
+// Text (body) colors
+
+$text-color:                    $black;                                         // Standard text color
+$text-color-secondary:          $gray-1;                                        // Section headers, help text etc.
+
+// Page colors
+
+$canvas-color:                  $gray-4;                                        // Canvas background color (bigger than page)
+$page-color:                    $white;                                         // Page/section color
+
+// Backdrop colors
+
+$backdrop-color:                $black;
+
+// Border colors
+
+$border-color:                  $gray-2;                                        // Borders, seperators, rules, keylines etc.
+$border-color-focus:            rgb(25,128,206);
+
+// Table colors
+
+$table-odd-color:               $gray-4;                                        // Table stripes etc.
+
+// Link colors
+
+$link-color:                    $blue;
+$link-color-active:             tint($blue,24%);
+$link-color-hover:              shade($link-color,24%);
+$link-color-visited:            tint($link-color,24%);
+
+// Button colors
+
+$button-color:                  $black;
+$button-primary-color:          $blue;
+$button-disabled-color:         $gray-3;
+$button-color-alpha:            rgba(230,230,230,.8);
+$button-text-color:             $white;
+$button-primary-text-color:     $button-text-color;
+$button-border-color:           rgb(170,170,170);
+
+// Alert colors
+
+$alert-default-color:           $white;
+$alert-succes-color:            rgb(79,138,16);
+$alert-error-color:             rgb(216,0,12);
+$alert-warning-color:           rgb(212,176,7);
+$alert-info-color:              rgb(0,82,155);
+
+// Text selection
+
+$ins-color:                     rgb(255,255,153);
+$mark-color:                    rgb(255,255,0);
+$del-color:                     rgb(255,0,0);
+
+$text-selection-color-alpha:    rgba(0,0,0,.8);
+
+// Shadows
+
+$shadow-color:                  rgb(220,220,220);
+$shadow-color-alpha:            rgba(140,140,140,.3);
+
+// Gradients
+
+$stripe-colors:                 $complement,                        // Stripes color 1
+								$split1,                            // Stripes color 2
+								$split2,                            // Stripes color 3
+								$triad1,                            // Stripes color 4
+								$triad2,                            // Stripes color 5
+								$tetra1,                            // Stripes color 6
+								$tetra2,                            // Stripes color 7
+								$analog1;                           // Stripes color 8
+$gradient-colors-1:             $red 0%,                            // Gradient color + color stop 1
+								$blue 35%,                          // Gradient color + color stop 2
+								$yellow 36%,                        // Gradient color + color stop 3
+								$white 100%;                        // Gradient color + color stop 4
+$gradient-colors-2:             $triad1 0%,                         // Gradient color + color stop 1
+								$triad1 65%,                        // Gradient color + color stop 2
+								$tetra1 65%,                        // Gradient color + color stop 3
+								$tetra1 100%;                       // Gradient color + color stop 4

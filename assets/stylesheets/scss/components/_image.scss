@@ -1,0 +1,57 @@
+/* ==========================================================================
+   Image
+   ========================================================================== */
+
+/* Fluid images */
+
+img {
+	max-width: 100%;
+	height: auto;
+	// border: 0;
+}
+
+/**
+ * Non-fluid images explicitly or if 'width' and/or 'height'
+ * attributes are specified.
+ */
+
+// img[width],
+// img[height],
+.Image--noFluid {
+	max-width: none;
+}
+
+/**
+ * Rounded images
+ */
+
+.Image--round {
+	border-radius: $border-radius-images;
+}
+
+/* Image placement variations */
+
+.Image--right {
+	float: right;
+	margin-bottom: $small;
+	margin-left: $small;
+}
+
+.Image--left{
+	float: left;
+	margin-right: $small;
+	margin-bottom: $small;
+}
+
+.Image--center{
+	display: block;
+	margin-right: auto;
+	margin-bottom: $small;
+	margin-left: auto;
+}
+
+/* Images in 'figure' elements */
+
+figure > img {
+	display: block;
+}

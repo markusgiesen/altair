@@ -1,0 +1,13 @@
+/* ==========================================================================
+   Font feature settings utilities
+   ========================================================================== */
+
+/**
+ * More about CSS3 font features: http://j.mp/Ak0Rms
+ */
+
+%u-fontFeatureSettings {
+	-ms-font-feature-settings: "liga", "dlig"; // Autoprefixer doesn't add -ms yet?!
+	font-feature-settings: "liga", "dlig";
+	text-rendering: optimizeLegibility;
+}

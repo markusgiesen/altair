@@ -1,0 +1,57 @@
+/* ==========================================================================
+   Fluid embed - http://j.mp/GIHbnu
+   ========================================================================== */
+
+/**
+ * Fluid, intrinsic ratio embeds
+ *
+ * For use with media embeds – such as videos, slideshows, or even images –
+ * that need to retain a specific aspect ratio but adapt to the width of their
+ * containing element.
+ *
+ * Example HTML:
+ * <div class="FlexEmbed FlexEmbed--16by9">
+ *     <iframe class="FlexEmbed-item" src="…"></iframe>
+ * </div>
+ *
+ * <div class="FlexEmbed FlexEmbed--16by9">
+ *     [iframe|object|embed|img]
+ * </div>
+ */
+
+.FluidEmbed {
+	position: relative;
+	overflow: hidden;
+	height: 0;
+	padding: 0;
+}
+
+/**
+ * The use of an explicit descendant class makes this component more flexible.
+ * However, it will work automatically for iframes, embeds, and objects to
+ * account for times when you cannot modify the attributes for 3rd party widget
+ * code.
+ */
+
+.FluidEmbed-item,
+.FluidEmbed iframe,
+.FluidEmbed embed,
+.FluidEmbed object {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/**
+ * Modifier: 16:9 aspect ratio
+ */
+
+.FluidEmbed--16by9 { @extend %u-ratio16by9; }
+
+/**
+ * Modifier: 4:3 aspect ratio
+ */
+
+.FluidEmbed--4by3 { @extend %u-ratio4by3; }

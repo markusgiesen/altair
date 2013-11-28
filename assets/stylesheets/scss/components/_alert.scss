@@ -1,0 +1,169 @@
+/* ==========================================================================
+   Alert (message (Alert and box)
+   ========================================================================== */
+
+/**
+ * Alert
+ */
+
+.Alert {
+	background-color: $alert-default-color;
+	color: $text-color;
+	position: relative;
+	z-index: 100;
+	display: block;
+	overflow: hidden;
+	margin-bottom: $med;
+	padding: $med;
+	width: 100%;
+	border-bottom: 1px solid;
+
+	/**
+	 * On devices Modernizr test negative for touch, alerts slide over content,
+	 * while on devices that test positive, content is pushed down.
+	 */
+
+	.no-touch & {
+		@include breakpoint(medium) {
+			position: fixed;
+			top: -20%;
+			left: 0;
+		}
+	}
+}
+
+/* Bar */
+
+.Alert--bar {
+	box-shadow: 0 1px 2px 0 $shadow-color-alpha;
+}
+
+/* Model */
+
+.Alert--modal {
+	position: fixed;
+	top: 10%;
+	left: 25%;
+	z-index: 9999;
+	padding: $med;
+	width: 50%;
+	border: 1px solid;
+}
+
+/* Succes message */
+
+.Alert---succes {
+	background-color: tint($alert-succes-color,80%);
+	color: $alert-succes-color;
+}
+
+/* Danger (error) message */
+
+.Alert--error {
+	background-color: tint($alert-error-color,85%);
+	color: $alert-error-color;
+}
+
+/* Warning message */
+
+.Alert--warning {
+	background-color: tint($alert-warning-color,85%);
+	color: $alert-warning-color;
+}
+
+/* Info message */
+
+.Alert--info {
+	background-color: tint($alert-info-color,85%);
+	color: $alert-info-color;
+}
+
+/* Alert message */
+
+.Alert-message {
+	padding-right: $large;
+
+	a {
+		text-decoration: underline;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+/* Dismiss alert */
+
+.Alert--dismissable {
+	padding-right: $x-large;
+}
+
+.Alert-close {
+	@extend .grunt-icon-close;
+	@extend %u-isHiddenText;
+
+	position: absolute;
+	top: $med + .3em;
+	right: $med;
+	display: block;
+	width: 15px;
+	height: 15px;
+	opacity: .2;
+
+	&:hover{
+		opacity: 1;
+	}
+}
+
+/**
+ * Alert close (animation)
+ */
+
+.js-bar-alertAnim {
+	transition: top .64s ease-out; // @MARIJN: I DON'T BELIEVE IT"S OK TO ANIMATE 'TOP', SEE: http://j.mp/1eLKtgD
+}
+
+.js-bar-alertAnim--show {
+	display: block;
+
+	.no-touch & {
+		@include breakpoint(medium) {
+			top: 0;
+		}
+	}
+}
+
+.js-bar-alertAnim--hide {
+	display: none;
+
+	.no-touch & {
+		@include breakpoint(medium) {
+			display: block;
+			top: -20%;
+		}
+	}
+}
+
+/**
+ * Modal close (animation)
+ */
+
+.js-modal-alertAnim {
+	opacity: 0;
+	transition: opacity .24s ease-out;
+}
+
+.js-modal-alertAnim--show {
+	opacity: 1;
+
+	@if $oldie {
+		display: block;
+	}
+}
+
+.js-modal-alertAnim--hide {
+	opacity: 0;
+
+	@if $oldie {
+		display: none;
+	}
+}

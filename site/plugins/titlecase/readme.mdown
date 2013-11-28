@@ -1,0 +1,15 @@
+# Titlecase plugin 1.0
+
+## What is it?
+
+ A script to Title Case text, based on Camen Design's PHP script: http://camendesign.com/code/title-case (originally a John Gruber Perl script )
+
+## How to use it?
+
+### Call from template (in combination with smartypants)
+
+<?php echo smartypants(titlecase('Resulting in a Cool Title Case Title')); ?>
+
+## Author
+Jonathan van Wunnik, Studio Dumbar
+<http://www.studiodumbar.com>

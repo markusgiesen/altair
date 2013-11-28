@@ -1,0 +1,81 @@
+/* ==========================================================================
+   Toggle list
+
+   Requires:
+   - togglelist.jquery.class.js or
+   - togglelist.zepto.class.js
+   ========================================================================== */
+
+
+/* Expand and/ot collapse list items */
+
+.ToggleList {
+	border-bottom: 1px solid $black;
+}
+
+.ToggleList-item {
+	position: relative;
+	border-top: 1px solid $black;
+
+	@if $oldie {
+		zoom: 1;
+	}
+}
+
+/* Title */
+
+.ToggleList-title {
+	@include rhythm-padding(.5);
+	position: relative;
+	display: block;
+	margin: 0;
+	cursor: pointer;
+}
+
+/* Body */
+
+.ToggleList-body {
+	@include margin-trailer(.5);
+}
+
+/* Class set with JS in togglelist.zepto.class.js for mobile (with Zepto) */
+
+.js-ToggleList.is-animated {
+	overflow: hidden;
+	max-height: 100em;
+	transition: max-height .24s ease-out;
+}
+
+.js-ToggleList.is-closed {
+	.js-ToggleList.is-animated {
+		margin-bottom: 0;
+		padding-bottom: 0;
+		max-height: 0;
+	}
+
+	@if $oldie {
+		& .ToggleList-icon {
+			@extend .grunt-icon-plus;
+		}
+	}
+}
+
+/* Open-close icon */
+
+.ToggleList-icon {
+	@extend .grunt-icon-close;
+
+	position: absolute;
+	top: 50%;
+	right: 0;
+	display: block;
+	margin-top: -7px;
+	width: 15px;
+	height: 15px;
+	transition: all .24s ease-out;
+	transform: rotate(0);
+
+	.js-ToggleList.is-closed & {
+		transform: rotate(45deg);
+	}
+}

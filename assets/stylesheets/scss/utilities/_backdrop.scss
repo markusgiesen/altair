@@ -1,0 +1,19 @@
+/* ==========================================================================
+   Backdrop utilities
+   ========================================================================== */
+
+.u-backdrop,
+%u-backdrop {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 9998;
+	background: set-alpha($backdrop-color,0.45);
+
+	@if $oldie {
+		background: $backdrop-color;
+		filter: alpha(opacity = 65);
+	}
+}

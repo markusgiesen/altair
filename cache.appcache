@@ -1,0 +1,32 @@
+CACHE MANIFEST
+# Version 1
+
+
+# Explicitly cached entries
+#/assets/stylesheets/css/base.css
+#/assets/stylesheets/css/mobile.css
+
+
+# offline.html will be displayed if the user is offline
+FALLBACK:
+#/offline.html
+
+
+# All other resources (e.g. sites) require the user to be online.
+NETWORK:
+*
+
+
+# Additional resources to cache
+CACHE:
+/favicon.ico
+/apple-touch-icon.png
+/apple-touch-icon-precomposed.png
+/apple-touch-icon-57x57-precomposed.png
+/apple-touch-icon-72x72-precomposed.png
+/apple-touch-icon-114x114-precomposed.png
+/apple-touch-icon-144x144-precomposed.png
+#/assets/javascript/min/mobile.scripts.min.js
+
+
+# For more information see: http://bit.ly/xvqPM2

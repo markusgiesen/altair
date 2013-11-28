@@ -1,0 +1,53 @@
+// --------------------------------------------------------------------------
+// Suit naming with @root (http://j.mp/IcrQDT and http://sassmeister.com/gist/6994632)
+// --------------------------------------------------------------------------
+
+// .ComponentName {} // the the component (or UI pattern)
+// .ComponentName-descendentName {} // a descendent of a component
+// .ComponentName--modifierName {} // modifictions of a component or descendent
+//
+// Sass:
+//  .SpeechBubble {
+//     color: purple;
+//
+//     @include des(Header) {
+//        color: orange;
+//     }
+//     @include des(Text) {
+//        color: black;
+//
+//        @include mod(link) {
+//           color: green;
+//        }
+//     }
+//  }
+//
+// CSS:
+//  .SpeechBubble {
+//     color: purple;
+//  }
+//  .SpeechBubble-Header) {
+//     color: orange;
+//  }
+//  .SpeechBubble-Text {
+//     color: black;
+//   }
+//  .SpeechBubble-Text--link {
+//     color: green;
+//  }
+
+// Descendent get appended with "-" and the $name
+
+@mixin des($name) {
+	@at-root #{&}-#{$name} {
+		@content;
+	}
+}
+
+// Modifiers get appended with "--" and the $name
+
+@mixin mod($name) {
+	@at-root #{&}--#{$name} {
+		@content;
+	}
+}

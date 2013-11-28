@@ -1,0 +1,186 @@
+/* ==========================================================================
+   Form
+   ========================================================================== */
+
+.Form {
+	@include margin-leader(1);
+}
+
+/* Fieldset */
+
+.Form fieldset {
+	@include margin-trailer(1);
+
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+/**
+ * Group sets of form fieldsets in a (ordered) list, e.g.:
+ * <form class="Form">
+ *    <fieldset>
+ *       <ol class="Form-fields">
+ *          <li class="Form-item Form-item--stacked">
+ *             <label for="text" class="Form-label">...</label>
+ *             <input id="text" type="text">
+ *          </li>
+ *          <li class="Form-item Form-item--stacked">
+ *             ...
+ *          </li>
+ *          <li class="Form-item">
+ *             ...
+ *          </li>
+ *       </ol>
+ * </form>
+ */
+
+.Form-fields {
+
+	.copy & { // Reset form list within Copy class
+		margin-left: 0;
+
+		li {
+			list-style: none;
+		}
+	}
+}
+
+.Form label,
+.Form input,
+.Form textarea,
+.Form select {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.Form--inline .Form-item {
+	display: inline-block;
+	margin-right: $med;
+}
+
+.Form-item {
+	@include margin-trailer(1);
+}
+
+.Form-label {
+	font-weight: 600;
+}
+
+.Form-item--stacked .Form-label {
+	display: block;
+}
+
+.Form-input {
+	padding: 0.5em 0.6em;
+	// outline: none; /* Disbale default browser focus outline (make sure to add custom focus styling) */
+	border: 1px solid $black;
+	border-radius: $border-radius;
+	background-color: tint($gray-2,92%);
+	box-shadow: inset 0 1px 2px 0 $gray-4;
+	-webkit-appearance: none; /* Reset iOS inset schaodw on inputs */
+
+	&:focus {
+		border-color: $border-color-focus;
+		background-color: $white;
+	}
+
+	@include input-placeholder {
+		color: $gray-3;
+	}
+}
+
+.Form-input--full {
+	width: 100%; /* Causes iOS 6 orientation viewport issue: http://j.mp/Sa3zh3 */
+}
+
+/**
+ * Override the normalize.css search input `box-sizing` normalization.
+ */
+
+.Form-input[type="search"] {
+	box-sizing: border-box;
+}
+
+/**
+ * Extra help text after input on focus:
+ * <li class="Form-item Form-item--stacked">
+ *    <label class="Form-label">Label text</label>
+ *    <input class="Form-input"/>
+ *    <small class="Form-helper">Helper text</small>
+ * </li>
+ */
+
+.Form-helper {
+	display: inline-block;
+	visibility: hidden;
+}
+
+.Form-input:active + .Form-helper,
+.Form-input:focus + .Form-helper {
+	visibility:visible;
+}
+
+/**
+ * Set optional label like this:
+ * <label class="Form-label">Label text <small class="Form-optional">(Optional)</small></label>
+ */
+
+.Form-optional {
+	font-weight: normal;
+}
+
+/**
+ * Error handling (inline)
+ */
+
+.Form-helperError {
+	display: inline-block;
+}
+
+.Form .is-error {
+	color: $alert-error-color;
+
+	.Form-input {
+		border: 1px solid $alert-error-color;
+	}
+}
+
+/**
+ * Lists of checkboxes and radio buttons, e.g.:
+ * <li class="Form-item Form-item--stacked">
+ *    <fieldset>
+ *       <span class="Form-label">Radio set</span>
+ *       <ul class="Input-set Input-set--horizontal">
+ *          <li>
+ *             <label class="Input-label">
+ *                <input type="radio" class="radio" name="radioset" value="Option 1"/>
+ *                <span>Option 1</span>
+ *             </label>
+ *          </li>
+ *          <li>
+ *             ...
+ *          </li>
+ *       </ul>
+ *    </fieldset>
+ * </li>
+ */
+
+.Input-set {
+	margin: 0;
+}
+
+/* Horizontal */
+
+.Input-set--horizontal > li {
+	display: inline-block;
+	margin-right: $med;
+
+	&:last-child {
+		margin-right: 0;
+	}
+}
+
+/* Labels of checkboxes/radio buttons  */
+
+// .Input-label {}

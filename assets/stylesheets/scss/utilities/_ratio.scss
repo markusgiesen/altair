@@ -1,0 +1,31 @@
+/* ==========================================================================
+   Intrinsic ratios utilities (used by fluid-embed component)
+   ========================================================================== */
+
+/* Ratios landscape */
+
+%u-ratio1by2  {
+	padding-top: percentage(2/1) !important;
+}
+
+%u-ratio3by4  {
+	padding-top: percentage(4/3) !important;
+}
+
+%u-ratio9by16 {
+	padding-top: percentage(16/9) !important;
+}
+
+/* Ratios portrait */
+
+%u-ratio2by1  {
+	padding-top: percentage(1/2) !important;
+}
+
+%u-ratio4by3  {
+	padding-top: percentage(3/4) !important;
+}
+
+%u-ratio16by9 {
+	padding-top: percentage(9/16) !important;
+}

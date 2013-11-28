@@ -1,0 +1,18 @@
+/* ==========================================================================
+   Masthead (logo)
+   ========================================================================== */
+
+.Masthead {
+	@extend .grunt-logo;
+	@extend %u-container;
+
+	display: block;
+	width: 144px;
+	height: 48px;
+
+	@include breakpoint(medium) {
+		float: left;
+		margin-top: $large;
+		margin-left: 0;
+	}
+}

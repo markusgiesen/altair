@@ -1,0 +1,73 @@
+// --------------------------------------------------------------------------
+// Breakpoints
+// --------------------------------------------------------------------------
+
+// The base css should be for mobile. on top of that styles for other (wider)
+// browser windows can be layered on top.
+//
+// Usage:
+//
+//   div.columns {
+//     border: 1px solid;
+//
+//     @include breakpoint(small,max){
+//       width: 100%;
+//     }
+//     @include breakpoint(medium){
+//       width: 30%;
+//       float: left;
+//     }
+//     @of oldie() {
+//       something to fix visual bugs in old IE
+//     }
+//   }
+
+// Defaults
+// --------------------------------------------------------------------------
+
+$oldie: false !default;
+$breaks: "small", "compact", "medium", "large", "wide", "huge" !default;
+
+// Breakpoints
+// --------------------------------------------------------------------------
+
+@mixin breakpoint($condition, $max-width: false) {
+	// Loop through the 'breaks' to be included (by default all points)...
+	$count: 1;
+	@each $break in $breaks {
+		// If conditin meets break to be included, then...
+		@if $condition == $break {
+			// Output a 'fixed' media query set for IE (ignore breakpoints transparently)
+			@if $oldie {
+				// If max-width is true on any break but the last break (see $breaks in ie.scss)
+				@if $count < length($breaks) {
+					@if $max-width != "max" {
+						// Output content
+						@content;
+					}
+				}
+				// If last break, output max-width as well as non-max-width breakpoint
+				@else {
+					@content;
+				}
+			} @else {
+				// Loop through the 'breakpoints' list (name / value pair)...
+				@each $breakpoint in $breakpoints {
+					$name: nth($breakpoint, 1);
+					$query: nth($breakpoint, 2);
+					// And output breakspoints that match the conditions...
+					@if $condition == $name {
+						// If max-width is true, set media query to max-width...
+						@if $max-width == "max" {
+							@media (max-width: #{$query}) { @content; }
+						} @else {
+							// Otherise set to min-width.
+							@media (min-width: #{$query}) { @content; }
+						}
+					}
+				}
+			}
+		}
+		$count: $count + 1;
+	}
+}

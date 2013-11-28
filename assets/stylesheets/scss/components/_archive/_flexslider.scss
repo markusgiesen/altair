@@ -1,0 +1,123 @@
+/* ==========================================================================
+   Flexslider
+
+   http://www.woothemes.com/flexslider/
+   ========================================================================== */
+
+/* Container */
+
+.Slider {
+	position: relative;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	@if $oldie {
+		zoom: 1;
+	}
+}
+
+/* Slides */
+
+.Slider-group {
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	height: ($break-small / 1em * 16) * (5/6) + px; /* Height of slides container is 5/6 (almost square) of the (minimal) width */
+	background-color: $black;
+	list-style: none;
+	text-align: center;
+
+	/* Needs to be nested within .Slider__group to work properly in o.a. Chrome (specificity?!) */
+
+	.Slider-item {
+		position: relative; /* Enable (only?!) with 3D transforms */
+		display: none; /* Hide the slides before the JS is loaded */
+	}
+
+	@include breakpoint(compact) {
+		min-height: ($break-small / 1em * 16) / 2.35 + px;
+		height: auto; /* Devided by 2.35, because image ratio = 2.35 : 1 */
+	}
+
+	@include breakpoint(medium) {
+		min-height: ($break-compact / 1em * 16) / 2.35 + px; /* Devided by 2.35, because image ratio = 2.35 : 1 */
+	}
+
+	@include breakpoint(large) {
+		min-height: ($break-medium / 1em * 16) / 2.35 + px; /* Devided by 2.35, because image ratio = 2.35 : 1 */
+	}
+}
+
+.Slider-image {
+	margin-right: -50%;
+	margin-left: -50%;
+	max-width: ($break-small / 1em * 16) * (5/6) * 2.35 + px; /* The height x 2.35, because image ratio = 2.35 : 1 */
+
+	@include breakpoint(compact) {
+		margin: 0;
+		max-width: 100%;
+		width: 100%;
+		height: auto;
+	}
+	@if $oldie {
+		margin: 0;
+		max-width: 100%;
+		height: auto;
+	}
+}
+
+/* Index (bullets) */
+
+.Slider-index {
+	position: relative;
+	margin: .5em 0 0;
+	padding: 0;
+	text-align: center;
+
+	li {
+		display: inline-block;
+
+		@if $oldie {
+			display: inline;
+			zoom: 1;
+		}
+	}
+	a,
+	a:active {
+		top: 0;
+		padding: .3em .7em;
+		color: $gray-3;
+		font-size: 1.5em;
+		cursor: pointer;
+		&:hover {
+			color: $gray-3;
+		}
+	}
+	.active,
+	.active:active {
+		color: $black;
+		cursor: default;
+		&:hover {
+			color: $black;
+			cursor: default;
+		}
+	}
+	span {
+		@extend %u-isHiddenVisually;
+	}
+}
+
+/* Within .Copy scope */
+
+.Copy {
+	.Slider-group,
+	.Slider-index {
+		margin-left: 0;
+	}
+}
+
+/* No JS (Fallback) */
+
+.no-js .Slider-group > li:first-child {
+	display: block;
+}

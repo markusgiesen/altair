@@ -1,0 +1,94 @@
+/* ==========================================================================
+   Swipe
+
+   http://swipejs.com/
+   ========================================================================== */
+
+/* Container */
+
+.Slider {
+	position: relative;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+
+/* Slides */
+
+.Slider-group {
+	position: relative;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	height: ($break-small / 1em * 16) * (5/6) + px; /* height of slides container is 5/6 (almost square) of the (minimal) width */
+	background-color: $black;
+	list-style: none;
+
+	@include breakpoint(compact) {
+		min-height: ($break-small / 1em * 16) / 2 + px;
+		height: auto; /* devided by 2, because image ratio = 2 : 1 */
+	}
+}
+
+.Slider-item {
+	position: relative;
+	display: none; /* Hide the slides before the JS is loaded. Avoids image jumping */
+	float:left;
+	overflow: hidden;
+	width:100%;
+	text-align: center;
+}
+
+.Slider-img {
+	margin-right: -50%;
+	margin-left: -50%;
+	max-width: ($break-small / 1em * 16) * (5/6) * 2 + px; /* the height x 2, because image ratio = 2 : 1 */
+	width: auto;
+	height: ($break-small / 1em * 16) * (5/6) + px; /* height of image is 5/6 (almost square) if the (minimal) width */
+
+	@include breakpoint(compact) {
+		margin: 0;
+		max-width: 100%;
+		width: inherit;
+		height: auto;
+	}
+}
+
+/* Index (bullets) */
+
+.Slider-index {
+	position: relative;
+	margin: .5em 0 0;
+	padding: 0;
+	color: $gray-3;
+	text-align: center;
+
+	li {
+		top: 0;
+		display: inline;
+		padding: .3em;
+		font-size: 1.5em;
+		cursor: default;
+	}
+	.active {
+		color: $black;
+	}
+	em {
+		@extend %u-isHiddenVisually;
+	}
+}
+
+/* Within .Copy scope */
+
+.Copy {
+	.Slider-group,
+	.Slider-index {
+		margin-left: 0;
+	}
+}
+
+/* No JS (Fallback) */
+
+.no-js .Slider-group > li:first-child {
+	display: block;
+}

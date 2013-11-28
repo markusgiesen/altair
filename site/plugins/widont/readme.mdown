@@ -1,0 +1,19 @@
+# Widont plugin 1.0
+
+## What is it?
+
+If text contains more than 3 spaces, replace last space by a "&nbsp;". Inspired by Low's regular expression: http://gotolow.com/addons/low-widont
+
+## How to use it?
+
+### Call via Kirbytext 
+
+(widont: Text that can't have widows, because we're awesome)
+ 
+### Call from template (in combination with smartypants)
+
+<?php echo smartypants(widont('A cool title with "curly" quotes and no widows you know')); ?>
+
+## Author
+Marijn Tijhuis, Studio Dumbar
+<http://www.studiodumbar.com>

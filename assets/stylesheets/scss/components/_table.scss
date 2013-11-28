@@ -1,0 +1,138 @@
+/* ==========================================================================
+   Table basics
+   ========================================================================== */
+
+/* Default table style
+   ========================================================================== */
+
+.Table {
+	@extend .Table--striped;
+	@include margin-trailer(1);
+
+	width: 100%;
+
+	th,
+	td {
+		@include rhythm-padding(.5);
+
+		text-align: left;
+	}
+
+	/* Table head */
+
+	th {
+		@extend %u-alignMiddle;
+
+		font-weight: inherit;
+		// white-space: nowrap
+	}
+
+	/* Table cell */
+
+	td {
+		@extend %u-alignTop;
+	}
+
+	/* Table footer */
+
+	tfoot {
+		font-style: italic;
+	}
+
+	/* Cell alignments */
+
+	[colspan] {
+		text-align: center;
+	}
+	[colspan="1"] {
+		text-align: left;
+	}
+	[rowspan] {
+		@extend %u-alignMiddle;
+	}
+	[rowspan="1"] {
+		@extend %u-alignTop;
+	}
+
+}
+
+.Table-numerical {
+	text-align: right;
+}
+
+
+/* Striped tables
+   ========================================================================== */
+
+.Table--striped {
+	th,
+	td {
+		padding-right: $small;
+		padding-left: $small;
+	}
+
+	th {
+		background-color: $black;
+		color: $white;
+	}
+
+	th + th,
+	td + td {
+		border-left: 2px solid $white;
+	}
+
+	/* Zebra-striping */
+
+	tbody {
+		tr:nth-child(even) td {
+			background-color: $gray-4;
+		}
+		tr:hover td {
+			background-color: $black;
+			color: $white;
+		}
+	}
+
+	/* Rounded corners */
+
+	thead th:first-child {
+		border-radius: $border-radius 0 0 0;
+	}
+
+	thead th:last-child {
+		border-radius: 0 $border-radius 0 0;
+	}
+
+	tfoot td:first-child {
+		border-radius: 0 0 0 $border-radius;
+	}
+
+	tfoot td:last-child {
+		border-radius: 0 0 $border-radius 0;
+
+	}
+}
+
+/* Bordered tables
+   ========================================================================== */
+
+.Table--bordered {
+	th,
+	td {
+		padding-right: $small;
+		padding-left: $small;
+		border: 1px solid $gray-4;
+		&:empty{
+			border:none;
+		}
+	}
+
+	thead th {
+		border-bottom-width: 2px;
+		border-bottom-color: $black;
+	}
+
+	tfoot tr {
+		border-top-width: 2px;
+	}
+}
