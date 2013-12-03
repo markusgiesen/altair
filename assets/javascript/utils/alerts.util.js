@@ -117,11 +117,17 @@ var alerts = {
 			$('.u-backdrop').first().removeClass('js-alertAnim--show').addClass('js-alertAnim--hide'); // Use first, because we possibly have more than one modal
 		}
 
-		// Get the transform of an element via getComputedStyle
-		var notificationHasTransformSet = window.getComputedStyle($notification.get(0), null).getPropertyValue('transform');
+		var notificationHasTransformSet = null;
+		var notificationHasWebkitTransformSet = null;
 
-		// If browser doesn't support transitions or there is no transform set
-		if(!Modernizr.csstransitions || notificationHasTransformSet === 'none'){
+		// Get the transform of an element via getComputedStyle (if the browser supports this..)
+		if (window.getComputedStyle) {
+			notificationHasTransformSet = window.getComputedStyle($notification.get(0), null).getPropertyValue('transform');
+			notificationHasWebkitTransformSet = window.getComputedStyle($notification.get(0), null).getPropertyValue('-webkit-transform');
+		}
+
+		// If browser doesn't support transitions or there is no transform (or -webkit-transform...) set
+		if(!Modernizr.csstransitions || notificationHasTransformSet === 'none' || notificationHasWebkitTransformSet === 'none'){
 			alerts.removeNotificationElements($notification);
 		}
 		else {
