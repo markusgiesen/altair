@@ -1,3 +1,0 @@
-﻿Title: Sitemap Kirby Package
-
-----

@@ -95,6 +95,21 @@ c::set('rewrite', true);
 /*
 
 ---------------------------------------
+Content File Extension
+---------------------------------------
+
+Change the default file extension for your
+content files here if you'd rather use something
+else than txt. For example md or mdown.
+
+*/
+
+c::set('content.file.extension', 'md');
+
+
+/*
+
+---------------------------------------
 Homepage Setup
 ---------------------------------------
 
@@ -470,7 +485,7 @@ to set the default locale settings for all PHP functions
 
 */
 
-c::set('lang.support', false);
+c::set('lang.support', true);
 c::set('lang.default', 'en');
 c::set('lang.available', array('en', 'nl'));
 c::set('lang.detect', true);
@@ -480,16 +495,15 @@ c::set('lang.locale', false);
 /*
 
 ---------------------------------------
-Content File Extension
+Images in (xml) sitemap
 ---------------------------------------
 
-Change the default file extension for your
-content files here if you'd rather use something
-else than txt. For example md or mdown.
+If you want to add links to (original)
+images in the sitemap, enable it here.
 
 */
 
-c::set('content.file.extension', 'md');
+c::set('images.in.sitemap', false);
 
 
 /*
