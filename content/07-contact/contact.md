@@ -6,11 +6,7 @@ Title: Contact
 
 ----
 
-[Description:]
-
-----
-
-Keywords: contact
+[Meta description:]
 
 ----
 
@@ -19,3 +15,15 @@ Keywords: contact
 ----
 
 [Text:]
+
+----
+
+Contact from: Altair <no-reply@altair.com>
+
+----
+
+Contact to: info@altair.com
+
+----
+
+Contact subject: Contact request from Altair

@@ -27,18 +27,16 @@ endif;
 if(c::get('lang.support')): $language_code = c::get('lang.current'); $canonical_slash = '';
 else: $language_code = c::get('lang.default'); $canonical_slash = '/'; endif;
 
-// Title
+// Page title
 if($page->isHomePage() && $site->descriptor() != ''): $pagetitle = smartypants(titlecase($site->descriptor()));
 elseif($page->subtitle() && $page->subtitle() != ''): $pagetitle = smartypants(titlecase($page->subtitle()));
 else: $pagetitle = smartypants(titlecase($page->title())); endif;
 
-// Description
-if($page->description() && $page->description() != ''): $description = smartypants($page->description());
-else: $description = smartypants($site->description()); endif;
-
-// Keywords
-if($page->keywords() && $page->keywords() != ''): $keywords = smartypants($page->keywords() . ', ' . $site->keywords());
-else: $keywords = smartypants($site->keywords()); endif;
+// Meta description
+if($page->meta_description() && $page->meta_description() != ''): $meta_description = smartypants($page->meta_description());
+elseif($page->intro() && $page->intro() != ''): $meta_description = excerpt($page->intro(), 154);
+elseif($page->text() && $page->text() != ''): $meta_description = excerpt($page->text(), 154);
+else: $meta_description = ''; endif;
 
 // Variable to set next and previous rel="next/prev" links; to enable add array to 'snippet_detect('html_head');' at top of template: 'snippet_detect('html_head', array('prev_next' => true));'
 if(!isset($prev_next)): $prev_next = false; endif;
@@ -50,8 +48,7 @@ if(!isset($prerender)): $prerender = false; endif;
 if(!isset($prefetch)): $prefetch = false; endif;
 ?>
 <!doctype html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="<?php echo $language_code; ?>"> <![endif]-->
-<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="<?php echo $language_code; ?>"> <![endif]-->
+<!--[if lte IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="<?php echo $language_code; ?>"> <![endif]-->
 <!--[if IE 8]> <html class="no-js lt-ie9" lang="<?php echo $language_code; ?>"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="<?php echo $language_code; ?>"> <!--<![endif]-->
 <head>
@@ -67,13 +64,12 @@ if(!isset($prefetch)): $prefetch = false; endif;
 	<title><?php echo smartypants($site->title()) . ': ' . $pagetitle; ?></title>
 
 	<meta name="author" content="<?php echo smartypants($site->author()); ?>">
-	<meta name="description" content="<?php echo smartypants($description); ?>">
-	<meta name="keywords" content="<?php echo smartypants($keywords); ?>">
-	<meta name="robots" content="index, follow">
+	<?php if($meta_description != ''): ?><meta name="description" content="<?php echo smartypants($meta_description); ?>"><?php endif; ?>
+	<?php if(c::get('environment') == 'local' || c::get('environment') == 'stage'): ?><meta name="robots" content="noindex, nofollow"><?php else: ?><meta name="robots" content="index, follow"><?php endif; ?>
 
 	<link rel="home" href="<?php echo $site->url(); ?>">
-	<link rel="sitemap" type="application/xml" title="Sitemap" href="<?php echo html($site->pages()->find('sitemap')->url()); ?>">
-	<link rel="alternate" type="application/rss+xml" title="<?php echo smartypants($pages->find('blog/feed')->title()); ?>" href="<?php echo html(url('blog/feed')); ?>">
+	<link rel="sitemap" type="application/xml" title="<?php echo smartypants(titlecase($pages->find('sitemap/xmlsitemap')->title())); ?>" href="<?php echo html($site->pages()->find('sitemap')->url()); ?>">
+	<link rel="alternate" type="application/rss+xml" title="<?php echo smartypants(titlecase($pages->find('blog/feed')->title())); ?>" href="<?php echo html(url('blog/feed')); ?>">
 	<link rel="publisher" href="https://plus.google.com/xxxxxxxxxxxxxxxxxxxxx">
 
 	<?php

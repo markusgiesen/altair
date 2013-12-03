@@ -6,11 +6,7 @@ Title: Search
 
 ----
 
-Description: Search this website
-
-----
-
-Keywords: search, serarch results, results, find
+Meta description: Search the website
 
 ----
 

@@ -6,11 +6,7 @@ Title: Third article
 
 ----
 
-[Description:]
-
-----
-
-Keywords: blog, article
+[Meta description:]
 
 ----
 

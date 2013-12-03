@@ -6,11 +6,7 @@ Subtitle: Base HTML elements
 
 ----
 
-[Description:]
-
-----
-
-Keywords: base
+[Meta description:]
 
 ----
 

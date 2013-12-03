@@ -6,11 +6,7 @@ Title: First article
 
 ----
 
-[Description:]
-
-----
-
-Keywords: blog, article
+[Meta description:]
 
 ----
 

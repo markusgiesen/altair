@@ -21,4 +21,4 @@ User-agent: Mediapartners-Google*
 Disallow:
 Allow: /*
 
-Sitemap: http://<example.com>/sitemap.xml
+Sitemap: http://<example.com>/sitemap

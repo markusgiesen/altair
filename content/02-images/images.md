@@ -6,11 +6,7 @@ Title: Images
 
 ----
 
-[Description:]
-
-----
-
-Keywords: images
+[Meta description:]
 
 ----
 

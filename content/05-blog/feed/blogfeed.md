@@ -1,5 +1,5 @@
-﻿Title: Blog Feed
+Title: Blog feed
 
 ----
 
-Description: The latest updates from the blog
+Description: The latest updates from the Altair blog

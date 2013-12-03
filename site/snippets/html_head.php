@@ -21,18 +21,16 @@ endif;
 if(c::get('lang.support')): $language_code = c::get('lang.current'); $canonical_slash = '';
 else: $language_code = c::get('lang.default'); $canonical_slash = '/'; endif;
 
-// Title
+// Page title
 if($page->isHomePage() && $site->descriptor() != ''): $pagetitle = smartypants(titlecase($site->descriptor()));
 elseif($page->subtitle() && $page->subtitle() != ''): $pagetitle = smartypants(titlecase($page->subtitle()));
 else: $pagetitle = smartypants(titlecase($page->title())); endif;
 
-// Description
-if($page->description() && $page->description() != ''): $description = smartypants($page->description());
-else: $description = smartypants($site->description()); endif;
-
-// Keywords
-if($page->keywords() && $page->keywords() != ''): $keywords = smartypants($page->keywords() . ', ' . $site->keywords());
-else: $keywords = smartypants($site->keywords()); endif;
+// Meta description
+if($page->description() && $page->description() != ''): $meta_description = smartypants($page->description());
+elseif($page->intro() && $page->intro() != ''): $meta_description = excerpt($page->intro(), 154);
+elseif($page->text() && $page->text() != ''): $meta_description = excerpt($page->text(), 154);
+else: $meta_description = ''; endif;
 
 // Variable to set next and previous rel="next/prev" links; to enable add array to 'snippet_detect('html_head');' at top of template: 'snippet_detect('html_head', array('prev_next' => true));'
 if(!isset($prev_next)): $prev_next = false; endif;
@@ -59,14 +57,13 @@ if(!isset($prefetch)): $prefetch = false; endif;
 	<title><?php echo smartypants($site->title()) . ': ' . $pagetitle; ?></title>
 
 	<link rel="home" href="<?php echo $site->url(); ?>">
-	<link rel="sitemap" type="application/xml" title="Sitemap" href="<?php echo $site->pages()->find('sitemap')->url(); ?>">
-	<link rel="alternate" type="application/rss+xml" href="<?php echo url('blog/feed'); ?>" title="<?php echo smartypants($pages->find('blog/feed')->title()); ?>">
+	<link rel="sitemap" type="application/xml" title="<?php echo smartypants(titlecase($pages->find('sitemap/xmlsitemap')->title())); ?>" href="<?php echo html($site->pages()->find('sitemap')->url()); ?>">
+	<link rel="alternate" type="application/rss+xml" title="<?php echo smartypants(titlecase($pages->find('blog/feed')->title())); ?>" href="<?php echo html(url('blog/feed')); ?>">
 	<link rel="publisher" href="https://plus.google.com/xxxxxxxxxxxxxxxxxxxxx">
 
 	<meta name="author" content="<?php echo smartypants($site->author()); ?>">
-	<meta name="description" content="<?php echo $description; ?>">
-	<meta name="keywords" content="<?php echo $keywords; ?>">
-	<meta name="robots" content="index, follow">
+	<?php if($meta_description != ''): ?><meta name="description" content="<?php echo smartypants($meta_description); ?>"><?php endif; ?>
+	<?php if(c::get('environment') == 'local' || c::get('environment') == 'stage'): ?><meta name="robots" content="noindex, nofollow"><?php else: ?><meta name="robots" content="index, follow"><?php endif; ?>
 
 	<?php
 	// Canonical rel links (also/especially for multiple languages)

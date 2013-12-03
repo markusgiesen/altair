@@ -6,11 +6,7 @@ Title: JavaScript
 
 ----
 
-[Description:]
-
-----
-
-Keywords: javascript, flexslider, swipe, toggle list
+[Meta description:]
 
 ----
 
@@ -20,4 +16,4 @@ This page shows what some nifty JavaScript implementation.
 
 ----
 
-Text:
+[Text:]

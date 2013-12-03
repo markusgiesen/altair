@@ -6,11 +6,7 @@ Title: Altair home
 
 ----
 
-[Keywords:]
-
-----
-
-[Description:]
+[Meta description:]
 
 ----
 

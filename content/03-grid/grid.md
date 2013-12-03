@@ -6,11 +6,7 @@ Title: Grid
 
 ----
 
-[Description:]
-
-----
-
-Keywords: grid
+[Meta description:]
 
 ----
 
@@ -20,4 +16,4 @@ This page shows what possible is with (responsive) grids.
 
 ----
 
-Text:
+[Text:]

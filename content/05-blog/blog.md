@@ -6,11 +6,7 @@ Title: Blog
 
 ----
 
-[Description:]
-
-----
-
-Keywords: blog
+[Meta description:]
 
 ----
 

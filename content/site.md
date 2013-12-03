@@ -6,11 +6,7 @@ Descriptor: Gruntified front-end starter kit running on file-based Kirby CMS!
 
 ----
 
-Description: Default site (and page) description here...
-
-----
-
-Keywords: default, site, keywords, like, altair, kirby cms, php, flat-file, starter kit, grunt
+Meta description: Default (overall) site description here... max. 160 characters
 
 ----
 
@@ -18,16 +14,4 @@ Author: Studio Dumbar, Jonathan van Wunnik, Marijn Tijhuis
 
 ----
 
-Contact From: Kirby Package <no-reply@kirbypackage.com>
-
-----
-
-Contact To: info@kirbypackage.com
-
-----
-
-Contact Subject: Contact request from Kirby Package
-
-----
-
-Copyright: © 2009-(date: Year) (link: http://kirby-package text: Kirby Package)
+Copyright: © 2009-(date: Year) (link: http://altair.studiodumbar.info text: Altair)

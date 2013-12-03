@@ -6,11 +6,7 @@ Title: Lists
 
 ----
 
-[Description:]
-
-----
-
-Keywords: lists
+[Meta description:]
 
 ----
 

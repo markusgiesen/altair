@@ -6,11 +6,7 @@ Title: Second article
 
 ----
 
-[Description:]
-
-----
-
-Keywords: blog, article
+[Meta description:]
 
 ----
 

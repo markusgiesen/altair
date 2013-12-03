@@ -2,15 +2,11 @@ Title: Error 404
 
 ----
 
-Description: Page not found (404)
-
-----
-
-Keywords: 404, not found
-
-----
-
 [Subtitle:]
+
+----
+
+Meta description: Page not found (404)
 
 ----
 
@@ -20,4 +16,4 @@ Keywords: 404, not found
 
 Text:
 
-The page has not been found
+The page has not been found...

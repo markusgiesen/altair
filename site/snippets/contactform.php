@@ -5,9 +5,9 @@
 ////////////////////////////////////////////////////////// ?>
 <?php
 $form = new contactform(array(
-	'to'       => $site->contact_to(),
-	'from'     => $site->contact_from(),
-	'subject'  => smartypants($site->contact_subject()),
+	'to'       => $page->contact_to(),
+	'from'     => $page->contact_from(),
+	'subject'  => smartypants($page->contact_subject()),
 	'goto'     => $page->url() . '/status:thank-you'
 ));
 ?>
