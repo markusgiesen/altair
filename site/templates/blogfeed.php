@@ -6,10 +6,10 @@
 
 // More information: http://getkirby.com/blog/how-to-add-a-rss-feed
 
-$feed_items = $pages->find('<your-feed-channel>')->children()->visible()->flip()->limit(10);
+$feed_items = $pages->find('blog')->children()->visible()->flip()->limit(10);
 
 snippet('feed', array(
-	'link' => url('<your-feed-channel>'),
+	'link' => url('blog'),
 	'items' => $feed_items,
 	'descriptionField'  => 'text',
 	'descriptionLength' => 300
