@@ -112,7 +112,6 @@ if(!isset($prefetch)): $prefetch = false; endif;
 	<link rel="icon" href="<?php echo url('assets/images/favicon-195.png'); ?>" sizes="195x195">
 	<link rel="icon" href="<?php echo url('assets/images/favicon-96.png'); ?>" sizes="96x96">
 	<link rel="icon" href="<?php echo url('assets/images/favicon-32.png'); ?>" sizes="32x32">
-	<link rel="icon" href="<?php echo url('assets/images/favicon-16.png'); ?>" sizes="16x16">
 	<meta name="msapplication-TileImage" content="<?php echo url('assets/images/favicon-144.png'); ?>">
 	<meta name="msapplication-TileColor" content="#332C29">
 
