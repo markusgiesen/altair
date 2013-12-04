@@ -8,18 +8,14 @@
 %u-gigaHeading,
 %u-megaHeading,
 %u-alphaHeading,
-%u-betaHeading {
-	@extend %u-fontFeatureSettings;
-	@include heading-font(400);
- }
-
+.u-betaHeading, %u-betaHeading,
 %u-gammaHeading,
-%u-deltaHeading,
+.u-deltaHeading, %u-deltaHeading,
 %u-epsilonHeading,
 %u-zetaHeading {
 	@extend %u-fontFeatureSettings;
-	@include heading-font(300);
-}
+	@include heading-font(400);
+ }
 
 /* Bigger headings */
 

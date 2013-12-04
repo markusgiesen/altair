@@ -99,10 +99,10 @@ $line-height-huge:              optimized-line-height($font-size-huge, $break-hu
 // Font stacks
 // --------------------------------------------------------------------------
 
-$sans-font:                     "Helvetica Neue", Helvetica, Arial, sans-serif;
-$serif-font:                    "Lucida Bright", Georgia, serif;
-$mono-font:                     Monaco, "Courier New", monospace, serif;
-$heading-font:                  "Helvetica Neue", Helvetica, Arial, sans-serif;
+$sans-font:                     "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, ArialMT, sans-serif;
+$serif-font:                    "Lucida Bright", "LucidaBright", Georgia, serif;
+$mono-font:                     Monaco, "Courier New", "CourierNewPSMT", Courier, monospace, serif;
+$heading-font:                  "Helvetica Neue Condensed Bold", "HelveticaNeue-CondensedBold", "Arial Narrow Bold", "ArialNarrow-Bold", "Arial Narrow", "ArialNarrow", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
 $icon-font:                     "Fontello";
 
 // --------------------------------------------------------------------------

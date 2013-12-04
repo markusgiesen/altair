@@ -30,6 +30,8 @@ module.exports = function(grunt) {
 			head: [
 				'<%= project.scripts %>/vendor/modernizr.dev.js',
 				// '<%= project.scripts %>/vendor/modernizr.min.js',
+				// '<%= project.scripts %>/vendor/typekit.min.js',
+				// '<%= project.scripts %>/vendor/webfont.min.js',
 				'<%= project.scripts %>/head.scripts.js',
 			],
 			main: {

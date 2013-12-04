@@ -1,5 +1,5 @@
 /* ==========================================================================
-   WF loading
+   WF loading utilities
    ========================================================================== */
 
 /**
@@ -7,18 +7,29 @@
  * WebFont Loader to control the Flash of Unstyled Text (FOUT)
  */
 
-.wf-loading {
-	visibility: hidden; /* IE7/8 */
-	opacity: 0;
-}
+@include breakpoint(compact) {
+	.wf-loading {
+		opacity: 0;
 
-.wf-active {
-	transition: opacity .24s ease-in-out;
-	visibility: visible; /* IE7/8 */
-	opacity: 1;
-}
+		@if $oldie {
+			visibility: hidden;
+		}
+	}
 
-.wf-inactive {
-	visibility: visible; /* IE7/8 */
-	opacity: 1;
+	.wf-active {
+		transition: opacity .16s ease-in-out;
+		opacity: 1;
+
+		@if $oldie {
+			visibility: visible;
+		}
+	}
+
+	.wf-inactive {
+		opacity: 1;
+
+		@if $oldie {
+			visibility: visible;
+		}
+	}
 }
