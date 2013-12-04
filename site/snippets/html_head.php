@@ -105,7 +105,9 @@ if(!isset($prefetch)): $prefetch = false; endif;
 	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="<?php echo url('assets/images/favicon-120.png'); ?>">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo url('assets/images/favicon-72.png'); ?>">
 	<link rel="apple-touch-icon-precomposed" href="<?php echo url('assets/images/favicon-57.png'); ?>">
-	<link rel="icon" href="<?php echo url('assets/images/favicon-32.png'); ?>">
+	<link rel="icon" href="<?php echo url('assets/images/favicon-96.png'); ?>" sizes="96x96">
+	<link rel="icon" href="<?php echo url('assets/images/favicon-32.png'); ?>" sizes="32x32">
+	<link rel="icon" href="<?php echo url('assets/images/favicon-16.png'); ?>" sizes="16x16">
 	<meta name="msapplication-TileImage" content="<?php echo url('assets/images/favicon-144.png'); ?>">
 	<meta name="msapplication-TileColor" content="#332C29">
 
