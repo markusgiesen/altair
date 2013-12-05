@@ -153,3 +153,15 @@ svg,
 video {
 	vertical-align: middle;
 }
+
+
+/* Disable hover and pointer events
+ * This is set with JS, on scroll, and removed after a timeout
+ * For info, see: http://www.thecssninja.com/javascript/pointer-events-60fps)
+ */
+
+.js-disable-hover,
+.js-disable-hover * {
+	pointer-events: none !important;
+}
+
