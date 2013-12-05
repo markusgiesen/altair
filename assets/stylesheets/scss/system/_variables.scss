@@ -73,7 +73,7 @@ $base-font-size:                16px;                                           
 $another-font-size:             16px;                                           // another (second) base font size besides $base-font-size used in the typographic scale; to disable two base fonts set to same size as same as $base-font-size
 $base-line-height:              round($base-font-size * $golden);               // distance between text baselines (vertical rhythm) in pixels
 $ratio-typographic-scale:       $perfect-fourth;                                // typographic scale for heading sizes (see: font-sizes.scss)
-$multple-base:                  0;                                              // starting number for the multiple scale value; value '1' is equivalent to base font size
+$multple-base:                  1;                                              // starting number for the multiple scale value; value '1' is equivalent to base font size
 
 // Responsive sizes
 
