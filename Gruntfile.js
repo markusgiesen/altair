@@ -382,9 +382,13 @@ module.exports = function(grunt) {
 			},
 		},
 
-		// Grunticon
 		grunticon: {
 			icons: {
+				files: [{
+					expand: true,
+					cwd: '<%= project.design_assets %>/svg/min/',
+					src: '*.svg',
+				}],
 				options: {
 					src: '<%= project.design_assets %>/svg/min/',
 					dest: '<%= project.styles_scss %>/grunticon',
@@ -395,8 +399,9 @@ module.exports = function(grunt) {
 					urlpngcss: '_fallback-png.scss',
 					pngfolder: '../../img/',
 					cssprefix: 'grunt-',
-					previewhtml: false,
-					loadersnippet: false,
+					cssbasepath: '/',
+					previewhtml: '',
+					loadersnippet: '',
 				},
 			},
 		},
@@ -413,7 +418,7 @@ module.exports = function(grunt) {
 			},
 			grunticon: {
 				src: [
-					'<%= project.styles_scss %>/grunticon/grunticon*.txt',
+					'<%= project.styles_scss %>/grunticon/grunticon*.*',
 					'<%= project.styles_scss %>/grunticon/preview.html',
 					'<%= project.styles_scss %>/img', // Remove for now!
 				],
@@ -474,9 +479,9 @@ module.exports = function(grunt) {
 
 	// Default task (run: `grunt` from command line for this task to take effect)
 	grunt.registerTask('default', [
-		'svgmin',
-		'grunticon',
-		'clean:grunticon',
+		// 'svgmin',
+		// 'grunticon',
+		// 'clean:grunticon',
 		'sass:debug',
 		'autoprefixer',
 		'concat:forhint',
@@ -494,9 +499,9 @@ module.exports = function(grunt) {
 	// Build task (run: `grunt build` from command line for this task to take effect)
 	grunt.registerTask('build', [
 		'bump-only:patch',
-		'svgmin',
-		'grunticon',
-		'clean:grunticon',
+		// 'svgmin',
+		// 'grunticon',
+		// 'clean:grunticon',
 		'clean:assets',
 		'sass:dist',
 		'autoprefixer',
@@ -510,9 +515,9 @@ module.exports = function(grunt) {
 	grunt.registerTask('release', [
 		'bump-only:minor',
 		'bump-commit',
-		'svgmin',
-		'grunticon',
-		'clean:grunticon',
+		// 'svgmin',
+		// 'grunticon',
+		// 'clean:grunticon',
 		'clean:assets',
 		'sass:dist',
 		'autoprefixer',
