@@ -4,7 +4,7 @@
 
 	<div class="u-container">
 
-		<article role="main" class="Copy">
+		<div role="main" class="Copy">
 
 			<h1><?php echo smartypants($page->title()); ?></h1>
 
@@ -79,7 +79,7 @@
 
 			</section>
 
-		</article><!--/main/Copy>-->
+		</div><!--/main/Copy>-->
 
 		<?php snippet('share_page'); ?>
 

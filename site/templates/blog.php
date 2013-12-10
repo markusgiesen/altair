@@ -4,9 +4,7 @@
 
 	<div class="u-container">
 
-		<?php snippet('nav_sub'); ?>
-
-		<article role="main" class="Copy">
+		<div role="main" class="Copy">
 
 			<!-- START: MARIJN PAG TRANS DA-SHIT!!! -->
 			<!--
@@ -63,7 +61,9 @@
 			<?php endif; ?>
 			<!-- end -->
 
-		</article><!--/main/Copy>-->
+		</div><!--/main/Copy>-->
+
+		<?php snippet('nav_sub'); ?>
 
 		<?php snippet('share_page'); ?>
 

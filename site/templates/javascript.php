@@ -4,7 +4,7 @@
 
 	<div class="u-container">
 
-		<article role="main" class="Copy">
+		<div role="main" class="Copy">
 
 			<h1><?php echo smartypants(widont($page->title())); ?></h1>
 
@@ -13,7 +13,7 @@
 
 			<p>More to add&hellip;</p>
 
-		</article><!--/main/Copy-->
+		</div><!--/main/Copy-->
 
 		<?php snippet('share_page'); ?>
 

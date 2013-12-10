@@ -16,3 +16,7 @@
 		margin-left: 0;
 	}
 }
+
+h1.Masthead {
+	@extend %u-isHiddenText;
+}

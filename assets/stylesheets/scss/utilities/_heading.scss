@@ -7,7 +7,7 @@
 %u-teraHeading,
 %u-gigaHeading,
 %u-megaHeading,
-%u-alphaHeading,
+.u-alphaHeading, %u-alphaHeading,
 .u-betaHeading, %u-betaHeading,
 %u-gammaHeading,
 .u-deltaHeading, %u-deltaHeading,
@@ -36,7 +36,8 @@
 
 /* Default headings (h1-h6 are extended in copy component) */
 
- %u-alphaHeading {
+.u-alphaHeading,
+%u-alphaHeading {
 	@extend %u-alphaSize;
 	@include rhythm-margins(1,1);
 }

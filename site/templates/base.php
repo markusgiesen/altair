@@ -4,7 +4,7 @@
 
 	<div class="u-container">
 
-		<article role="main">
+		<div role="main">
 
 			<div class="Copy">
 
@@ -200,7 +200,7 @@
 
 			</form>
 
-		</article><!--/main>-->
+		</div><!--/main>-->
 
 		<?php snippet('share_page'); ?>
 

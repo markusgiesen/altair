@@ -4,7 +4,7 @@
 
 	<div class="u-container">
 
-		<?php snippet('nav_sub'); ?>
+		<h1 class="u-alphaHeading">Blog</h1>
 
 		<article role="main" class="Copy">
 
@@ -64,6 +64,8 @@
 			<!-- end -->
 
 		</article><!--/main/Copy>-->
+
+		<?php snippet('nav_sub'); ?>
 
 		<?php snippet('share_page'); ?>
 

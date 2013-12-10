@@ -4,14 +4,14 @@
 
 	<div class="u-container">
 
-		<article role="main" class="Copy">
+		<div role="main" class="Copy">
 
 			<h1><?php echo smartypants(widont($page->title())); ?></h1>
 
 			<?php echo kirbytext($page->intro()); ?>
 			<?php echo kirbytext($page->text()); ?>
 
-		</article><!--/main/Copy-->
+		</div><!--/main/Copy-->
 
 		<h2 class="u-betaHeading">Icons list</h2>
 		<ul class="IconList">
@@ -75,19 +75,19 @@
 			<span class="u-isHiddenVisually">Attachment</span>
 		</a>
 
-		<h3 class="u-betaHeading">Block link list</h3>
+		<h2 class="u-betaHeading">Block link list</h2>
 		<div class="LinkBlock u-spaceTrailerXS">
-			<h4><a href="<?php echo url('base.php'); ?>">Base</a></h4>
+			<h3><a href="<?php echo url('base.php'); ?>">Base</a></h3>
 			<p>A long list of all base elements and their styling</p>
 			<a href="<?php echo url('base.php'); ?>" class="LinkBlock-nestedLink">Visit the Base page</a>
 		</div>
 		<div class="LinkBlock u-spaceTrailerXS">
-			<h4><a href="<?php echo url('grid.php'); ?>">Grid</a></h4>
+			<h3><a href="<?php echo url('grid.php'); ?>">Grid</a></h3>
 			<p>Examples of the Altair grid system</p>
 			<a href="<?php echo url('grid.php'); ?>" class="LinkBlock-nestedLink">Visit the Grid page</a>
 		</div>
 		<div class="LinkBlock u-spaceTrailerXS">
-			<h4><a href="<?php echo url('javascript.php'); ?>">Javascript</a></h4>
+			<h3><a href="<?php echo url('javascript.php'); ?>">Javascript</a></h3>
 			<p>Some nifty javascript magic</p>
 			<a href="<?php echo url('javascript.php'); ?>" class="LinkBlock-nestedLink">Visit the Javascript page</a>
 		</div>
