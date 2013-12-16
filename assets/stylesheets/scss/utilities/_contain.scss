@@ -6,7 +6,13 @@
 
 .u-container,
 %u-container {
-	@if not $oldie {
+	@if $oldie {
+		// Fixed width for oldies
+		width: 960px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+	@else {
 		padding-right: $contain-offset;
 		padding-left: $contain-offset;
 
@@ -38,12 +44,6 @@
 				}
 			}
 		}
-	}
-	// Fixed width for oldie
-	@else {
-		width: 960px;
-		margin-right: auto;
-		margin-left: auto;
 	}
 }
 
