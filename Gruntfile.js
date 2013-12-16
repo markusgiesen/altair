@@ -256,6 +256,7 @@ module.exports = function(grunt) {
 					jQuery:     true,
 					Modernizr:  true,
 				},
+				reporter: require('jshint-stylish'),
 			},
 			dist: [
 				'Gruntfile.js',
@@ -413,7 +414,6 @@ module.exports = function(grunt) {
 			gruntpngs: {
 				files: [{
 					expand: true,
-					flatten: true,
 					src: ['<%= project.styles_scss %>/img/*.png'],
 					dest: '<%= project.styles %>/img/',
 					flatten: true,

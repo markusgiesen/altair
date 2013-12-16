@@ -26,6 +26,7 @@
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-bump": "~0.0.13",
+    "jshint-stylish": "~0.1.4",
     "grunt-grunticon": "https://github.com/filamentgroup/grunticon/tarball/master"
   }
 }
