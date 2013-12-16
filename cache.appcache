@@ -3,8 +3,9 @@ CACHE MANIFEST
 
 
 # Explicitly cached entries
-#/assets/stylesheets/css/base.css
-#/assets/stylesheets/css/mobile.css
+#/assets/stylesheets/min/<hash>.css
+#/assets/stylesheets/min/<hash>.css
+#/assets/javascript/min/<hash>.js
 
 
 # offline.html will be displayed if the user is offline
@@ -20,13 +21,11 @@ NETWORK:
 # Additional resources to cache
 CACHE:
 /favicon.ico
-/apple-touch-icon.png
-/apple-touch-icon-precomposed.png
-/apple-touch-icon-57x57-precomposed.png
-/apple-touch-icon-72x72-precomposed.png
-/apple-touch-icon-114x114-precomposed.png
-/apple-touch-icon-144x144-precomposed.png
-#/assets/javascript/min/mobile.scripts.min.js
+/assets/images/favicon-32.png
+/assets/images/favicon-57.png
+/assets/images/favicon-72.png
+/assets/images/favicon-120.png
+/assets/images/favicon-152.png
 
 
 # For more information see: http://bit.ly/xvqPM2
