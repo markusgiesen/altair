@@ -3,7 +3,7 @@
    ========================================================================== */
 
 .Masthead {
-	@extend .grunt-logo;
+	@extend %grunt-logo;
 	@extend %u-container;
 
 	display: block;

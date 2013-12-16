@@ -55,7 +55,7 @@
 
 	@if $oldie {
 		& .ToggleList-icon {
-			@extend .grunt-icon-plus;
+			@extend %grunt-icon-plus;
 		}
 	}
 }
@@ -63,7 +63,7 @@
 /* Open-close icon */
 
 .ToggleList-icon {
-	@extend .grunt-icon-close;
+	@extend %grunt-icon-close;
 
 	position: absolute;
 	top: 50%;

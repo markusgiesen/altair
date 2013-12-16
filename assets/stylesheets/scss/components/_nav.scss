@@ -141,7 +141,7 @@
 
 .NavMainToggle-item {
 	background-position: 100% 0%;
-	@extend .grunt-icon-menu;
+	@extend %grunt-icon-menu;
 }
 
 /* Nav open and close links for expanding navigation with :target */

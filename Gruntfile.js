@@ -382,27 +382,43 @@ module.exports = function(grunt) {
 			},
 		},
 
+		// Grunticon
 		grunticon: {
 			icons: {
 				files: [{
 					expand: true,
 					cwd: '<%= project.design_assets %>/svg/min/',
-					src: '*.svg',
+					src: ['*.svg'],
+					dest: '<%= project.styles_scss %>/grunticon/',
 				}],
 				options: {
-					src: '<%= project.design_assets %>/svg/min/',
-					dest: '<%= project.styles_scss %>/grunticon',
 					svgo: false, // Use svgmin instead! SVGO will be removed in future versions.
 					pngcrush: false,
 					datasvgcss: '_data-svg.scss',
 					datapngcss: '_data-png.scss',
 					urlpngcss: '_fallback-png.scss',
-					pngfolder: '../../img/',
-					cssprefix: 'grunt-',
-					cssbasepath: '/',
-					previewhtml: '',
-					loadersnippet: '',
+					pngfolder: '../img/',
+					cssprefix: '%grunt-',
+					defaultWidth: '300px',
+					defaultHeight: '200px',
+					cssbasepath: '<%= project.styles %>/',
+					previewhtml: 'preview.html',
+					loadersnippet: 'grunticon.loader.js',
 				},
+			},
+		},
+
+		// Copy grunticon png's
+		copy: {
+			gruntpngs: {
+				files: [{
+					expand: true,
+					flatten: true,
+					src: ['<%= project.styles_scss %>/img/*.png'],
+					dest: '<%= project.styles %>/img/',
+					flatten: true,
+					filter: 'isFile',
+				}],
 			},
 		},
 
@@ -420,11 +436,12 @@ module.exports = function(grunt) {
 				src: [
 					'<%= project.styles_scss %>/grunticon/grunticon*.*',
 					'<%= project.styles_scss %>/grunticon/preview.html',
-					'<%= project.styles_scss %>/img', // Remove for now!
-				],
+					'<%= project.styles_scss %>/img/',
+				]
 			},
 		},
 
+		// Bump version
 		bump: {
 			options: {
 				files: ['package.json'],
@@ -479,9 +496,10 @@ module.exports = function(grunt) {
 
 	// Default task (run: `grunt` from command line for this task to take effect)
 	grunt.registerTask('default', [
-		// 'svgmin',
-		// 'grunticon',
-		// 'clean:grunticon',
+		'svgmin',
+		'grunticon',
+		'copy:gruntpngs',
+		'clean:grunticon',
 		'sass:debug',
 		'autoprefixer',
 		'concat:forhint',
@@ -496,12 +514,21 @@ module.exports = function(grunt) {
 		'imageoptim:pngs',
 	]);
 
+	// Images task (run: `grunt icons` from command line for this task to take effect)
+	grunt.registerTask('icons', [
+		'svgmin',
+		'grunticon',
+		'copy:gruntpngs',
+		'clean:grunticon',
+	]);
+
 	// Build task (run: `grunt build` from command line for this task to take effect)
 	grunt.registerTask('build', [
 		'bump-only:patch',
-		// 'svgmin',
-		// 'grunticon',
-		// 'clean:grunticon',
+		'svgmin',
+		'grunticon',
+		'copy:gruntpngs',
+		'clean:grunticon',
 		'clean:assets',
 		'sass:dist',
 		'autoprefixer',
@@ -515,9 +542,10 @@ module.exports = function(grunt) {
 	grunt.registerTask('release', [
 		'bump-only:minor',
 		'bump-commit',
-		// 'svgmin',
-		// 'grunticon',
-		// 'clean:grunticon',
+		'svgmin',
+		'grunticon',
+		'copy:gruntpngs',
+		'clean:grunticon',
 		'clean:assets',
 		'sass:dist',
 		'autoprefixer',
