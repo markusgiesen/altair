@@ -19,6 +19,8 @@
 # Grunt
 Gruntfile.js         export-ignore
 package.json         export-ignore
+.jshintrc            export-ignore
+grunt/               export-ignore
 
 # Editor
 .editorconfig        export-ignore

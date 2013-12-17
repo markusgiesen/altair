@@ -1,10 +1,11 @@
 {
   "name": "Altair",
-  "description": "A neat SASS-based front-end starter package build on top of file-based Kirby CMS.",
+  "description": "A neat SASS-based, and gruntified, front-end starter package build on top of file-based Kirby CMS.",
   "version": "0.1.6",
-  "url": "http://local.altair",
+  "url": "http://altair.studiodumbar.info",
   "author": "Jonathan van Wunnik <jonathan@studiodumbar.com>, Marijn Tijhuis <marijn@studiodumbar.com>",
   "copyright": "Studio Dumbar",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://jolantis.git.beanstalkapp.com/altair.git"
@@ -12,13 +13,13 @@
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.2",
-    "matchdep": "~0.3.0",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-sass": "~0.6.0",
     "grunt-autoprefixer": "~0.5.0",
     "grunt-csso": "~0.5.2",
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-jshint": "~0.7.2",
+    "jshint-stylish": "~0.1.4",
     "grunt-contrib-uglify": "~0.2.7",
     "grunt-imageoptim": "~1.4.1",
     "grunt-svgmin": "~0.3.0",
@@ -26,7 +27,6 @@
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-bump": "~0.0.13",
-    "jshint-stylish": "~0.1.4",
     "grunt-grunticon": "https://github.com/filamentgroup/grunticon/tarball/master"
   }
 }
