@@ -67,7 +67,7 @@ class kirbytext {
   var $mdown       = true;
   var $smartypants = true;
   var $tags        = array('gist', 'twitter', 'date', 'image', 'file', 'link', 'email', 'youtube', 'vimeo');
-  var $attr        = array('text', 'file', 'width', 'height', 'link', 'popup', 'class', 'title', 'alt', 'rel', 'lang', 'target');
+  var $attr        = array('text', 'file', 'width', 'height', 'link', 'popup', 'class', 'title', 'alt', 'rel', 'lang', 'target', 'download');
 
   static function init($text=false, $mdown=true, $smartypants=true) {
     
@@ -280,15 +280,17 @@ class kirbytext {
 
   function file($params) {
 
-    $url    = @$params['file'];
-    $text   = @$params['text'];
-    $class  = @$params['class'];
-    $title  = @$params['title'];
-    $target = self::target($params);
+    $url      = @$params['file'];
+    $text     = @$params['text'];
+    $class    = @$params['class'];
+    $title    = @$params['title'];
+    $download = @$params['download'];
+    $target   = self::target($params);
 
-    if(empty($text))   $text  = str_replace('_', '\_', $url); // ignore markdown italic underscores in filenames
-    if(!empty($class)) $class = ' class="' . $class . '"';
-    if(!empty($title)) $title = ' title="' . html($title) . '"';
+    if(empty($text))      $text  = str_replace('_', '\_', $url); // ignore markdown italic underscores in filenames
+    if(!empty($class))    $class = ' class="' . $class . '"';
+    if(!empty($title))    $title = ' title="' . html($title) . '"';
+    if(!empty($download)) $title = ' download="' . html($download) . '"';
 
     return '<a' . $target . $title . $class . ' href="' . $this->url($url) . '">' . html($text) . '</a>';
 
@@ -376,7 +378,7 @@ class kirbytext {
     if(empty($id)) return false;
     
     // build the embed url for the iframe    
-    $url = 'http://www.youtube.com/embed/' . $id;
+    $url = 'https://www.youtube.com/embed/' . $id;
     
     // default width and height if no custom values are set
     if(empty($params['width']))  $params['width']  = c::get('kirbytext.video.width');
@@ -385,7 +387,7 @@ class kirbytext {
     // add a classname to the iframe
     if(!empty($class)) $class = ' class="' . $class . '"';
 
-    return '<div class="video-container"><iframe' . $class . ' width="' . $params['width'] . '" height="' . $params['height'] . '" src="' . $url . '" frameborder="0" allowfullscreen></iframe></div>';
+    return '<iframe' . $class . ' width="' . $params['width'] . '" height="' . $params['height'] . '" src="' . $url . '" frameborder="0" allowfullscreen></iframe>';
   
   }
 
@@ -402,7 +404,7 @@ class kirbytext {
     if(empty($id)) return false;    
 
     // build the embed url for the iframe    
-    $url = 'http://player.vimeo.com/video/' . $id;
+    $url = 'https://player.vimeo.com/video/' . $id;
 
     // default width and height if no custom values are set
     if(empty($params['width']))  $params['width']  = c::get('kirbytext.video.width');
@@ -411,7 +413,7 @@ class kirbytext {
     // add a classname to the iframe
     if(!empty($class)) $class = ' class="' . $class . '"';
 
-    return '<div class="video-container"><iframe' . $class . ' src="' . $url . '" width="' . $params['width'] . '" height="' . $params['height'] . '" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>';
+    return '<iframe' . $class . ' src="' . $url . '" width="' . $params['width'] . '" height="' . $params['height'] . '" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
       
   }
 
