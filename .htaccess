@@ -303,9 +303,9 @@ AddDefaultCharset utf-8
 # Rewrite "domain.com/foo/ -> domain.com/foo"
 
 <IfModule mod_rewrite.c>
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^(.*)/$ /$1 [R=301,L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [R=301,L]
 </IfModule>
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -317,32 +317,34 @@ AddDefaultCharset utf-8
 # Redirect everything to index.php
 
 <IfModule mod_rewrite.c>
-  # If homepage is http://yourdomain.com/mysite,
-  # set the RewriteBase to: RewriteBase /mysite
-  # RewriteBase /mysite
-  RewriteBase /
-  # [1] Block text files in the content folder from being accessed directly
-  RewriteRule ^content/(.*)\.(txt|md|mdown)$ error [R=301,L]
-  # [2] Block all files in the site folder from being accessed directly
-  # But allow only PNG images in /site/panel/fields/<custom-panel-field-name>/<image-name>.png
-  RewriteCond %{REQUEST_URI} !^/site/panel/fields/(.*)/(.*)\.png [NC]
-  RewriteRule ^site/(.*) error [R=301,L]
-  # [3] Block all files in the kirby folder from being accessed directly
-  RewriteRule ^kirby/(.*) error [R=301,L]
-  # [4] Redirect index.php requests RewriteBase
-  RewriteCond %{THE_REQUEST} ^GET.*index\.php [NC]
-  RewriteRule (.*?)index\.php/*(.*) /$1$2 [R=301,L]
-  # [5] Redirect sitemap.xml to /sitemap
-  RewriteCond $1 ^sitemap.xml
-  RewriteRule ^(.*)$ /sitemap/ [L]
-  # [6] Make panel links work
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^panel/(.*) panel/index.php [L]
-  # [7] Make site links work
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^(.*) index.php [L]
+    # If homepage is http://yourdomain.com/mysite,
+    # set the RewriteBase to: RewriteBase /mysite
+    # RewriteBase /mysite
+    RewriteBase /
+    # [1] Block text files in the content folder from being accessed directly
+    RewriteRule ^content/(.*)\.(txt|md|mdown)$ error [R=301,L]
+    # [2] Block all files in the site folder from being accessed directly
+    # But allow only PNG images in /site/panel/fields/<custom-panel-field-name>/<image-name>.png
+    RewriteCond %{REQUEST_URI} !^/site/panel/fields/(.*)/(.*)\.png [NC]
+    RewriteRule ^site/(.*) error [R=301,L]
+    # [3] Block all files in the kirby folder from being accessed directly
+    RewriteRule ^kirby/(.*) error [R=301,L]
+    # [4] Leave robots.txt alone for search engines
+    RewriteRule ^robots.txt robots.txt [L]
+    # [5] Redirect index.php requests
+    RewriteCond %{THE_REQUEST} ^GET.*index\.php [NC]
+    RewriteRule (.*?)index\.php/*(.*) /$1$2 [R=301,L]
+    # [6] Redirect sitemap.xml to /sitemap
+    RewriteCond $1 ^sitemap.xml
+    RewriteRule ^(.*)$ /sitemap/ [L]
+    # [7] Make panel links work
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^panel/(.*) panel/index.php [L]
+    # [8] Make site links work
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*) index.php [L]
 </IfModule>
 
 
