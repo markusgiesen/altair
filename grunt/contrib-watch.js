@@ -14,13 +14,13 @@ module.exports = function(grunt) {
 			],
 			tasks: ['concat:forhint', 'concat:dist'],
 		},
-		hinting: {
+		jshint: {
 			files: ['<%= project.scripts_dev %>/*.js'],
 			tasks: ['jshint:dist'],
 		},
-		svg: {
+		icons: {
 			files: ['<%= project.design_assets %>/svg/*.svg'],
-			tasks: ['svgmin','grunticon','clean:grunticon'],
+			tasks: ['svgmin','grunticon','copy:gruntpngs','clean:grunticon'],
 		},
 		livereload: {
 			options: { livereload: true },
@@ -30,8 +30,7 @@ module.exports = function(grunt) {
 				'<%= project.scripts_dev %>/main.scripts.dev.js',
 				'site/templates/*.php',
 				'site/snippets/*.php',
-				// 'content/**/*.txt', // This results in a grunt error. If you want to use this, use command: $ launchctl limit maxfiles 2048 2048 to set a file limit. (source: http://superuser.com/questions/261023/how-to-change-default-ulimit-values-in-mac-os-x-10-6)
-				// 'content/**/*.md',
+				// 'content/**/*.md', // This results in a grunt error. If you want to use this, use command: $ launchctl limit maxfiles 2048 2048 to set a file limit. (source: http://superuser.com/questions/261023/how-to-change-default-ulimit-values-in-mac-os-x-10-6)
 			],
 		},
 	});

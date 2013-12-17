@@ -18,13 +18,3 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 
 };
-
-// More settings for .jshintrc
-	// "camelcase": true,
-	// "es5":       true,
-	// "esnext":    true,
-	// "indent":    2,
-	// "regexp":    true,
-	// "smarttabs": true,
-	// "strict":    true,
-	// "undef":     true,
