@@ -7,7 +7,9 @@
  */
 
 %u-fontFeatureSettings {
-	-ms-font-feature-settings: "liga", "dlig"; // Autoprefixer doesn't add -ms yet?!
-	font-feature-settings: "liga", "dlig";
+	// 'font-feature-settings' doesn't work nice with Typekit (selection of text goes whoooohaaa!)!!!
+	// -moz-font-feature-settings: "liga=1, dlig=0"; // Unfortunately Firefox currently uses a slightly different (older) syntax
+	// -ms-font-feature-settings: "liga", "dlig" 0; // Autoprefixer doesn't add -ms yet?!
+	// font-feature-settings: "liga", "dlig" 0;
 	text-rendering: optimizeLegibility;
 }
