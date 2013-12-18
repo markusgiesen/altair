@@ -4,7 +4,7 @@
 
 	<div class="u-container">
 
-		<div role="main">
+		<article role="main">
 
 			<div class="Copy">
 
@@ -57,28 +57,28 @@
 							<fieldset>
 								<span class="Form-label">Radio set <em class="Form-optional">(optional)</em></span>
 
-								<ul class="Input-set Input-set--horizontal">
+								<ul class="InputSet InputSet--horizontal">
 									<li>
-										<label class="Input-label">
-											<input type="radio" class="radio" name="radioset" value="Option 1"/>
+										<label class="InputSet-label">
+											<input type="radio" name="radioset" value="Option 1"/>
 											<span>Option 1</span>
 										</label>
 									</li>
 									<li>
-										<label class="Input-label">
-											<input type="radio" class="radio" name="radioset" value="Option 2"/>
+										<label class="InputSet-label">
+											<input type="radio" name="radioset" value="Option 2"/>
 											<span>Option 2</span>
 										</label>
 									</li>
 									<li>
-										<label class="Input-label">
-											<input type="radio" class="radio" name="radioset" value="Option 3"/>
+										<label class="InputSet-label">
+											<input type="radio" name="radioset" value="Option 3"/>
 											<span>Option 3</span>
 										</label>
 									</li>
 									<li>
-										<label class="Input-label">
-											<input type="radio" class="radio" name="radioset" value="Option 3"/>
+										<label class="InputSet-label">
+											<input type="radio" name="radioset" value="Option 3"/>
 											<span>Option 3</span>
 										</label>
 									</li>
@@ -158,27 +158,27 @@
 						<li class="Form-item">
 							<fieldset>
 								<span class="Form-label">Check set</span>
-								<ul class="Input-set">
+								<ul class="InputSet">
 									<li>
-										<label class="Input-label">
+										<label class="InputSet-label">
 											<input type="checkbox" name="checkset" value="Option 1"/>
 											<span>Option 1</span>
 										</label>
 									</li>
 									<li>
-										<label class="Input-label">
+										<label class="InputSet-label">
 											<input type="checkbox" name="checkset" value="Option 2"/>
 											<span>Option 2</span>
 										</label>
 									</li>
 									<li>
-										<label class="Input-label">
+										<label class="InputSet-label">
 											<input type="checkbox" name="checkset" value="Option 3"/>
 											<span>Option 3</span>
 										</label>
 									</li>
 									<li>
-										<label class="Input-label">
+										<label class="InputSet-label">
 											<input type="checkbox" name="checkset" value="Option 4"/>
 											<span>Option 4</span>
 										</label>
@@ -200,7 +200,7 @@
 
 			</form>
 
-		</div><!--/main>-->
+		</article><!--/main>-->
 
 		<?php snippet('share_page'); ?>
 

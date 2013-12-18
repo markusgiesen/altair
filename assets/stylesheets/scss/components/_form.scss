@@ -151,10 +151,10 @@
  * <li class="Form-item Form-item--stacked">
  *    <fieldset>
  *       <span class="Form-label">Radio set</span>
- *       <ul class="Input-set Input-set--horizontal">
+ *       <ul class="InputSet InputSet--horizontal">
  *          <li>
- *             <label class="Input-label">
- *                <input type="radio" class="radio" name="radioset" value="Option 1"/>
+ *             <label class="InputSet-label">
+ *                <input type="radio" class="Radio" name="radioset" value="Option 1"/>
  *                <span>Option 1</span>
  *             </label>
  *          </li>
@@ -166,13 +166,13 @@
  * </li>
  */
 
-.Input-set {
+.InputSet {
 	margin: 0;
 }
 
 /* Horizontal */
 
-.Input-set--horizontal > li {
+.InputSet--horizontal > li {
 	display: inline-block;
 	margin-right: $med;
 
@@ -183,4 +183,4 @@
 
 /* Labels of checkboxes/radio buttons  */
 
-// .Input-label {}
+// .InputSet-label {}
