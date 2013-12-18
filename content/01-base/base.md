@@ -67,7 +67,7 @@ Cras consectetur euismod ligula eget vestibulum. Vivamus eu odio felis. Donec fr
 
 ---
 
-<h2 id="widont" class="colors">(widont: This title cannot contain any widows)</h2>
+<h2 id="widont">(widont: This title cannot contain any widows)</h2>
 
 Because we use the widon't kirby extend, and the title contains more than 3 spaces. Neat huh?
 
