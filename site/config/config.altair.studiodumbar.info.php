@@ -73,23 +73,9 @@ c::set('debug', true);
 Analytics, tracking, site stats
 ---------------------------------------
 
-Set analytics method first [1] (ga-classic, ga-universal, gosquared or
-segment-io) and then make sure the associated tracking ID/API KEY [2] is set
-to start tracking/measuring for production environment only (tracking is
-disabled for local and staging environments as long as no tracking code is
-added to these environment specific config files!).
+Set analytics method and associated ID/API KEY in main config.
+Tracking is disabled on local and staging environments.
 
 */
 
-/* Tracking method [1] */
 c::set('analytics.tool', false);
-
-/* Google analytics [2] */
-c::set('google.analytics.id', 'TRACKING ID IS NOT SET');
-c::set('google.analytics.code.optimized', true);
-
-/* GoSquared [2] */
-c::set('gosquared.id', 'TRACKING ID IS NOT SET');
-
-/* Segment.io [2] */
-c::set('segment.io.api.key', 'TRACKING API KEY IS NOT SET');

@@ -40,12 +40,14 @@ class thumb {
   var $multiplier = 1;
   var $container = false;
   var $resrc = false;
+  var $resrc_params = false;
 
   function __construct($image, $options=array()) {
 
     $this->root = c::get('thumb.cache.root', c::get('root') . '/thumbs');
     $this->url  = c::get('thumb.cache.url',  c::get('url')  . '/thumbs');
     $this->resrc = c::get('resrc');
+    $this->resrc_params = c::get('resrc.params');
 
     // Check  if PHP memory limit is set in config
     $this->mem = c::get('thumb.memory', $this->phpMemoryLimit);
@@ -70,6 +72,12 @@ class thumb {
     if($this->resrc) {
     	// if resrc is set, always use the medium container
     	$container_width = c::get('thumb.medium.container');
+    	// set resrc width based on device width (for the mobile first image)
+    	if($_SESSION['isMobile']) { $param_width = c::get('resrc.initial.small') ; }
+    	if($_SESSION['isTablet']) { $param_width = c::get('resrc.initial.compact'); }
+    	if($_SESSION['isDesktop']) { $param_width = c::get('resrc.initial.medium'); }
+    	// Build param string
+    	$this->resrc_params = 's=W' . $param_width . '/o=60(80)';
     }
     else {
     	// if resrc is not set, use device dependent container
@@ -221,7 +229,10 @@ class thumb {
         $this->height = floor($this->height / $this->multiplier);
     }
 
-    return '<img' . $class . ' src="' . $this->url() . '" width="' . $this->width . '" height="' . $this->height . '" alt="' . html($this->alt) . '" />';
+    $resrc_domain_prefix = ($this->resrc) ? 'http://app.resrc.it/' . $this->resrc_params . '/' : '';
+    $resrc_src_prefix = (c::get('resrc.alternate')) ? 'data-' : '';
+
+    return '<img' . $class . ' ' . $resrc_src_prefix . 'src="' . $resrc_domain_prefix . $this->url() . '" width="' . $this->width . '" height="' . $this->height . '" alt="' . html($this->alt) . '" />';
 
   }
 

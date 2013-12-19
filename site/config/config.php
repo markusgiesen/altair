@@ -427,7 +427,6 @@ c::set('thumb.cache.url',  c::get('url')  . '/thumbs');
 /* General settings */
 c::set('thumb.memory', 80);                      // make enough memory available to scale big(ger) images; something like 36M should be reasonble, but can be (much) higher for HiDPI images
 c::set('thumb.progressive', true);               // set to true to output all thumb images as progressive, opposed to baseline (see: http://calendar.perfplanet.com/?p=1557)
-c::set('resrc', false);                           // set to true to use resrc for retina images
 
 /* Normal (@1x) thumb images */
 c::set('thumb.quality', 70);                     // default JPG compression (or quality setting) for normal (@1x) thumb images
@@ -435,8 +434,6 @@ c::set('thumb.upscale', true);                   // set default upscale value fo
 
 /* HiDPI (@2x) thumb images */
 c::set('thumb.hd', true);                        // set to true to output all thumb images as HiDPI (@2x) images by default
-// TO DO: ADD FROM RETINA_IMAGES BRANCH (KIRBY PACKAGE)!
-// c::set('thumb.@2x', true);                       // set to true to output *both* normal (@1x) and HiDPI (@2x) thumb images if 'thumb.hd' setting is set to true (generates two same–name files, of which one has the '@2x' addition)
 c::set('thumb.quality.hd', 40);                  // default JPG compression (or quality setting) for HiDPI (@2x) thumb images
 c::set('thumb.upscale.hd', true);                // set default upscale value for HiDPI (@2x) thumb images
 
@@ -447,6 +444,14 @@ c::set('thumb.small.container', 568);            // 'small' container width, mai
 
 /* Default multifigure breakpoint */
 c::set('thumb.multifigure.break', 'small');      // set the default point of floating, breaking linearity (set as class on multifigure element)
+
+/* Resrc.io settings */
+c::set('resrc', false);                           // set to true to use resrc for retina images
+c::set('resrc.alternate', false);                // use the alternate method (with data-src images) of resrc. This is called the 'Preferred approach' by ReSRC: http://www.resrc.it/tutorials/preferred
+c::set('resrc.params', 's=w280/o=60(80)');       // params (options) ReSRC will use generating the image. Without starting and trailing slash! See http://www.resrc.it/docs/resize for sizes and more
+c::set('resrc.initial.medium', 1024);            // 'medium' initial resrc image width, width of the first image that ReSRC generates
+c::set('resrc.initial.compact', 768);            // 'compact' initial resrc image width, width of the first image that ReSRC generates
+c::set('resrc.initial.small', 320);              // 'small' initial resrc image width, width of the first image that ReSRC generates
 
 
 /*
@@ -509,6 +514,21 @@ c::set('images.in.sitemap', false);
 /*
 
 ---------------------------------------
+Twitter
+---------------------------------------
+
+Public and private keys, used by the
+Twitter API (from v1.1 and up)
+
+*/
+
+c::set('twitter.key','TWITTER KEY NOT SET');
+c::set('twitter.secret','TWITTER SECRET NOT SET');
+
+
+/*
+
+---------------------------------------
 Analytics, tracking, site stats
 ---------------------------------------
 
@@ -520,15 +540,14 @@ added to these environment specific config files!).
 
 */
 
-/* Tracking method [1] */
+/* Set tracking method [1] */
 c::set('analytics.tool', 'ga-universal');
 
-/* Google analytics [2] */
+/* Google analytics ID [2] */
 c::set('google.analytics.id', 'TRACKING ID IS NOT SET');
-c::set('google.analytics.code.optimized', true);
 
-/* GoSquared [2] */
+/* GoSquared ID [2] */
 c::set('gosquared.id', 'TRACKING ID IS NOT SET');
 
-/* Segment.io [2] */
+/* Segment.io API Key [2] */
 c::set('segment.io.api.key', 'TRACKING API KEY IS NOT SET');
