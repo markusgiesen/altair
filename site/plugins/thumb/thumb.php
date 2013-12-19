@@ -229,7 +229,7 @@ class thumb {
         $this->height = floor($this->height / $this->multiplier);
     }
 
-    $resrc_domain_prefix = ($this->resrc) ? 'http://app.resrc.it/' . $this->resrc_params . '/' : '';
+    $resrc_domain_prefix = ($this->resrc) ? 'http://app.resrc.it/' . $this->resrc_params . '/' . c::get('resrc.domain') : '';
     $resrc_src_prefix = (c::get('resrc.alternate')) ? 'data-' : '';
 
     return '<img' . $class . ' ' . $resrc_src_prefix . 'src="' . $resrc_domain_prefix . $this->url() . '" width="' . $this->width . '" height="' . $this->height . '" alt="' . html($this->alt) . '" />';

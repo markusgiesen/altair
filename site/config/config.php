@@ -445,9 +445,31 @@ c::set('thumb.small.container', 568);            // 'small' container width, mai
 /* Default multifigure breakpoint */
 c::set('thumb.multifigure.break', 'small');      // set the default point of floating, breaking linearity (set as class on multifigure element)
 
-/* Resrc.io settings */
-c::set('resrc', false);                           // set to true to use resrc for retina images
+
+/*
+
+---------------------------------------
+Resrc.io setup
+---------------------------------------
+
+If you want to use Resrc.io's responsive images
+solution, enable it here, and make sure to set
+the right configuration.
+
+Resrc.io is disbaled in all environments (local,
+stagiing and production) by default. When enabled
+make sure to set the correct staging and production
+domain URL (resrc.domain) parameter below and in
+the staging config file!
+
+Resrc.io is always disabled in local environment,
+because it does not work behind firewall, etc.
+
+*/
+
+c::set('resrc', false);                          // set to true to use resrc for retina images
 c::set('resrc.alternate', false);                // use the alternate method (with data-src images) of resrc. This is called the 'Preferred approach' by ReSRC: http://www.resrc.it/tutorials/preferred
+c::set('resrc.domain', 'http://altair.com');     // set to true to use resrc for retina images
 c::set('resrc.params', 's=w280/o=60(80)');       // params (options) ReSRC will use generating the image. Without starting and trailing slash! See http://www.resrc.it/docs/resize for sizes and more
 c::set('resrc.initial.medium', 1024);            // 'medium' initial resrc image width, width of the first image that ReSRC generates
 c::set('resrc.initial.compact', 768);            // 'compact' initial resrc image width, width of the first image that ReSRC generates
