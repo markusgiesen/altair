@@ -70,7 +70,7 @@ assets/stylesheets/scss/grunticon/grunticon.loader.txt
 
 site/cache/*
 
-site/config/config.local.altair.192.168*
+site/config/config.*.xip.io.php
 
 #kirby
 #panel
