@@ -71,7 +71,7 @@ $breakpoints:                   "small"   $break-small,                         
 // --------------------------------------------------------------------------
 
 $contain-offset:                6%;
-$contain-width:                 50em;
+$contain-width:                 50em;                                           // see: contian.scss (matches first break width that is equal or greater, e.g.: $break-large (65em) >= $contain-width (50em) => true)
 $contain-width-copy:            28em;
 
 // --------------------------------------------------------------------------

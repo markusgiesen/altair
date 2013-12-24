@@ -23,11 +23,6 @@
 			$query: nth($breakpoint, 2);
 
 			// If breakpoint (query) width is >= the contain width...
-			@if $query < $contain-width {
-
-			}
-
-			// If breakpoint (query) width is >= the contain width...
 			@if $query >= $contain-width {
 				// Do only once...
 				@if $count == 1 {
