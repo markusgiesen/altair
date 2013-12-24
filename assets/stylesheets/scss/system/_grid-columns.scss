@@ -1,0 +1,149 @@
+// --------------------------------------------------------------------------
+// Grid columns
+// --------------------------------------------------------------------------
+
+// Ratio
+@function ratio($default-ratio, $steps, $start: "small") {
+	$x: 1;
+	$return: ();
+	@for $i from 0 through $steps - 1 {
+		$xr: $x * exponent($default-ratio, $i);
+		$return: append($return, $xr, comma);
+	}
+
+	@if $start == "small" and $default-ratio < 1 {
+		$return: reverse($return);
+	}
+	@else if $start == "large" and $default-ratio > 1 {
+		$return: reverse($return);
+	}
+	@return $return;
+}
+
+// Calculate the total sum of a list (context)
+@function list-sum($list) {
+	// zero out the initial sum
+	$sum: 0;
+	// loop through each value in the list adding it to $list-sum
+	@for $i from 1 through length($list) {
+		$sum: $sum + nth(nth($list, $i), 1);
+	}
+	@return nth($sum, 1);
+}
+
+// Find column count
+@function column-count($columns) {
+	@if type-of($columns) == number {
+		@return $columns;
+	}
+	@if type-of($columns) == list {
+		@return length($columns);
+	}
+}
+
+@function repeat($count, $repeat) {
+	$list: $repeat;
+	@for $i from 2 through $count {
+		$list: join($repeat, $list);
+	}
+	@return $list;
+}
+
+// Reverses direction of a list
+@function reverse($list) {
+	$length: length($list);
+	$return: ();
+	@for $i from 0 to $length {
+		$return: append($return, nth($list, $length - $i), comma);
+	}
+	@return $return;
+}
+
+// Column sum
+@function column-sum($columns: $columns) {
+	@if type-of($columns) == "number" {
+		@return $columns;
+	}
+	@else if type-of($columns) == "list" {
+		$sum: 0;
+		@each $column in $columns {
+			$sum: $sum + nth($column, 1);
+		}
+		@return $sum;
+	}
+}
+
+// Compound
+// --------------------------------------------------------------------------
+
+@function compound($c1: 1, $c2: 1, $c3: 1, $c4: 1, $c5: 1, $c6: 1) {
+	$common-multiple: $c1 * $c2 * $c3 * $c4 * $c5 * $c6;
+	$compound-grid: ();
+	$compound-counter: 1;
+	@for $i from 1 through $common-multiple {
+		$add-col: false;
+		@if $c1 != 1 {
+			@if $i / $c1 == round($i / $c1) {
+				$add-col: true;
+			}
+		}
+		@if $c2 != 1 {
+			@if $i / $c2 == round($i / $c2) {
+				$add-col: true;
+			}
+		}
+		@if $c3 != 1 {
+			@if $i / $c3 == round($i / $c3) {
+				$add-col: true;
+			}
+		}
+		@if $c4 != 1 {
+			@if $i / $c4 == round($i / $c4) {
+				$add-col: true;
+			}
+		}
+		@if $c5 != 1 {
+			@if $i / $c5 == round($i / $c5) {
+				$add-col: true;
+			}
+		}
+		@if $c6 != 1 {
+			@if $i / $c6 == round($i / $c6) {
+				$add-col: true;
+			}
+		}
+		@if $add-col {
+			$compound-grid: join($compound-grid, $compound-counter, comma);
+			$compound-counter: 1;
+		}
+		@else {
+			$compound-counter: $compound-counter + 1;
+		}
+	}
+	@return $compound-grid;
+}
+
+// Column span
+// --------------------------------------------------------------------------
+
+// Calculate the width spanning multiple columns
+@function column-span($span, $location: 1, $columns: $columns) {
+	$columns-sum: column-sum($columns);
+	// Equal width columns
+	@if type-of($columns) == number {
+		$span: $span;
+		@return $span / $columns-sum * 100%;
+	}
+	// Variable width columns
+	@if type-of($columns) == list {
+		// zero out initial sum
+		$sum: 0;
+		$holder: ();
+		// from start point to end point
+		@for $i from $location to $location + $span {
+			$holder: append($holder, nth(nth($columns, $i), 1), comma);
+		}
+		@return column-sum($holder) / $columns-sum * 100%;
+	}
+	@return 10%;
+}

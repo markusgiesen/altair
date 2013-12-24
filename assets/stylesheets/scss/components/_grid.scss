@@ -198,19 +198,19 @@ $grid-direction: left !default; // switch to 'right' for rtl
 
 @include breakpoint("large") { // Golden 4 column set
 	.u-sizeGoldenCol1of4--large {
-		width: grid-span(1, 1, ratio($golden, 4, "large")) !important;
-		@if $oldie { width: grid-span(1, 1, ratio($golden, 4, 'large')) - (percentage(($grid-gutter)/$break-large) + .025%) !important; }
+		width: column-span(1, 1, ratio($golden, 4, "large")) !important;
+		@if $oldie { width: column-span(1, 1, ratio($golden, 4, "large")) - (percentage(($grid-gutter)/$break-large) + .025%) !important; }
 	}
 	.u-sizeGoldenCol2of4--large {
-		width: grid-span(1, 4, ratio($golden, 4, "large")) !important;
-		@if $oldie { width: grid-span(1, 4, ratio($golden, 4, 'large')) - (percentage(($grid-gutter)/$break-large) + .025%) !important; }
+		width: column-span(1, 4, ratio($golden, 4, "large")) !important;
+		@if $oldie { width: column-span(1, 4, ratio($golden, 4, "large")) - (percentage(($grid-gutter)/$break-large) + .025%) !important; }
 	}
 	.u-sizeGoldenCol3of4--large {
-		width: grid-span(1, 3, ratio($golden, 4, "large")) !important;
-		@if $oldie { width: grid-span(1, 3, ratio($golden, 4, 'large')) - (percentage(($grid-gutter)/$break-large) + .025%) !important; }
+		width: column-span(1, 3, ratio($golden, 4, "large")) !important;
+		@if $oldie { width: column-span(1, 3, ratio($golden, 4, "large")) - (percentage(($grid-gutter)/$break-large) + .025%) !important; }
 	}
 	.u-sizeGoldenCol4of4--large {
-		width: grid-span(1, 2, ratio($golden, 4, "large")) !important;
-		@if $oldie { width: grid-span(1, 2, ratio($golden, 4, 'large')) - (percentage(($grid-gutter)/$break-large) + .025%) !important; }
+		width: column-span(1, 2, ratio($golden, 4, "large")) !important;
+		@if $oldie { width: column-span(1, 2, ratio($golden, 4, "large")) - (percentage(($grid-gutter)/$break-large) + .025%) !important; }
 	}
 }

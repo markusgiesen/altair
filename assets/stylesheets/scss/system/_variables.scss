@@ -6,25 +6,28 @@
 // Ratios
 // --------------------------------------------------------------------------
 
-$golden:                        1.61803399; // $ϕ
-$double-octave:                 (4 / 1);
-$major-twelfth:                 (3 / 1);
-$major-eleventh:                (8 / 3);
-$major-tenth:                   (5 / 2);
-$octave:                        (2 / 1);
-$major-seventh:                 (15 / 8);
-$minor-seventh:                 (16 / 9);
-$major-sixth:                   (5 / 3);
-$minor-sixth:                   (8 / 5);
-$perfect-fifth:                 (3 / 2);
-$augmented-fourth:              (1.4142135623730950488);                        // (1 / square root 2)
-$perfect-fourth:                (4 / 3);
-$major-third:                   (5 / 4);
-$minor-third:                   (6 / 5);
-$major-second:                  (9 / 8);
-$minor-second:                  (16 / 15);
+$phi:                           1.618033989;
+$golden:                        $phi;
+
+$double-octave:                 4;
+$major-twelfth:                 3;
+$major-eleventh:                2.666666667; // 8/3
+$major-tenth:                   2.5; // 5/2
+$octave:                        2;
+$major-seventh:                 1.875; // 15/8
+$minor-seventh:                 1.777777778; // 16/9
+$major-sixth:                   1.666666667; // 5/3
+$minor-sixth:                   1.6; // 8/5
+$perfect-fifth:                 1.5; // 3/2
+$augmented-fourth:              1.4142135624; // 1/(square root 2)
+$perfect-fourth:                1.333333333; // 4/3;
+$major-third:                   1.25; // 5/4
+$minor-third:                   1.2; // 6/5
+$major-second:                  1.125; // 9/8;
+$minor-second:                  1.066666667; // 16/15
 
 $ratio-default:                 $golden;                                        // ratios can be stacked, e.g. $major-third $fifth
+$ms-ratio:                      $ratio-default;                                 // modular scale ratio (system component)
 
 // --------------------------------------------------------------------------
 // Spacing
@@ -64,6 +67,21 @@ $breakpoints:                   "small"   $break-small,                         
 								"huge"    $break-huge;
 
 // --------------------------------------------------------------------------
+// Contain
+// --------------------------------------------------------------------------
+
+$contain-offset:                6%;
+$contain-width:                 50em;
+$contain-width-copy:            28em;
+
+// --------------------------------------------------------------------------
+// Grid
+// --------------------------------------------------------------------------
+
+$grid-gutter:                   $spacing-unit;
+$grid-gutter-percentage:        .6%;
+
+// --------------------------------------------------------------------------
 // Typography
 // --------------------------------------------------------------------------
 
@@ -87,7 +105,6 @@ $font-size-huge:                17px;
 // Line height
 
 $ratio-golden-type:             $golden;                                        // ratio to calculate optimized line height (see: golden-type.scss)
-
 $line-height-small:             optimized-line-height($font-size-small, $break-small);     // <= mobile
 $line-height-compact:           optimized-line-height($font-size-compact, $break-compact); // <= tablet (portrait?)
 $line-height-medium:            optimized-line-height($font-size-medium, $break-medium);   // <= desktop
@@ -104,28 +121,6 @@ $serif-font:                    "Lucida Bright", "LucidaBright", Georgia, serif;
 $mono-font:                     Monaco, "Courier New", "CourierNewPSMT", Courier, monospace, serif;
 $heading-font:                  "Helvetica Neue Condensed Bold", "HelveticaNeue-CondensedBold", "Arial Narrow Bold", "ArialNarrow-Bold", "Arial Narrow", "ArialNarrow", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
 $icon-font:                     "Fontello";
-
-// --------------------------------------------------------------------------
-// Contain
-// --------------------------------------------------------------------------
-
-$contain-offset:                6%;
-$contain-width:                 50em;
-$contain-width-copy:            28em;
-
-// --------------------------------------------------------------------------
-// Grid
-// --------------------------------------------------------------------------
-
-$grid-gutter:                   $spacing-unit;
-$grid-gutter-percentage:        .6%;
-
-// --------------------------------------------------------------------------
-// Vertical rhythm
-// --------------------------------------------------------------------------
-
-$rhythm-unit:                   'rem';                                          // length unit in which to output rhythm values, supported values are 'px', 'em' or 'rem'
-$min-line-padding:              2px;                                            // ensure there is at least this many pixels of vertical padding above and below the text
 
 // --------------------------------------------------------------------------
 // Lists

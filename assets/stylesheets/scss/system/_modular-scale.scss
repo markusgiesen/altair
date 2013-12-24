@@ -1,414 +1,377 @@
 // --------------------------------------------------------------------------
 // Modular scale
 // --------------------------------------------------------------------------
-// URL: https://github.com/Team-Sass/modular-scale
+// URL: https://github.com/Team-Sass/modular-scale/tree/2.x/stylesheets
 // --------------------------------------------------------------------------
-// Last udpated: 2013-06-05
+// Last udpated: 2013-12-24
 // --------------------------------------------------------------------------
 
 // Defaults
 // --------------------------------------------------------------------------
 
-$base-font-size:                16px !default;
-$property:                      font-size !default;
-$round-pixels:                  true !default;
-$class-slug:                    ms !default;
-$columns:                       12 !default;
-$default-ratio:                 1.61803399 !default;
-
+$ms-base: 1em !default;
+$ms-ratio: 1.618033989 !default;
 
 // Modular scale functions
 // --------------------------------------------------------------------------
 
-@function modular-scale($multiple, $base-font-size, $default-ratio) {
-	// return the $base-font-size if $multiple is zero
-	@if $multiple == 0 {
-		@if type-of($base-font-size) == "list" {
-			$base-font-size: sort-list($base-font-size);
-			@return nth($base-font-size, 1); }
-		// return just the simple $base-font-size value if it's not a list
-		@return $base-font-size; }
+// Feature testing (_tests.scss)
+// --------------------------------------------------------------------------
 
-	// if multiple base-sizes are passed in as a list
-	// and multiple ratios are passed in as a list
-	// calculate values in using each base-size / ratio combination
-	@if type-of($base-font-size) == "list" and type-of($default-ratio) == "list" {
-		@if unit(ms-multibase-multiratio($multiple, $base-font-size, $default-ratio)) == 'px' and $round-pixels == true {
-			@return round(ms-multibase-multiratio($multiple, $base-font-size, $default-ratio)); }
-		@return ms-multibase-multiratio($multiple, $base-font-size, $default-ratio); }
+// Test if the pow() function exists
 
-	// if multiple base-sizes are passed in as a list
-	// calculate values in using each base-size
-	@if type-of($base-font-size) == "list" and type-of($default-ratio) == "number" {
-	@if unit(ms-multibase($multiple, $base-font-size, $default-ratio)) == 'px' and $round-pixels == true {
-		@return round(ms-multibase($multiple, $base-font-size, $default-ratio)); }
-	@return ms-multibase($multiple, $base-font-size, $default-ratio); }
+@function ms-pow-exists() {
+	@if pow(4, 2) == 16 {
+		@return true;
+	}
+	@return false;
+}
 
-	// if multiple ratios are passed in as a list
-	// calculate values in using each ratio
-	@if type-of($base-font-size) == "number" and type-of($default-ratio) == "list" {
-	@if unit(ms-multiratio($multiple, $base-font-size, $default-ratio)) == 'px' and $round-pixels == true {
-		@return round(ms-multiratio($multiple, $base-font-size, $default-ratio)); }
-	@return ms-multiratio($multiple, $base-font-size, $default-ratio); }
+$MS-pow-exists: ms-pow-exists();
 
-	// If there are no lists just run the simple function
-	@if unit(exponent($default-ratio, $multiple) * $base-font-size) == 'px' and $round-pixels == true {
-		@return round(exponent($default-ratio, $multiple) * $base-font-size); }
-	@return exponent($default-ratio, $multiple) * $base-font-size; }
+// Exponent (_pow.scss)
+// --------------------------------------------------------------------------
 
-// calculate values in using each base-size / ratio combination
-@function ms-multibase-multiratio($multiple, $base-font-size, $default-ratio) {
-	// start with an empty list to place all values in
-	$scale-values: ();
-	// make sure base sizes are in ascending order
-	$base-font-size: sort-list($base-font-size);
-	// take each base-size in turn
-	$k: 1;
-	@while $k <= length($base-font-size) {
-		// add each $base-font-size to the list except the first
-		@if $k > 1 {
-			$scale-values: append($scale-values, nth($base-font-size, $k)); }
-		// take each ratio in turn
-		$j: 1;
-		@while $j <= length($default-ratio) {
-			// reset $modular-scale for each set
-			$modular-scale: nth($base-font-size, $k);
-			// do the scale for each base-size using this ratio
-			@if $multiple > 0 {
-				// up $multiple times
-				// and add the result to $scale-values
-				@for $i from 1 through $multiple {
-					$modular-scale: exponent(nth($default-ratio, $j), $i) * nth($base-font-size, $k);
-					$scale-values: append($scale-values, $modular-scale); }
-				// and down until the value is lower than the lowest $base-font-size
-				// and add the result to $scale-values
-				$i: -1;
-				$modular-scale: nth($base-font-size, $k);
-				@while $modular-scale >= nth($base-font-size, 1) {
-					$modular-scale: exponent(nth($default-ratio, $j), $i) * nth($base-font-size, $k);
-					$scale-values: append($scale-values, $modular-scale);
-					$i: $i - 1; } }
-			@if $multiple < 0 {
-				// do the scale down for each set to below 1px
-				$i: 0;
-				$modular-scale: nth($base-font-size, $k);
-				@while $modular-scale > 1 {
-					$modular-scale: exponent(nth($default-ratio, $j), $i) * nth($base-font-size, $k);
-					$scale-values: append($scale-values, $modular-scale);
-					$i: $i - 1; } }
-			$j: $j + 1; }
-		$k: $k + 1; }
-	// return trimmed and sorted final list
-	@return trim-sort($multiple, $scale-values, $base-font-size); }
+// If a native exponent function doesnt exist
+// this one is needed.
+@function ms-pow($Base, $Exponent) {
 
-// calculate values in using each base-size
-@function ms-multibase($multiple, $base-font-size, $default-ratio) {
-	// start with an empty list to place all values in
-	$scale-values: ();
-	// make sure base sizes are in ascending order
-	$base-font-size: sort-list($base-font-size);
-	// take each base-size in turn
-	$k: 1;
-	@while $k <= length($base-font-size) {
-		// add each $base-font-size to the list except the first
-		@if $k > 1 {
-			$scale-values: append($scale-values, nth($base-font-size, $k)); }
-		// reset $modular-scale for each set
-		$modular-scale: nth($base-font-size, $k);
-		// do the scale for each base-size using this ratio
-		@if $multiple > 0 {
-			// up $multiple times
-			// and add the result to $scale-values
-			@for $i from 1 through $multiple {
-				$modular-scale: exponent($default-ratio, $i) * nth($base-font-size, $k);
-				$scale-values: append($scale-values, $modular-scale); }
-			// and down until the value is lower than the lowest $base-font-size
-			// and add the result to $scale-values
-			$i: -1;
-			$modular-scale: nth($base-font-size, $k);
-			@while $modular-scale >= nth($base-font-size, 1) {
-				$modular-scale: exponent($default-ratio, $i) * nth($base-font-size, $k);
-				$scale-values: append($scale-values, $modular-scale);
-				$i: $i - 1; } }
-		@if $multiple < 0 {
-			// do the scale down for each set to below 1px
-			$i: 0;
-			$modular-scale: nth($base-font-size, $k);
-			@while $modular-scale > 1 {
-				$modular-scale: exponent($default-ratio, $i) * nth($base-font-size, $k);
-				$scale-values: append($scale-values, $modular-scale);
-				$i: $i - 1; } }
-		$k: $k + 1; }
-	// return trimmed and sorted final list
-	@return trim-sort($multiple, $scale-values, $base-font-size); }
+	// Find and remove unit.
+	// Avoids messyness with unit calculations
+	$Unit: $Base * 0 + 1;
+	$Base: $Base/$Unit;
 
-// calculate values in using each ratio
-@function ms-multiratio($multiple, $base-font-size, $default-ratio) {
-	// start with an empty list to place all values in
-	$scale-values: ();
-	// If $multiple is a positive integer (up the scale)
-	@if $multiple > 0 {
-		// take each ratio in turn
-		$j: 1;
-		@while $j <= length($default-ratio) {
-			// reset $modular-scale for each set
-			$modular-scale: $base-font-size;
-			// do the scale using this ratio thru the multiple, and add the result to $scale-values
-			@for $i from 1 through $multiple {
-				$modular-scale: exponent(nth($default-ratio, $j), $i) * $base-font-size;
-				$scale-values: append($scale-values, $modular-scale); }
-			$j: $j + 1; }
-		// sort acsending
-		$scale-values: sort-list($scale-values);
-		// return the final value using the laced list
-		@return nth($scale-values, $multiple); }
-	// If $multiple is a negative integer (down the scale)
-	@if $multiple < 0 {
-		// take each ratio in turn
-		$j: 1;
-		@while $j <= length($default-ratio) {
-			// reset $modular-scale for each set
-			$modular-scale: $base-font-size;
-			// do the scale using this ratio thru the multiple, and add the result to $scale-values
-			@for $i from 1 through $multiple * -1 {
-				$modular-scale: exponent(nth($default-ratio, $j), -$i) * $base-font-size;
-				$scale-values: append($scale-values, $modular-scale); }
-			$j: $j + 1; }
-		// sort decending
-		$scale-values: sort-list($scale-values, "dec");
-		// return the final value using the laced list
-		@return nth($scale-values, $multiple * -1); } }
+	// This function doesnt support non-interger exponents.
+	// Warn the user about why this is breaking.
+	@if round($Exponent) != $Exponent {
+		@warn "Unfortunately, you need Compass to use non-integer exponents";
+	}
 
-// trim and sort the final list
-@function trim-sort($multiple, $scale-values, $base-font-size) {
-	@if $multiple > 0 {
-		// trim list so we can count from the lowest $base-font-size
-		$scale-values: trim-list($scale-values, nth($base-font-size, 1));
-		// sort acsending
-		$scale-values: sort-list($scale-values);
-		// return the final value using the laced list
-		@return nth($scale-values, $multiple); }
+	// Set up the loop, priming the return with the base.
+	$Return: $Base;
+
+	// If the number is positive, multiply it.
+	@if $Exponent > 0 {
+		// Basic feedback loop as exponents
+		// are recursivley multiplied numbers.
+		@for $i from 1 to $Exponent {
+			$Return: $Return * $Base;
+		}
+	}
+
+	// If the number is 0 or negitive
+	// divide instead of multiply.
 	@else {
-		// trim list so we can count from the lowest $base-font-size
-		$scale-values: trim-list($scale-values, nth($base-font-size, 1), "dec");
-		// sort acsending
-		$scale-values: sort-list($scale-values, "dec");
-		// return the final value using the laced list
-		@return nth($scale-values, -$multiple); } }
+		@for $i from -1 to abs($Exponent) {
+			$Return: $Return / $Base;
+		}
+	}
 
-// Sass exponent support
+	// Return is now compounded redy to be returned.
+	// Add the unit back onto the number.
+	@return $Return * $Unit;
+}
+
+// Calc (_calc.scss)
 // --------------------------------------------------------------------------
 
-@function exponent($base, $exponent) {
-	// reset value
-	$value: $base;
-	// positive intergers get multiplied
-	@if $exponent > 1 {
-		@for $i from 2 through $exponent {
-			$value: $value * $base; } }
-	// negitive intergers get divided. A number divided by itself is 1
-	@if $exponent < 1 {
-		@for $i from 0 through -$exponent {
-			$value: $value / $base; } }
-	// return the last value written
-	@return $value; }
+@function ms-calc($Value, $Base: $ms-base, $Ratio: $ms-ratio) {
 
-// Sass list sorting support
+	// If pow exists use it.
+	// It supports non-interger values!
+	@if $MS-pow-exists {
+
+		// The formula for figuring out modular scales is:
+		// (r^v)*b
+		@return pow($Ratio, $Value) * $Base;
+	}
+
+	// If not, use ms-pow().
+	// Not as fast or capable of non-integer exponents.
+	@else {
+		@return ms-pow($Ratio, $Value) * $Base;
+	}
+}
+
+// Generate list (_generate-list.scss)
 // --------------------------------------------------------------------------
 
-@function sort-list($list, $dir: "asc") {
-	// built-in list sorting in Sass would make this go away.
-	// declare some empty lists to put our new order and temporary values
-	$new-order: ();
-	$temp: ();
-	// fill $temp with the contents of $list
-	$temp: join($temp, $list);
-	// if sorting ascending
-	@if $dir == "asc" {
-		// loop through all values in $list
-		@for $i from 1 through length($list) {
-			// impossibly high starter value to compare
-			$low: 1000000;
-			// check for lowest value in $temp
-			@for $j from 1 through length($temp) {
-				@if nth($temp, $j) < $low {
-					$low: nth($temp, $j); } }
-			// add lowest value to $new-order
-			$new-order: append($new-order, $low);
-			// empty $temp for the next comparison
-			$temp: ();
-			// re-populate $temp with remaining values to sort
-			@for $k from 1 through length($list) {
-				@if nth($list, $k) > $low {
-					$temp: append($temp, nth($list, $k)); } } } }
-	@if $dir == "dec" {
-		// loop through all values in $list
-		@for $i from 1 through length($list) {
-			// 0 starter value
-			$high: 0;
-			// check for highest value in $temp
-			@for $j from 1 through length($temp) {
-				@if nth($temp, $j) > $high {
-					$high: nth($temp, $j); } }
-			$new-order: append($new-order, $high);
-			// empty $temp for the next comparison
-			$temp: ();
-			// re-populate $temp with remaining values to sort
-			@for $k from 1 through length($list) {
-				@if nth($list, $k) < $high {
-					$temp: append($temp, nth($list, $k)); } } } }
-	@return $new-order; }
+@function ms-generate-list($Value: 0, $Bases: $ms-base, $Ratios: $ms-ratio) {
 
-// Sass list trimming support
+	// Create blank lists
+	$MS-list: ();
+	$MS-base-list: ();
+
+	// Loop through each ratio AND each base
+	// to generate all possibilities.
+	@each $Ratio in $Ratios {
+		@each $Base in $Bases {
+
+		// Set base variables
+		$MS-base-list: ();
+		$Base-counter: 0;
+
+		// Seed list with an initial value
+		@if $Base == nth($Bases, 1) {
+			$MS-base-list: $Base;
+		}
+
+		// Find values on a positive scale
+		@if $Value > 0 {
+
+			// Find lower values on the scale
+			$Base-counter: -1;
+			@while ms-calc($Base-counter, $Base, $Ratio) >= nth($Bases, 1) {
+				$MS-base-list: join($MS-base-list, ms-calc($Base-counter, $Base, $Ratio));
+				$Base-counter: $Base-counter - 1;
+			}
+
+			// Find higher possible values on the scale
+			$Base-counter: 1;
+			@while ms-calc($Base-counter, $Base, $Ratio) <= ms-calc($Value, nth($Bases, 1), $ms-ratio) {
+				$MS-base-list: join($MS-base-list, ms-calc($Base-counter, $Base, $Ratio));
+				$Base-counter: $Base-counter + 1;
+			}
+		}
+
+		  // Find values on a negitive scale
+		  @if $Value < 0 {
+
+			// Find lower values on the scale
+			$Base-counter: 1;
+			@while ms-calc($Base-counter, $Base, $Ratio) <= nth($Bases, 1) {
+				$MS-base-list: join($MS-base-list, ms-calc($Base-counter, $Base, $Ratio));
+				$Base-counter: $Base-counter + 1;
+			}
+
+			// Find higher possible values on the scale
+			$Base-counter: -1;
+			@while ms-calc($Base-counter, $Base, $Ratio) >= ms-calc($Value, nth($Bases, 1), $Ratio) {
+				$MS-calc: ms-calc($Base-counter, $Base, $Ratio);
+				// detect if the value excedes the main base value
+				@if $MS-calc < nth($Bases, 1) {
+					$MS-base-list: join($MS-base-list, $MS-calc);
+				}
+				$Base-counter: $Base-counter - 1;
+			}
+		}
+
+		// reverse list if its largest to smallest
+		@if length($MS-base-list) > 1 {
+			@if nth($MS-base-list, 1) > nth($MS-base-list, length($MS-base-list)) {
+				$ms-reversed-list: ();
+				@each $Value in $MS-base-list {
+					$ms-reversed-list: join($Value, $ms-reversed-list);
+				}
+				$MS-base-list: $ms-reversed-list;
+			}
+		}
+
+		// Add new possibilities to the master list
+		$MS-list: append($MS-list, $MS-base-list, comma);
+
+		}
+	}
+
+	// After all the possibilities are found, output a master list
+	@return $MS-list;
+}
+
+// Sort list (_sort-list.scss)
 // --------------------------------------------------------------------------
 
-@function trim-list($list, $start, $dir: "asc") {
-	// built-in list trimming in Sass would make this go away.
-	// declare some empty lists to put our trimmed values
-	$trimmed: ();
-	// if sorting ascending
-	@if $dir == "asc" {
-		// loop through all values in $list
-		@for $i from 1 through length($list) {
-			@if nth($list, $i) >= $start {
-				$trimmed: append($trimmed, nth($list, $i)); } } }
-	@if $dir == "dec" {
-		// loop through all values in $list
-		@for $i from 1 through length($list) {
-			@if nth($list, $i) <= $start {
-				$trimmed: append($trimmed, nth($list, $i)); } } }
-	@return $trimmed; }
+// List sorting via a modified merge-sort algorythmn
+// http://en.wikipedia.org/wiki/Merge_sort
 
-// ratio.scss
-// --------------------------------------------------------------------------
+@function ms-merge($A, $B) {
 
-@function ratio($default-ratio, $steps, $start: 'small') {
-	$x: 1;
-	$return: ();
-	@for $i from 0 through $steps - 1 {
-		$xr: $x * exponent($default-ratio, $i);
-		$return: append($return, $xr, comma); }
+	$Return: ();
 
-	@if $start == 'small' and $default-ratio < 1 {
-		$return: reverse($return); }
-	@else if $start == 'large' and $default-ratio > 1 {
-		$return: reverse($return); }
-	@return $return; }
+	// Some empty lists get passed through
+	// so just pass the other list throguh
+	@if length($A) == 0 {
+		@return $B;
+	}
 
-// Modular scale shortcut, mixin and classes mixin
-// --------------------------------------------------------------------------
+	// If lists fit next to each other, just merge them
+	// This helps performance skipping the need to check each value
+	@if nth($A, length($A)) < nth($B, 1) {
+		@return join($A, $B);
+	}
+	@if nth($B, length($B)) < nth($A, 1) {
+		@return join($B, $A);
+	}
 
-@function ms($multiple, $font-size: $base-font-size, $default-ratio: $default-ratio) {
-	// Return the value from the Modular Scale function
-	@return modular-scale($multiple, $font-size, $default-ratio); }
+	// Counters start at 1
+	$A-counter: 1;
+	$B-counter: 1;
 
-@mixin modular-scale($property, $multiple, $font-size: $base-font-size, $default-ratio: $default-ratio) {
-	// Print the $property and return the value from the Modular Scale function
-	#{$property}: modular-scale($multiple, $font-size, $default-ratio); }
+	// Start looping through all numbers in array
+	@while $A-counter <= length($A) and $B-counter <= length($B) {
 
-@mixin modular-scale-classes($multiple, $property, $class-slug: $class-slug, $font-size: $base-font-size, $default-ratio: $default-ratio) {
-	// Loop from 0 through the value of $multiple and generate a range of classes
-	@for $i from 0 through $multiple {
-		.#{$class-slug}-#{$i} {
-			@include modular-scale($property, $i, $font-size, $default-ratio); } } }
+		// Check if the A value is smaller
+		// Uses or equal to avoid duplicate numbers
+		@if nth($A, $A-counter) <= nth($B, $B-counter) {
+			$Return: join($Return, nth($A, $A-counter));
+			$A-counter: $A-counter + 1;
+		}
 
-// Column (grid) helpers
-// --------------------------------------------------------------------------
+		// Check if the B value is smaller
+		@elseif nth($A, $A-counter) > nth($B, $B-counter) {
+			$Return: join($Return, nth($B, $B-counter));
+			$B-counter: $B-counter + 1;
+		}
+	}
 
-// Calculate the total sum of a list (context)
-@function list-sum($list) {
-	// zero out the initial sum
-	$sum: 0;
-	// loop through each value in the list adding it to $list-sum
-	@for $i from 1 through length($list) {
-		$sum: $sum + nth(nth($list, $i), 1); }
-	@return nth($sum, 1); }
 
-// Find column count
-@function column-count($columns) {
-	@if type-of($columns) == number {
-		@return $columns; }
-	@if type-of($columns) == list {
-		@return length($columns); } }
+	// Run through remainder values in the list
+	@while $A-counter <= length($A) {
+		$Current: nth($A, $A-counter);
+		@if $Current != nth($Return, length($Return)) {
+			$Return: join($Return, $Current);
+		}
+		$A-counter: $A-counter + 1;
+	}
+	@while $B-counter <= length($B) {
+		$Current: nth($B, $B-counter);
+		@if $Current != nth($Return, length($Return)) {
+			$Return: join($Return, $Current);
+		}
+		$B-counter: $B-counter + 1;
+	}
 
-@function repeat($count, $repeat) {
-	$list: $repeat;
-	@for $i from 2 through $count {
-		$list: join($repeat, $list); }
-	@return $list; }
+	// Done! return is now sorted and complete
+	@return $Return;
+}
 
-// Reverses direction of a list
-@function reverse($list) {
-  $length: length($list);
-  $return: ();
-  @for $i from 0 to $length {
-	$return: append($return, nth($list, $length - $i), comma); }
-  @return $return; }
+// Pull it all together
+@function ms-sort-list($Lists) {
 
-// Column sum
-@function column-sum($columns: $columns) {
-	@if type-of($columns) == 'number' {
-		@return $columns; }
-	@else if type-of($columns) == 'list' {
-		$sum: 0;
-		@each $column in $columns {
-			$sum: $sum + nth($column, 1); }
-		@return $sum; } }
+	$Return: ();
 
-// Compound function
-// --------------------------------------------------------------------------
-
-@function compound($c1: 1, $c2: 1, $c3: 1, $c4: 1, $c5: 1, $c6: 1) {
-	$common-multiple: $c1 * $c2 * $c3 * $c4 * $c5 * $c6;
-	$compound-grid: ();
-	$compound-counter: 1;
-	@for $i from 1 through $common-multiple {
-		$add-col: false;
-		@if $c1 != 1 {
-			@if $i / $c1 == round($i / $c1) {
-			$add-col: true; } }
-		@if $c2 != 1 {
-			@if $i / $c2 == round($i / $c2) {
-			$add-col: true; } }
-		@if $c3 != 1 {
-			@if $i / $c3 == round($i / $c3) {
-			$add-col: true; } }
-		@if $c4 != 1 {
-			@if $i / $c4 == round($i / $c4) {
-			$add-col: true; } }
-		@if $c5 != 1 {
-			@if $i / $c5 == round($i / $c5) {
-			$add-col: true; } }
-		@if $c6 != 1 {
-			@if $i / $c6 == round($i / $c6) {
-			$add-col: true; } }
-		@if $add-col {
-			$compound-grid: join($compound-grid, $compound-counter, comma);
-			$compound-counter: 1; }
+	@each $List in $Lists {
+		@if $Return == () {
+			$Return: $List;
+		}
 		@else {
-			$compound-counter: $compound-counter + 1; } }
-	@return $compound-grid; }
+			$Return: ms-merge($List, $Return);
+		}
+	}
 
-// Column function
+	// final cleanup of repeated items
+	$Last: null;
+	$New-list: ();
+	@each $Item in $Return {
+		@if $Item != $Last {
+			$New-list: join($New-list, $Item);
+		}
+		$Last: $Item;
+	}
+	$Return: $New-list;
+
+	@return $Return;
+}
+
+// Function (_function.scss)
 // --------------------------------------------------------------------------
 
-// Calculate the width spanning multiple columns
-@function column-span($span, $location: 1, $columns: $columns) {
-	$columns-sum: column-sum($columns);
-	// Equal width columns
-	@if type-of($columns) == number {
-		$span: $span;
-		@return $span / $columns-sum * 100%; }
-	// Variable width columns
-	@if type-of($columns) == list {
-		// zero out initial sum
-		$sum: 0;
-		$holder: ();
-		// from start point to end point
-		@for $i from $location to $location + $span {
-			$holder: append($holder, nth(nth($columns, $i), 1), comma); }
-		@return column-sum($holder) / $columns-sum * 100%; }
-	@return 10%; }
+// The main function that brings it all together
+@function ms($Value: 0, $Bases: $ms-base, $Ratios: $ms-ratio) {
 
-@function grid-span($span, $location: 1, $columns: $columns) {
-	@return column-span($span, $location, $columns); }
+	// If no multi-base or multi-ratio stuff is going on
+	// then just retrn the basic calculaiton
+	@if length($Bases) == 1 and length($Ratios) == 1 {
+		@return ms-calc($Value, $Bases, $Ratios);
+	}
+
+	// Generate a list of all possible values
+	$Return: ms-generate-list($Value, $Bases, $Ratios);
+
+	// Sort the generated lists
+	$Return: ms-sort-list($Return);
+
+	// Normalize value for counting from 1
+	// Because CSS counts things from 1
+	// So Sass does as well
+	// So I get to write fun stuff like this
+	@if $Value >= 0 {
+		$Value: $Value + 1;
+	}
+	@else {
+		$Value: $Value - 1;
+	}
+
+	// Find the correct value in the list
+	$Return: nth($Return, $Value);
+
+	@return $Return;
+}
+
+// Same function, different name, for good measure.
+@function modular-scale($Value: 0, $Bases: $ms-base, $Ratios: $ms-ratio) {
+	@return ms($Value, $Bases, $Ratios);
+}
+
+// Function list (_function-list.scss)
+// --------------------------------------------------------------------------
+
+// Outputs a list of values instead of a single value
+@function ms-list($Start: 0, $End: 0, $Bases: $ms-base, $Ratios: $ms-ratio) {
+
+	$Positive-return: ();
+	$Negitive-return: ();
+	$Return: ();
+
+	@if $End >= 0 {
+		// Generate a list of all possible values
+		$Positive-return: ms-generate-list($End, $Bases, $Ratios);
+
+		// Sort the generated lists
+		$Positive-return: ms-sort-list($Positive-return);
+
+		// Trim list
+		$Trim-list: ();
+		// If the starting value is a positive number
+		// trim the positive return from that
+		@if $Start >= 0 {
+			@for $i from ($Start + 1) through $End + 1 {
+				$Trim-list: join($Trim-list, nth($Positive-return, $i));
+			}
+		}
+		// If not, then include everything up to the end.
+		@else {
+			@for $i from 1 through $End + 1 {
+				$Trim-list: join($Trim-list, nth($Positive-return, $i));
+			}
+		}
+		$Positive-return: $Trim-list;
+	}
+
+	// Generate a negitive list
+	@if $Start < 0 {
+		// Generate a list of all possible values
+		$Negitive-return: ms-generate-list($Start, $Bases, $Ratios);
+
+		// Sort the generated lists
+		$Negitive-return: ms-sort-list($Negitive-return);
+
+		// Trim list
+		$Trim-list: ();
+		@if $End < 0 {
+			@for $i from abs($End) through abs($Start) {
+				$Trim-list: join($Trim-list, nth($Negitive-return, $i));
+			}
+		}
+		@else {
+			@for $i from 1 through abs($Start) {
+				$Trim-list: join($Trim-list, nth($Negitive-return, $i));
+			}
+		}
+		$Negitive-return: $Trim-list;
+	}
+
+	// Join both positive and negitive possibilities.
+	$Return: join($Negitive-return, $Positive-return);
+
+	@return $Return;
+}
