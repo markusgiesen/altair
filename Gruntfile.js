@@ -107,65 +107,12 @@ module.exports = function(grunt) {
 	});
 
 	// Load per-task config from separate files
-	grunt.loadTasks('grunt');
+	grunt.loadTasks('grunt/config');
 
-	// Register alias tasks
-	grunt.registerTask('dev', [
-		'svgmin',
-		'grunticon',
-		'copy:gruntpngs',
-		'clean:grunticon',
-		'sass:debug',
-		'autoprefixer',
-		'concat:forhint',
-		'concat:dist',
-		'jshint:dist',
-		'watch',
-	]);
+	// Register alias tasks from separate files
+	grunt.loadTasks('grunt/tasks');
 
-	grunt.registerTask('build', [
-		'bump-only:patch',
-		'svgmin',
-		'grunticon',
-		'copy:gruntpngs',
-		'clean:grunticon',
-		'clean:assets',
-		'sass:dist',
-		'autoprefixer',
-		'csso',
-		'concat:dist',
-		'uglify',
-		'hashify',
-	]);
-
-	grunt.registerTask('release', [
-		'bump-only:minor',
-		'bump-commit',
-		'svgmin',
-		'grunticon',
-		'copy:gruntpngs',
-		'clean:grunticon',
-		'clean:assets',
-		'sass:dist',
-		'autoprefixer',
-		'csso',
-		'concat:dist',
-		'uglify',
-		'hashify',
-	]);
-
-	grunt.registerTask('imageoptim', [
-		'imageoptim:jpgs',
-		'imageoptim:pngs',
-	]);
-
-	grunt.registerTask('icons', [
-		'svgmin',
-		'grunticon',
-		'copy:gruntpngs',
-		'clean:grunticon',
-	]);
-
-	grunt.registerTask('default', ['dev']);
+	// Register default task
+	grunt.registerTask('default', ['develop']);
 
 };

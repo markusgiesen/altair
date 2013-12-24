@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 	grunt.config('watch', {
 		styles: {
 			files: ['<%= project.styles_scss %>/**/*.scss'],
-			tasks: ['sass:dist', 'autoprefixer'],
+			tasks: ['sass'],
 		},
 		scripts: {
 			files: [
@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 				'<%= project.scripts %>/plugins/*.js',
 				'<%= project.scripts %>/vendor/*.js',
 			],
-			tasks: ['concat:forhint', 'concat:dist'],
+			tasks: ['js'],
 		},
 		jshint: {
 			files: ['<%= project.scripts_dev %>/*.js'],
@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 		},
 		icons: {
 			files: ['<%= project.design_assets %>/svg/*.svg'],
-			tasks: ['svgmin','grunticon','copy:gruntpngs','clean:grunticon'],
+			tasks: ['icons'],
 		},
 		livereload: {
 			options: { livereload: true },
@@ -34,7 +34,5 @@ module.exports = function(grunt) {
 			],
 		},
 	});
-
-	grunt.loadNpmTasks('grunt-contrib-watch');
 
 };
