@@ -15,11 +15,10 @@ module.exports = function(grunt) {
 			'icons',
 			'sass:dist',
 			'autoprefixer',
+			'clean:assets',
 			'csso',
 			'concat:dist',
 			'uglify',
-			'clean:grunticon',
-			'clean:assets',
 			'hashify'
 		);
 	});
