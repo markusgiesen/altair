@@ -449,7 +449,7 @@ c::set('thumb.multifigure.break', 'small');      // set the default point of flo
 /*
 
 ---------------------------------------
-Resrc.io setup
+Resrc.it setup
 ---------------------------------------
 
 If you want to use Resrc.io's responsive images
