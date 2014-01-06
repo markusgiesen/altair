@@ -3,7 +3,7 @@
 // --------------------------------------------------------------------------
 // URL: https://github.com/Team-Sass/modular-scale/tree/2.x/stylesheets
 // --------------------------------------------------------------------------
-// Last udpated: 2013-12-24
+// Last udpated: 2014-01-06
 // --------------------------------------------------------------------------
 
 // Defaults
@@ -19,7 +19,6 @@ $ms-ratio: 1.618033989 !default;
 // --------------------------------------------------------------------------
 
 // Test if the pow() function exists
-
 @function ms-pow-exists() {
 	@if pow(4, 2) == 16 {
 		@return true;
@@ -28,6 +27,16 @@ $ms-ratio: 1.618033989 !default;
 }
 
 $MS-pow-exists: ms-pow-exists();
+
+// Test if MS was installed via the gem
+@function ms-gem-exists() {
+	@if ms-gem-installed() == true {
+		@return true;
+	}
+	@return false;
+}
+
+$MS-gem-exists: ms-gem-exists();
 
 // Exponent (_pow.scss)
 // --------------------------------------------------------------------------
@@ -62,7 +71,8 @@ $MS-pow-exists: ms-pow-exists();
 	// If the number is 0 or negitive
 	// divide instead of multiply.
 	@else {
-		@for $i from -1 to abs($Exponent) {
+		// Libsass doesn’t allow negitive values in loops
+		@for $i from (-1 + 1) to (abs($Exponent) + 1) {
 			$Return: $Return / $Base;
 		}
 	}
@@ -112,7 +122,7 @@ $MS-pow-exists: ms-pow-exists();
 		$Base-counter: 0;
 
 		// Seed list with an initial value
-		@if $Base == nth($Bases, 1) {
+		@if $Base == $Base {
 			$MS-base-list: $Base;
 		}
 
@@ -128,7 +138,7 @@ $MS-pow-exists: ms-pow-exists();
 
 			// Find higher possible values on the scale
 			$Base-counter: 1;
-			@while ms-calc($Base-counter, $Base, $Ratio) <= ms-calc($Value, nth($Bases, 1), $ms-ratio) {
+			@while ms-calc($Base-counter, $Base, $Ratio) <= ms-calc($Value, nth($Bases, 1), $Ratio) {
 				$MS-base-list: join($MS-base-list, ms-calc($Base-counter, $Base, $Ratio));
 				$Base-counter: $Base-counter + 1;
 			}
@@ -284,6 +294,21 @@ $MS-pow-exists: ms-pow-exists();
 		@return ms-calc($Value, $Bases, $Ratios);
 	}
 
+	// Do calculations directly in Ruby when avalible
+	@if $MS-gem-exists {
+
+		// Remove units from bases
+		$Unit: nth($Bases, 1) * 0 + 1;
+		$Unitless-Bases: ();
+		@each $Base in $Bases {
+			$Base: $Base/$Unit;
+			$Unitless-Bases: join($Unitless-Bases, $Base);
+		}
+
+		// Calculate natively in Ruby
+		@return ms-gem-func($Value, $Unitless-Bases, $Ratios) * $Unit;
+	}
+
 	// Generate a list of all possible values
 	$Return: ms-generate-list($Value, $Bases, $Ratios);
 
@@ -298,7 +323,7 @@ $MS-pow-exists: ms-pow-exists();
 		$Value: $Value + 1;
 	}
 	@else {
-		$Value: $Value - 1;
+		$Value: abs($Value - 1) + $Value;
 	}
 
 	// Find the correct value in the list
