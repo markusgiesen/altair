@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 		grunt.loadNpmTasks('grunt-contrib-sass');
 		grunt.loadNpmTasks('grunt-autoprefixer');
 		grunt.task.run(
-			'sass:dist',
+			'sass:debug',
 			'autoprefixer'
 		);
 	});

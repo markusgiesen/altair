@@ -4,6 +4,7 @@ module.exports = function(grunt) {
 		assets: {
 			src: [
 				'<%= project.styles_dev %>/*.concat.css',
+				'<%= project.styles_dev %>/*.map',
 				'<%= project.styles_min %>/*.css',
 				'<%= project.scripts_dev %>/*.hint.js',
 				'<%= project.scripts_min %>/*.js',
