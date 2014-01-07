@@ -19,6 +19,17 @@
 // "assets/javascript/vendor/modernizr.min.js",
 
 /**
+ * Cut the mustard
+ *
+ * Check if the browser is an 'HTML4 or HTML5' browser.
+ * Why? See: http://responsivenews.co.uk/post/18948466399/cutting-the-mustard
+ */
+
+if('querySelector' in document && 'localStorage' in window && 'addEventListener' in window) {
+	document.getElementsByTagName( 'html' )[0].className += ' ' + 'ctm';
+}
+
+/**
  * Typekit
  *
  * Enable the use of Typekit font, by adding (out-commenting) it in the
