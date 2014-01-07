@@ -3,6 +3,9 @@
 //	PARTIAL :: MOBILE
 //	---------------------------------------------------------
 ////////////////////////////////////////////////////////// ?>
+
+	<?php snippet('nav_main'); ?>
+
 <?php
 // Assets (dev vs. min+hash)
 $assets_js = f::read(server::get('document_root') . '/assets/javascript/min/hash.js.json', 'json');

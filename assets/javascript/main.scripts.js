@@ -15,6 +15,7 @@ if($('html').hasClass('ctm')){
 		smoothScroll.init('.js-scroll');          // Init smooth scrolling
 		routing.init();                           // Init routing
 		// verticalGrid.init($('.js-verticalGrid'),$(window)); // Vertically distribute elements to the window height
+		nav.init();
 
 		// Init example of an error in a modal box
 		// alerts.addMessage({status: 'error', content: 'OMG! Something terrible must have happened here!', timeout: 0, type: 'box-modal'});

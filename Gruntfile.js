@@ -66,6 +66,7 @@ module.exports = function(grunt) {
 					'<%= project.scripts %>/classes/popup.jquery.class.js',
 					'<%= project.scripts %>/classes/scroll.jquery.class.js',
 					'<%= project.scripts %>/classes/routing.class.js',
+					'<%= project.scripts %>/classes/nav.class.js',
 					// '<%= project.scripts %>/classes/flexslider.jquery.class.js',
 					// '<%= project.scripts %>/classes/garlic.class.js',
 					// '<%= project.scripts %>/classes/spin.class.js',
@@ -98,6 +99,7 @@ module.exports = function(grunt) {
 					'<%= project.scripts %>/classes/swipe.class.js',
 					'<%= project.scripts %>/classes/togglelist.zepto.class.js',
 					'<%= project.scripts %>/classes/routing.class.js',
+					'<%= project.scripts %>/classes/nav.class.js',
 					// '<%= project.scripts %>/classes/garlic.class.js',
 				// Main
 					'<%= project.scripts %>/mobile.scripts.js',

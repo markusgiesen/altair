@@ -50,40 +50,42 @@
 /* Nav wrapper */
 
 .NavWrapper {
-	@include breakpoint(compact,max) {
-		position: relative;
+	position: relative;
+	width: 100%;
+	background-color: tint($gray-2,80%);
+
+	.ctm & {
+		position: fixed;
 		top: 0;
-		width: 100%;
+		height: 100%;
+		overflow: auto;
 	}
-	@include breakpoint(medium) {
-		float: right;
+	.js.ctm & {
+		display: none;
+
+		&.js-isOpen {
+			display: block;
+		}
+
+	}
+}
+
+.NavWrapper--basic {
+	.ctm & {
+		position: relative;
+		height: auto;
+		overflow: visible;
+		z-index: 2;
 	}
 }
 
 /* Main nav */
 
 .NavMain {
-	z-index: 4;
-	overflow: hidden;
-	margin-bottom: $large;
-	max-height: 0;
-	transition: max-height .32s ease-in-out;
+	position: relative;
 
-	@include breakpoint(medium) {
-		max-height: none;
-		margin-top: $large;
-	}
-
-	/*
-	 * For Opera Mini
-	 * Place nav-main off screen, otherwise it doesn't work!
-	 */
-
-	.no-csstransitions & {
-		@include breakpoint(compact,max) {
-			position: absolute;
-			margin-top: -50em;
-		}
+	.js.ctm &.js-isOpen {
+		min-height: 100%;
 	}
 }
 
@@ -91,12 +93,11 @@
 
 .NavMain-item {
 	display: list-item;
-	margin-bottom: 1px;
+	border-bottom: .1em solid $white;
 
 	> a {
 		display: block;
 		padding: $med;
-		background-color: tint($gray-2,80%);
 		color: $black;
 
 		&:hover {
@@ -107,19 +108,11 @@
 
 	@include breakpoint(medium) {
 		margin-bottom: 0;
+		border-bottom: 0;
 
 		&,
 		> a { /* Horizontal nav */
 			display: inline-block;
-		}
-		> a {
-			padding: 0;
-			background-color: transparent;
-
-			&:hover {
-				background-color: transparent;
-				color: $link-color;
-			}
 		}
 	}
 }
@@ -128,57 +121,35 @@
    ========================================================================== */
 
 .NavMainToggle {
-	@extend %u-containPaddingRight;
+	@extend %u-isHiddenText;
 
 	position: absolute;
 	right: 0;
-	// margin-top: $med;
-
-	@include breakpoint(medium) {
-		display: none;
-	}
-}
-
-.NavMainToggle-item {
-	background-position: 100% 0%;
-	@extend %grunt-icon-menu;
-}
-
-/* Nav open and close links for expanding navigation with :target */
-
-.NavMainToggle-open a,
-.NavMainToggle-close a {
-	@extend %u-isHiddenText;
-
+	top: 0;
 	display: block;
 	width: 44pt; /* Touch target sizes: http://j.mp/XJm4uJ */
 	height: 44pt; /* Use padding, or width/height to position icon, so it works nicely on touchdevices */
+	background-position: 50% 50%;
+	background-color: $gray-3;
+
+	.ctm & {
+		position: fixed;
+	}
 }
 
-.NavMainToggle-open a {
-	position: relative;
-	z-index: 3;
-}
-
-.NavMainToggle-close a {
+ .ctm .NavMainToggle--basic {
 	position: absolute;
-	bottom: 0;
 }
 
-#nav:target ~ .NavMainToggle .NavMainToggle-close a {
-	z-index: 6;
+.NavMainToggle--open {
+	@extend %grunt-icon-menu;
 }
 
-/* Display and hide the nav with :target */
+.NavMainToggle--close {
+	@extend %grunt-icon-close;
+	visibility: hidden;
 
-#nav:target {
-	max-height: 50em; /* Should be high enough to vertically fit all nav items! */
-	z-index: 5;
-
-	/* For Opera Mini */
-
-	@include breakpoint(compact,max) {
-		position: static; /* Place nav *on* screen. Makes sure this works in Opera mini */
-		margin-top: 0;
+	.ctm & {
+		visibility: visible;
 	}
 }
