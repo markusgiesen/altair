@@ -1,12 +1,17 @@
 module.exports = function(grunt) {
 
-	grunt.registerTask('js', [], function () {
+	grunt.registerTask('concat', [], function () {
 		grunt.loadNpmTasks('grunt-contrib-concat');
-		grunt.loadNpmTasks('grunt-contrib-jshint');
-		grunt.loadNpmTasks('grunt-contrib-watch');
 		grunt.task.run(
 			'concat:forhint',
 			'concat:dist'
+		);
+	});
+
+	grunt.registerTask('hint', [], function () {
+		grunt.loadNpmTasks('grunt-contrib-jshint');
+		grunt.task.run(
+			'jshint:dist'
 		);
 	});
 
@@ -15,8 +20,8 @@ module.exports = function(grunt) {
 		grunt.loadNpmTasks('grunt-contrib-jshint');
 		grunt.loadNpmTasks('grunt-contrib-watch');
 		grunt.task.run(
-			'js',
-			'jshint:dist',
+			'concat',
+			'hint',
 			'watch'
 		);
 	});

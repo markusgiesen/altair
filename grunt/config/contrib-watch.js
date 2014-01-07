@@ -12,11 +12,11 @@ module.exports = function(grunt) {
 				'<%= project.scripts %>/plugins/*.js',
 				'<%= project.scripts %>/vendor/*.js',
 			],
-			tasks: ['js'],
+			tasks: ['concat'],
 		},
 		jshint: {
 			files: ['<%= project.scripts_dev %>/*.js'],
-			tasks: ['jshint:dist'],
+			tasks: ['concat','hint'],
 		},
 		icons: {
 			files: ['<%= project.design_assets %>/svg/*.svg'],
