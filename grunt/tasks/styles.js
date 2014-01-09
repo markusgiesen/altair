@@ -1,11 +1,20 @@
 module.exports = function(grunt) {
 
-	grunt.registerTask('sass', [], function () {
+	grunt.registerTask('sass-concat', [], function () {
 		grunt.loadNpmTasks('grunt-contrib-sass');
 		grunt.loadNpmTasks('grunt-autoprefixer');
 		grunt.task.run(
 			'sass:debug',
 			'autoprefixer'
+		);
+	});
+
+	grunt.registerTask('sass-minify', [], function () {
+		grunt.loadNpmTasks('grunt-contrib-clean');
+		grunt.loadNpmTasks('grunt-csso');
+		grunt.task.run(
+			'clean:styles',
+			'csso'
 		);
 	});
 

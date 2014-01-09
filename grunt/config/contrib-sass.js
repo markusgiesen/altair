@@ -5,6 +5,7 @@ module.exports = function(grunt) {
 			options: {
 				require: 'sass-globbing', // require a (or multiple) Ruby library before running Sass
 				style: 'expanded', // nested, compact, compressed or expanded
+				sourcemap: false, // enable Source Maps (requires Sass 3.3.0, which can be installed with `gem install sass --pre`)
 				cacheLocation: '.sass-cache', // path to put cached Sass files
 			},
 			files: {

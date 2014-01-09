@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 	grunt.config('watch', {
 		styles: {
 			files: ['<%= project.styles_scss %>/**/*.scss'],
-			tasks: ['sass'],
+			tasks: ['sass-concat'],
 		},
 		scripts: {
 			files: [
@@ -12,11 +12,11 @@ module.exports = function(grunt) {
 				'<%= project.scripts %>/plugins/*.js',
 				'<%= project.scripts %>/vendor/*.js',
 			],
-			tasks: ['concat'],
+			tasks: ['scripts-concat'],
 		},
 		jshint: {
 			files: ['<%= project.scripts_dev %>/*.js'],
-			tasks: ['concat','hint'],
+			tasks: ['scripts-hint'],
 		},
 		icons: {
 			files: ['<%= project.design_assets %>/svg/*.svg'],
