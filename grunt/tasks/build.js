@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 		grunt.loadNpmTasks('grunt-hashify');
 		grunt.task.run(
 			'bump-only:patch', // Version bumped from 0.0.2 to 0.0.3
-			'icons',
+			// 'icons',
 			'sass:dist',
 			'autoprefixer',
 			'clean:assets',

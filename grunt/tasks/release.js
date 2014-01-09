@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 		grunt.task.run(
 			'bump-only:minor', // Version bumped from 0.0.x to 0.1.0
 			'bump-commit',
-			'icons',
+			// 'icons',
 			'sass:dist',
 			'autoprefixer',
 			'clean:assets',
