@@ -3,7 +3,7 @@
 // --------------------------------------------------------------------------
 // URL: https://github.com/Team-Sass/modular-scale/tree/2.x/stylesheets
 // --------------------------------------------------------------------------
-// Last udpated: 2014-01-06
+// Last udpated: 2014-01-12
 // --------------------------------------------------------------------------
 
 // Defaults
@@ -106,6 +106,19 @@ $MS-gem-exists: ms-gem-exists();
 // Generate list (_generate-list.scss)
 // --------------------------------------------------------------------------
 
+@function ms-reverse-list($list) {
+	@if length($list) > 1 {
+		@if nth($list, 1) > nth($list, length($list)) {
+			$MS-reversed-list: ();
+			@each $Value in $list {
+				$MS-reversed-list: join($Value, $MS-reversed-list);
+			}
+			@return $MS-reversed-list;
+		}
+	}
+	@return $list;
+}
+
 @function ms-generate-list($Value: 0, $Bases: $ms-base, $Ratios: $ms-ratio) {
 
 	// Create blank lists
@@ -117,68 +130,79 @@ $MS-gem-exists: ms-gem-exists();
 	@each $Ratio in $Ratios {
 		@each $Base in $Bases {
 
-		// Set base variables
-		$MS-base-list: ();
-		$Base-counter: 0;
+			// Set base variables
+			$MS-base-list: ();
+			$Base-counter: 0;
 
-		// Seed list with an initial value
-		@if $Base == $Base {
-			$MS-base-list: $Base;
-		}
-
-		// Find values on a positive scale
-		@if $Value > 0 {
-
-			// Find lower values on the scale
-			$Base-counter: -1;
-			@while ms-calc($Base-counter, $Base, $Ratio) >= nth($Bases, 1) {
-				$MS-base-list: join($MS-base-list, ms-calc($Base-counter, $Base, $Ratio));
-				$Base-counter: $Base-counter - 1;
+			// Seed list with an initial value
+			@if $Base == $Base {
+				$MS-base-list: $Base;
 			}
 
-			// Find higher possible values on the scale
-			$Base-counter: 1;
-			@while ms-calc($Base-counter, $Base, $Ratio) <= ms-calc($Value, nth($Bases, 1), $Ratio) {
-				$MS-base-list: join($MS-base-list, ms-calc($Base-counter, $Base, $Ratio));
-				$Base-counter: $Base-counter + 1;
-			}
-		}
+			// Find values on a positive scale
+			@if $Value >= 0 {
 
-		  // Find values on a negitive scale
-		  @if $Value < 0 {
-
-			// Find lower values on the scale
-			$Base-counter: 1;
-			@while ms-calc($Base-counter, $Base, $Ratio) <= nth($Bases, 1) {
-				$MS-base-list: join($MS-base-list, ms-calc($Base-counter, $Base, $Ratio));
-				$Base-counter: $Base-counter + 1;
-			}
-
-			// Find higher possible values on the scale
-			$Base-counter: -1;
-			@while ms-calc($Base-counter, $Base, $Ratio) >= ms-calc($Value, nth($Bases, 1), $Ratio) {
-				$MS-calc: ms-calc($Base-counter, $Base, $Ratio);
-				// detect if the value excedes the main base value
-				@if $MS-calc < nth($Bases, 1) {
-					$MS-base-list: join($MS-base-list, $MS-calc);
+				// Find lower values on the scale
+				$Base-counter: -1;
+				@while ms-calc($Base-counter, $Base, $Ratio) >= nth($Bases, 1) {
+					$MS-base-list: join($MS-base-list, ms-calc($Base-counter, $Base, $Ratio));
+					$Base-counter: $Base-counter - 1;
 				}
-				$Base-counter: $Base-counter - 1;
-			}
-		}
 
-		// reverse list if its largest to smallest
-		@if length($MS-base-list) > 1 {
-			@if nth($MS-base-list, 1) > nth($MS-base-list, length($MS-base-list)) {
-				$ms-reversed-list: ();
-				@each $Value in $MS-base-list {
-					$ms-reversed-list: join($Value, $ms-reversed-list);
+				// Ensure the list is smallest to largest
+				$MS-base-list: ms-reverse-list($MS-base-list);
+
+				// Find higher possible values on the scale
+				$Base-counter: 1;
+				@while ms-calc($Base-counter, $Base, $Ratio) <= ms-calc($Value, nth($Bases, 1), $Ratio) {
+					$MS-base-list: join($MS-base-list, ms-calc($Base-counter, $Base, $Ratio));
+					$Base-counter: $Base-counter + 1;
 				}
-				$MS-base-list: $ms-reversed-list;
 			}
-		}
 
-		// Add new possibilities to the master list
-		$MS-list: append($MS-list, $MS-base-list, comma);
+			// Find values on a negitive scale
+			@if $Value < 0 {
+
+				// Find lower values on the scale
+				$Base-counter: 1;
+				@while ms-calc($Base-counter, $Base, $Ratio) <= nth($Bases, 1) {
+					$MS-base-list: join($MS-base-list, ms-calc($Base-counter, $Base, $Ratio));
+					$Base-counter: $Base-counter + 1;
+				}
+
+				// Ensure the list is smallest to largest
+				$MS-base-list: ms-reverse-list($MS-base-list);
+
+				// Find higher possible values on the scale
+				$Base-counter: -1;
+				@while ms-calc($Base-counter, $Base, $Ratio) >= ms-calc($Value, nth($Bases, 1), $Ratio) {
+					$MS-calc: ms-calc($Base-counter, $Base, $Ratio);
+					// detect if the value excedes the main base value
+					@if $MS-calc < nth($Bases, 1) {
+						$MS-base-list: join($MS-base-list, $MS-calc);
+					}
+					$Base-counter: $Base-counter - 1;
+				}
+
+				// Trim outlier base.
+				@if length($Bases) > 1 {
+					@for $i from 2 through length($Bases) {
+						@if nth($MS-base-list, 1) > nth($Bases, 1) {
+							$MS-new-list: ();
+							@for $i from 2 through length($MS-base-list) {
+								$MS-new-list: join($MS-new-list, nth($MS-base-list, $i));
+							}
+							$MS-base-list: $MS-new-list;
+						}
+					}
+				}
+			}
+
+			// reverse list if its largest to smallest
+			$MS-base-list: ms-reverse-list($MS-base-list);
+
+			// Add new possibilities to the master list
+			$MS-list: append($MS-list, $MS-base-list, comma);
 
 		}
 	}
@@ -315,16 +339,20 @@ $MS-gem-exists: ms-gem-exists();
 	// Sort the generated lists
 	$Return: ms-sort-list($Return);
 
+	// Reverse list if its negitive.
+	@if $Value < 0 {
+		$MS-new-return: ();
+		@each $i in $Return {
+			$MS-new-return: join($i, $MS-new-return);
+		}
+		$Return: $MS-new-return;
+	}
+
 	// Normalize value for counting from 1
 	// Because CSS counts things from 1
 	// So Sass does as well
 	// So I get to write fun stuff like this
-	@if $Value >= 0 {
-		$Value: $Value + 1;
-	}
-	@else {
-		$Value: abs($Value - 1) + $Value;
-	}
+	$Value: abs($Value) + 1;
 
 	// Find the correct value in the list
 	$Return: nth($Return, $Value);
@@ -343,6 +371,7 @@ $MS-gem-exists: ms-gem-exists();
 // Outputs a list of values instead of a single value
 @function ms-list($Start: 0, $End: 0, $Bases: $ms-base, $Ratios: $ms-ratio) {
 
+	// Seed results
 	$Positive-return: ();
 	$Negitive-return: ();
 	$Return: ();
@@ -380,16 +409,23 @@ $MS-gem-exists: ms-gem-exists();
 		// Sort the generated lists
 		$Negitive-return: ms-sort-list($Negitive-return);
 
+		// Reverse negitive list results.
+		$MS-new-return: ();
+		@each $i in $Negitive-return {
+			$MS-new-return: join($i, $MS-new-return);
+		}
+		$Negitive-return: $MS-new-return;
+
 		// Trim list
 		$Trim-list: ();
 		@if $End < 0 {
-			@for $i from abs($End) through abs($Start) {
-				$Trim-list: join($Trim-list, nth($Negitive-return, $i));
+			@for $i from abs($End) through (abs($Start) + 2) {
+				$Trim-list: join(nth($Negitive-return, $i), $Trim-list);
 			}
 		}
 		@else {
-			@for $i from 1 through abs($Start) {
-				$Trim-list: join($Trim-list, nth($Negitive-return, $i));
+			@for $i from 2 through (abs($Start) + 1) {
+				$Trim-list: join(nth($Negitive-return, $i), $Trim-list);
 			}
 		}
 		$Negitive-return: $Trim-list;
