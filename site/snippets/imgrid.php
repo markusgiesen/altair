@@ -1,9 +1,9 @@
 <?php ///////////////////////////////////////////////////////
-//	---------------------------------------------------------
-//	SNIPPET
-//	---------------------------------------------------------
-////////////////////////////////////////////////////////// ?>
-<?php
+// ----------------------------------------------------------
+// SNIPPET
+// ----------------------------------------------------------
+/////////////////////////////////////////////////////////////
+
 // set gutter in percent
 $grid_gutter_percentage = 0.6;
 
@@ -79,3 +79,5 @@ foreach($images as $imagename) {
 
 // pass constructed array with images and the set parameters to the imgrid plugin
 imgrid($imagearray, $base_width, $grid_gutter_percentage, $img_per_row, $crop_last_img, true, $img_hd, $fig_caption);
+
+?>

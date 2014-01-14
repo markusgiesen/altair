@@ -1,12 +1,9 @@
 <?php ///////////////////////////////////////////////////////
-//	---------------------------------------------------------
-//	PARTIAL :: TABLET
-//	---------------------------------------------------------
-////////////////////////////////////////////////////////// ?>
+// ----------------------------------------------------------
+// PARTIAL :: TABLET
+// ----------------------------------------------------------
+/////////////////////////////////////////////////////////////
 
-	<?php snippet('nav_main'); ?>
-
-<?php
 // Assets (dev vs. min+hash)
 $assets_js = f::read(server::get('document_root') . '/assets/javascript/min/hash.js.json', 'json');
 if(c::get('environment') == 'local'):
@@ -16,7 +13,12 @@ else:
 	$env_suffix = 'min';
 	$main_js = a::get($assets_js, 'main');
 endif;
+
+/////////////////////////////////////////////////////////////
 ?>
+
+	<?php snippet('nav_main'); ?>
+
 	<div role="contentinfo" class="ContentInfo u-container">
 		<footer>
 			<?php echo kirbytext($site->copyright()); ?>

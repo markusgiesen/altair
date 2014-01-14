@@ -1,17 +1,17 @@
 <?php ///////////////////////////////////////////////////////
-//  ---------------------------------------------------------
-//  SNIPPET
-//  ---------------------------------------------------------
-////////////////////////////////////////////////////////// ?>
-<?php
-// set variables
+// ----------------------------------------------------------
+// SNIPPET
+// ----------------------------------------------------------
+/////////////////////////////////////////////////////////////
+
+// Set variables
 $img_upscale = null;
 $img_hd = null;
 $img_clearing = '';
 $quality_overrule = false;
 
-// set container width...
-if(count($container) > 0) {
+// Set container width...
+if(count($container) > 0):
 	// ...to width set in 'text'
 	$base_width = $container[0];
 	// check all container widths in config if set base_width doesn't exceed that
@@ -22,25 +22,23 @@ if(count($container) > 0) {
 		$base_width = c::get('thumb.compact.container');
 	}
 	$container_set = $base_width;
-} else {
+else:
 	// ...else set to device specific width set in config
 	if($_SESSION['isMobile']) { $base_width = c::get('thumb.small.container'); } // get the base width of our grid from config file
 	if($_SESSION['isTablet']) { $base_width = c::get('thumb.compact.container'); } // get the base width of our grid from config file
 	if($_SESSION['isDesktop']) { $base_width = c::get('thumb.medium.container'); } // get the base width of our grid from config file
 	$container_set = false;
-}
+endif;
 
-// set breakpoint for class of every image
-if(count($breakfrom) > 0) {
+// Set breakpoint for class of every image
+if(count($breakfrom) > 0):
 	$breakclass = $breakfrom[0];
-} else {
+else:
 	$breakclass = c::get('thumb.multifigure.break', 'small');
-}
-?>
+endif; ?>
 
 <figure class="MultiFigure-item">
 	<?php
-
 	// if there's just one quality set, and no wildcard, set overrule variable
 	if( (count($qualities)==1)&&($qualities[0] != '*')) {
 		$quality_overrule = $qualities[0];
@@ -116,21 +114,18 @@ if(count($breakfrom) > 0) {
 	endforeach;
 
 	// print a caption if there's one set
-	if(count($caption) > 0):
-	?>
+	if(count($caption) > 0): ?>
 
-	<figcaption>
-		<p>
-		<?php
-		// loop through and display the caption (can be an array of more words or sentences)
-		foreach($caption as $text):
-			echo $text;
-		endforeach;
-		?>
-		</p>
-	</figcaption>
+		<figcaption>
+			<p>
+			<?php
+			// loop through and display the caption (can be an array of more words or sentences)
+			foreach($caption as $text):
+				echo $text;
+			endforeach;
+			?>
+			</p>
+		</figcaption>
 
-	<?php
-	endif;
-	?>
+	<?php endif; ?>
 </figure>

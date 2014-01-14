@@ -1,9 +1,9 @@
 <?php ///////////////////////////////////////////////////////
-//  ---------------------------------------------------------
-//  PARTIAL :: MOBILE
-//  ---------------------------------------------------------
-////////////////////////////////////////////////////////// ?>
-<?php
+// ----------------------------------------------------------
+// PARTIAL :: MOBILE
+// ----------------------------------------------------------
+/////////////////////////////////////////////////////////////
+
 // Assets (dev vs. min+hash)
 $assets_css = f::read(server::get('document_root') . '/assets/stylesheets/min/hash.css.json', 'json');
 $assets_js = f::read(server::get('document_root') . '/assets/javascript/min/hash.js.json', 'json');
@@ -32,15 +32,24 @@ elseif($page->intro() && $page->intro() != ''): $meta_description = excerpt($pag
 elseif($page->text() && $page->text() != ''): $meta_description = excerpt($page->text(), 154);
 else: $meta_description = ''; endif;
 
-// Variable to set next and previous rel="next/prev" links; to enable add array to 'snippet_detect('html_head');' at top of template: 'snippet_detect('html_head', array('prev_next' => true));'
+// Variable to set next and previous rel="next/prev" links.
+// To enable add array to 'snippet_detect('html_head');' at top of template:
+// 'snippet_detect('html_head', array('prev_next' => true));'
 if(!isset($prev_next)): $prev_next = false; endif;
 
-// Variable to set next and previous rel="prerender" links; to enable add add array to 'snippet_detect('html_head');' at top of template: 'snippet_detect('html_head', array('prerender' => true));'
+// Variable to set next and previous rel="prerender" links.
+// To enable add add array to 'snippet_detect('html_head');' at top of template:
+// 'snippet_detect('html_head', array('prerender' => true));'
 if(!isset($prerender)): $prerender = false; endif;
 
-// Variable to set next and previous rel="prefetch" links; to enable add add array to 'snippet_detect('html_head');' at top of template: 'snippet_detect('html_head', array('prefetch' => true));'
+// Variable to set next and previous rel="prefetch" links.
+// To enable add add array to 'snippet_detect('html_head');' at top of template:
+// 'snippet_detect('html_head', array('prefetch' => true));'
 if(!isset($prefetch)): $prefetch = false; endif;
+
+/////////////////////////////////////////////////////////////
 ?>
+
 <!doctype html>
 <!-- <html manifest="/cache.appcache" lang="<?php echo $language_code; ?>"> -->
 <html class="no-js" lang="<?php echo $language_code; ?>">
