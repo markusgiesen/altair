@@ -46,7 +46,7 @@ if(!empty($results)) {
 			<input type="submit" value="Search" class="Btn Btn--fancy" />
 		</form>
 
-		<div class="search-results">
+		<div class="SearchResults">
 			<?php if($results) : ?>
 
 				<?php snippet('pagination', array('pagination' => $pagination)); ?>
@@ -61,14 +61,14 @@ if(!empty($results)) {
 								<!-- Without sarch keyword highlighting -->
 								<!-- <p><?php echo excerpt($result->text()); ?></p> -->
 
-								<p class="search-results__url"><?php echo html($result->url()); ?></p>
+								<p class="SearchResults-url"><?php echo html($result->url()); ?></p>
 							</a>
 						</article>
 					<?php endforeach; ?>
 				<?php snippet('pagination', array('pagination' => $pagination)); ?>
 
 			<?php elseif($search->query()): ?>
-				<div class="no-results">No results for <strong><?php echo html($search->query()); ?></strong></div>
+				<div class="SearchNoResults">No results for <strong><?php echo html($search->query()); ?></strong></div>
 			<?php endif; ?>
 		</div>
 

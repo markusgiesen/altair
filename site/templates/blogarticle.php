@@ -10,8 +10,8 @@
 
 			<!-- START: MARIJN PAG TRANS DA-SHIT!!! -->
 			<!--
-			<div class="pg-trns js-pg-trns">
-				<div class="pg-trns__content js-pg-trns-content">
+			<div class="PageTrans js-PageTrans">
+				<div class="PageTrans-content js-PageTransContent">
 					<h1><?php echo smartypants(widont($page->title())); ?></h1>
 
 					<?php if($page->date($format=true)) { ?>
@@ -22,7 +22,7 @@
 					<?php echo kirbytext($page->text()); ?>
 				</div>
 
-				<div class="pg-trns__target js-pg-trns-target">
+				<div class="PageTrans-target js-PageTransTarget">
 				</div>
 			</div>
 			-->

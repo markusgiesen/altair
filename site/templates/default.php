@@ -6,10 +6,6 @@
 		style="background-image: url('<?php echo $pages->find('home')->images()->filterBy('title', '*=', 'cover-')->shuffle()->first()->url(); ?>')">
 	</div>
 
-	<!-- <div class="FluidEmbed FluidEmbed--3by2 FluidEmbed--compact16by9 FluidEmbed--medium2by1 FluidEmbed--large3by1">
-		<img src="<?php echo $pages->find('home')->images()->filterBy('title', '*=', 'cover-')->shuffle()->first()->url(); ?>" class="FluidEmbed-item">
-	</div> -->
-
 	<div class="u-container">
 
 		<div role="main" class="Copy">

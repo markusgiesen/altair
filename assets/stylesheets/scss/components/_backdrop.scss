@@ -2,8 +2,11 @@
    Backdrop utilities
    ========================================================================== */
 
-.u-backdrop,
-%u-backdrop {
+/**
+ * Backdrop
+ */
+
+.Backdrop {
 	position: fixed;
 	top: 0;
 	right: 0;
@@ -17,27 +20,16 @@
 		filter: alpha(opacity = 65);
 	}
 
-	// Set animation
-	&.js-alertAnim {
+	// Animation
+	&.js-backdrop {
 		opacity: 0;
 		transition: opacity .24s ease-out;
 	}
-	// Show animation
-	&.js-alertAnim--show {
+	&.is-visible {
 		opacity: 1;
-
-		@if $oldie {
-			display: block;
-		}
 	}
-	// Hide animation
-	&.js-alertAnim--hide {
+	&.is-hidden {
 		opacity: 0;
 		z-index: -1;
-
-		@if $oldie {
-			display: none;
-		}
 	}
-
 }

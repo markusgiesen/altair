@@ -68,11 +68,11 @@ var alerts = {
 		$.extend(alerts.options, options);
 
 		if(alerts.options.type === 'bar'){
-			message_element = $('<div class="Alert Alert--bar Alert--' + alerts.options.status + ' js-alertAnim" data-element-type="bar"><div class="Alert-message">' + alerts.options.content + '</div><button type="button" class="Alert-close" data-dismiss="Alert" aria-hidden="true" role="presentation">&times;</button></div>');
+			message_element = $('<div class="Alert Alert--bar Alert--' + alerts.options.status + ' js-alert" data-element-type="bar"><div class="Alert-message">' + alerts.options.content + '</div><button type="button" class="Alert-close" data-dismiss="Alert" aria-hidden="true" role="presentation">&times;</button></div>');
 			message_element.prependTo('body');
 		}
 		if(alerts.options.type === 'modal'){
-			message_element = $('<div class="u-backdrop js-alertAnim"></div><div class="Alert Alert--modal Alert--' + alerts.options.status + ' js-alertAnim" data-element-type="modal"><div class="Alert-message">' + alerts.options.content + '</div><button class="Button Button--primary" data-dismiss="Alert">'+ this.settings.dismiss +'</button></div>');
+			message_element = $('<div class="Backdrop js-backdrop"></div><div class="Alert Alert--modal Alert--' + alerts.options.status + ' js-alert" data-element-type="modal"><div class="Alert-message">' + alerts.options.content + '</div><button class="Button Button--primary" data-dismiss="Alert">'+ this.settings.dismiss +'</button></div>');
 			message_element.appendTo('body');
 		}
 
@@ -97,9 +97,9 @@ var alerts = {
 
 		// Use animate({ marginTop: 0 }),0) to create a chain, which makes the
 		// css animation go sweet and smooth
-		$notification.animate({ marginTop: 0 },0).addClass('js-alertAnim--show');
+		$notification.animate({ marginTop: 0 },0).addClass('is-visible');
 		if(alerts.options.type === 'modal'){
-			$('.u-backdrop').addClass('js-alertAnim--show');
+			$('.Backdrop').addClass('is-visible');
 		}
 	},
 
@@ -112,9 +112,9 @@ var alerts = {
 		var $notification = $(event.target).parents('.'+dismissselector);
 
 		// remove and set classes for css animation
-		$notification.removeClass('js-alertAnim--show').addClass('js-alertAnim--hide');
+		$notification.removeClass('is-visible').addClass('is-hidden');
 		if(alerts.options.type === 'modal'){
-			$('.u-backdrop').first().removeClass('js-alertAnim--show').addClass('js-alertAnim--hide'); // Use first, because we possibly have more than one modal
+			$('.Backdrop').first().removeClass('is-visible').addClass('is-hidden'); // Use first, because we possibly have more than one modal
 		}
 
 		var notificationHasTransformSet = null;
@@ -144,7 +144,7 @@ var alerts = {
 		var elementtype = element.attr('data-element-type');
 		element.remove();
 		if(elementtype === 'modal'){
-			$('.u-backdrop').first().remove(); // Use first, because we possibly have more than one modal
+			$('.Backdrop').first().remove(); // Use first, because we possibly have more than one modal
 		}
 	},
 

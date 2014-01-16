@@ -36,8 +36,8 @@
 	border: none;
 	border-bottom: $x-small solid;
 
-	// Set animation
-	&.js-alertAnim {
+	// Animation
+	&.js-alert {
 		transition: transform .64s ease-out;
 
 		@include breakpoint(medium) {
@@ -46,16 +46,14 @@
 			left: 0;
 		}
 	}
-	// Show animation
-	&.js-alertAnim--show {
+	&.is-visible {
 		display: block;
 
 		@include breakpoint(medium) {
 			transform: translateY(0);
 		}
 	}
-	// Hide animation
-	&.js-alertAnim--hide {
+	&.is-hidden {
 		display: none;
 
 		@include breakpoint(medium) {
@@ -83,27 +81,17 @@
 		transform: translate(-50%, -50%);
 	}
 
-	// Set animation
-	&.js-alertAnim {
+	// Animation
+	&.js-alert {
 		opacity: 0;
 		transition: opacity .24s ease-out;
 	}
-	// Show animation
-	&.js-alertAnim--show {
+	&.is-visible {
 		opacity: 1;
-
-		@if $oldie {
-			display: block;
-		}
 	}
-	// Hide animation
-	&.js-alertAnim--hide {
+	&.is-hidden {
 		opacity: 0;
 		z-index: -1;
-
-		@if $oldie {
-			display: none;
-		}
 	}
 }
 
