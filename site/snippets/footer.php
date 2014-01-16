@@ -19,7 +19,7 @@ endif;
 
 	<?php snippet('nav_main'); ?>
 
-	<div role="contentinfo" class="ContentInfo u-container">
+	<div role="contentinfo" class="ContentInfo">
 		<footer>
 			<?php echo kirbytext($site->copyright()); ?>
 			<p><small>All contents licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/" title="Creative Commons Attribution-Non-Commercial-No-Derivs 3.0 Unported">CC BY-NC-ND license</a>.</small></p>

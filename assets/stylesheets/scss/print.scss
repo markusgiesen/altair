@@ -38,10 +38,10 @@ pre, blockquote {
 }
 hr { background-color: rgb(204,204,204); }
 
-/* Page break (define page breaks in HTML for print (add class 'pagebreak')) */
+/* Page break (define page breaks in HTML for print (add class 'PageBreak')) */
 
 @page { margin: .5cm; }
-.pagebreak { display: block; page-break-after: always; }
+.PageBreak { display: block; page-break-after: always; }
 
 /* Images (basic styling of images for print) */
 
@@ -120,9 +120,9 @@ h1, h2, h3 {
 /* Hide elements */
 
 .Banner,
-.NavWrapper,
-.search,
-.social,
-.Contentinfo {
+.NavMain,
+.SearchResults,
+.ShareLinks,
+.ContentInfo {
 	display: none !important;
 }
