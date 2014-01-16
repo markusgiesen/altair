@@ -21,8 +21,8 @@
 
 .FluidEmbed {
 	position: relative;
-	overflow: hidden;
 	display: block;
+	overflow: hidden;
 }
 
 /**
@@ -38,16 +38,32 @@
 }
 
 /**
- * Modifier: 16:9 aspect ratio
+ * Modifier: Different aspect ratio for different breakpoints
  */
 
-.FluidEmbed--16by9 { @extend %u-ratio16by9; }
+/* 3:2 aspect ratio for small and below */
 
-/**
- * Modifier: 4:3 aspect ratio
- */
+.FluidEmbed--3by2:before {
+	padding-bottom: percentage(2/3) !important;
+}
 
-.FluidEmbed--4by3 { @extend %u-ratio4by3; }
+/* 16:9 aspect ratio for compact breakpoint */
+
+@include breakpoint(compact) {
+	.FluidEmbed--compact16by9:before { padding-bottom: percentage(9/16) !important; }
+}
+
+/* 2:1 aspect ratio for medium breakpoint and up */
+
+@include breakpoint(medium) {
+	.FluidEmbed--medium2by1:before { padding-bottom: percentage(1/2) !important; }
+}
+
+/* 3:1 aspect ratio for medium breakpoint and up */
+
+@include breakpoint(large) {
+	.FluidEmbed--large3by1:before { padding-bottom: percentage(1/3) !important; }
+}
 
 /**
  * Descendant: media element
@@ -84,9 +100,9 @@
  */
 
 .CoverImage {
-	margin: 0 auto;
-	max-width: 1000px; // set to your liking
-	max-height: 300px; // set to your liking
+	margin: 0 auto $large;
+	// max-width: 1000px; // set to your liking
+	// max-height: 300px; // set to your liking
 	background-position: 50%;
 	background-size: cover; // contain
 	background-repeat: no-repeat;
