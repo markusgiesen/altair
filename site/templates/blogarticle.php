@@ -2,11 +2,11 @@
 
 	<?php snippet('banner'); ?>
 
-	<div class="u-container">
+	<div class="Container">
 
 		<h1 class="u-alphaHeading">Blog</h1>
 
-		<article role="main" class="Copy">
+		<article role="main" class="Copy u-containCopy">
 
 			<!-- START: MARIJN PAG TRANS DA-SHIT!!! -->
 			<!--
@@ -63,12 +63,12 @@
 			<?php endif; ?>
 			<!-- end -->
 
-		</article><!--/main/Copy>-->
+		</article>
 
 		<?php snippet('nav_sub'); ?>
 
 		<?php snippet('share_page'); ?>
 
-	</div><!--/contain>-->
+	</div>
 
 <?php snippet_detect('footer'); ?>

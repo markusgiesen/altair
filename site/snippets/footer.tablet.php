@@ -25,7 +25,7 @@ endif;
 			<p><small>All contents licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/" title="Creative Commons Attribution-Non-Commercial-No-Derivs 3.0 Unported">CC BY-NC-ND license</a>.</small></p>
 			<p>tablet</p>
 		</footer>
-	</div><!--/ContentInfo-->
+	</div>
 
 	<!-- JavaScript at the bottom of page for fast page loading -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

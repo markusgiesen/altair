@@ -2,9 +2,9 @@
 
 	<?php snippet('banner'); ?>
 
-	<div class="u-container">
+	<div class="Container">
 
-		<div role="main" class="Copy">
+		<div role="main" class="Copy u-containCopy">
 
 			<!-- START: MARIJN PAG TRANS DA-SHIT!!! -->
 			<!--
@@ -61,12 +61,12 @@
 			<?php endif; ?>
 			<!-- end -->
 
-		</div><!--/main/Copy>-->
+		</div>
 
 		<?php snippet('nav_sub'); ?>
 
 		<?php snippet('share_page'); ?>
 
-	</div><!--/contain>-->
+	</div>
 
 <?php snippet_detect('footer'); ?>

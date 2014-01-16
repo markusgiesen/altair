@@ -2,7 +2,7 @@
 
 	<?php snippet('banner'); ?>
 
-	<div role="main" class="u-container">
+	<div role="main" class="Container">
 
 		<div class="Copy">
 
@@ -22,6 +22,6 @@
 
 		<?php snippet('contactform'); ?>
 
-	</div><!--/main/u-container-->
+	</div>
 
 <?php snippet_detect('footer'); ?>

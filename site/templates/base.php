@@ -2,7 +2,7 @@
 
 	<?php snippet('banner'); ?>
 
-	<div class="u-container">
+	<div class="Container">
 
 		<article role="main">
 
@@ -200,10 +200,10 @@
 
 			</form>
 
-		</article><!--/main>-->
+		</article>
 
 		<?php snippet('share_page'); ?>
 
-	</div><!--/u-container-->
+	</div>
 
 <?php snippet_detect('footer'); ?>

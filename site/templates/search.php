@@ -30,7 +30,7 @@ if(!empty($results)) {
 
 	<?php snippet('banner'); ?>
 
-	<div role="main" class="Copy u-container">
+	<div role="main" class="Container Copy">
 
 		<h1>
 			<?php
@@ -72,6 +72,6 @@ if(!empty($results)) {
 			<?php endif; ?>
 		</div>
 
-	</div><!--/Copy/u-container-->
+	</div>
 
 <?php snippet_detect('footer'); ?>

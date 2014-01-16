@@ -6,7 +6,7 @@
 		style="background-image: url('<?php echo $pages->find('home')->images()->filterBy('title', '*=', 'cover-')->shuffle()->first()->url(); ?>')">
 	</div>
 
-	<div class="u-container">
+	<div class="Container">
 
 		<div role="main" class="Copy">
 
@@ -15,10 +15,10 @@
 			<?php echo kirbytext($page->intro()); ?>
 			<?php echo kirbytext($page->text()); ?>
 
-		</div><!--/main/Copy-->
+		</div>
 
 		<?php snippet('share_page'); ?>
 
-	</div><!--/u-container-->
+	</div>
 
 <?php snippet_detect('footer'); ?>

@@ -2,7 +2,7 @@
 
 	<?php snippet('banner'); ?>
 
-	<div class="u-container">
+	<div class="Container">
 
 		<div role="main" class="Copy">
 
@@ -19,10 +19,10 @@
 				<?php echo kirbytext($page->imgrid()); ?>
 			</div>
 
-		</div><!--/main/Copy>-->
+		</div>
 
 		<?php snippet('share_page'); ?>
 
-	</div><!--/u-container-->
+	</div>
 
 <?php snippet_detect('footer'); ?>

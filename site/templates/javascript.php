@@ -2,7 +2,7 @@
 
 	<?php snippet('banner'); ?>
 
-	<div class="u-container">
+	<div class="Container">
 
 		<div role="main" class="Copy">
 
@@ -13,11 +13,11 @@
 
 			<p>More to add&hellip;</p>
 
-		</div><!--/main/Copy-->
+		</div>
 
 		<?php snippet('share_page'); ?>
 
-	</div><!--/u-container-->
+	</div>
 
 	<script>
 		push_message.push({status: 'info', type: 'modal', text: 'This page displays a few basic javascript functionality examples available in Altair.'});
