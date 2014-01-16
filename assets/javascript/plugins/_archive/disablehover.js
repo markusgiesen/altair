@@ -11,11 +11,11 @@ timer;
 window.addEventListener('scroll', function() {
 	clearTimeout(timer);
 
-	if(!body.classList.contains('js-disable-hover')) {
-		body.classList.add('js-disable-hover');
+	if(!body.classList.contains('js-disableHover')) {
+		body.classList.add('js-disableHover');
 	}
 
 	timer = setTimeout(function(){
-		body.classList.remove('js-disable-hover');
+		body.classList.remove('js-disableHover');
 	},75);
 }, false);

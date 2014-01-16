@@ -10,12 +10,12 @@ if($('html').hasClass('ctm')){
 	$(document).ready(function(){
 
 		/* Initiate all available classes */
-		appendAround.init('.js-appendAround');    // Init append around
 		alerts.init(push_message);                // Init alerts
+		navMain.init();                           // Init main navigation
 		smoothScroll.init('.js-scroll');          // Init smooth scrolling
-		routing.init();                           // Init routing
-		// verticalGrid.init($('.js-verticalGrid'),$(window)); // Vertically distribute elements to the window height
-		nav.init();
+		// appendAround.init('.js-appendAround');    // Init append around
+		// routing.init();                           // Init routing
+		// toggleList.init();                        // Init toggle list
 
 		// Init example of an error in a modal box
 		// alerts.addMessage({status: 'error', content: 'OMG! Something terrible must have happened here!', timeout: 0, type: 'box-modal'});
@@ -34,15 +34,16 @@ if($('html').hasClass('ctm')){
 		/* For image based functionality use onload */
 		// flexslider.init('#Slider');              // Flexslider
 
-		$.resizeThrottle({                       // Resize throttling and callbacks
-			options : {
-				throttletime : 100
-			},
-			callback: function() {
-				/* The functions that should be fired on resize */
-				appendAround.appendAroundElement('.js-appendAround'); // fire appendAround with element
-				// verticalGrid.init($('.js-verticalGrid'),$(window)); // Vertically distribute elements to the window height
-			}
-		});
+		//$.resizeThrottle({                       // Resize throttling and callbacks
+		//	options : {
+		//		throttletime : 100
+		//	},
+		//	callback: function() {
+		//		/* The functions that should be fired on resize */
+		//		appendAround.appendAroundElement('.js-appendAround'); // fire appendAround with element
+		//		// verticalGrid.init($('.js-verticalGrid'),$(window)); // Vertically distribute elements to the window height
+		//	}
+		//});
+
 	});
 }

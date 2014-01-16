@@ -13,12 +13,11 @@ if($('html').hasClass('ctm')){
 		$('html').removeClass('no-js').addClass('js');
 
 		/* Initiate all available classes */
-		smoothScroll.init('.js-scroll');          // Init smooth anchor scroll
 		alerts.init(push_message);                // Init alerts
-		routing.init();                           // Init routing
-		nav.init();
+		navMain.init();                           // Init main navigation
+		smoothScroll.init('.js-scroll');          // Init smooth anchor scroll
+		// routing.init();                           // Init routing
 		// toggleList.init();                        // Init toggle list
-		// swipeSlider.init('#slider', true);        // Init swipe (bullets: true)
 
 	});
 }

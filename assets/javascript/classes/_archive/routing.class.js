@@ -36,7 +36,7 @@ var routing = {
 			context: contentbox
 		})
 		.done(function(data) {
-			var targetdata = $(data).find('.js-pg-trns-content').children();
+			var targetdata = $(data).find('.js-pageTransContent').children();
 			routing.handleSectionTransition(targetdata);
 		})
 		.fail(function() {
@@ -45,10 +45,10 @@ var routing = {
 	},
 
 	handleSectionTransition: function(targetdata) {
-		$('.js-pg-trns-target').html(targetdata).addClass('activate');
-		$('.js-pg-trns-target').on('transitionend', function(){
-			$('.js-pg-trns-content').html('').removeClass('js-pg-trns-content pg-trns__content').addClass('js-pg-trns-target pg-trns__target');
-			$(this).removeClass('activate js-pg-trns-target pg-trns__target').addClass('js-pg-trns-content pg-trns__content');
+		$('.js-pageTransTarget').html(targetdata).addClass('activate');
+		$('.js-pageTransTarget').on('transitionend', function(){
+			$('.js-pageTransContent').html('').removeClass('js-pageTransContent pageTrans__content').addClass('js-pageTransTarget pageTrans__target');
+			$(this).removeClass('activate js-pageTransTarget pageTrans__target').addClass('js-pageTransContent pageTrans__content');
 			$(this).off('transitionend');
 		});
 	},
