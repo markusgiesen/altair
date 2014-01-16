@@ -3,9 +3,7 @@
    ========================================================================== */
 
 .Banner {
-	padding-bottom: $large;
+	@include u-cf();
 
-	@include breakpoint(medium) {
-		@include u-cf();
-	}
+	padding: $large $contain-offset;
 }

@@ -7,14 +7,9 @@
 	@extend %u-container;
 
 	display: block;
+	float: left;
 	width: 144px;
 	height: 48px;
-
-	@include breakpoint(medium) {
-		float: left;
-		margin-top: $large;
-		margin-left: 0;
-	}
 }
 
 h1.Masthead {

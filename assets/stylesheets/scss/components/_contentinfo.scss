@@ -1,9 +1,16 @@
 /* ==========================================================================
-   Contentinfo (aka site footer)
+   ContentInfo (aka site footer)
    ========================================================================== */
 
 .ContentInfo {
-	margin-top: $large;
-	padding-top: $med;
-	padding-bottom: $med;
+	@extend %u-container;
+
+	margin-top: 0;
+
+	.ctm & {
+		margin-top: $large;
+	}
+	footer {
+		padding: $large 0;
+	}
 }

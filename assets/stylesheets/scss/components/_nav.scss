@@ -25,20 +25,20 @@
 		display: block;
 	}
 
-	@include breakpoint(medium) {
-		&,
-		> a { /* Horizontal nav */
-			display: inline-block;
-		}
-	}
+	// @include breakpoint(medium) {
+	// 	&,
+	// 	> a { /* Horizontal nav */
+	// 		display: inline-block;
+	// 	}
+	// }
 }
 
 /**
  * Responsive horizontal/stacked (main) navigation
  *
  * Example HTML:
- * <div class="NavWrapper"
- *   <nav class="NavMain">
+ * <div class="NavMain"
+ *   <nav class="NavMain-list">
  *     <ul>
  *       <li class="NavMain-item"><a href="">link item 1</a></li>
  *       <li class="NavMain-item"><a href="">link item 2</a></li>
@@ -47,109 +47,105 @@
  * </div>
  */
 
-/* Nav wrapper */
+/* Nav main (wrapper) */
 
-.NavWrapper {
+.NavMain {
 	position: relative;
+	margin-top: $large;
 	width: 100%;
-	background-color: tint($gray-2,80%);
+	background-color: $black-alpha;
 
 	.ctm & {
 		position: fixed;
 		top: 0;
-		height: 100%;
-		overflow: auto;
-	}
-	.js.ctm & {
 		display: none;
-
-		&.js-isOpen {
-			display: block;
-		}
-
+		overflow-y: auto;
+		margin-top: 0;
+		height: 100%;
+	}
+	.is-openMainNav & {
+		display: block;
 	}
 }
 
-.NavWrapper--basic {
+.is-openMainNav {
+	overflow: hidden;
+}
+
+/* Main nav (list) */
+
+.NavMain-list {
+	padding: $large $contain-offset;
+
 	.ctm & {
-		position: relative;
-		height: auto;
-		overflow: visible;
-		z-index: 2;
-	}
-}
-
-/* Main nav */
-
-.NavMain {
-	position: relative;
-
-	.js.ctm &.js-isOpen {
+		padding-top: 1.5 * $x-large;
+		padding-bottom: 1.5 * $x-large;
 		min-height: 100%;
+		max-width: 100%;
 	}
+	.is-openMainNav & {}
 }
 
 /* Stacked (vertical) nav */
 
 .NavMain-item {
 	display: list-item;
-	border-bottom: .1em solid $white;
+	border-bottom: .1em solid $gray-1;
 
+	&:last-child {
+		border: none;
+	}
 	> a {
 		display: block;
-		padding: $med;
-		color: $black;
+		padding: $med 0;
+		color: $white;
 
 		&:hover {
-			background-color: $link-color;
-			color: $white;
+			color: $gray-3;
 		}
 	}
 
-	@include breakpoint(medium) {
-		margin-bottom: 0;
-		border-bottom: 0;
+	// @include breakpoint(medium) {
+	// 	margin-bottom: 0;
+	// 	border-bottom: 0;
 
-		&,
-		> a { /* Horizontal nav */
-			display: inline-block;
-		}
-	}
+	// 	&,
+	// 	> a { /* Horizontal nav */
+	// 		display: inline-block;
+	// 		padding-left: $med;
+	// 		padding-right: $med;
+	// 	}
+	// }
 }
 
-/* Main nav toggle
-   ========================================================================== */
+/**
+ * Main nav toggle
+ */
 
 .NavMainToggle {
 	@extend %u-isHiddenText;
 
 	position: absolute;
-	right: 0;
-	top: 0;
+	top: $med;
+	right: $contain-offset;
 	display: block;
 	width: 44pt; /* Touch target sizes: http://j.mp/XJm4uJ */
 	height: 44pt; /* Use padding, or width/height to position icon, so it works nicely on touchdevices */
 	background-position: 50% 50%;
-	background-color: $gray-3;
-
-	.ctm & {
-		position: fixed;
-	}
-}
-
- .ctm .NavMainToggle--basic {
-	position: absolute;
 }
 
 .NavMainToggle--open {
 	@extend %grunt-icon-menu;
+
+	.ctm & {}
 }
 
 .NavMainToggle--close {
 	@extend %grunt-icon-close;
-	visibility: hidden;
+
+	display: none;
 
 	.ctm & {
-		visibility: visible;
+		display: block;
 	}
 }
