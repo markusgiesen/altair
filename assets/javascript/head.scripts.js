@@ -19,7 +19,7 @@
 // "assets/javascript/vendor/modernizr.min.js",
 
 /**
- * Cut the mustard
+ * Cutting the mustard
  *
  * Check if the browser is an 'HTML4 or HTML5' browser.
  * Why? See: http://responsivenews.co.uk/post/18948466399/cutting-the-mustard
