@@ -4,7 +4,7 @@
 
 .Masthead {
 	@extend %grunt-logo;
-	@extend %u-container;
+	@extend %u-containPadding;
 
 	display: block;
 	float: left;

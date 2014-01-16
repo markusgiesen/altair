@@ -2,7 +2,9 @@
    Contain(er) utilities
    ========================================================================== */
 
-/* Page/section container */
+/**
+ * Container (contain padding => max width)
+ */
 
 .u-container,
 %u-container {
@@ -28,12 +30,11 @@
 				@if $count == 1 {
 					// Include the corresponding breakpoint...
 					@include breakpoint($name) {
+						max-width: $query; // Width the max width set to the current breakpoint width (query)
 						margin-right: auto;
 						margin-left: auto;
 						padding-right: 0;
 						padding-left: 0;
-						// Width the max width set to the current breakpoint width (query)
-						@include rem(max-width,($query - 4em));
 					}
 				$count: $count + 1;
 				}
@@ -42,38 +43,28 @@
 	}
 }
 
-/* Containt padding */
+/**
+ * Contain padding
+ */
 
 %u-containPadding {
-	padding-right: $contain-offset;
-	padding-left: $contain-offset;
+	@if $oldie {
+		// Fixed width for oldies
+		width: 960px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+	@else {
+		padding-right: $contain-offset;
+		padding-left: $contain-offset;
+	}
 }
 
-%u-containPaddingLeft {
-	padding-left: $contain-offset;
-}
+/**
+ * Contain copy text
+ */
 
-%u-containPaddingRight {
-	padding-right: $contain-offset;
-}
-
-/* Containt margin */
-
-%u-containMargin {
-	margin-right: $contain-offset;
-	margin-left: $contain-offset;
-}
-
-%u-containMarginLeft {
-	margin-left: $contain-offset;
-}
-
-%u-containMarginRight {
-	margin-right: $contain-offset;
-}
-
-/* Containt copy (body) text */
-
-%u-containtCopy {
+.u-containCopy,
+%u-containCopy {
 	max-width: $contain-width-copy;
 }

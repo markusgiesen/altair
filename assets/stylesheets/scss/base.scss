@@ -165,3 +165,8 @@ video {
 // 	pointer-events: none !important;
 // }
 
+/* Content container */
+
+.Container {
+	@extend %u-containPadding;
+}
