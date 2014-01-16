@@ -53,7 +53,7 @@
 	position: relative;
 	margin-top: $large;
 	width: 100%;
-	background-color: $black-alpha;
+	background-color: rgb-alpha($black,.96);
 
 	.ctm & {
 		position: fixed;

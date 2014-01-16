@@ -229,7 +229,6 @@ $link-color-visited:            tint($link-color,24%);
 $button-color:                  $black;
 $button-primary-color:          $blue;
 $button-disabled-color:         $gray-3;
-$button-color-alpha:            rgba(230,230,230,.8);
 $button-text-color:             $white;
 $button-primary-text-color:     $button-text-color;
 $button-border-color:           rgb(170,170,170);
@@ -248,12 +247,11 @@ $ins-color:                     rgb(255,255,153);
 $mark-color:                    rgb(255,255,0);
 $del-color:                     rgb(255,0,0);
 
-$text-selection-color-alpha:    rgba(0,0,0,.8);
+$text-selection-color:          $black;
 
 // Shadows
 
-$shadow-color:                  rgb(220,220,220);
-$shadow-color-alpha:            rgba(140,140,140,.3);
+$shadow-color:                  rgb(140,140,140);
 
 // Gradients
 

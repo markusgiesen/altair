@@ -112,3 +112,21 @@
 		#{$property}: $rem-values;
 	}
 }
+
+// RGBa with RGB fallback for $oldie
+// --------------------------------------------------------------------------
+// Utilizes the `cs-mix` function of _color-schemer.scss
+// Example usage:
+// color: rgb-alpha($text-selection-color,.8);
+// $color-background is optional and default so $page-color
+// $color variable can be rgb(20,20,20), rgba(20,20,20,.8) (the `alpha` value
+// of rgba is ignored), and #101010
+
+@function rgb-alpha($color, $percent, $color-background: $page-color) {
+	@if $oldie {
+		@return cs-mix($color-background, $color, $percent);
+	}
+	@else {
+		@return rgba($color, $percent);
+	}
+}

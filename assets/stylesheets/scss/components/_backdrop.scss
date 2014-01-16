@@ -13,11 +13,10 @@
 	bottom: 0;
 	left: 0;
 	z-index: 9998;
-	background: set-alpha($backdrop-color,0.45);
+	background: rgb-alpha($backdrop-color,.60);
 
 	@if $oldie {
-		background: $backdrop-color;
-		filter: alpha(opacity = 65);
+		filter: alpha(opacity = 60);
 	}
 
 	// Animation

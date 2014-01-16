@@ -24,7 +24,7 @@
 /* Text selection (no text-shadow: http://twitter.com/miketaylr/status/12228805301) */
 
 ::selection {
-	background: $text-selection-color-alpha;
+	background: rgb-alpha($text-selection-color,.8);
 	color: $white;
 	text-shadow: none;
 }
