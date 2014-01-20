@@ -1,7 +1,7 @@
 /**
 * messages
 *
-* Needs jquery.min.js or zepto.min.js
+* Needs jquery.min.js / zepto.min.js and plugins/transitionend.js
 * Launches a messages fixed in the top of the window.
 * ----
 * To add a message from the html template, paste this code into the template:
@@ -131,7 +131,7 @@ var alerts = {
 			alerts.removeNotificationElements($notification);
 		}
 		else {
-			// Wait for transition to end
+			// Wait for transition to end, makes use of transitionend.js plugin!
 			$notification.on(transitionEnd, function(){
 				alerts.removeNotificationElements($(this));
 			});
