@@ -78,9 +78,10 @@ module.exports = function(grunt) {
 			},
 			mobile: {
 				plugins: [
-					'<%= project.scripts %>/vendor/zepto.min.js',
-					'<%= project.scripts %>/plugins/zepto.scroll.js',
-					'<%= project.scripts %>/plugins/zepto.cookie.js',
+					//'<%= project.scripts %>/vendor/zepto.min.js',
+					'<%= project.scripts %>/vendor/jquery.2.min.js',
+					//'<%= project.scripts %>/plugins/zepto.scroll.js',
+					//'<%= project.scripts %>/plugins/zepto.cookie.js',
 					'<%= project.scripts %>/plugins/transitionend.js',
 					// '<%= project.scripts %>/plugins/hide.address.bar.js',
 					// '<%= project.scripts %>/plugins/signals.js',
@@ -95,7 +96,8 @@ module.exports = function(grunt) {
 				// Utils
 					'<%= project.scripts %>/utils/alerts.util.js',
 				// Classes
-					'<%= project.scripts %>/classes/scroll.zepto.class.js',
+					//'<%= project.scripts %>/classes/scroll.zepto.class.js',
+					'<%= project.scripts %>/classes/scroll.jquery.class.js',
 					'<%= project.scripts %>/classes/navmain.class.js',
 					// '<%= project.scripts %>/classes/togglelist.zepto.class.js',
 					// '<%= project.scripts %>/classes/routing.class.js',
