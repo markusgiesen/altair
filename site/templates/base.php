@@ -6,7 +6,7 @@
 
 		<article role="main">
 
-			<div class="Copy">
+			<div class="Copy u-containCopy">
 
 				<h1><?php echo smartypants(widont($page->title())); ?></h1>
 
