@@ -14,6 +14,16 @@
 //   $rem-with-px-fallback: true !default;
 // to:
 //   $oldie: false !default;
+//
+// Line 166 has been altered from:
+//   @mixin adjust-font-size-to($to-size, $lines: auto, $from-size: $base-font-size) {
+// to:
+//   @mixin adjust-font-size-to($to-size, $lines: auto, $scale-factor: 1, $from-size: $base-font-size) {
+//
+// Line 167 has been altered from:
+//   $to-size: convert-length($to-size, px, $from-size);
+// to:
+//   $to-size: convert-length(($to-size * $scale-factor), px, $from-size);
 
 // Defaults
 // --------------------------------------------------------------------------
@@ -160,8 +170,8 @@ $relative-font-sizing: if($rhythm-unit == px, false, true);
 // of this font should use up. It does not have to be an integer, but it
 // defaults to the smallest integer that is large enough to fit the font.
 // Use $from-size to adjust from a font-size other than the base font-size.
-@mixin adjust-font-size-to($to-size, $lines: auto, $from-size: $base-font-size) {
-	$to-size: convert-length($to-size, px, $from-size);
+@mixin adjust-font-size-to($to-size, $lines: auto, $heading-scale-factor: 1, $from-size: $base-font-size) {
+	$to-size: convert-length(($to-size * $heading-scale-factor), px, $from-size);
 	@if $lines == auto {
 		$lines: lines-for-font-size($to-size);
 	}

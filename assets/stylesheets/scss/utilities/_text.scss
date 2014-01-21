@@ -80,5 +80,5 @@
  }
 
 %u-textSmall {
-	@extend %u-miniSize;
+	@include modular-font-size(-1,auto);  // change 'auto' $lines value to better fit font size, e.g. 0.8
  }

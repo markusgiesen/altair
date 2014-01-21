@@ -8,7 +8,7 @@
 $ratio-typographic-scale:       1.618033989 !default;
 $base-font-size:                16px !default;
 $another-font-size:             16px !default;
-$multiple-base:                 0 !default; // value '1' is equivalent to base font size
+$multiple-base:                 0 !default; // value '0' is equivalent to (default) base font size
 $mutliple-base-font-size:       $base-font-size $another-font-size !default;
 
 // Font sizes
@@ -27,7 +27,7 @@ $mutliple-base-font-size:       $base-font-size $another-font-size !default;
 //   $base-font-size - (multiple) base font size(s)
 //   $default-ratio  - the typegraphic scale to use
 
-@mixin modular-font-size($scale-value: 0,$lines: auto) {
+@mixin modular-font-size($scale-value: 0, $lines: auto, $heading-scale-factors: false) {
 	// Check if another (second) font size does not equal base font size
 	@if $another-font-size != $base-font-size  {
 		// If not equal, $mutliple-base-font-size is both another and the base
@@ -38,7 +38,28 @@ $mutliple-base-font-size:       $base-font-size $another-font-size !default;
 		// Else $mutliple-base-font-size is only the base font size
 		$mutliple-base-font-size: $base-font-size !global;
 	}
-	// Output rem (with $oldie pixel fallback) font sizes and line height that
-	// maintain vertical rhythm
-	@include adjust-font-size-to(modular-scale($multiple-base + $scale-value,$mutliple-base-font-size,$ratio-typographic-scale),$lines);
+	// If a 'heading scale factor' is set in variables.scss (passed on)...
+	@if $heading-scale-factors and not $oldie {
+		// Loop through the 'heading scale facor' list (name / value pair)...
+		@each $heading-scale-factor in $heading-scale-factors {
+			$name: nth($heading-scale-factor, 1);
+			$scale-factor: nth($heading-scale-factor, 2);
+			// Mobile first, so no media queries for "small" scale value
+			// for font size and line height
+			@if $name == "small" {
+				@include adjust-font-size-to(modular-scale($multiple-base + $scale-value, $mutliple-base-font-size, $ratio-typographic-scale), $lines, $scale-factor);
+			}
+			// For all other scale values generate (output) with breakpoinst
+			@else {
+				@include breakpoint($name) {
+					@include adjust-font-size-to(modular-scale($multiple-base + $scale-value, $mutliple-base-font-size, $ratio-typographic-scale), $lines, $scale-factor);
+				}
+			}
+		}
+	}
+	// Output font size and line height with default $scale-factor of '1'
+	// Also applies to old IE (ignore breakpoints transparently)
+	@else {
+		@include adjust-font-size-to(modular-scale($multiple-base + $scale-value, $mutliple-base-font-size, $ratio-typographic-scale), $lines);
+	}
 }

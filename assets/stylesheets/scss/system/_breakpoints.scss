@@ -25,8 +25,8 @@
 // Defaults
 // --------------------------------------------------------------------------
 
-$oldie: false !default;
 $breaks: "small", "compact", "medium", "large", "wide", "huge" !default;
+$oldie: false !default;
 
 // Breakpoints
 // --------------------------------------------------------------------------
@@ -37,7 +37,7 @@ $breaks: "small", "compact", "medium", "large", "wide", "huge" !default;
 	@each $break in $breaks {
 		// If conditin meets break to be included, then...
 		@if $condition == $break {
-			// Output a 'fixed' media query set for IE (ignore breakpoints transparently)
+			// Output a 'fixed' media query set for old IE (ignore breakpoints transparently)
 			@if $oldie {
 				// If max-width is true on any break but the last break (see $breaks in ie.scss)
 				@if $count < length($breaks) {
