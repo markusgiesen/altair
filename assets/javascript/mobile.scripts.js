@@ -16,8 +16,8 @@ if($('html').hasClass('ctm')){
 		alerts.init(push_message);                // Init alerts
 		navMain.init();                           // Init main navigation
 		smoothScroll.init('.js-scroll');          // Init smooth anchor scroll
-		// routing.init();                           // Init routing
-		// toggleList.init();                        // Init toggle list
+//		routing.init();                           // Init routing
+//		toggleList.init();                        // Init toggle list
 
 	});
 }

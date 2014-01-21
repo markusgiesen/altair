@@ -13,37 +13,35 @@ if($('html').hasClass('ctm')){
 		alerts.init(push_message);                // Init alerts
 		navMain.init();                           // Init main navigation
 		smoothScroll.init('.js-scroll');          // Init smooth scrolling
-		// appendAround.init('.js-appendAround');    // Init append around
-		// routing.init();                           // Init routing
-		// toggleList.init();                        // Init toggle list
+//		appendAround.init('.js-appendAround');    // Init append around
+//		routing.init();                           // Init routing
+//		verticalGrid.init($('.js-verticalGrid'),$(window)); // Vertically distribute elements to the window height
 
-		// Init example of an error in a modal box
-		// alerts.addMessage({status: 'error', content: 'OMG! Something terrible must have happened here!', timeout: 0, type: 'box-modal'});
+		/* Init example of an error in a modal box */
+//		alerts.addMessage({status: 'error', content: 'OMG! Something terrible must have happened here!', timeout: 0, type: 'box-modal'});
 
-		// Initiate popup event handlers
+		/* Initiate popup event handlers*/
 		$('.js-popup').on('click', {}, popup.openWindow); // Example of how to attach an eventhandler and calling a function
 
 		/* Initiate externalize event handlers (settings: http://j.mp/P3xv1i) */
 		$('.js-external').externalize({relation: 'external nofollow', title: 'Opens link in new window'});
-		// $('a[href$=".pdf"]').externalize({ title: 'Opens PDF in a new window' });
+//		$('a[href$=".pdf"]').externalize({ title: 'Opens PDF in a new window' });
 
 	});
 
-	$(window).load(function() {
+//	$(window).load(function() {
 
-		/* For image based functionality use onload */
-		// flexslider.init('#Slider');              // Flexslider
+//		$.resizeThrottle({                       // Resize throttling and callbacks
+//			options : {
+//				throttletime : 100
+//			},
+//			callback: function() {
+//				/* The functions that should be fired on resize */
+//				appendAround.appendAroundElement('.js-appendAround'); // fire appendAround with element
+//				// verticalGrid.init($('.js-verticalGrid'),$(window)); // Vertically distribute elements to the window height
+//			}
+//		});
 
-		//$.resizeThrottle({                       // Resize throttling and callbacks
-		//	options : {
-		//		throttletime : 100
-		//	},
-		//	callback: function() {
-		//		/* The functions that should be fired on resize */
-		//		appendAround.appendAroundElement('.js-appendAround'); // fire appendAround with element
-		//		// verticalGrid.init($('.js-verticalGrid'),$(window)); // Vertically distribute elements to the window height
-		//	}
-		//});
+//	});
 
-	});
 }

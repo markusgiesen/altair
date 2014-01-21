@@ -28,7 +28,7 @@ endif;
 	</div>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="<?php echo url('assets/javascript/vendor/jquery.2.min.js'); ?>"><\/script>')</script>
+	<script>window.jQuery || document.write('<script src="<?php echo url('assets/javascript/vendor/jquery.min.js'); ?>"><\/script>')</script>
 	<script defer src="<?php echo url('assets/javascript/'. $env_suffix .'/' . $main_js . '.js'); ?>"></script>
 
 	<?php snippet('analytics'); ?>

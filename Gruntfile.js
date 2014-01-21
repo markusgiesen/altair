@@ -48,15 +48,11 @@ module.exports = function(grunt) {
 				plugins: [
 					'<%= project.scripts %>/plugins/jquery.cookie.js',
 					'<%= project.scripts %>/plugins/jquery.externalize.js',
-					'<%= project.scripts %>/plugins/transitionend.js',
-					// '<%= project.scripts %>/plugins/jquery.resizethrottle.js',
-					// '<%= project.scripts %>/plugins/signals.js',
-					// '<%= project.scripts %>/plugins/crossroads.js',
 					// '<%= project.scripts %>/plugins/jquery.appendaround.js',
-					// '<%= project.scripts %>/plugins/disablehover.js',
-					// '<%= project.scripts %>/plugins/spin.js',
-					// '<%= project.scripts %>/plugins/jquery.flexslider.js',
-					// '<%= project.scripts %>/plugins/garlic.js',
+					// '<%= project.scripts %>/plugins/jquery.resizethrottle.js',
+					// '<%= project.scripts %>/plugins/crossroads.js',
+					// '<%= project.scripts %>/plugins/signals.js',
+					// '<%= project.scripts %>/plugins/transitionend.js',
 				],
 				other: [
 				// Utils
@@ -67,9 +63,6 @@ module.exports = function(grunt) {
 					'<%= project.scripts %>/classes/scroll.jquery.class.js',
 					// '<%= project.scripts %>/classes/appendaround.jquery.class.js',
 					// '<%= project.scripts %>/classes/routing.class.js',
-					// '<%= project.scripts %>/classes/flexslider.jquery.class.js',
-					// '<%= project.scripts %>/classes/garlic.class.js',
-					// '<%= project.scripts %>/classes/spin.class.js',
 					// '<%= project.scripts %>/classes/togglelist.jquery.class.js',
 					// '<%= project.scripts %>/classes/verticalgrid.jquery.class.js',
 				// Main
@@ -78,31 +71,21 @@ module.exports = function(grunt) {
 			},
 			mobile: {
 				plugins: [
-					//'<%= project.scripts %>/vendor/zepto.min.js',
-					'<%= project.scripts %>/vendor/jquery.2.min.js',
-					//'<%= project.scripts %>/plugins/zepto.scroll.js',
-					//'<%= project.scripts %>/plugins/zepto.cookie.js',
-					'<%= project.scripts %>/plugins/transitionend.js',
+					'<%= project.scripts %>/vendor/jquery.min.js',
+					'<%= project.scripts %>/plugins/jquery.cookie.js',
+					// '<%= project.scripts %>/plugins/crossroads.js',
 					// '<%= project.scripts %>/plugins/hide.address.bar.js',
 					// '<%= project.scripts %>/plugins/signals.js',
-					// '<%= project.scripts %>/plugins/crossroads.js',
-					// '<%= project.scripts %>/plugins/disablehover.js',
-					// '<%= project.scripts %>/plugins/ios.orientation.fix.js',
-					// '<%= project.scripts %>/vendor/zepto.data.min.js',
-					// '<%= project.scripts %>/plugins/swipe.js',
-					// '<%= project.scripts %>/plugins/garlic.js',
+					// '<%= project.scripts %>/plugins/transitionend.js',
 				],
 				other: [
 				// Utils
 					'<%= project.scripts %>/utils/alerts.util.js',
 				// Classes
-					//'<%= project.scripts %>/classes/scroll.zepto.class.js',
-					'<%= project.scripts %>/classes/scroll.jquery.class.js',
 					'<%= project.scripts %>/classes/navmain.class.js',
-					// '<%= project.scripts %>/classes/togglelist.zepto.class.js',
+					'<%= project.scripts %>/classes/scroll.jquery.class.js',
 					// '<%= project.scripts %>/classes/routing.class.js',
-					// '<%= project.scripts %>/classes/swipe.class.js',
-					// '<%= project.scripts %>/classes/garlic.class.js',
+					// '<%= project.scripts %>/classes/togglelist.jquery.class.js',
 				// Main
 					'<%= project.scripts %>/mobile.scripts.js',
 				],
