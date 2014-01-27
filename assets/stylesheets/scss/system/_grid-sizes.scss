@@ -29,7 +29,7 @@ $breaks: "small", "compact", "medium", "large", "wide", "huge" !default;
 // breakpoint suffix that can be used to adjust grids in different contexts
 // (e.g. viewport dimensions).
 
-@mixin sizes($units, $condition: "") {
+@mixin sizes($units, $condition, $type: "size") {
 
 	// Proportional units
 	// Specify the proportional width of an object. Primarily for, but not
@@ -58,20 +58,26 @@ $breaks: "small", "compact", "medium", "large", "wide", "huge" !default;
 			// Check if the reduced value of $n was also supplied in the list
 			// of units to be built
 			$canreduce: contains($units, $n-r);
+			$property: width;
+
+			@if $type == "before" {
+				$property: margin-left;
+			}
 
 			// Create units based on fractions
-			.u-size#{$i}of#{$n}--#{$condition} {
+			.u-#{$type}#{$i}of#{$n}--#{$condition} {
+
 				// If this unit can be reduced then extend the previous rule
 				@if $canreduce {
-					@extend .u-size#{$i-r}of#{$n-r}--#{$condition};
+					@extend .u-#{$type}#{$i-r}of#{$n-r}--#{$condition};
 				}
 				// Otherwise create a new % width
 				@else {
 					@if $oldie {
-						width: percentage($i / $n) - ($grid-gutter-percentage + .025%) !important;
+						#{$property}: percentage($i / $n) - ($grid-gutter-percentage + .025%) !important;
 					}
 					@else {
-						width: percentage($i / $n) !important;
+						#{$property}: percentage($i / $n) !important;
 					}
 				}
 			}
@@ -85,5 +91,14 @@ $breaks: "small", "compact", "medium", "large", "wide", "huge" !default;
 @mixin grid-sizes($condition, $units) {
 	@include breakpoint($condition) {
 		@include sizes($units, $condition);
+	}
+}
+
+// Offset sizes
+// --------------------------------------------------------------------------
+
+@mixin offset-sizes($condition, $units) {
+	@include breakpoint($condition) {
+		@include sizes($units, $condition, "before");
 	}
 }
