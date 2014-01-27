@@ -28,8 +28,6 @@
  * </div>
  */
 
-$grid-direction: left !default; // switch to 'right' for rtl
-
 /* Grid core
    ========================================================================== */
 
@@ -38,30 +36,18 @@ $grid-direction: left !default; // switch to 'right' for rtl
  * Must only contain `.Grid` or `.Grid-cell` components as children.
  *
  * 1. Adjustment for child element margins.
- * 2. Ensure consistent default alignment/
- * 3. Remove inter-unit whitespace that appears between `inline-block` child
- *    elements. Work for all non-monospace font-families.  If you're using a
- *    monospace base font, you will need to set the `grid` font-family to
- *   `sans-serif` and then redeclare the monospace font on the `grid__cell`
- *    objects.
- * 4. Protect against WebKit bug with optimizelegibility.
+ * 2. Ensure consistent default alignment
+ * 3. Remove inter-cell whitespace that appears between `inline-block` child
+ *    elements.
  */
 
 .Grid {
-	display: block;
-	padding: 0;
-	margin: 0 -.5 * $grid-gutter; /* 1 */
-	text-align: $grid-direction; /* 2 */
-	letter-spacing: -0.31em; /* 3 */
-	text-rendering: optimizespeed; /* 4 */
-
-	@if $oldie {
-		margin-right: percentage((-.5 * $grid-gutter)/$break-large);
-		margin-left: percentage((-.5 * $grid-gutter)/$break-large);
-	}
+	display: block; /* 1 */
+	padding-right: 0;  /* 1 */
+	padding-left: 0;  /* 1 */
+	font-size: 0; /* 3 */
+	text-align: left; /* 2 */
 }
-
-// .g, .grid { margin-left: -percentage(($grid-gutter)/$break-large); }
 
 /**
  * Opera hack
@@ -88,22 +74,40 @@ $grid-direction: left !default; // switch to 'right' for rtl
  * No explicit width by default. Apply `.unit-x-y` classes.
  *
  * 1. Fundamentals of the non-float grid layout mechanism.
- * 2. Apply grid gutter.
+ * 2. Make cells full-width by default.
  * 3. Controls vertical positioning of units.
  * 4. Keeps content correctly aligned with the grid direction.
- * 5. Reset text defaults.
+ * 5. Controls vertical positioning of units.
+ * 6. Reset font size change made in `Grid`.
  */
 
 .Grid-cell {
-	width: 100%;
 	display: inline-block; /* 1 */
 	margin: 0;
-	padding: 0 .5 * $grid-gutter; /* 2 */
+	padding: 0;
+	width: 100%; /* 2 */
 	vertical-align: top; /* 3 */
-	text-align: $grid-direction; /* 4 */
-	letter-spacing: normal; /* 5 */
-	word-spacing: normal; /* 5 */
-	text-rendering: auto; /* 5 */
+	text-align: left; /* 4 */
+	vertical-align: top; /* 5 */
+	font-size: 1rem; /* 6 */
+}
+
+/* Grid gutter
+   ========================================================================== */
+
+.Grid--withGutter {
+	margin-right: -.5 * $grid-gutter;
+	margin-left: -.5 * $grid-gutter;
+
+	@if $oldie {
+		margin-right: percentage((-.5 * $grid-gutter)/$break-large);
+		margin-left: percentage((-.5 * $grid-gutter)/$break-large);
+	}
+}
+
+.Grid--withGutter > .Grid-cell {
+	padding-right: .5 * $grid-gutter;
+	padding-left: .5 * $grid-gutter;
 
 	@if $oldie {
 		padding-right: percentage((.5 * $grid-gutter)/$break-large);
@@ -120,28 +124,33 @@ $grid-direction: left !default; // switch to 'right' for rtl
  * units in the grid.
  */
 
-.Grid--center {
+.Grid--alignCenter {
 	text-align: center;
-}
-
-/**
- * Modifier: align horizontally all grid units to the left
- */
-
-.Grid--left {
-	text-align: left;
 }
 
 /**
  * Modifier: align horizontally all grid units to the right
  */
 
-.Grid--right {
+.Grid--alignRight {
 	text-align: right;
 }
 
-/* Grid cell modifiers
-   ========================================================================== */
+/**
+ * Modifier: middle-align grid cells
+ */
+
+.Grid--alignMiddle > .Grid-cell {
+	vertical-align: middle;
+}
+
+/**
+ * Modifier: bottom-align grid cells
+ */
+
+.Grid--alignBottom > .Grid-cell {
+	vertical-align: bottom;
+}
 
 /**
  * Modifier: horizontally center one unit
@@ -154,30 +163,12 @@ $grid-direction: left !default; // switch to 'right' for rtl
 	margin: 0 auto;
 }
 
-/**
- * Modifier: align horizontally one unit to the left
- * Set a specific unit to be horizontally on the left. Doesn't affect
- * any other units. Can still contain a child `grid` object.
- */
-
-.Grid-cell--left {
-	display: block;
-	margin-right: auto;
-}
-
-/**
- * Modifier: align horizontally one unit to the right
- * Set a specific unit to be horizontally on the right. Doesn't affect
- * any other units. Can still contain a child `grid` object.
- */
-
-.Grid-cell--right {
-	display: block;
-	margin-left: auto;
-}
-
 /* Responsive sizes
    ========================================================================== */
+
+/**
+ * Grid sizes
+ */
 
 /* Small and up */
 
@@ -214,3 +205,22 @@ $grid-direction: left !default; // switch to 'right' for rtl
 		@if $oldie { width: column-span(1, 2, ratio($golden, 4, "large")) - (percentage(($grid-gutter)/$break-large) + .025%) !important; }
 	}
 }
+
+/**
+ * Offset sizes
+ */
+
+/* Small and up */
+
+// @include offset-sizes("small", 2); // .u-before1of2--compact, etc.
+// @include offset-sizes("small", 3); // .u-before1of3--compact, etc.
+
+/* Compact and up */
+
+@include offset-sizes("compact", 2); // .u-before1of2--compact, etc.
+@include offset-sizes("compact", 3); // .u-before1of3--compact, etc.
+@include offset-sizes("compact", 4); // .u-before1of2--compact, etc.
+
+/* Medium and up */
+
+// @include offset-sizes("medium", 4); // .u-before1of4--medium, etc.
