@@ -613,11 +613,15 @@ AddDefaultCharset utf-8
 # ------------------------------------------------------------------------------
 
 # Prevent some of the mobile network providers from modifying the content of
-# your site: http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9.5.
+# your site.
+# 1. http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9.5
+# 2. http://calendar.perfplanet.com/2013/mobile-isp-image-recompression/
 
-# <IfModule mod_headers.c>
-#    Header set Cache-Control "no-transform"
-# </IfModule>
+<IfModule mod_headers.c>
+    <FilesMatch "\.(png|jpg|jpeg|gif)$">
+        Header set Cache-Control "public, no-transform"
+    </FilesMatch>
+</IfModule>
 
 # ------------------------------------------------------------------------------
 # | ETag removal                                                               |
