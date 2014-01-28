@@ -44,6 +44,10 @@
 		}
 	}
 
+	// h1.u-teraHeading { @extend %u-teraHeading; }
+	// h1.u-gigaHeading { @extend %u-gigaHeading; }
+	// h1.u-megaHeading { @extend %u-megaHeading; }
+
 	h1 { @extend %u-alphaHeading; }
 	h2 { @extend %u-betaHeading; }
 	h3 { @extend %u-gammaHeading; }
