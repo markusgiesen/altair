@@ -6,15 +6,15 @@
  * Heading sizes only
  */
 
-%u-teraSize    { @include modular-font-size(8,auto,$tera-scale); }                         // change 'auto' $lines value to better fit font size, e.g. 4.4
-%u-gigaSize    { @include modular-font-size(7,auto,$giga-scale); }                         // change 'auto' $lines value to better fit font size, e.g. 3.6
-%u-megaSize    { @include modular-font-size(6,auto,$mega-scale); }                         // change 'auto' $lines value to better fit font size, e.g. 2.8
-%u-alphaSize   { @include modular-font-size(5,auto,$alpha-scale); letter-spacing: .05em; } // change 'auto' $lines value to better fit font size, e.g. 2.4
-%u-betaSize    { @include modular-font-size(4,auto,$beta-scale); letter-spacing: .05em; }  // change 'auto' $lines value to better fit font size, e.g. 2.0
-%u-gammaSize   { @include modular-font-size(3,auto,$gamma-scale); }                        // change 'auto' $lines value to better fit font size, e.g. 1.8
-%u-deltaSize   { @include modular-font-size(2,auto,$delta-scale); }                        // change 'auto' $lines value to better fit font size, e.g. 1.4
-%u-epsilonSize { @include modular-font-size(1,auto,$epsilon-scale); }                      // change 'auto' $lines value to better fit font size, e.g. 1.1
-%u-zetaSize    { @include modular-font-size(0,auto,$zeta-scale); }                         // change 'auto' $lines value to better fit font size, e.g. 0.9
+%u-teraSize    { @include modular-font-size(8,auto,$tera-scale); }    // change 'auto' $lines value to better fit font size, e.g. 4.4
+%u-gigaSize    { @include modular-font-size(7,auto,$giga-scale); }    // change 'auto' $lines value to better fit font size, e.g. 3.6
+%u-megaSize    { @include modular-font-size(6,auto,$mega-scale); }    // change 'auto' $lines value to better fit font size, e.g. 2.8
+%u-alphaSize   { @include modular-font-size(5,auto,$alpha-scale); }   // change 'auto' $lines value to better fit font size, e.g. 2.4
+%u-betaSize    { @include modular-font-size(4,auto,$beta-scale); }    // change 'auto' $lines value to better fit font size, e.g. 2.0
+%u-gammaSize   { @include modular-font-size(3,auto,$gamma-scale); }   // change 'auto' $lines value to better fit font size, e.g. 1.8
+%u-deltaSize   { @include modular-font-size(2,auto,$delta-scale); }   // change 'auto' $lines value to better fit font size, e.g. 1.4
+%u-epsilonSize { @include modular-font-size(1,auto,$epsilon-scale); } // change 'auto' $lines value to better fit font size, e.g. 1.1
+%u-zetaSize    { @include modular-font-size(0,auto,$zeta-scale); }    // change 'auto' $lines value to better fit font size, e.g. 0.9
 
 /**
  * Shared heading settings
@@ -23,6 +23,8 @@
 %u-headingSettings {
 	@extend %u-fontFeatureSettings;
 	@include heading-font(400);
+
+	letter-spacing: .05rem; // Doesn't work in Oldie, so be it, because is much better than em's!!!
 }
 
 /**
