@@ -96,8 +96,9 @@
 		border: none;
 	}
 	> a {
+		@include rhythm-padding(.5);
+
 		display: block;
-		padding: $med 0;
 		color: $white;
 
 		&:hover {
