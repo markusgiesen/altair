@@ -95,6 +95,8 @@
 /* Grid gutter
    ========================================================================== */
 
+/* Em gutter */
+
 .Grid--withGutter {
 	margin-right: -.5 * $grid-gutter;
 	margin-left: -.5 * $grid-gutter;
@@ -103,15 +105,27 @@
 		margin-right: percentage((-.5 * $grid-gutter)/$break-large);
 		margin-left: percentage((-.5 * $grid-gutter)/$break-large);
 	}
+
+	& > .Grid-cell {
+		padding-right: .5 * $grid-gutter;
+		padding-left: .5 * $grid-gutter;
+
+		@if $oldie {
+			padding-right: percentage((.5 * $grid-gutter)/$break-large);
+			padding-left: percentage((.5 * $grid-gutter)/$break-large);
+		}
+	}
 }
 
-.Grid--withGutter > .Grid-cell {
-	padding-right: .5 * $grid-gutter;
-	padding-left: .5 * $grid-gutter;
+/* Percent gutter */
 
-	@if $oldie {
-		padding-right: percentage((.5 * $grid-gutter)/$break-large);
-		padding-left: percentage((.5 * $grid-gutter)/$break-large);
+.Grid--withGutterPercentage {
+	// margin-right: -.5 * $grid-gutter-percentage; // Removes the `gutter` left and right
+	// margin-left: -.5 * $grid-gutter-percentage; // Removes the `gutter` left and right
+
+	& > .Grid-cell {
+		padding-right: .5 * $grid-gutter-percentage;
+		padding-left: .5 * $grid-gutter-percentage;
 	}
 }
 
