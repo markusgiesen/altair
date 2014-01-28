@@ -44,15 +44,19 @@ $mutliple-base-font-size:       $base-font-size $another-font-size !default;
 		@each $heading-scale-factor in $heading-scale-factors {
 			$name: nth($heading-scale-factor, 1);
 			$scale-factor: nth($heading-scale-factor, 2);
+			// If line height is not `auto`, multiply line height by scale factor
+			@if $lines != auto {
+				$lines: $scale-factor * $lines;
+			}
 			// Mobile first, so no media queries for "small" scale value
 			// for font size and line height
 			@if $name == "small" {
-				@include adjust-font-size-to(modular-scale($multiple-base + $scale-value, $mutliple-base-font-size, $ratio-typographic-scale), ($scale-factor * $lines), $scale-factor);
+				@include adjust-font-size-to(modular-scale($multiple-base + $scale-value, $mutliple-base-font-size, $ratio-typographic-scale), $lines, $scale-factor);
 			}
 			// For all other scale values generate (output) with breakpoinst
 			@else {
 				@include breakpoint($name) {
-					@include adjust-font-size-to(modular-scale($multiple-base + $scale-value, $mutliple-base-font-size, $ratio-typographic-scale), ($scale-factor * $lines), $scale-factor);
+					@include adjust-font-size-to(modular-scale($multiple-base + $scale-value, $mutliple-base-font-size, $ratio-typographic-scale), $lines, $scale-factor);
 				}
 			}
 		}
