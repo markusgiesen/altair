@@ -10,12 +10,19 @@
 
 // @include offset-sizes("small", 2); // .u-before1of2--compact, etc.
 // @include offset-sizes("small", 3); // .u-before1of3--compact, etc.
+@include offset-sizes("small", 9); // .u-before1of9--small, etc.
 
 /* Compact and up */
 
 @include offset-sizes("compact", 2); // .u-before1of2--compact, etc.
 @include offset-sizes("compact", 3); // .u-before1of3--compact, etc.
 @include offset-sizes("compact", 4); // .u-before1of2--compact, etc.
+
+@include breakpoint(compact) {
+	.u-beforeNone--compact {
+		margin-left: 0 !important;
+	}
+}
 
 /* Medium and up */
 
