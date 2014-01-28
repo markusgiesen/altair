@@ -47,12 +47,12 @@ $mutliple-base-font-size:       $base-font-size $another-font-size !default;
 			// Mobile first, so no media queries for "small" scale value
 			// for font size and line height
 			@if $name == "small" {
-				@include adjust-font-size-to(modular-scale($multiple-base + $scale-value, $mutliple-base-font-size, $ratio-typographic-scale), $lines, $scale-factor);
+				@include adjust-font-size-to(modular-scale($multiple-base + $scale-value, $mutliple-base-font-size, $ratio-typographic-scale), ($scale-factor * $lines), $scale-factor);
 			}
 			// For all other scale values generate (output) with breakpoinst
 			@else {
 				@include breakpoint($name) {
-					@include adjust-font-size-to(modular-scale($multiple-base + $scale-value, $mutliple-base-font-size, $ratio-typographic-scale), $lines, $scale-factor);
+					@include adjust-font-size-to(modular-scale($multiple-base + $scale-value, $mutliple-base-font-size, $ratio-typographic-scale), ($scale-factor * $lines), $scale-factor);
 				}
 			}
 		}
