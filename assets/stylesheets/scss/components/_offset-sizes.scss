@@ -1,0 +1,22 @@
+/* ==========================================================================
+   Offset sizes (dev dependency: _grid-sizes.scss system partial)
+   ========================================================================== */
+
+/**
+ * Responsive offset sizes
+ */
+
+/* Small and up */
+
+// @include offset-sizes("small", 2); // .u-before1of2--compact, etc.
+// @include offset-sizes("small", 3); // .u-before1of3--compact, etc.
+
+/* Compact and up */
+
+@include offset-sizes("compact", 2); // .u-before1of2--compact, etc.
+@include offset-sizes("compact", 3); // .u-before1of3--compact, etc.
+@include offset-sizes("compact", 4); // .u-before1of2--compact, etc.
+
+/* Medium and up */
+
+// @include offset-sizes("medium", 4); // .u-before1of4--medium, etc.
