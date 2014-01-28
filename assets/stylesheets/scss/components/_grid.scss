@@ -98,8 +98,7 @@
 /* Em gutter */
 
 .Grid--withGutter {
-	margin-right: -.5 * $grid-gutter;
-	margin-left: -.5 * $grid-gutter;
+	// No negative 1/2 gutter lef/right margins necessary, because font-size is set to `0` in .Grid class!
 
 	@if $oldie {
 		margin-right: percentage((-.5 * $grid-gutter)/$break-large);
@@ -117,7 +116,7 @@
 	}
 }
 
-/* Percent gutter */
+/* Percentage gutter */
 
 .Grid--withGutterPercentage {
 	// margin-right: -.5 * $grid-gutter-percentage; // Removes the `gutter` left and right
