@@ -1,7 +1,7 @@
 {
   "name": "Altair",
   "description": "A neat SASS-based, and gruntified, front-end starter package build on top of file-based Kirby CMS.",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "url": "http://altair.studiodumbar.info",
   "author": "Jonathan van Wunnik <jonathan@studiodumbar.com>, Marijn Tijhuis <marijn@studiodumbar.com>",
   "copyright": "Studio Dumbar",
