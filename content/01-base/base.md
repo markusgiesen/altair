@@ -18,16 +18,16 @@ This page show basic (typographic) HTML elements and how the scoped _.Copy_ clas
 
 Text:
 
-<ul class="js-scroll">
-<li><a href="#headings">Headings</a></li>
-<li><a href="#widont">Widont</a></li>
-<li><a href="#paragraph">Paragraph</a></li>
-<li><a href="#blockquote">Blockquote</a></li>
-<li><a href="#lists">Lists</a></li>
-<li><a href="#tags">Tags</a></li>
-<li><a href="#table">Table</a></li>
-<li><a href="#buttons">Buttons</a></li>
-<li><a href="#form">Form</a></li>
+<ul>
+<li><a data-scroll href="#headings">Headings</a></li>
+<li><a data-scroll href="#widont">Widont</a></li>
+<li><a data-scroll href="#paragraph">Paragraph</a></li>
+<li><a data-scroll href="#blockquote">Blockquote</a></li>
+<li><a data-scroll href="#lists">Lists</a></li>
+<li><a data-scroll href="#tags">Tags</a></li>
+<li><a data-scroll href="#table">Table</a></li>
+<li><a data-scroll href="#buttons">Buttons</a></li>
+<li><a data-scroll href="#form">Form</a></li>
 </ul>
 
 ---
