@@ -10,6 +10,7 @@ module.exports = function(grunt) {
 				'<%= project.scripts %>/*.js',
 				'<%= project.scripts %>/classes/*.js',
 				'<%= project.scripts %>/plugins/*.js',
+				'<%= project.scripts %>/utils/*.js',
 				'<%= project.scripts %>/vendor/*.js',
 			],
 			tasks: ['scripts-concat'],

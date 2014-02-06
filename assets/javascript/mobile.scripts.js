@@ -5,19 +5,18 @@
  */
 
 // Only serve javascript to 'Cutting the Mustard' browsers
-if($('html').hasClass('ctm')){
+if(cutsthemustard){
 
-	$(document).ready(function(){
+	document.addEventListener('DOMContentLoaded', function() {
 
 		/* Add 'js' class to html element */
-		$('html').removeClass('no-js').addClass('js');
+		var htmlEl = document.querySelector('html');
+		htmlEl.classList.remove('no-js');
+		htmlEl.classList.add('js');
 
 		/* Initiate all available classes */
 		alerts.init(push_message);                // Init alerts
 		navMain.init();                           // Init main navigation
-		smoothScroll.init('.js-scroll');          // Init smooth anchor scroll
-//		routing.init();                           // Init routing
-//		toggleList.init();                        // Init toggle list
 
-	});
+	}, false);
 }

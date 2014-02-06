@@ -5,7 +5,7 @@
  * element.addEventListener(transitionEnd, theFunctionToInvoke, false);
  *
  * Or:
- * $notification.on(transitionEnd, theFunctionToInvoke);
+ * notification.on(transitionEnd, theFunctionToInvoke);
  */
 
 function whichTransitionEvent(){

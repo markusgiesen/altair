@@ -27,9 +27,6 @@ endif;
 		</footer>
 	</div>
 
-	<!-- JavaScript at the bottom of page for fast page loading -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="<?php echo url('assets/javascript/vendor/jquery.min.js'); ?>"><\/script>')</script>
 	<!-- <script defer src="<?php // echo url('assets/javascript/plugins/ios.orientation.fix.js'); ?>"></script> -->
 	<script defer src="<?php echo url('assets/javascript/'. $env_suffix .'/' . $main_js . '.js'); ?>"></script>
 

@@ -9,41 +9,50 @@
 
 var navMain = {
 
+	elements: {
+		banner: document.querySelector('.Banner'),
+		html: document.querySelector('html')
+	},
+
 	/**
 	 * Initiate the navigation
 	 */
 	init: function(type) {
-		$('.js-navMainShow').on('click', navMain.open);
-		$('.js-navMainHide').on('click', navMain.close);
+		var navMainShow = document.querySelector('.js-navMainShow');
+		var navMainHide = document.querySelector('.js-navMainHide');
+		navMainShow.addEventListener('click', navMain.open, false);
+		navMainHide.addEventListener('click', navMain.close, false);
 	},
 
 	setNavHandlers: function() {
-		$('.js-navMain').on('click', navMain.handleNavClick);
-		$(document).on('keyup', navMain.handleNavClick);
+		// var navMainEl =  document.querySelector('.js-navMain');
+		// navMainEl.addEventListener('click', navMain.handleNavClick, false); // Only do this if navheight != windowheight
+		document.addEventListener('keyup', navMain.handleNavClick, false);
 	},
 
 	unsetNavHandlers: function() {
-		$('.js-navMain').off('click');
-		$(document).off('keyup');
+		// var navMainEl =  document.querySelector('.js-navMain');
+		// navMainEl.removeEventListener('click', navMain.handleNavClick, false); // Only do this if navheight != windowheight
+		document.removeEventListener('keyup', navMain.handleNavClick, false);
 	},
 
 	handleNavClick: function(event) {
-		if(($(event.target).hasClass('js-navMain')) || (event.keyCode === 27)) {
-			navMain.close();
-			return false;
+		var target = event.target;
+		if((target.classList.contains('js-navMain')) || (event.keyCode === 27)) {
+			navMain.close(event);
 		}
 	},
 
-	open: function() {
-		$('html').addClass('is-openMainNav');
+	open: function(event) {
+		event.preventDefault();
+		navMain.elements.html.classList.add('is-openMainNav');
 		navMain.setNavHandlers();
-		return false;
 	},
 
-	close: function() {
-		$('html').removeClass('is-openMainNav');
+	close: function(event) {
+		event.preventDefault();
+		navMain.elements.html.classList.remove('is-openMainNav');
 		navMain.unsetNavHandlers();
-		return false;
 	}
 
 };

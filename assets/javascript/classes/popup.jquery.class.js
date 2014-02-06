@@ -9,7 +9,7 @@
 
 var popup = {
 	openWindow: function(event){
-		var url = $(event.currentTarget).attr('href');
+		var url = event.currentTarget.getAttribute('href');
 
 		if(typeof event.data.h === 'undefined'){
 			event.data.h = 400;

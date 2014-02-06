@@ -5,43 +5,25 @@
  */
 
 // Only serve javascript to 'Cutting the Mustard' browsers
-if($('html').hasClass('ctm')){
+if(cutsthemustard){
 
-	$(document).ready(function(){
+	document.addEventListener('DOMContentLoaded', function() {
 
 		/* Initiate all available classes */
 		alerts.init(push_message);                // Init alerts
 		navMain.init();                           // Init main navigation
-		smoothScroll.init('.js-scroll');          // Init smooth scrolling
-//		appendAround.init('.js-appendAround');    // Init append around
-//		routing.init();                           // Init routing
-//		verticalGrid.init($('.js-verticalGrid'),$(window)); // Vertically distribute elements to the window height
 
 		/* Init example of an error in a modal box */
 //		alerts.addMessage({status: 'error', content: 'OMG! Something terrible must have happened here!', timeout: 0, type: 'box-modal'});
 
 		/* Initiate popup event handlers*/
-		$('.js-popup').on('click', {}, popup.openWindow); // Example of how to attach an eventhandler and calling a function
+		var popuplink = document.querySelector('.js-popup');
+		popuplink.addEventListener('click', popup.openWindow, false);
 
 		/* Initiate externalize event handlers (settings: http://j.mp/P3xv1i) */
-		$('.js-external').externalize({relation: 'external nofollow', title: 'Opens link in new window'});
+		// $('.js-external').externalize({relation: 'external nofollow', title: 'Opens link in new window'});
 //		$('a[href$=".pdf"]').externalize({ title: 'Opens PDF in a new window' });
 
-	});
-
-//	$(window).load(function() {
-
-//		$.resizeThrottle({                       // Resize throttling and callbacks
-//			options : {
-//				throttletime : 100
-//			},
-//			callback: function() {
-//				/* The functions that should be fired on resize */
-//				appendAround.appendAroundElement('.js-appendAround'); // fire appendAround with element
-//				// verticalGrid.init($('.js-verticalGrid'),$(window)); // Vertically distribute elements to the window height
-//			}
-//		});
-
-//	});
+	}, false);
 
 }

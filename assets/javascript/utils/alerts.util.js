@@ -49,8 +49,10 @@ var alerts = {
 		}
 
 		// Close messages when cliked on .bar__dismiss
-		$('body').on('click', '[data-dismiss]', this.hideNotification );
-
+		var dismissbutton = document.querySelector('[data-dismiss]');
+		if(dismissbutton !== null) {
+			dismissbutton.addEventListener('click', this.hideNotification, false);
+		}
 	},
 
 	/**
@@ -63,17 +65,31 @@ var alerts = {
 	*/
 	addMessage: function(options) {
 
+		// TODO: check if alerts are accessible without JS, for IE8 and other old fucks.
+
 		var message_element;
 
-		$.extend(alerts.options, options);
+		extend.object(alerts.options, options);
+
+		message_element = document.createElement('div');
 
 		if(alerts.options.type === 'bar'){
-			message_element = $('<div class="Alert Alert--bar Alert--' + alerts.options.status + ' js-alert" data-element-type="bar"><div class="Alert-message">' + alerts.options.content + '</div><button type="button" class="Alert-close" data-dismiss="Alert" aria-hidden="true" role="presentation">&times;</button></div>');
-			message_element.prependTo('body');
+			// Create message DOM element
+			message_element.className = 'Alert Alert--bar Alert--' + alerts.options.status + ' js-alert';
+			message_element.setAttribute('data-element-type','bar');
+			message_element.innerHTML = '<div class="Alert-message">' + alerts.options.content + '</div><button type="button" class="Alert-close" data-dismiss="Alert" aria-hidden="true" role="presentation">&times;</button>';
+			document.body.insertBefore(message_element, document.body.firstChild);
 		}
 		if(alerts.options.type === 'modal'){
-			message_element = $('<div class="Backdrop js-backdrop"></div><div class="Alert Alert--modal Alert--' + alerts.options.status + ' js-alert" data-element-type="modal"><div class="Alert-message">' + alerts.options.content + '</div><button class="Button Button--primary" data-dismiss="Alert">'+ this.settings.dismiss +'</button></div>');
-			message_element.appendTo('body');
+			// Create backdrop DOM element
+			backdrop_element = document.createElement('div');
+			backdrop_element.className = 'Backdrop js-backdrop';
+			// Create message DOM element
+			message_element.className = 'Alert Alert--modal Alert--' + alerts.options.status + ' js-alert';
+			message_element.setAttribute('data-element-type','modal');
+			message_element.innerHTML = '<div class="Alert-message">' + alerts.options.content + '</div><button class="Button Button--primary" data-dismiss="Alert">'+ this.settings.dismiss +'</button>';
+			document.body.appendChild(backdrop_element);
+			document.body.appendChild(message_element);
 		}
 
 		this.showNotification(message_element);
@@ -93,13 +109,19 @@ var alerts = {
 	*/
 	showNotification: function(element) {
 
-		var $notification = element;
+		var notification = element;
 
-		// Use animate({ marginTop: 0 }),0) to create a chain, which makes the
-		// css animation go sweet and smooth
-		$notification.animate({ marginTop: 0 },0).addClass('is-visible');
+		// Use a short timeout, to make sure the transition runs
+		setTimeout(function(){
+			notification.classList.add('is-visible');
+		},10);
+
+		// notification.classList.add('is-visible');
 		if(alerts.options.type === 'modal'){
-			$('.Backdrop').addClass('is-visible');
+			var backdrops = document.querySelectorAll('.Backdrop');
+			Array.prototype.forEach.call(backdrops, function(el, i){
+				el.classList.add('is-visible');
+			});
 		}
 	},
 
@@ -108,13 +130,16 @@ var alerts = {
 	*/
 	hideNotification: function(event) {
 
-		var dismissselector = $(event.target).attr('data-dismiss');
-		var $notification = $(event.target).parents('.'+dismissselector);
+		var dismissselector = event.target.getAttribute('data-dismiss');
+		var notification = document.querySelector('.'+dismissselector);
 
 		// remove and set classes for css animation
-		$notification.removeClass('is-visible').addClass('is-hidden');
+		notification.classList.remove('is-visible');
+		notification.classList.remove('is-hidden');
 		if(alerts.options.type === 'modal'){
-			$('.Backdrop').first().removeClass('is-visible').addClass('is-hidden'); // Use first, because we possibly have more than one modal
+			var backdrop = document.querySelector('.Backdrop');
+			backdrop.classList.remove('is-visible');
+			backdrop.classList.add('is-hidden');
 		}
 
 		var notificationHasTransformSet = null;
@@ -122,33 +147,41 @@ var alerts = {
 
 		// Get the transform of an element via getComputedStyle (if the browser supports this..)
 		if (window.getComputedStyle) {
-			notificationHasTransformSet = window.getComputedStyle($notification.get(0), null).getPropertyValue('transform');
-			notificationHasWebkitTransformSet = window.getComputedStyle($notification.get(0), null).getPropertyValue('-webkit-transform');
+			notificationHasTransformSet = window.getComputedStyle(notification, null).getPropertyValue('transform');
+			notificationHasWebkitTransformSet = window.getComputedStyle(notification, null).getPropertyValue('-webkit-transform');
 		}
 
 		// If browser doesn't support transitions or there is no transform (or -webkit-transform...) set
 		if(!Modernizr.csstransitions || notificationHasTransformSet === 'none' || notificationHasWebkitTransformSet === 'none'){
-			alerts.removeNotificationElements($notification);
+			alerts.removeNotificationElements(notification);
 		}
 		else {
 			// Wait for transition to end, makes use of transitionend.js plugin!
-			$notification.on(transitionEnd, function(){
-				alerts.removeNotificationElements($(this));
-			});
+			notification.addEventListener(transitionEnd, function(){
+				alerts.removeNotificationElements(this);
+			}, false);
 		}
 
 		return false;
 	},
 
 	removeNotificationElements: function(element) {
-		var elementtype = element.attr('data-element-type');
-		element.remove();
+		var elementtype = element.getAttribute('data-element-type');
+		element.parentNode.removeChild(element);
 		if(elementtype === 'modal'){
-			$('.Backdrop').first().remove(); // Use first, because we possibly have more than one modal
+			// TODO: something like this... But does it work?
+			// var backdrop = document.querySelector('.Backdrop');
+			// backdrop.parentNode.firstChild.removeChild(backdrop)
+			var backdrop = document.querySelector('.Backdrop');
+			backdrop.parentNode.removeChild(backdrop);
 		}
 	},
 
 	onTimeoutNotification: function(element) {
-		element.find('[data-dismiss]').click();
+		var dismiss = element.querySelector('[data-dismiss]');
+		// Fire off a click on the dismiss button
+		clickevent = document.createEvent('HTMLEvents');
+		clickevent.initEvent('click', true, false);
+		dismiss.dispatchEvent(clickevent);
 	}
 };
