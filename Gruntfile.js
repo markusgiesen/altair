@@ -51,12 +51,6 @@ module.exports = function(grunt) {
 				plugins: [
 					'<%= project.scripts %>/plugins/transitionend.js',
 					'<%= project.scripts %>/plugins/smoothscroll.js',
-					// '<%= project.scripts %>/plugins/jquery.cookie.js',
-					// '<%= project.scripts %>/plugins/jquery.externalize.js',
-					// '<%= project.scripts %>/plugins/jquery.appendaround.js',
-					// '<%= project.scripts %>/plugins/jquery.resizethrottle.js',
-					// '<%= project.scripts %>/plugins/crossroads.js',
-					// '<%= project.scripts %>/plugins/signals.js',
 				],
 				other: [
 				// Utils -> WATCH OUT: the order of utils is important !!
@@ -64,12 +58,7 @@ module.exports = function(grunt) {
 					'<%= project.scripts %>/utils/alerts.util.js',
 				// Classes
 					'<%= project.scripts %>/classes/navmain.class.js',
-					'<%= project.scripts %>/classes/popup.jquery.class.js',
-					// '<%= project.scripts %>/classes/scroll.jquery.class.js',
-					// '<%= project.scripts %>/classes/appendaround.jquery.class.js',
-					// '<%= project.scripts %>/classes/routing.class.js',
-					// '<%= project.scripts %>/classes/togglelist.jquery.class.js',
-					// '<%= project.scripts %>/classes/verticalgrid.jquery.class.js',
+					'<%= project.scripts %>/classes/popup.class.js',
 				// Main
 					'<%= project.scripts %>/main.scripts.js',
 				],
@@ -81,10 +70,6 @@ module.exports = function(grunt) {
 				plugins: [
 					'<%= project.scripts %>/plugins/transitionend.js',
 					'<%= project.scripts %>/plugins/smoothscroll.js',
-					// '<%= project.scripts %>/plugins/jquery.cookie.js',
-					// '<%= project.scripts %>/plugins/crossroads.js',
-					// '<%= project.scripts %>/plugins/hide.address.bar.js',
-					// '<%= project.scripts %>/plugins/signals.js',
 				],
 				other: [
 				// Utils -> WATCH OUT: the order of utils is important !!
@@ -92,9 +77,6 @@ module.exports = function(grunt) {
 					'<%= project.scripts %>/utils/alerts.util.js',
 				// Classes
 					'<%= project.scripts %>/classes/navmain.class.js',
-					// '<%= project.scripts %>/classes/scroll.jquery.class.js',
-					// '<%= project.scripts %>/classes/routing.class.js',
-					// '<%= project.scripts %>/classes/togglelist.jquery.class.js',
 				// Main
 					'<%= project.scripts %>/mobile.scripts.js',
 				],
