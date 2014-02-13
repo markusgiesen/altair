@@ -53,11 +53,11 @@ Multi figure:
 
 ## Multi-figure tag
 
-(figure: unsplash_5259a4d21eceb_1.jpg quality: 55 hd: true gridsingle: true)
-(figure: unsplash_52585c3dd6b34_1.jpg | unsplash_52850d6938211_1.jpg | unsplash_5248748fb40ac_1.jpg width: 1of3 | 1of3 | 1of3 hd: true breakfrom: compact)
+(figure: unsplash_5259a4d21eceb_1.jpg quality: 55 gridsingle: true hd: true )
+(figure: unsplash_52585c3dd6b34_1.jpg | unsplash_52850d6938211_1.jpg | unsplash_5248748fb40ac_1.jpg width: 1of3 | 1of3 | 1of3 breakfrom: compact hd: true)
 (figure: unsplash_526360a842e20_1.jpg | unsplash_568gh845d584s_1.jpg width: 1of2 | 1of2 breakfrom: compact hd: true)
 (figure: unsplash_527e842bc0615_1.jpg | unsplash_5243e9ef164a5_1.jpg width: 2of3 | 1of3 hd: true)
-(figure: unsplash_5245b69bc5330_1.jpg | unsplash_5252bb51404f8_1.jpg width: 1of3 | 2of3 breakfrom: compact)
+(figure: unsplash_5245b69bc5330_1.jpg | unsplash_5252bb51404f8_1.jpg width: 1of3 | 2of3 breakfrom: compact hd: true)
 
 *Multifigure tag --- multiple images within a figure element, and an array of layout configurations.*
 
