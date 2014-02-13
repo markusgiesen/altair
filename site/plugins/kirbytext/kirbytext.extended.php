@@ -36,7 +36,7 @@
 * 2) (figure: myimage.jpg width: 400 caption: Nice figure caption!)
 * 3) (figure: myimage.jpg width: 400 height: 200 crop: true caption: Nice figure caption!)
 * 4) (figure: myimage.jpg width: 400 height: 200 crop: true hd: true caption: Nice figure caption!)
-* 5) (figure: myimage.jpg width: 3of2 center: true caption: a centered image!)
+* 5) (figure: myimage.jpg width: width: 2of3 center: true caption: A centered image!)
 *
 * Figure can also be used as a 'Multifigure', usage:
 * 1) (figure: myimage.jpg | myimage2.jpg width: 1of2 | 1of2 breakfrom: compact)
@@ -312,6 +312,7 @@ class kirbytextExtended extends kirbytext {
 
 	  }
 
+	// Figure
 	function figure($params) {
 
 		global $site;
