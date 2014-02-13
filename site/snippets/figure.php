@@ -71,7 +71,8 @@ if(count($gridcenter) > 0) {
 // ----------------------------------------------------------
 
 if($number_of_images > 1 || count($gridcenter) > 0 || count($gridsingle) > 0) {
-	$gridclass = ' Grid Grid--withGutter';
+	$gridclass = ' Grid Grid--withGutterPercentage';
+	// $gridclass = ' Grid Grid--withGutter';
 	$itemgridclass= 'Grid-cell ';
 }
 echo '<figure class="FigureImage' .$gridclass . $centerclass . '">';
