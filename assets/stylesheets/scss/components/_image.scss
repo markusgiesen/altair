@@ -52,6 +52,10 @@ img {
 
 /* Images in 'figure' elements */
 
-figure > img {
-	display: block;
+figure {
+	margin: 0; // Overrule normalize.scss bullshit! (.../scss/vendor/)
+
+	& > img {
+		display: block;
+	}
 }
