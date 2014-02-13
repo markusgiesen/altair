@@ -36,9 +36,10 @@
 * 2) (figure: myimage.jpg width: 400 caption: Nice figure caption!)
 * 3) (figure: myimage.jpg width: 400 height: 200 crop: true caption: Nice figure caption!)
 * 4) (figure: myimage.jpg width: 400 height: 200 crop: true hd: true caption: Nice figure caption!)
+* 5) (figure: myimage.jpg width: 3of2 center: true caption: a centered image!)
 *
-* Multi (image) figure usage:
-* 1) …
+* Figure can also be used as a 'Multifigure', usage:
+* 1) (figure: myimage.jpg | myimage2.jpg width: 1of2 | 1of2 breakfrom: compact)
 *
 * Slider usage:
 * 1) …
@@ -64,7 +65,6 @@ class kirbytextExtended extends kirbytext {
 		$this->addTags('nohyphen');
 		$this->addTags('thumb');
 		$this->addTags('figure');
-		$this->addTags('multifigure');
 		$this->addTags('imgrid');
 		$this->addTags('slider');
 		$this->addTags('fluidvideo');
@@ -73,8 +73,7 @@ class kirbytextExtended extends kirbytext {
 		$this->addAttributes('language', 'cite', 'link'); // quote attributes
 		$this->addAttributes('source', 'class', 'type', 'order', 'reverse'); // list attributes
 		$this->addAttributes('crop', 'hd', 'upscale', 'quality', 'alt'); // thumb attributes
-		$this->addAttributes('caption'); // figure attributes
-		$this->addAttributes('container', 'breakfrom'); // multifigure attributes
+		$this->addAttributes('caption','center', 'container', 'breakfrom','offset'); // figure attributes
 		$this->addAttributes('images','margin','per-row','crop-last','container','hd', 'caption'); // imgrid attributes
 		$this->addAttributes('ratio', 'type'); // fluidvideo attributes
 	}
@@ -313,110 +312,115 @@ class kirbytextExtended extends kirbytext {
 
 	  }
 
-	// Figure
 	function figure($params) {
-
-		// set default values for attributes
-		$defaults = array(
-			'width'   => null,
-			'height'  => null,
-			'crop'    => false,
-			'hd'      => null,
-			'upscale' => null,
-			'quality' => null,
-			'container' => false,
-			'alt'     => false
-		);
-
-		// merge the given parameters with the default values
-		$options = array_merge($defaults, $params);
-		$page    = ($this->obj) ? $this->obj : $site->pages()->active();
-		$figure  = $params['figure'];
-		$image   = $page->images()->find($figure);
-		$thumb   = thumb($image, array(
-						'width'   => $options['width'],
-						'height'  => $options['height'],
-						'crop'    => $options['crop'],
-						'hd'      => $options['hd'],
-						'upscale' => $options['upscale'],
-						'quality' => $options['quality'],
-						'container' => $options['container'],
-						'alt'     => $options['alt']
-					));
-
-
-		// start the html output
-		$html  = '<figure>';
-		$html .= $thumb;
-
-		// only add a caption if one is available
-		if(!empty($params['caption'])) {
-			$html .= '<figcaption>' . $params['caption'] . '</figcaption>';
-		}
-		$html .= '</figure>';
-
-		return $html;
-
-	}
-
-	// Multi Figure
-	function multifigure($params) {
 
 		global $site;
 
 		// set default values for attributes
 		$defaults = array(
 			'images'    => null,
-			'widths'    => null,
-			'quality'   => null,
-			'upscale'   => null,
+			'width'     => null,
+			'height'    => null,
+			'crop'      => false,
 			'hd'        => null,
+			'upscale'   => null,
+			'quality'   => null,
+			'container' => false,
+			'breakfrom' => null,
+			'alt'       => false,
+			'offset'    => null,
+			'center'    => null,
 			'caption'   => null,
-			'container' => null,
-			'breakfrom'     => null
 		);
 
 		// merge the given parameters with the default values
-		$options		= array_merge($defaults, $params);
+		$options = array_merge($defaults, $params);
+		$page    = ($this->obj) ? $this->obj : $site->pages()->active();
 
-		// set default values for attribues
-		$page      = ($this->obj) ? $this->obj : $site->pages()->active();
-		$images    = str::split(str_replace(' ', '', $options['multifigure']), '|');
-		$widths    = str::split(str_replace(' ', '', $options['width']), '|');
-		$upscale   = str::split($options['upscale']);
-		$hd        = str::split($options['hd']);
-		$qualities = str::split(str_replace(' ', '', $options['quality']), '|');
-		$caption   = str::split($options['caption']);
-		$container = str::split($options['container']);
-		$breakfrom = str::split($options['breakfrom']);
-		$result    = array();
+		$is_multifigure = false;
 
-		// check if there is an image
+		// check if the figure has multiple images to output, check for pipe character: |
+		if(strpos($options['figure'],'|')===false) {
+			// set the one images as the first in an images array
+			$images[0] = $options['figure'];
+		}
+		else {
+			$is_multifigure = true;
+			// set all images to the array
+			$images = str::split(str_replace(' ', '', $options['figure']), '|');
+		}
+
+		$result = array();
+
+		// check if there images passed to the array
 		if(empty($images)) return false;
 		if($page->images()->count() == 0) return false;
 
+		// build array of image objects
 		foreach($images as $img) {
-		  $imgObj = $page->images()->find($img);
-		  if($imgObj) $result[] = $imgObj;
+			$imgObj = $page->images()->find($img);
+			if($imgObj) $result[] = $imgObj;
 		}
 
+		// check of array of images has real items (after building objects)
 		if(empty($result)) return false;
 
-		// build tag with snippet
-		return snippet('multi_figure', array(
-			'images'    => $result,
-			'widths'    => $widths,
-			'upscale'   => $upscale,
-			'hd'        => $hd,
-			'qualities' => $qualities,
-			'caption'   => $caption,
-			'container' => $container,
-			'breakfrom' => $breakfrom,
-		), true);
+		// set variables for both single and multi figures
+		$upscale   = str::split($options['upscale']);
+		$hd        = str::split($options['hd']);
+		$caption   = str::split($options['caption']);
+		$container = str::split($options['container']);
+		$breakfrom = str::split($options['breakfrom']);
+		$offset    = str::split($options['offset']);
+		$center    = str::split($options['center']);
 
+		if($is_multifigure){
+			$widths    = str::split(str_replace(' ', '', $options['width']), '|');
+			$qualities = str::split(str_replace(' ', '', $options['quality']), '|');
+			$alt       = null;
+			$height    = null;
+			$crop      = null;
+		}
+
+		else {
+			$widths    =  str::split($options['width']);
+			$qualities =  str::split($options['quality']);
+			$alt       = str::split($options['alt']);
+			$crop      = str::split($options['crop']);
+			$height    = str::split($options['height']);
+			if (empty($widths)) $widths = null;
+			if (empty($alt))    $alt = null;
+			if (empty($height)) $height = null;
+			if (empty($crop))   $crop = null;
+		}
+
+		// build tag with snippet
+		return snippet('figure', array(
+				// Image basics
+				'images'      => $result,
+				'caption'     => $caption,
+				// Image widths
+				'widths'      => $widths,
+				'container'   => $container,
+				// Cropping and quality
+				'upscale'     => $upscale,
+				'hd'          => $hd,
+				'qualities'   => $qualities,
+				// CSS class specifics
+				'offset'      => $offset,
+				'breakfrom'   => $breakfrom,
+				'center'      => $center,
+				// Single figure specific settings
+				'height'      => $height,
+				'crop'        => $crop,
+				'alt'         => $alt,
+				// Is it a figure or multifigure?
+				'multifigure' => $is_multifigure,
+				), true);
 	}
 
-	// Multi Figure
+
+	// IMG grid
 	function imgrid($params) {
 
 		global $site;

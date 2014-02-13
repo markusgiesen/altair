@@ -1,0 +1,36 @@
+/* ==========================================================================
+   FigureImage
+   ========================================================================== */
+
+/**
+ * A figure which contains an image.
+ *
+ * Can be generated in (Kirby) Markdown with (figure: )
+ * Contains one image by default, but can handle multiple items: *multifigure*
+ *
+ * The multifigure uses the .Grid component to layout the items
+ *
+ * Markup example:
+ *
+ * <figure class="FigureImage">
+ * 		<img src="..." class="FigureImage-item" alt="A single image" />
+ * </figure>
+ *
+ * <figure class="FigureImage Grid Grid--withGutterPercentage">
+ * 		<img src="..." class="FigureImage-item Grid-cell u-width1of2" alt="A single image" />
+ * 		<img src="..." class="FigureImage-item Grid-cell u-width1of2" alt="A second image" />
+ * </figure>
+ *
+ * <figure class="FigureImage Grid Grid--alignCenter">
+ * 		<img src="..." class="FigureImage-item Grid-cell u-width2of3" alt="A centered image" />
+ * </figure>
+ *
+ */
+
+.FigureImage{
+	@extend %u-cf;
+}
+
+.FigureImage-item {
+	padding-bottom: $grid-gutter-percentage;
+}
