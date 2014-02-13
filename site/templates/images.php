@@ -10,14 +10,8 @@
 
 			<?php echo kirbytext($page->intro()); ?>
 			<?php echo kirbytext($page->text()); ?>
-
-			<div class="MultiFigure">
-				<?php echo kirbytext($page->multi_figure()); ?>
-			</div>
-
-			<div class="imgrid-container">
-				<?php echo kirbytext($page->imgrid()); ?>
-			</div>
+			<?php echo kirbytext($page->multi_figure()); ?>
+			<?php echo kirbytext($page->imgrid()); ?>
 
 		</div>
 
