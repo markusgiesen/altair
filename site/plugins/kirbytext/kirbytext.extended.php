@@ -331,7 +331,7 @@ class kirbytextExtended extends kirbytext {
 			'breakfrom' => null,
 			'alt'       => false,
 			'offset'    => null,
-			'gridcenter'    => null,
+			'gridcenter'=> null,
 			'gridsingle'=> null,
 			'caption'   => null,
 		);
