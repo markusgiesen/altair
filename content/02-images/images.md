@@ -42,8 +42,8 @@ All photos on this page are from [Unsplash](http://unsplash.com).
 
 ## Figure tag
 
-(figure: unsplash_525b54bcc32ba_1.jpg width: 450 quality: 80 hd: false caption: Optional image caption)
-(figure: unsplash_525b54bcc32ba_1.jpg width: 450 quality: 55 caption: Optional image caption)
+(figure: unsplash_525b54bcc32ba_1.jpg width: 2of3 quality: 80 hd: false caption: Optional image caption)
+(figure: unsplash_525b54bcc32ba_1.jpg width: 2of3 quality: 55 caption: Optional image caption)
 
 *Figure tag --- image quality set to 80, but hd is false (**top**), image quality is set to 60 and hd is true (**bottom**).*
 
@@ -53,7 +53,7 @@ Multi figure:
 
 ## Multi-figure tag
 
-(figure: unsplash_5259a4d21eceb_1.jpg quality: 55 hd: true)
+(figure: unsplash_5259a4d21eceb_1.jpg quality: 55 hd: true gridsingle: true)
 (figure: unsplash_52585c3dd6b34_1.jpg | unsplash_52850d6938211_1.jpg | unsplash_5248748fb40ac_1.jpg width: 1of3 | 1of3 | 1of3 hd: true breakfrom: compact)
 (figure: unsplash_526360a842e20_1.jpg | unsplash_568gh845d584s_1.jpg width: 1of2 | 1of2 breakfrom: compact hd: true)
 (figure: unsplash_527e842bc0615_1.jpg | unsplash_5243e9ef164a5_1.jpg width: 2of3 | 1of3 hd: true)

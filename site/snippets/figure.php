@@ -10,6 +10,9 @@ $img_hd = null;
 $img_clearing = '';
 $quality_overrule = false;
 $centerclass = '';
+$gridclass = '';
+$itemgridclass = '';
+$number_of_images = count($images);
 
 // ----------------------------------------------------------
 // Prepare variables set by kirbytext
@@ -59,7 +62,7 @@ else {
 }
 
 // if the figure should be centered
-if(count($center) > 0) {
+if(count($gridcenter) > 0) {
 	$centerclass = ' Grid--alignCenter';
 }
 
@@ -67,17 +70,13 @@ if(count($center) > 0) {
 // Open figure tag
 // ----------------------------------------------------------
 
-echo '<figure class="FigureImage Grid Grid--withGutterPercentage' . $centerclass . '">';
-$classprefix = 'Grid-cell FigureImage';
+if($number_of_images > 1 || count($gridcenter) > 0 || count($gridsingle) > 0) {
+	$gridclass = ' Grid Grid--withGutterPercentage';
+	$itemgridclass= 'Grid-cell ';
+}
+echo '<figure class="FigureImage' .$gridclass . $centerclass . '">';
+$itemclassprefix = $itemgridclass . 'FigureImage';
 
-// if($multifigure) {
-// 	echo '<figure class="MultiFigure-item">';
-// 	$classprefix = 'MultiFigure';
-// }
-// else {
-// 	echo '<figure class="Figure-item">';
-// 	$classprefix = 'Figure';
-// }
 
 // ----------------------------------------------------------
 // Loop through images
@@ -121,11 +120,11 @@ foreach($images as $image):
 		// calculate rounded width.
 		$img_width = round(($base_width / $classgridtot) * $classgridpart);
 
-		$class = $classprefix.'-item u-size' . $width . '--' . $breakclass;
+		$class = $itemclassprefix.'-item u-size' . $width . '--' . $breakclass;
 	}
 	else {
 		$img_width = null;
-		$class = $classprefix.'-item';
+		$class = $itemclassprefix.'-item';
 	}
 
 	if($i == 0 && isset($offset)) {

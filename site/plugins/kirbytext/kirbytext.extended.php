@@ -32,11 +32,12 @@
 * 4) (thumb: myimage.jpg width: 400 height: 200 crop: true quality: 50 hd: true alt: Nice alt text!)
 *
 * Figure usage:
-* 1) (figure: myimage.jpg width: 400)
-* 2) (figure: myimage.jpg width: 400 caption: Nice figure caption!)
-* 3) (figure: myimage.jpg width: 400 height: 200 crop: true caption: Nice figure caption!)
-* 4) (figure: myimage.jpg width: 400 height: 200 crop: true hd: true caption: Nice figure caption!)
-* 5) (figure: myimage.jpg width: width: 2of3 center: true caption: A centered image!)
+* 1) (figure: myimage.jpg width: 1of3)
+* 2) (figure: myimage.jpg width: 1of3 caption: Nice figure caption!)
+* 2) (figure: myimage.jpg gridsingle: true caption: Single image in a multifigure grid)
+* 3) (figure: myimage.jpg width: 2of3 height: 200 crop: true caption: Nice figure caption!)
+* 4) (figure: myimage.jpg width: 2of3 height: 200 crop: true hd: true caption: Nice figure caption!)
+* 5) (figure: myimage.jpg width: width: 2of3 gridcenter: true caption: A centered image!)
 *
 * Figure can also be used as a 'Multifigure', usage:
 * 1) (figure: myimage.jpg | myimage2.jpg width: 1of2 | 1of2 breakfrom: compact)
@@ -73,7 +74,7 @@ class kirbytextExtended extends kirbytext {
 		$this->addAttributes('language', 'cite', 'link'); // quote attributes
 		$this->addAttributes('source', 'class', 'type', 'order', 'reverse'); // list attributes
 		$this->addAttributes('crop', 'hd', 'upscale', 'quality', 'alt'); // thumb attributes
-		$this->addAttributes('caption','center', 'container', 'breakfrom','offset'); // figure attributes
+		$this->addAttributes('caption', 'container', 'breakfrom','offset', 'gridcenter', 'gridsingle'); // figure attributes
 		$this->addAttributes('images','margin','per-row','crop-last','container','hd', 'caption'); // imgrid attributes
 		$this->addAttributes('ratio', 'type'); // fluidvideo attributes
 	}
@@ -330,7 +331,8 @@ class kirbytextExtended extends kirbytext {
 			'breakfrom' => null,
 			'alt'       => false,
 			'offset'    => null,
-			'center'    => null,
+			'gridcenter'    => null,
+			'gridsingle'=> null,
 			'caption'   => null,
 		);
 
@@ -373,7 +375,8 @@ class kirbytextExtended extends kirbytext {
 		$container = str::split($options['container']);
 		$breakfrom = str::split($options['breakfrom']);
 		$offset    = str::split($options['offset']);
-		$center    = str::split($options['center']);
+		$gridcenter= str::split($options['gridcenter']);
+		$gridsingle= str::split($options['gridsingle']);
 
 		if($is_multifigure){
 			$widths    = str::split(str_replace(' ', '', $options['width']), '|');
@@ -410,7 +413,8 @@ class kirbytextExtended extends kirbytext {
 				// CSS class specifics
 				'offset'      => $offset,
 				'breakfrom'   => $breakfrom,
-				'center'      => $center,
+				'gridcenter'  => $gridcenter,
+				'gridsingle'  => $gridsingle,
 				// Single figure specific settings
 				'height'      => $height,
 				'crop'        => $crop,
