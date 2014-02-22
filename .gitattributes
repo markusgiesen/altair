@@ -44,14 +44,9 @@ assets/javascript/mobile.scripts.js         export-ignore
 assets/javascript/classes/                  export-ignore
 assets/javascript/dev/                      export-ignore
 assets/javascript/plugins/                  export-ignore
+assets/javascript/polyfills/                export-ignore
 assets/javascript/utils/                    export-ignore
-assets/javascript/vendor/modernizr.dev.js   export-ignore
-assets/javascript/vendor/nwmatcher.min.js   export-ignore
-assets/javascript/vendor/selectivizr.min.js export-ignore
-assets/javascript/vendor/typekit.min.js     export-ignore
-assets/javascript/vendor/webfont.min.js     export-ignore
-assets/javascript/vendor/zepto.data.min.js  export-ignore
-assets/javascript/vendor/zepto.min.js       export-ignore
+assets/javascript/vendor/                   export-ignore
 
 # Stylesheet files and folders
 assets/stylesheets/dev/                     export-ignore
