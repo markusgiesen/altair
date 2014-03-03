@@ -77,3 +77,10 @@ site/config/config.*.xip.io.php
 #site/panel
 
 thumbs/*
+
+
+# ----------------------------------------------------------------------
+# Ignore content folder (separate repository and/or submodule)
+# ----------------------------------------------------------------------
+
+# content

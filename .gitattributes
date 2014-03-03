@@ -13,29 +13,33 @@
 # Exclude files from export (when using 'git archive' or Tower 'export')
 
 # Git
-.gitattributes       export-ignore
 .gitignore           export-ignore
+.gitattributes       export-ignore
+.gitmodules          export-ignore
 
 # Grunt
 Gruntfile.js         export-ignore
 package.json         export-ignore
 .jshintrc            export-ignore
 grunt/               export-ignore
+node_modules/        export-ignore
 
 # Editor
 .editorconfig        export-ignore
 
-# Text files
+# Readme (text files)
 README.txt           export-ignore
 README.html          export-ignore
 README.md            export-ignore
 README.mdown         export-ignore
 README.markdown      export-ignore
 
-# General folders
+# Apache
+# .htaccess            export-ignore # when nginx is used
+
+# Folders
 design/              export-ignore
-node_modules/        export-ignore
-test/                export-ignore
+# content/             export-ignore # when separate repository and/or submodule
 
 # JavaScript files and folders
 assets/javascript/head.scripts.js           export-ignore
