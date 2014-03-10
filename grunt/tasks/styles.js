@@ -20,8 +20,10 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('styles', [], function () {
 		grunt.loadNpmTasks('grunt-contrib-watch');
+		grunt.loadNpmTasks('grunt-notify');
 		grunt.task.run(
 			'sass-concat',
+			'notify:styles',
 			'watch'
 		);
 	});
