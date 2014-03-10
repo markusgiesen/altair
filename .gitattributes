@@ -34,12 +34,12 @@ README.md            export-ignore
 README.mdown         export-ignore
 README.markdown      export-ignore
 
-# Apache
-# .htaccess            export-ignore # when nginx is used
+# Apache (ignore with nginx)
+# .htaccess            export-ignore
 
 # Folders
 design/              export-ignore
-# content/             export-ignore # when separate repository and/or submodule
+# content/             export-ignore
 
 # JavaScript files and folders
 assets/javascript/head.scripts.js           export-ignore
