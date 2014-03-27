@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////
 
 // set gutter in percent
-$grid_gutter_percentage = 0.6;
+$grid_gutter_percentage = 1;
 
 $i = 0;
 

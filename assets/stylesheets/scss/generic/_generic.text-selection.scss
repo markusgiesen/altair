@@ -1,0 +1,14 @@
+/* ==========================================================================
+   Text selection
+   ========================================================================== */
+
+/**
+ * Please no text-shadow on text selection
+ * http://twitter.com/miketaylr/status/12228805301
+ */
+
+::selection {
+	background: rgb-alpha($color-base-black, 80%);
+	color: $color-base-white;
+	text-shadow: none;
+}

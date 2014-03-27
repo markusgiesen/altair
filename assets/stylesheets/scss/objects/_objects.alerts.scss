@@ -1,0 +1,152 @@
+/* ==========================================================================
+   Alert (message (Alert and box)
+   ========================================================================== */
+
+/**
+ * Alert
+ */
+
+.Alert {
+	position: relative;
+	z-index: 100;
+	display: block;
+	overflow: hidden;
+	padding: rhythm(1);
+	width: 100%;
+	border: rem(4px) solid;
+	background: $color-base-white;
+	color: $color-base-black;
+}
+
+/**
+ * Inline alert
+ */
+
+.Alert--inline {
+	border-color: palette(gray, x-light);
+	z-index: auto;
+}
+
+/**
+ * Bar alert
+ */
+
+.Alert--bar {
+	border: none;
+	border-bottom: rem(4px) solid;
+
+	// Animation
+	&.js-alert {
+		transition: transform .64s ease-out;
+
+		@include breakpoint(medium) {
+			position: fixed;
+			transform: translateY(-100%);
+			left: 0;
+		}
+	}
+	&.is-visible {
+		display: block;
+
+		@include breakpoint(medium) {
+			transform: translateY(0);
+		}
+	}
+	&.is-hidden {
+		display: none;
+
+		@include breakpoint(medium) {
+			display: block;
+			transform: translateY(-100%);
+		}
+	}
+}
+
+/**
+ * Model alert
+ */
+
+.Alert--modal {
+	position: fixed; // Better `relative` with lots of content in alert modal!
+	top: 10%;
+	left: 25%;
+	z-index: 9999;
+	padding: rhythm(1);
+	width: 50%;
+
+	.csstransforms & {
+		// See http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	// Animation
+	&.js-alert {
+		opacity: 0;
+		transition: opacity .24s ease-out;
+	}
+	&.is-visible {
+		opacity: 1;
+	}
+	&.is-hidden {
+		opacity: 0;
+		z-index: -1;
+	}
+}
+
+/**
+ * The alert message
+ */
+
+.Alert-message {
+	padding-right: rhythm(1.5);
+
+	a {
+		text-decoration: underline;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+/**
+ * Close alert ('times' text icon)
+ */
+
+.Alert-close {
+	@extend .PseudoLink;
+
+	position: absolute !important;
+	top: rhythm(1);
+	right: rhythm(1);
+	display: block;
+}
+
+/**
+ * Alert functions
+ */
+
+.Alert--success {
+	border-color: palette(green);
+	background-color: palette(green, quiet);
+	color: palette(green);
+}
+
+.Alert--error {
+	border-color: palette(red);
+	background-color: palette(red, quiet);
+	color: palette(red);
+}
+
+.Alert--warning {
+	border-color: palette(tangerine);
+	background-color: palette(tangerine, quiet);
+	color: palette(tangerine);
+}
+
+.Alert--info {
+	border-color: palette(blue);
+	background-color: palette(blue, quiet);
+	color: palette(blue);
+}

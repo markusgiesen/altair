@@ -22,6 +22,7 @@
 .cache
 .com.apple*
 .CVS
+.dropbox
 .DS_Store
 .hg
 .idea

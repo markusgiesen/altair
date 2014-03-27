@@ -1,0 +1,152 @@
+/* ==========================================================================
+   Nav component
+
+   Nav abstraction as per: csswizardry.com/2011/09/the-nav-abstraction
+   ========================================================================== */
+
+/**
+ * Simple stacked (vertical) navigation
+ *
+ * Example HTML:
+ * <nav>
+ *   <ul>
+ *     <li class="Nav-item"><a href="">link item 1</a></li>
+ *     <li class="Nav-item"><a href="">link item 2</a></li>
+ *   </ul>
+ * </nav>
+ */
+
+// .Nav { }
+
+.Nav-item {
+	display: list-item;
+
+	> a {
+		display: block;
+	}
+
+	// @include breakpoint(medium) {
+	// 	&,
+	// 	> a { /* Horizontal nav */
+	// 		display: inline-block;
+	// 	}
+	// }
+}
+
+/**
+ * Responsive horizontal/stacked (main) navigation
+ *
+ * Example HTML:
+ * <div class="NavMain"
+ *   <nav class="NavMain-list">
+ *     <ul>
+ *       <li class="NavMain-item"><a href="">link item 1</a></li>
+ *       <li class="NavMain-item"><a href="">link item 2</a></li>
+ *     </ul>
+ *   </nav>
+ * </div>
+ */
+
+/* Nav main (wrapper) */
+
+.NavMain {
+	position: relative;
+	margin-top: rhythm(1.5);
+	width: 100%;
+	background-color: rgb-alpha($color-base-black, 96%);
+
+	.ctm & {
+		position: fixed;
+		top: 0;
+		display: none;
+		overflow-y: auto;
+		margin-top: 0;
+		height: 100%;
+	}
+	.is-openMainNav & {
+		display: block;
+	}
+}
+
+.is-openMainNav {
+	overflow: hidden;
+}
+
+/* Main nav (list) */
+
+.NavMain-list {
+	padding: rhythm(1.5) $contain-percentage;
+
+	.ctm & {
+		padding-top: rhythm(2);
+		padding-bottom: rhythm(2);
+		min-height: 100%;
+		max-width: 100%;
+	}
+	.is-openMainNav & {}
+}
+
+/* Stacked (vertical) nav */
+
+.NavMain-item {
+	display: list-item;
+	border-bottom: .1em solid palette(gray, m-dark);
+
+	&:last-child {
+		border: none;
+	}
+	> a {
+		display: block;
+		padding-top: rhythm(.5);
+		padding-bottom: rhythm(.5);
+		color: $color-base-white;
+
+		&:hover {
+			color: palette(gray, light);
+		}
+	}
+
+	// @include breakpoint(medium) {
+	// 	margin-bottom: 0;
+	// 	border-bottom: 0;
+
+	// 	&,
+	// 	> a { /* Horizontal nav */
+	// 		display: inline-block;
+	// 		padding-left: em-rhythm(4);
+	// 		padding-right: em-rhythm(4);
+	// 	}
+	// }
+}
+
+/**
+ * Main nav toggle
+ */
+
+.NavMainToggle {
+	@extend %u-isHiddenText;
+
+	position: absolute;
+	top: rhythm(1);
+	right: $contain-percentage;
+	display: block;
+	width: 44pt; /* Touch target sizes: http://j.mp/XJm4uJ */
+	height: 44pt; /* Use padding, or width/height to position icon, so it works nicely on touchdevices */
+	background-position: 50% 50%;
+}
+
+.NavMainToggle--open {
+	@extend %grunt-icon-menu;
+
+	.ctm & {}
+}
+
+.NavMainToggle--close {
+	@extend %grunt-icon-close;
+
+	display: none;
+
+	.ctm & {
+		display: block;
+	}
+}

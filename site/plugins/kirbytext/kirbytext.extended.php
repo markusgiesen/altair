@@ -131,9 +131,9 @@ class kirbytextExtended extends kirbytext {
 		if(!empty($params['cite'])) {
 
 			if(!empty($params['link'])) {
-				$html .= '<footer>&mdash; <cite><a href="' . html($params['link']) . '" class="js-external">' . html($params['cite']) . '</a></cite></footer>';
+				$html .= '<footer><cite><a href="' . html($params['link']) . '" class="js-external">' . html($params['cite']) . '</a></cite></footer>';
 			} else {
-				$html .= '<footer>&mdash; <cite>' . html($params['cite']) . '</cite></footer>';
+				$html .= '<footer><cite>' . html($params['cite']) . '</cite></footer>';
 			}
 
 		}
@@ -162,7 +162,7 @@ class kirbytextExtended extends kirbytext {
 
 		// only add class if one is given
 		if(!empty($params['class'])) {
-			$css = ' class ="'.$params['class'].'"';
+			$css = 'class ="'.$params['class'].'"';
 		}
 
 		// set false values for options that are given the string 'false'
@@ -173,7 +173,6 @@ class kirbytextExtended extends kirbytext {
 		$type = $options['type'];
 
 		// start the html output
-		$html  = '<div'.$css.'>';
 		if($type=='definition'){
 			$listtag = 'dl';
 		}
@@ -184,7 +183,7 @@ class kirbytextExtended extends kirbytext {
 			$listtag = 'ul';
 		}
 
-		$html .= '<'.$listtag.'>';
+		$html = '<'.$listtag.' '.$css.'>';
 
 		// get the kirby url of the yaml file
 		$listurl = $page->files()->find($options['customlist'].'.yaml')->url();
@@ -253,8 +252,6 @@ class kirbytextExtended extends kirbytext {
 
 		$html .= '</'.$listtag.'>';
 
-		$html .= '</div>';
-
 		return $html;
 	}
 
@@ -270,7 +267,7 @@ class kirbytextExtended extends kirbytext {
 	// No hyphen
 	function nohyphen($params) {
 		// Wrap the text in a span
-		$html = '<span class="u-noHyphen">'.$params['nohyphen'].'</span>';
+		$html = '<span class="u-textNoHyphen">'.$params['nohyphen'].'</span>';
 
 		return $html;
 	}

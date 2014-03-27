@@ -7,7 +7,7 @@
 * To add a message from the html template, paste this code into the template:
 *
 * <script>
-    push_message.push({status: 'info', text: 'This notification is sent from the template', timeout : 3000});
+	push_message.push({status: 'info', text: 'This notification is sent from the template', timeout : 3000});
 * </script>
 *
 * Then, pass the array to alerts.init inside main.scripts.js (or maybe mobile.scripts.js) like this:

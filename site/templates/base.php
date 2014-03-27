@@ -4,9 +4,9 @@
 
 	<div class="Container">
 
-		<article role="main">
+		<article role="main" class="Baseline">
 
-			<div class="Copy u-containCopy">
+			<div class="Copy">
 
 				<h1><?php echo smartypants(widont($page->title())); ?></h1>
 
@@ -17,7 +17,7 @@
 
 			<hr>
 
-			<h2 id="buttons" class="u-betaHeading">Button</h2>
+			<h2 id="buttons" class="BetaHeading">Button</h2>
 
 			<p>
 				<input type="submit" name="submit" value="Submit button" class="Button"/>
@@ -38,11 +38,11 @@
 			</p>
 
 			<p><button class="Button Button--primary is-disabled">Button button (primary, disabled)</button></p>
-			<p><a href="#" class="Button is-disabled" role="button">Anchor button (disabled)</a></p>
+			<p class="u-spaceTrailerM"><a href="#" class="Button is-disabled" role="button">Anchor button (disabled)</a></p>
 
 			<hr>
 
-			<h2 id="form" class="u-betaHeading">Form</h2>
+			<h2 id="form" class="BetaHeading">Form</h2>
 
 			<form method="post" action="#" class="Form">
 
@@ -188,11 +188,13 @@
 						</li>
 						<li class="Form-item Form-item--stacked">
 							<label for="comments" class="Form-label">Comments</label>
-							<textarea id="comments" rows="8" cols="26" class="Form-input Form-input--full"></textarea>
+							<textarea id="comments" rows="8" cols="24" class="Form-input Form-input--full"></textarea>
 						</li>
 					</ol>
 
-					<p><small>Uw persoonsgegevens worden alleen gebruikt voor het beantwoorden van de door u gestelde vraag. Ze worden niet langer bewaard dan voor dat doel nodig is. U kunt dit nalezen in onze <a href="#" title="privacyverklaring">privacyverklaring</a>.</small></p>
+					<p class="u-textMaxWidth">
+						<small>Uw persoonsgegevens worden alleen gebruikt voor het beantwoorden van de door u gestelde vraag. Ze worden niet langer bewaard dan voor dat doel nodig is. U kunt dit nalezen in onze <a href="#" title="privacyverklaring">privacyverklaring</a>.</small>
+					</p>
 
 				</fieldset>
 

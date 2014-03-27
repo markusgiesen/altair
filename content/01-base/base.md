@@ -75,7 +75,9 @@ Because we use the widon't kirby extend, and the title contains more than 3 spac
 
 ## Paragraph {#paragraph}
 
-Donec quam felis, ultricies nec, pellentesque eu --- pretium quis, sem. Nulla consequat massa quis enim: (quote: This is an English inline quote). Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. **(nohyphen: These words will not be hyphenated)**. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a...
+Donec quam felis, ultricies nec, pellentesque eu --- pretium quis, sem. Nulla consequat massa quis enim: (quote: This is an English inline quote). Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. **(nohyphen: These words will not be hyphenated)**. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+
+Donec blandit, quam et tempus egestas, nulla enim viverra orci, ac scelerisque massa felis non libero. Praesent eu dui vel arcu consectetur blandit malesuada a augue. In et.
 
 ---
 
@@ -155,23 +157,25 @@ Peer
 
 ## Tags {#tags}
 
-I am [the a tag](http://studiodumbar.com) example
-I am the abbr tag example
-I am <b>the b tag</b> example
-I am <cite>the cite tag</cite> example
-I am <del>the del tag</del> example
-I am <dfn>the dfn tag</dfn> example
-I am *the em tag* example
-I am <i>the i tag</i> example
-I am <ins>the ins tag</ins> example
-I am <mark>the mark tag</mark> example
-I am <small>the small tag</small> example
-I am <span>the span tag</span> example
-I am **the strong tag** example
-I am <sub>the sub tag</sub> example
-I am <sup>the sup tag</sup> example
-I am <var>the var tag</var> example
-I am <q>the q tag <q>inside</q> a q tag</q> example
+I am [the a tag](http://studiodumbar.com) example  
+I am the abbr tag example  
+I am <b>the b tag</b> example  
+I am <cite>the cite tag</cite> example  
+I am <del>the del tag</del> example  
+I am <dfn>the dfn tag</dfn> example  
+I am *the em tag* example  
+I am <i>the i tag</i> example  
+I am <ins>the ins tag</ins> example  
+I am <mark>the mark tag</mark> example  
+I am <small>the small tag</small> example  
+I am <span>the span tag</span> example  
+I am **the strong tag** example  
+I am <sub>the sub tag</sub> example  
+I am <sup>the sup tag</sup> example  
+I am <var>the var tag</var> example  
+I am <q>the q tag <q>inside</q> a q tag</q> example	 
+I am <code>the code tag</code> example  
+I am <kbd>the kbd (or HTML Keyboard Input Element) tag</kbd> example
 
 *[abbr]: abbreviation
 

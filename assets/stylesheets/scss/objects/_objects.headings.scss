@@ -1,0 +1,49 @@
+/* ==========================================================================
+   Heading utilities
+   ========================================================================== */
+
+/**
+ * Shared heading settings
+ */
+
+%u-headingSettings {
+	@extend %u-fontFeatureSettings;
+	@include heading-font(400);
+
+	max-width: rem($heading-max-width);
+	letter-spacing: rem(1px);
+}
+
+/**
+ * Heading sizes (vertical rhythm)
+ */
+
+// .TeraHeading {}
+// .GigaHeading {}
+// .MegaHeading {}
+
+.AlphaHeading {
+	@extend %u-headingSettings;
+	@include rhythm-font($alpha);
+}
+
+.BetaHeading {
+	@extend %u-headingSettings;
+	@include rhythm-font($beta);
+}
+
+.GammaHeading {
+	@extend %u-headingSettings;
+	@include rhythm-font($gamma);
+}
+
+.DeltaHeading {
+	@extend %u-headingSettings;
+	@include rhythm-font($delta);
+}
+
+.EpsilonHeading,
+.ZetaHeading {
+	@extend %u-headingSettings;
+	@include rhythm-font($epsilon);
+}

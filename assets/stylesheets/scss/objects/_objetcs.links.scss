@@ -1,0 +1,39 @@
+/* ==========================================================================
+   Link
+   ========================================================================== */
+
+.Link {
+
+	// Sometimes, particularly on larger projects, it is useful to scope
+	// link styling only to anchors which have 'href' attributes,
+	// therefore the use of :link
+	&:link {
+		// transition: color .24s ease-out;
+		position: relative;
+		color: palette(blue);
+	}
+
+	&:visited {
+		color: palette(blue, light);
+	}
+	&:hover,
+	&:focus {
+		color: palette(blue, dark);
+	}
+	&:active {
+		color: palette(blue, light);
+	}
+}
+
+/* No visited link color (browser history) */
+
+.Link--withNoHistory {
+	&:visited {
+		color: palette(blue);
+	}
+	&:hover,
+	&:focus,
+	&:active {
+		color: inherit;
+	}
+}

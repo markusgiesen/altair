@@ -4,9 +4,9 @@
 
 	<div class="Container">
 
-		<h1 class="u-alphaHeading">Blog</h1>
+		<h1 class="AlphaHeading">Blog</h1>
 
-		<article role="main" class="Copy u-containCopy">
+		<article role="main" class="Copy u-spaceTrailerM">
 
 			<!-- START: MARIJN PAG TRANS DA-SHIT!!! -->
 			<!--
@@ -65,9 +65,9 @@
 
 		</article>
 
-		<?php snippet('nav_sub'); ?>
-
 		<?php snippet('share_page'); ?>
+
+		<?php snippet('nav_sub'); ?>
 
 	</div>
 

@@ -3,8 +3,8 @@ module.exports = function(grunt) {
 	grunt.config('sass', {
 		dist: {
 			options: {
-				require: 'sass-globbing', // require a (or multiple) Ruby library before running Sass
 				style: 'expanded', // nested, compact, compressed or expanded
+				precision: 6, // how many digits of precision to use when outputting decimal numbers (default is 3)
 				sourcemap: false, // enable Source Maps (requires Sass 3.3.0, which can be installed with `gem install sass --pre`)
 				cacheLocation: '.sass-cache', // path to put cached Sass files
 			},
@@ -17,12 +17,11 @@ module.exports = function(grunt) {
 		},
 		debug: {
 			options: {
-				require: 'sass-globbing', // require a (or multiple) Ruby library before running Sass
 				style: 'expanded', // nested, compact, compressed or expanded
-				sourcemap: true, // enable Source Maps (requires Sass 3.3.0, which can be installed with `gem install sass --pre`)
-				trace: false, // show a full traceback on error
-				debugInfo: false, // for FireSass Firebug plugin
-				lineNumbers: false, // indicate corresponding source line
+				precision: 6, // how many digits of precision to use when outputting decimal numbers (default is 3)
+				sourcemap: true, // enable Source Maps (requires Sass 3.3.2+)
+				lineNumbers: false, // emit comments in the generated CSS indicating the corresponding source line.
+				// debugInfo: false, // emit extra information in the generated CSS that can be used by the FireSass Firebug plugin
 				cacheLocation: '.sass-cache', // path to put cached Sass files
 			},
 			files: {

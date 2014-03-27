@@ -4,7 +4,7 @@
 
 	<div class="Container">
 
-		<div role="main" class="Copy u-containCopy">
+		<div role="main" class="Copy u-spaceTrailerM">
 
 			<!-- START: MARIJN PAG TRANS DA-SHIT!!! -->
 			<!--
@@ -64,8 +64,6 @@
 		</div>
 
 		<?php snippet('nav_sub'); ?>
-
-		<?php snippet('share_page'); ?>
 
 	</div>
 

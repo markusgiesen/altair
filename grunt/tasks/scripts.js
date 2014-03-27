@@ -2,8 +2,10 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('scripts-concat', [], function () {
 		grunt.loadNpmTasks('grunt-contrib-concat');
+		grunt.loadNpmTasks('grunt-notify');
 		grunt.task.run(
-			'concat:dist'
+			'concat:dist',
+			'notify:scripts'
 		);
 	});
 
@@ -29,11 +31,9 @@ module.exports = function(grunt) {
 		grunt.loadNpmTasks('grunt-contrib-concat');
 		grunt.loadNpmTasks('grunt-contrib-jshint');
 		grunt.loadNpmTasks('grunt-contrib-watch');
-		grunt.loadNpmTasks('grunt-notify');
 		grunt.task.run(
 			'scripts-concat',
 			'scripts-hint',
-			'notify:scripts',
 			'watch'
 		);
 	});

@@ -8,7 +8,7 @@
 
 	<div class="Container">
 
-		<div role="main" class="Copy">
+		<div role="main" class="Copy u-spaceTrailerM">
 
 			<h1><?php echo smartypants(widont($page->title())); ?></h1>
 

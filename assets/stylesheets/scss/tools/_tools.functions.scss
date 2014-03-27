@@ -1,0 +1,86 @@
+// --------------------------------------------------------------------------
+// Functions
+// --------------------------------------------------------------------------
+
+// Paths (http://j.mp/Tx8lGt)
+// --------------------------------------------------------------------------
+// Set (css) image paths in only one place.
+// Example usage: `background-image: img-url('background.png');`
+
+@function icon-url($filename) {
+	@return url(../img/icons/#{$filename});
+}
+
+@function img-url($filename) {
+	@return url(../img/#{$filename});
+}
+
+@function fontello-url($filename) {
+	@return url(../../webfonts/fontello/#{$filename});
+}
+
+// Vertical rhythm unit
+// --------------------------------------------------------------------------
+// Returns vertical rhythm rem's with a px fallback for oldie.
+// To keep vertical rhythm only use intergers for the `$lines` variable
+// Example usage: `margin-bottom: rhythm(1);
+
+@function rhythm($lines: 1) {
+	@if $oldie {
+		// #{$property}: $base-line-height + 0px;
+		@return $base-line-height * $lines + 0px;
+	}
+	@else {
+		// @return $base-line-height * $lines / $base-font-size + 0rem;
+		@return $base-line-height * $lines / $base-font-size + 0rem;
+	}
+}
+
+// Rem
+// --------------------------------------------------------------------------
+// Return rem value with pixel fallback for oldie.
+// Example usage: `max-width: rem(640px);`
+
+@function rem($px-value) {
+	@if $oldie {
+		@return $px-value + 0px;
+	}
+	@else {
+		@return $px-value / $base-font-size + 0rem;
+	}
+}
+
+// Color palette/gradient/stripes maps (http://j.mp/1h0CLyT)
+// --------------------------------------------------------------------------
+// Example usage 1: `color: palette(blue);` or `color: palette(blue, light);`
+// Example usage 2: @include gradient(left, gradient(saturated));
+// Example usage 3: @include stripes(stripes(rainbow));
+
+@function palette($palette, $tone: base) {
+	@return map-get(map-get($palettes, $palette), $tone);
+}
+
+@function gradient($gradient) {
+	@return map-get($gradients, $gradient);
+}
+
+@function stripes($stripe) {
+	@return map-get($stripes, $stripe);
+}
+
+// RGBa with RGB fallback for oldie; dev dependency: tools.color-schemer.scss
+// --------------------------------------------------------------------------
+// Utilizes the `cs-mix` function of tools.color-schemer.scss
+// The `$color-background` variable is optional and defaults to `$color-base-white`
+// The `$color` variable can be: rgb(20,20,20), rgba(20,20,20,.8) (the `alpha`
+// value rgba is ignored), and #101010.
+// Example usage: `color: rgb-alpha($color-base-black, 80%);`
+
+@function rgb-alpha($color, $percent, $background-color: $color-base-white) {
+	@if $oldie {
+		@return cs-mix($background-color, $color, ($percent / 100%));
+	}
+	@else {
+		@return rgba($color, ($percent / 100%));
+	}
+}

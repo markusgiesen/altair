@@ -11,9 +11,9 @@ module.exports = function(grunt) {
 			options: {
 				svgo: false, // Use svgmin instead! SVGO will be removed in future versions.
 				pngcrush: false,
-				datasvgcss: '_data-svg.scss',
-				datapngcss: '_data-png.scss',
-				urlpngcss: '_fallback-png.scss',
+				datasvgcss: '_grunticon.data-svg.scss',
+				datapngcss: '_grunticon.data-png.scss',
+				urlpngcss: '_grunticon.fallback-png.scss',
 				pngfolder: '../img/',
 				cssprefix: '%grunt-',
 				defaultWidth: '300px',

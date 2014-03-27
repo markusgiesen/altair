@@ -1,0 +1,97 @@
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+/**
+ * Grid
+ *
+ * Responsive grid sizes; dev dependency: tools.grid.scss
+ */
+
+/* Small and up */
+
+@include breakpoint(small) {
+	.u-size1of3--small { width: percentage(1/3) !important; }
+	.u-size2of3--small { width: percentage(2/3) !important; }
+}
+
+/* Compact and up */
+
+@include breakpoint(compact) {
+	.u-size1of2--compact { width: 50% !important; }
+	.u-size1of3--compact { width: percentage(1/3) !important; }
+	.u-size2of3--compact { width: percentage(2/3) !important; }
+}
+
+/* Medium and up */
+
+@include breakpoint(medium) {
+	.u-size1of4--medium { width: 25% !important; }
+}
+
+/* Large and up */
+
+@include breakpoint(medium) {
+	.u-size1of6--medium { width: percentage(1/6) !important; }
+	.u-size2of6--medium { width: percentage(2/6) !important; }
+}
+
+// @include grid-sizes("wide", 6); // .u-size1of6--wide, etc.
+
+/**
+ * Block grid
+ *
+ * Responsive block grid sizes
+ */
+
+// Small and up is the default Layout-cel width of 100%!
+
+/* Compact and up */
+
+@include breakpoint(compact) {
+	// Split layout into 2 columns
+	.BlockGrid--compact2col > .BlockGrid-cell { width: 50% !important; }
+}
+
+/* Medium and up */
+
+@include breakpoint(medium) {
+	// Split into 3 columns, 3:1 ratio
+	.BlockGrid--medium3to1 > .BlockGrid-cell--1,
+	.BlockGrid--medium3to1 > .BlockGrid-cell--3 { width: percentage(2/3) !important; }
+	.BlockGrid--medium3to1 > .BlockGrid-cell--2,
+	.BlockGrid--medium3to1 > .BlockGrid-cell--4 { width: percentage(1/3) !important; }
+}
+
+/* Large and up */
+
+@include breakpoint(large) {
+	// Split into 4 columns
+	.BlockGrid--large4col > .BlockGrid-cell { width: 25% !important; }
+}
+
+/**
+ * Offsets (before)
+ *
+ * Responsive offset sizes; dev dependency: tools.grid.scss
+ */
+
+/* Small and up */
+
+@include breakpoint(small) {
+	.u-before1of3--small { margin-left: percentage(1/3) !important; }
+}
+
+/* Compact and up */
+
+@include breakpoint(compact) {
+	.u-before1of2--compact { margin-left: 50% !important; }
+	.u-before1of3--compact { margin-left: percentage(1/3) !important; }
+	.u-before2of3--compact { margin-left: percentage(2/3) !important; }
+}
+
+/* Reset offset/before */
+
+// @include breakpoint(compact) {
+// 	.u-beforeNone--compact { margin-left: 0 !important; }
+// }
