@@ -102,6 +102,21 @@
 }
 
 /**
+ * Beautiful underlines
+ *
+ * Inspired by article of Marcin Wichary (http://j.mp/1jEBz5g)
+ */
+
+%u-textUnderline {
+	@include gradient(to bottom, gradient(underline));
+
+	border-bottom: none;
+	background-position: 0 1.006em;
+	background-size: 2px 2px;
+	background-repeat: repeat-x;
+}
+
+/**
  * Inline elements
  */
 
@@ -114,8 +129,6 @@
  }
 
 %u-textSmall {
-	// font-size: inherit;
-	// @include rhythm-font($ms-down1);
 	font-size: rhythm-font-size($ms-down1);
 }
 

@@ -130,17 +130,23 @@
 	/* Addresses styling not present in IE7/8/9 */
 
 	mark {
-		background: rgb(248,248,0);
+		background-color: rgb(248,248,0);
 		color: $color-base-black;
 	}
 
 	ins {
-		background: rgb(253,254,206);
+		@extend %u-textUnderline;
+
+		background-color: rgb(253,254,206);
 		color: $color-base-black;
+
+		.no-cssgradient & {
+			break-worder-bottom: 2px solid palette(gray, base);
+		}
 	}
 
 	del {
-		background: rgb(248,0,0);
+		background-color: rgb(248,0,0);
 		color: $color-base-black;
 	}
 
@@ -160,7 +166,7 @@
 	}
 
 	code {
-		background: palette(gray, x-light);
+		background-color: palette(gray, x-light);
 	}
 
 	/* Lists
