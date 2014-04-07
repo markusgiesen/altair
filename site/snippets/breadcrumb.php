@@ -4,10 +4,12 @@
 // ----------------------------------------------------------
 ////////////////////////////////////////////////////////// ?>
 
-<p class="breadcrumb">
+<ul class="Nav Breadcrumb">
 	<?php foreach($site->breadcrumb() as $crumb): ?>
 	<?php if ($crumb->isActive()): ?>
 	<?php continue; else: ?>
-		<a href="<?php echo $crumb->url(); ?>"><?php echo $crumb->title(); ?></a>&nbsp;&nbsp;<span>/</span>&nbsp;
+		<li>
+			<a href="<?php echo $crumb->url(); ?>" class="Link Link--withNoHistory"><?php echo $crumb->title(); ?></a>
+		</li>
 	<?php endif; endforeach; ?>
-</p>
+</ul>
