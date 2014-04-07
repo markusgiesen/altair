@@ -1,8 +1,10 @@
 /* ==========================================================================
-   List component
+   Lists
    ========================================================================== */
 
-/* Basic list */
+/**
+ * Basic list
+ */
 
 .List {
 	margin-left: rhythm(1); // roughly equal to offset the outdent of a two-figure number (1 of 2)
@@ -29,7 +31,9 @@
 	list-style-type: decimal; // e.g. decimal, decimal-leading-zero, lower-roman, upper-roman, lower-greek, lower-latin, upper-latin, lower-alpha, upper-alpha, hebrew, etc.
 }
 
-/* Plain list (no bullets, etc.) */
+/**
+ * Plain list (no bullets, etc.)
+ */
 
 .List--plain {
 	margin-left: 0;
@@ -39,7 +43,9 @@
 	}
 }
 
-/* Link list */
+/**
+ * Link list
+ */
 
 .List--links {
 	margin-top: -.2em; // (negative) top margin must be same as top padding on anchor!
@@ -60,7 +66,9 @@
 	}
 }
 
-/* No visited link color (browser history) */
+/**
+ * No visited link color (browser history)
+ */
 
 .List--withNoHistory {
 	a {
@@ -68,7 +76,9 @@
 	}
 }
 
-/* Have a numbered `ul` without the semantics implied by using an `ol` */
+/**
+ * Have a numbered `ul` without the semantics implied by using an `ol`
+ */
 
 .List--numbered {
 	&,

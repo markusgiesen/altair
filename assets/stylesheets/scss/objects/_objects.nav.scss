@@ -1,11 +1,10 @@
 /* ==========================================================================
-   Nav component
-
-   Nav abstraction as per: csswizardry.com/2011/09/the-nav-abstraction
+   Nav
    ========================================================================== */
 
 /**
- * Simple stacked (vertical) navigation
+ * Simple navigation
+ * When used on an `ol` or `ul`, it throws the list into horizontal mode
  *
  * Example HTML:
  * <nav>
@@ -16,22 +15,47 @@
  * </nav>
  */
 
-// .Nav { }
+.Nav {
+	list-style: none;
 
-.Nav-item {
-	display: list-item;
+	> li {
+		&,
+		> a {
+			display: inline-block;
 
-	> a {
-		display: block;
+			@if $oldie {
+				display: inline;
+				zoom: 1;
+			}
+		}
 	}
-
-	// @include breakpoint(medium) {
-	// 	&,
-	// 	> a { /* Horizontal nav */
-	// 		display: inline-block;
-	// 	}
-	// }
 }
+
+/**
+ * Simple stacked (vertical) navigation
+ *
+ * Example HTML:
+ * <nav>
+ *   <ul class="Nav Nav--stacked">
+ *     <li><a href="">link item 1</a></li>
+ *     <li><a href="">link item 2</a></li>
+ *     <li><a href="">link item 3</a></li>
+ *   </ul>
+ * </nav>
+ */
+
+.Nav--stacked {
+
+	> li {
+		display: list-item;
+
+		> a {
+			display:block;
+		}
+	}
+}
+
+// .Nav-item {}
 
 /**
  * Responsive horizontal/stacked (main) navigation

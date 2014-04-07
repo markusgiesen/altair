@@ -7,16 +7,8 @@
  */
 
 .Breadcrumb {
-	li + li:before {
-		content: "» ";
-		// content:"/ ";
+	> li + li:before {
+		content: "\00BB"; // Add extra space: `content: "\00BB" "\00A0"`;
+		// content: "\002F"; // Path-like structure, GitHub style
 	}
-}
-
-/**
- * Denote the root of the tree
- */
-
-.Breadcrumb-root {
-	font-weight: bold;
 }
