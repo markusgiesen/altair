@@ -4,34 +4,14 @@
 
 	<div class="Container">
 
-		<h1 class="AlphaHeading">Blog</h1>
+		<?php snippet('breadcrumb'); ?>
 
-		<article role="main" class="Copy u-spaceTrailerM">
-
-			<!-- START: MARIJN PAG TRANS DA-SHIT!!! -->
-			<!--
-			<div class="PageTrans js-PageTrans">
-				<div class="PageTrans-content js-PageTransContent">
-					<h1><?php echo smartypants(widont($page->title())); ?></h1>
-
-					<?php if($page->date($format=true)) { ?>
-						<?php snippet('datetime'); ?>
-					<?php } ?>
-
-					<?php echo kirbytext($page->intro()); ?>
-					<?php echo kirbytext($page->text()); ?>
-				</div>
-
-				<div class="PageTrans-target js-PageTransTarget">
-				</div>
-			</div>
-			-->
-			<!-- END: MARIJN PAG TRANS DA-SHIT!!! -->
+		<div role="main" class="Copy u-spaceTrailerM">
 
 			<h1><?php echo smartypants(widont($page->title())); ?></h1>
 
 			<?php if($page->date($format=true)) { ?>
-				<?php snippet('datetime'); ?>
+				<p><small><?php snippet('datetime'); ?></small></p>
 			<?php } ?>
 
 			<?php echo kirbytext($page->intro()); ?>
@@ -63,7 +43,7 @@
 			<?php endif; ?>
 			<!-- end -->
 
-		</article>
+		</div>
 
 		<?php snippet('share_page'); ?>
 
