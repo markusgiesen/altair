@@ -1,4 +1,4 @@
-Title: Altair home
+Title: Home
 
 ----
 
