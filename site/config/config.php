@@ -544,8 +544,8 @@ Twitter API (from v1.1 and up)
 
 */
 
-c::set('twitter.key','TWITTER KEY NOT SET');
-c::set('twitter.secret','TWITTER SECRET NOT SET');
+c::set('twitter.key','gcUvMkSuSNeihlg4QVUDBQ');
+c::set('twitter.secret','Cf8y15CnjnVzOyaBv9VjpzMwqzWZ6XDLTbob3hGkuxc');
 
 
 /*
