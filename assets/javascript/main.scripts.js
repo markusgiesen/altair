@@ -18,7 +18,9 @@ if(cutsthemustard){
 
 		/* Initiate popup event handlers*/
 		var popuplink = document.querySelector('.js-popup');
-		popuplink.addEventListener('click', popup.openWindow, false);
+		if (popuplink !== null) {
+			popuplink.addEventListener('click', popup.openWindow, false);
+		}
 
 		/* Initiate externalize event handlers (settings: http://j.mp/P3xv1i) */
 		// $('.js-external').externalize({relation: 'external nofollow', title: 'Opens link in new window'});
