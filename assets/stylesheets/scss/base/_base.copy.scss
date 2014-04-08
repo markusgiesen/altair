@@ -141,10 +141,6 @@
 
 		background-color: rgb(253,254,206);
 		color: $color-base-black;
-
-		.no-cssgradient & {
-			border-bottom: 2px solid palette(gray, base);
-		}
 	}
 
 	del {
