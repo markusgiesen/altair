@@ -49,9 +49,11 @@ var alerts = {
 		}
 
 		// Close messages when cliked on .bar__dismiss
-		var dismissbutton = document.querySelector('[data-dismiss]');
+		var dismissbutton = document.querySelectorAll('[data-dismiss]');
 		if(dismissbutton !== null) {
-			dismissbutton.addEventListener('click', this.hideNotification, false);
+			Array.prototype.forEach.call(dismissbutton, function(el, i){
+				el.addEventListener('click', alerts.hideNotification, false);
+			});
 		}
 	},
 
@@ -130,8 +132,7 @@ var alerts = {
 	*/
 	hideNotification: function(event) {
 
-		var dismissselector = event.target.getAttribute('data-dismiss');
-		var notification = document.querySelector('.'+dismissselector);
+		var notification = event.target.parentNode;
 
 		// remove and set classes for css animation
 		notification.classList.remove('is-visible');
