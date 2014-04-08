@@ -56,6 +56,7 @@ module.exports = function(grunt) {
 				// Utils -> WATCH OUT: the order of utils is important !!
 					'<%= project.scripts %>/utils/extend.util.js',
 					'<%= project.scripts %>/utils/alerts.util.js',
+					// '<%= project.scripts %>/utils/ajax.util.js',
 				// Classes
 					'<%= project.scripts %>/classes/navmain.class.js',
 					'<%= project.scripts %>/classes/popup.class.js',
@@ -75,6 +76,7 @@ module.exports = function(grunt) {
 				// Utils -> WATCH OUT: the order of utils is important !!
 					'<%= project.scripts %>/utils/extend.util.js',
 					'<%= project.scripts %>/utils/alerts.util.js',
+					// '<%= project.scripts %>/utils/ajax.util.js',
 				// Classes
 					'<%= project.scripts %>/classes/navmain.class.js',
 				// Main
