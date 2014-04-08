@@ -13,7 +13,7 @@
  * Stand alone icon
  * <a href="#" class="IconAlone">
  *   <span aria-hidden="true" class="Icon Icon--facebook"></span>
- *   <span class="u-isHiddenVisually">RSS</span>
+ *   <span class="IconAlone-text">RSS</span>
  * </a>
  */
 
@@ -107,6 +107,12 @@
 	& > .Icon {
 		margin-right: 0;
 	}
+}
+
+/* Only hide text in single icon when @font-face is active (via Modernizr) */
+
+.fontface .IconAlone-text {
+	@extend %u-isHiddenVisually;
 }
 
 /* The icons */
