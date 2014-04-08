@@ -4,14 +4,9 @@
 
 .Masthead {
 	@extend %grunt-logo;
-	@extend %u-containPadding;
 
 	display: block;
 	float: left;
 	width: 144px;
 	height: 48px;
-}
-
-h1.Masthead {
-	@extend %u-isHiddenText;
 }
