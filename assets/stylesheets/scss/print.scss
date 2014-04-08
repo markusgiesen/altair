@@ -97,7 +97,8 @@ tr { page-break-inside: avoid; }
 
 /* Typography and defaults */
 
-.Container {
+.Container,
+.ContentInfo {
 	margin: 20pt 15% auto 10% !important;
 	width: 75% !important;
 }
@@ -121,8 +122,6 @@ h1, h2, h3 {
 
 .Banner,
 .NavMain,
-.SearchResults,
-.ShareLinks,
-.ContentInfo {
+.SearchResults {
 	display: none !important;
 }
