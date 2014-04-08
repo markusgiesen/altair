@@ -143,7 +143,7 @@
 		color: $color-base-black;
 
 		.no-cssgradient & {
-			break-worder-bottom: 2px solid palette(gray, base);
+			border-bottom: 2px solid palette(gray, base);
 		}
 	}
 
