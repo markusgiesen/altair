@@ -127,7 +127,8 @@ if(!isset($prefetch)): $prefetch = false; endif;
 	<!--[if (lt IE 9) & (!IEMobile)]><link rel="stylesheet" href="<?php echo url('assets/stylesheets/' . $env_suffix . '/' . $ie_css . '.css'); ?>"><![endif]-->
 	<link rel="stylesheet" href="<?php echo url('assets/stylesheets/' . $env_suffix . '/' . $print_css . '.css'); ?>" media="print">
 
-	<!-- Head scripts (i.e. Modernizr, Typekit, ReSRC.it)
+	<!-- Head scripts (i.e. Typekit, WebFont Loader, ReSRC.it) -->
+	<!--
 	<script src="<?php echo url('assets/javascript/'. $env_suffix .'/' . $head_js . '.js'); ?>"></script>
 	-->
 
