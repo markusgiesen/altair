@@ -6,32 +6,6 @@
  */
 
 /**
- * Modernizr
- *
- * Enable the use of Modernizr, by adding (out-commenting) the correct line in
- * the Gruntfile.js in the 'head' part of the 'Set js files and order' section.
- *
- * Make sure to use a custom build of Modernizr, only with the necssary
- * tests needed for production environment: http://modernizr.com/download/
- */
-
-// "assets/javascript/vendor/modernizr.dev.js",
-// "assets/javascript/vendor/modernizr.min.js",
-
-/**
- * Cutting the mustard
- *
- * Check if the browser is an 'HTML4 or HTML5' browser.
- * Why? See: http://responsivenews.co.uk/post/18948466399/cutting-the-mustard
- */
-
-var cutsthemustard = false;
-if('querySelector' in document && 'localStorage' in window && 'addEventListener' in window) {
-	document.getElementsByTagName( 'html' )[0].className += ' ' + 'ctm';
-	cutsthemustard = true;
-}
-
-/**
  * Typekit
  *
  * Enable the use of Typekit font, by adding (out-commenting) it in the

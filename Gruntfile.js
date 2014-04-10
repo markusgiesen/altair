@@ -38,13 +38,16 @@ module.exports = function(grunt) {
 		// JS files and order
 		jsfiles: {
 			head: [
-				'<%= project.scripts %>/vendor/modernizr.dev.js',
-				// '<%= project.scripts %>/vendor/modernizr.min.js',
 				// '<%= project.scripts %>/vendor/typekit.min.js',
 				// '<%= project.scripts %>/vendor/webfont.min.js',
 				'<%= project.scripts %>/head.scripts.js',
 			],
 			main: {
+				checks: [
+					'<%= project.scripts %>/vendor/modernizr.dev.js',
+					// '<%= project.scripts %>/vendor/modernizr.min.js',
+					'<%= project.scripts %>/vendor/ctm.js',
+				],
 				polyfills: [
 					'<%= project.scripts %>/polyfills/classlist.js',
 				],
@@ -65,6 +68,11 @@ module.exports = function(grunt) {
 				],
 			},
 			mobile: {
+				checks: [
+					'<%= project.scripts %>/vendor/modernizr.dev.js',
+					// '<%= project.scripts %>/vendor/modernizr.min.js',
+					'<%= project.scripts %>/vendor/ctm.js',
+				],
 				polyfills: [
 					'<%= project.scripts %>/polyfills/classlist.js',
 				],
