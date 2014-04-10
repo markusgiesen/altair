@@ -9,7 +9,7 @@ if(cutsthemustard){
 
 	document.addEventListener('DOMContentLoaded', function() {
 
-		// Add 'js' class to html element, when not using modernizr
+		/* Add 'js' class to html element, when not using modernizr */
 		// var htmlEl = document.querySelector('html');
 		// htmlEl.classList.remove('no-js');
 		// htmlEl.classList.add('js');

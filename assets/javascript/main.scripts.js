@@ -14,7 +14,7 @@ if(cutsthemustard){
 		navMain.init();                           // Init main navigation
 
 		/* Init example of an error in a modal box */
-//		alerts.addMessage({status: 'error', content: 'OMG! Something terrible must have happened here!', timeout: 0, type: 'box-modal'});
+		// alerts.addMessage({status: 'error', content: 'OMG! Something terrible must have happened here!', timeout: 0, type: 'box-modal'});
 
 		/* Initiate popup event handlers*/
 		var popuplink = document.querySelector('.js-popup');
@@ -24,7 +24,7 @@ if(cutsthemustard){
 
 		/* Initiate externalize event handlers (settings: http://j.mp/P3xv1i) */
 		// $('.js-external').externalize({relation: 'external nofollow', title: 'Opens link in new window'});
-//		$('a[href$=".pdf"]').externalize({ title: 'Opens PDF in a new window' });
+		// $('a[href$=".pdf"]').externalize({ title: 'Opens PDF in a new window' });
 
 	}, false);
 
