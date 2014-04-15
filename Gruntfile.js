@@ -49,9 +49,12 @@ module.exports = function(grunt) {
 					'<%= project.scripts %>/vendor/ctm.js',
 				],
 				polyfills: [
+					'<%= project.scripts %>/vendor/underscore.js',
 					'<%= project.scripts %>/polyfills/classlist.js',
 				],
 				plugins: [
+					'<%= project.scripts %>/plugins/echo.js',
+					'<%= project.scripts %>/plugins/instantclick.js',
 					'<%= project.scripts %>/plugins/transitionend.js',
 					'<%= project.scripts %>/plugins/smoothscroll.js',
 				],
@@ -74,9 +77,12 @@ module.exports = function(grunt) {
 					'<%= project.scripts %>/vendor/ctm.js',
 				],
 				polyfills: [
+					'<%= project.scripts %>/vendor/underscore.js',
 					'<%= project.scripts %>/polyfills/classlist.js',
 				],
 				plugins: [
+					'<%= project.scripts %>/plugins/echo.js',
+					'<%= project.scripts %>/plugins/instantclick.js',
 					'<%= project.scripts %>/plugins/transitionend.js',
 					'<%= project.scripts %>/plugins/smoothscroll.js',
 				],

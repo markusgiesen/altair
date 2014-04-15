@@ -18,5 +18,14 @@ if(cutsthemustard){
 		alerts.init(push_message);                // Init alerts
 		navMain.init();                           // Init main navigation
 
+		/* Instant click */
+//		InstantClick.init(50,true);
+
+		/* Echo Lazyloading */
+//		Echo.init({
+//			offset: '0',
+//			throttle: '50'
+//		});
+
 	}, false);
 }
