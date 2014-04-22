@@ -48,7 +48,7 @@
  */
 
 .List--links {
-	margin-top: -.2em; // (negative) top margin must be same as top padding on anchor!
+	margin-top: -.4em; // (negative) top margin must be same as top padding on anchor!
 	margin-left: 0;
 
 	li {
@@ -61,7 +61,7 @@
 		@extend .Link;
 
 		display: inline-block;
-		padding: .2em .1em; // top padding must be same as top margin on complete list!
+		padding-top: .4em; // top padding must be same as top margin on complete list! don't use bottom padding together with %u-textUnderline extend only class (used by .Link)!
 		text-decoration: none;
 	}
 }

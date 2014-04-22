@@ -8,9 +8,11 @@
 	// link styling only to anchors which have 'href' attributes,
 	// therefore the use of :link
 	&:link {
-		// transition: color .24s ease-out;
+		@extend %u-textUnderline;
+
 		position: relative;
 		color: palette(blue);
+		transition: color .24s ease-out;
 	}
 
 	&:visited {

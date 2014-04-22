@@ -51,15 +51,16 @@ $palettes: (
 		loud:    shade($color-base-gray, 96%),
 		light:   tint($color-base-gray, 32%),
 		m-light: tint($color-base-gray, 56%),
-		x-light: tint($color-base-gray, 80%),
+		x-light: tint($color-base-gray, 88%),
 		dark:    shade($color-base-gray, 32%),
 		m-dark:  shade($color-base-gray, 56%),
-		x-dark:  shade($color-base-gray, 80%),
+		x-dark:  shade($color-base-gray, 88%),
 	),
 	blue: (
 		base:    $color-base-blue,
 		quiet:   tint($color-base-blue, 88%),
 		light:   tint($color-base-blue, 32%),
+		m-light:   tint($color-base-blue, 56%),
 		dark:    shade($color-base-blue, 32%),
 	),
 	green: (
@@ -71,26 +72,26 @@ $palettes: (
 	red: (
 		base:    $color-base-red,
 		quiet:   tint($color-base-red, 88%),
-		light:   tint($color-base-red, 24%),
-		dark:    shade($color-base-red, 24%),
+		light:   tint($color-base-red, 32%),
+		dark:    shade($color-base-red, 32%),
 	),
 	yellow: (
 		base:    $color-base-yellow,
 		quiet:   tint($color-base-yellow, 88%),
-		light:   tint($color-base-yellow, 24%),
-		dark:    shade($color-base-yellow, 24%),
+		light:   tint($color-base-yellow, 32%),
+		dark:    shade($color-base-yellow, 32%),
 	),
 	orange: (
 		base:    $color-base-orange,
 		quiet:   tint($color-base-orange, 88%),
-		light:   tint($color-base-orange, 24%),
-		dark:    shade($color-base-orange, 24%),
+		light:   tint($color-base-orange, 32%),
+		dark:    shade($color-base-orange, 32%),
 	),
 	tangerine: (
 		base:    $color-base-tangerine,
 		quiet:   tint($color-base-tangerine, 88%),
-		light:   tint($color-base-tangerine, 24%),
-		dark:    shade($color-base-tangerine, 24%),
+		light:   tint($color-base-tangerine, 32%),
+		dark:    shade($color-base-tangerine, 32%),
 	),
 );
 
@@ -99,19 +100,19 @@ $palettes: (
 
 $gradients: (
 	underline: (
-		$color-base-white 50%,
-		palette(gray, base) 50%,
+		$color-base-white 56%,
+		palette(gray, base) 56%,
 	),
 	saturated: (
 		$color-base-red 0%,                                                     // Gradient color + color stop 1
 		$color-base-blue 32%,                                                   // Gradient color + color stop 2
-		$color-base-yellow 44%,                                                 // etc.
+		$color-base-yellow 48%,                                                 // etc.
 		$color-base-green 100%,
 	),
 	pastel: (
 		palette(red, quiet) 0%,                                                 // Gradient color + color stop 1
 		palette(blue, quiet) 32%,                                               // Gradient color + color stop 2
-		palette(yellow, quiet) 44%,                                             // etc.
+		palette(yellow, quiet) 48%,                                             // etc.
 		palette(green, quiet) 100%,
 	),
 );

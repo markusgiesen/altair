@@ -137,7 +137,7 @@
 	}
 
 	ins {
-		@extend %u-textUnderline;
+		@include underline(palette(gray, m-light), rgb(253,254,206));
 
 		background-color: rgb(253,254,206);
 		color: $color-base-black;
