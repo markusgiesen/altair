@@ -88,7 +88,7 @@
 	}
 
 	@include device-pixel-ratio(1.5) {
-		background-image: linear-gradient(bottom, transparent, transparent $offset, $color $offset, $color $offset + .5, transparent $offset + $weight); // Apply .5 pixel (1 retina-pixel) for HiDPI/Retina screens!
+		background-image: linear-gradient(bottom, transparent, transparent $offset * .5, $color $offset * .5, $color ($offset + $weight) * .5, transparent ($offset + $weight) * .5); // Apply .5 pixel (1 retina-pixel) for HiDPI/Retina screens!
 	}
 }
 
