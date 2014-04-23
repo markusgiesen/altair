@@ -99,10 +99,6 @@ $palettes: (
 // --------------------------------------------------------------------------
 
 $gradients: (
-	underline: (
-		$color-base-white 56%,
-		palette(gray, base) 56%,
-	),
 	saturated: (
 		$color-base-red 0%,                                                     // Gradient color + color stop 1
 		$color-base-blue 32%,                                                   // Gradient color + color stop 2
