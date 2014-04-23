@@ -28,11 +28,11 @@
 @function rhythm($lines: 1) {
 	@if $oldie {
 		// #{$property}: $base-line-height + 0px;
-		@return $base-line-height * $lines + 0px;
+		@return $base-line-height * $lines * $base-font-size + 0px;
 	}
 	@else {
 		// @return $base-line-height * $lines / $base-font-size + 0rem;
-		@return $base-line-height * $lines / $base-font-size + 0rem;
+		@return $base-line-height * $lines + 0rem;
 	}
 }
 

@@ -8,9 +8,10 @@
  */
 
 %Ruler {
-	margin-bottom: rhythm(1);
+	margin-top: - rem(2px);
+	padding-bottom: rhythm(1);
 	border: 0;
-	border-top: rem(2px) solid palette(gray, m-light);
+	border-top: rem(2px) solid $color-base-black;
 }
 
 /* Dotted rules */
@@ -55,5 +56,4 @@
 
 hr {
 	@extend %Ruler;
-	@extend %Ruler--dotted;
 }

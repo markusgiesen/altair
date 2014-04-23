@@ -8,7 +8,7 @@
 // --------------------------------------------------------------------------
 
 $base-font-size:                16px !default;
-$base-line-height:              25px !default;
+$base-line-height:              1.5 !default;
 $oldie:                         false !default;
 
 // Font size
@@ -32,7 +32,9 @@ $oldie:                         false !default;
 @function rhythm-line-height($size: $base-font-size, $lines: 1, $base-line-height: $base-line-height) {
 	// Return unitless `line-height` for a given font-size, while respecting
 	// the vertical rhythm (as long as `$lines` is an integer).
-	@return $lines * (ceil($size / $base-line-height) * ($base-line-height / $size));
+	// @return $lines * (ceil($size / $base-line-height) * ($base-line-height / $size));
+	// @return ceil($size / $base-line-height) * $base-line-height * $lines;
+	@return ceil($size / ($base-line-height * $base-font-size)) * ($base-line-height * $base-font-size / $size) * $lines;
 }
 
 // Base rhythm font
@@ -58,7 +60,7 @@ $oldie:                         false !default;
 			@if $count == 1 {
 				// Output font-size and line-height
 				font-size: $size;
-				line-height: $base-line-height / $base-font-size;
+				line-height: $base-line-height;
 			}
 			// For every other declared `$breakpoint`...
 			@else {
@@ -122,6 +124,6 @@ $oldie:                         false !default;
 		@if $trailer != 0 { margin-bottom: rhythm($trailer); }
 		@if $leader != 0 { padding-top: rhythm($leader); }
 		font-size: rhythm-font-size($size);
-		line-height: rhythm-line-height($lines);
+		line-height: rhythm-line-height($size, $lines);
 	}
 }

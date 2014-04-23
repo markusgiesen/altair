@@ -34,13 +34,6 @@ Text:
 
 ## Headings {#headings}
 
-# Heading h1
-## Heading h2
-### Heading h3
-#### Heading h4
-##### Heading h5
-###### Heading h6
-
 # Heading h1 duis volutpat id metus quis semper
 
 Praesent eu leo eget odio fermentum consequat a sit amet mi. Suspendisse sit amet tellus vel odio scelerisque euismod. Vestibulum nisl ligula, commodo sit.
