@@ -72,26 +72,6 @@
 	&:placeholder { @content; }
 }
 
-// Underline
-// --------------------------------------------------------------------------
-// A more beautiful (and one retina-pixel) underlining
-// Based on: http://j.mp/1jEBz5g and http://codepen.io/ghepting/pen/tLnHK/
-
-@mixin underline($color: $link-underline-color, $underline-background-color: $background-color, $weight: 1px, $offset: 0px) {
-	position: relative;
-	background-image: linear-gradient(bottom, transparent, transparent $offset, $color $offset, $color $offset + $weight, transparent $offset + $weight); // The more beautiful underlining!
-	text-decoration: none;
-	text-shadow: -1px -1px 0 $underline-background-color, 1px -1px 0 $underline-background-color, -1px 1px 0 $underline-background-color, 1px 1px 0 $underline-background-color; // Breaks underlining on descenders!
-
-	.no-cssgradient & {
-		text-decoration: udnerline !important;
-	}
-
-	@include device-pixel-ratio(1.5) {
-		background-image: linear-gradient(bottom, transparent, transparent $offset * .5, $color $offset * .5, $color ($offset + $weight) * .5, transparent ($offset + $weight) * .5); // Apply .5 pixel (1 retina-pixel) for HiDPI/Retina screens!
-	}
-}
-
 // Background clip for text
 // --------------------------------------------------------------------------
 // Based on Divya's pure CSS solution: http://j.mp/19BOwaF
