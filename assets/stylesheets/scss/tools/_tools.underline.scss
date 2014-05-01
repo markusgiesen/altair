@@ -13,7 +13,7 @@ $offset: 0px !default;
 
 @mixin underline($color, $text-shadow-color: $background-color, $weight: $weight, $offset: $offset) {
 	position: relative;
-	background-image: linear-gradient(bottom, transparent, transparent $offset, $color $offset, $color $offset + $weight, transparent $offset + $weight); // The more beautiful underlining!
+	background-image: linear-gradient(to top, transparent, transparent $offset, $color $offset, $color $offset + $weight, transparent $offset + $weight); // The more beautiful underlining!
 	text-decoration: none;
 	text-shadow: -1px -1px 0 $text-shadow-color, 1px -1px 0 $text-shadow-color, -1px 1px 0 $text-shadow-color, 1px 1px 0 $text-shadow-color; // Breaks underlining on descenders!
 
@@ -22,6 +22,6 @@ $offset: 0px !default;
 	}
 
 	@include device-pixel-ratio(1.5) {
-		background-image: linear-gradient(bottom, transparent, transparent $offset * .5, $color $offset * .5, $color ($offset + $weight) * .5, transparent ($offset + $weight) * .5); // Apply .5 pixel (1 retina-pixel) for HiDPI/Retina screens!
+		background-image: linear-gradient(to top, transparent, transparent $offset * .5, $color $offset * .5, $color ($offset + $weight) * .5, transparent ($offset + $weight) * .5); // Apply .5 pixel (1 retina-pixel) for HiDPI/Retina screens!
 	}
 }
