@@ -2,28 +2,30 @@
    Links
    ========================================================================== */
 
+.Copy a,
+.List--links a,
 .Link {
 
 	// Sometimes, particularly on larger projects, it is useful to scope
 	// link styling only to anchors which have 'href' attributes,
 	// therefore the use of :link
 	&:link {
-		@extend %u-textUnderline;
+		@include underline($color-blue-m-light);
 
 		position: relative;
-		color: palette(blue);
+		color: $color-base-blue;
 		transition: color .24s ease-out;
 	}
 
 	&:visited {
-		color: palette(blue, light);
+		color: $color-blue-light;
 	}
 	&:hover,
 	&:focus {
-		color: palette(blue, dark);
+		color: $color-blue-dark;
 	}
 	&:active {
-		color: palette(blue, light);
+		color: $color-blue-light;
 	}
 }
 
@@ -31,7 +33,7 @@
 
 .Link--withNoHistory {
 	&:visited {
-		color: palette(blue);
+		color: $color-base-blue;
 	}
 	&:hover,
 	&:focus,

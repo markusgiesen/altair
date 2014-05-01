@@ -6,7 +6,7 @@
  * Quote (run-in quote)
  */
 
- %Quote {
+.Quote {
 	quotes: none;
 
 	// &:before,
@@ -45,12 +45,14 @@
  * or at least eight lines.
  */
 
- %Blockquote {
-	margin-top: rhythm(1);
-	margin-bottom: rhythm(1);
-	padding-left: (rhythm(1) / 2);
-	border-left: (rhythm(1) / 4) solid palette(gray, m-light);
-	color: palette(gray);
+.Copy blockquote,
+.Blockquote {
+	@include rhythm(margin-top);
+	@include rhythm(margin-bottom);
+	@include rhythm(padding-left, .5);
+	@include rhythm(border-left, .25 solid $color-gray-m-light);
+
+	color: $color-base-gray;
 	quotes: none;
 
 	p {
@@ -58,28 +60,28 @@
 
 		display: inline;
 		margin: 0;
-		color: palette(gray, x-dark);
+		color: $color-gray-x-dark;
 		// text-transform: uppercase;
 		font-weight: 600;
 		font-family: $sans-font;
 
 		&:before,
 		&:after {
-			color: palette(gray, dark);
+			color: $color-gray-dark;
 			-webkit-font-smoothing: antialiased;
 		}
 	}
 
 	footer {
 		cite {
-		  &:before {
-			content: " — ";
-		  }
+			&:before {
+				content: " — ";
+			}
 		}
-	  }
+	}
 
 	@include breakpoint(medium) {
-		margin-left: -(rhythm(1) * 3 / 4);
+		@include rhythm(margin-left, -.75);
 	}
 }
 

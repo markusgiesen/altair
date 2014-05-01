@@ -17,13 +17,13 @@ module.exports = function(grunt) {
 			src: '<%= project.styles_dev %>/print.concat.css',
 			dest: '<%= project.styles_dev %>/print.dev.css',
 		},
-		oldie: {
-			options: {
-				browsers: ['ie 8', 'ie 9'],
-			},
-			src: '<%= project.styles_dev %>/ie.concat.css',
-			dest: '<%= project.styles_dev %>/ie.dev.css',
-		},
+		// oldie: {
+		// 	options: {
+		// 		browsers: ['ie 8', 'ie 9'],
+		// 	},
+		// 	src: '<%= project.styles_dev %>/ie.concat.css',
+		// 	dest: '<%= project.styles_dev %>/ie.dev.css',
+		// },
 	});
 
 };

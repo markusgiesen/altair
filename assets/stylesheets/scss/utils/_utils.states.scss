@@ -73,9 +73,6 @@
 		border: 0;
 		overflow: hidden;
 
-		@if $oldie {
-			*text-indent: -999em;
-		}
 		&:before {
 			content: "";
 			display: block;

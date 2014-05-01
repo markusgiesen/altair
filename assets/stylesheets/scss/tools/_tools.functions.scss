@@ -19,66 +19,39 @@
 	@return url(../../webfonts/fontello/#{$filename});
 }
 
-// Vertical rhythm unit
+// Rhythm value
 // --------------------------------------------------------------------------
-// Returns vertical rhythm rem's with a px fallback for oldie.
-// To keep vertical rhythm only use intergers for the `$lines` variable
-// Example usage: `margin-bottom: rhythm(1);
 
-@function rhythm($lines: 1) {
-	@if $oldie {
-		@return $base-line-height * $base-font-size * $lines + 0px;
+@function rhythm($lines: 1, $pixels: false) {
+
+	// If number of lines is zero, output unitless
+	@if $lines == 0 {
+		@return 0;
 	}
+
+	// Output respectivly px and rem unit values
 	@else {
-		@return $base-line-height * $lines + 0rem;
+		@if $pixels {
+			@return $base-line-height * $base-font-size * $lines + 0px;
+		}
+		@else {
+			@return $base-line-height * $lines + 0rem;
+		}
 	}
 }
 
-// Rem
+// Rhythm font size value
 // --------------------------------------------------------------------------
-// Return rem value with pixel fallback for oldie.
-// Example usage: `max-width: rem(640px);`
 
-@function rem($px-value) {
-	@if $oldie {
-		@return $px-value + 0px;
-	}
-	@else {
-		@return $px-value / $base-font-size + 0rem;
-	}
+@function rhythm-font-size($size: $base-font-size, $pixels: false) {
+	@return $size / $base-font-size + 0rem;
 }
 
-// Color palette/gradient/stripes maps (http://j.mp/1h0CLyT)
+// Rhythm font size value
 // --------------------------------------------------------------------------
-// Example usage 1: `color: palette(blue);` or `color: palette(blue, light);`
-// Example usage 2: @include gradient(left, gradient(saturated));
-// Example usage 3: @include stripes(stripes(rainbow));
 
-@function palette($palette, $tone: base) {
-	@return map-get(map-get($palettes, $palette), $tone);
-}
-
-@function gradient($gradient) {
-	@return map-get($gradients, $gradient);
-}
-
-@function stripes($stripe) {
-	@return map-get($stripes, $stripe);
-}
-
-// RGBa with RGB fallback for oldie; dev dependency: tools.color-schemer.scss
-// --------------------------------------------------------------------------
-// Utilizes the `cs-mix` function of tools.color-schemer.scss
-// The `$color-background` variable is optional and defaults to `$color-base-white`
-// The `$color` variable can be: rgb(20,20,20), rgba(20,20,20,.8) (the `alpha`
-// value rgba is ignored), and #101010.
-// Example usage: `color: rgb-alpha($color-base-black, 80%);`
-
-@function rgb-alpha($color, $percent, $background-color: $color-base-white) {
-	@if $oldie {
-		@return cs-mix($background-color, $color, ($percent / 100%));
-	}
-	@else {
-		@return rgba($color, ($percent / 100%));
-	}
+@function rhythm-line-height($size: $base-font-size, $lines: 1, $base-line-height: $base-line-height) {
+	// Return unitless `line-height` for a given font-size, while respecting
+	// the vertical rhythm (as long as `$lines` is an integer).
+	@return (ceil($size / ($base-line-height * $base-font-size)) * ($base-line-height * $base-font-size) * $lines) / $size;
 }

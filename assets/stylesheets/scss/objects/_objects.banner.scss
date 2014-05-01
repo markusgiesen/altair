@@ -3,7 +3,10 @@
    ========================================================================== */
 
 .Banner {
+	@include rhythm(padding-top);
+	@include rhythm(padding-bottom);
 	@include u-cf();
 
-	padding: rhythm(2) $contain-percentage;
+	padding-right: $contain-percentage;
+	padding-left: $contain-percentage;
 }

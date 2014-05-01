@@ -16,15 +16,15 @@
  *
  * Example HTML:
  * <div class="Grid">
- *     <div class="Grid__cell u-size1of2--compact"></div>
- *     <div class="Grid__cell u-size1of2--compact"></div>
- *     <div class="Grid__cell u-size1of2--compact"></div>
- *     <div class="Grid__cell u-size1of2--compact"></div>
+ *   <div class="Grid__cell u-size1of2--compact"></div>
+ *   <div class="Grid__cell u-size1of2--compact"></div>
+ *   <div class="Grid__cell u-size1of2--compact"></div>
+ *   <div class="Grid__cell u-size1of2--compact"></div>
  * </div>
  *
  * <div class="Grid Grid--center">
- *     <div class="Grid__cell u-size1of2"></div>
- *     <div class="Grid__cell u-size2of3"></div>
+ *   <div class="Grid__cell u-size1of2"></div>
+ *   <div class="Grid__cell u-size2of3"></div>
  * </div>
  */
 
@@ -114,8 +114,8 @@
  * 2. Make cells full-width by default.
  * 3. Controls vertical positioning of units.
  * 4. Keeps content correctly aligned with the grid direction.
- * 5. Controls vertical positioning of units.
- * 6. Reset font size change made in `Grid`.
+ * 5. Reset font size change made in `Grid`.
+ * 6. Plus reset font size change made in `Grid` to pixels for `no-ctm` browsers.
  */
 
 .Grid-cell {
@@ -125,6 +125,7 @@
 	width: 100%; /* 2 */
 	vertical-align: top; /* 3 */
 	text-align: left; /* 4 */
+	font-size: $base-font-size; /* 6 */
 	font-size: 1rem; /* 5 */
 }
 
@@ -147,22 +148,12 @@
 /* Em gutter */
 
 .Grid--withGutter {
-	margin-right: rhythm(-.5); /* Removes the `gutter` right */
-	margin-left: rhythm(-.5); /* Removes the `gutter` right */
-
-	@if $oldie {
-		margin-right: -.5 * $grid-gutter-percentage; /* Removes the `gutter` right */
-		margin-left: -.5 * $grid-gutter-percentage; /* Removes the `gutter` right */
-	}
+	@include rhythm(margin-right, -.5); /* Removes the `gutter` right */
+	@include rhythm(margin-left, -.5); /* Removes the `gutter` right */
 
 	& > .Grid-cell {
-		padding-right: rhythm(.5);
-		padding-left: rhythm(.5);
-
-		@if $oldie {
-			padding-right: .5 * $grid-gutter-percentage;
-			padding-left: .5 * $grid-gutter-percentage;
-		}
+		@include rhythm(padding-right, .5);
+		@include rhythm(padding-left, .5);
 	}
 }
 

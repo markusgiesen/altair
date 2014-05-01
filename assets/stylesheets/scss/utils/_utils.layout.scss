@@ -46,10 +46,6 @@
 	&:after {
 		clear: both;
 	}
-
-	@if $oldie {
-		zoom: 1;
-	}
 }
 
 %u-cf {
@@ -71,10 +67,6 @@
 
 	@if $min-height != '' {
 		min-height: $min-height;
-	}
-	@if $oldie {
-		display: inline;
-		zoom: 1;
 	}
 }
 
@@ -133,13 +125,15 @@
  */
 
 %u-objLeft {
+	@include rhythm(margin-right);
+
 	float: left !important;
-	margin-right: rhythm(1);
 }
 
 %u-objRight {
+	@include rhythm(margin-left);
+
 	float: right !important;
-	margin-left: rhythm(1);
 }
 
 /**

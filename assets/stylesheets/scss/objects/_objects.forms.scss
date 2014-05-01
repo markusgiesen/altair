@@ -3,13 +3,13 @@
    ========================================================================== */
 
 .Form {
-	margin-bottom: rhythm(1);
+	@include rhythm(margin-bottom);
 }
 
 /* Fieldset */
 
 .Form fieldset {
-	margin: 0 0 rhythm(1);
+	@include rhythm(margin, 0 0 1);
 	padding: 0;
 	border: 0;
 }
@@ -53,12 +53,13 @@
 }
 
 .Form--inline .Form-item {
+	@include rhythm(margin-right);
+
 	display: inline-block;
-	margin-right: rhythm(1);
 }
 
 .Form-item {
-	margin-bottom: rhythm(1);
+	@include rhythm(margin-bottom);
 }
 
 .Form-label {
@@ -66,22 +67,22 @@
 }
 
 .Form-item--stacked .Form-label {
-	margin-bottom: rhythm(.5);
+	@include rhythm(margin-bottom, .5);
+
 	display: block;
 }
 
 .Form-input {
-	@include input-placeholder { color: palette(gray, x-light); }
-
-	padding: rhythm(.25); /* To keep vertical rhythm it should be smaller than rhythm podding of `.Form-label` */
-	// outline: none; /* Disbale default browser focus outline (make sure to add custom focus styling) */
-	border: rem(2px) solid $color-base-black;
-	background-color: palette(gray, quiet);
-	box-shadow: inset 1px 1px 2px 0 palette(gray, light);
+	@include input-placeholder { color: $color-gray-x-light; }
+	@include rhythm(padding, .25); // To keep vertical rhythm it should be smaller than rhythm podding of `.Form-label`
+	// outline: none; // Disbale default browser focus outline (make sure to add custom focus styling)
+	border: .125em solid $color-base-black;
+	background-color: $color-gray-quiet;
+	box-shadow: inset 1px 1px 2px 0 $color-gray-light;
 	-webkit-appearance: none; /* Reset iOS inset schaodw on inputs */
 
 	&:focus {
-		border-color: palette(gray, x-light);
+		border-color: $color-gray-x-light;
 		background-color: $color-base-white;
 	}
 }
@@ -135,10 +136,10 @@
 }
 
 .Form .is-error {
-	color: palette(red);
+	color: $color-base-red;
 
 	.Form-input {
-		border: rem(2px) solid palette(red);
+		border: .125em solid $color-base-red;
 	}
 }
 
@@ -169,8 +170,9 @@
 /* Horizontal */
 
 .InputSet--horizontal > li {
+	@include rhythm(margin-right);
+
 	display: inline-block;
-	margin-right: rhythm(1);
 
 	&:last-child {
 		margin-right: 0;

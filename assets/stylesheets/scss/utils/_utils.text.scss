@@ -8,7 +8,7 @@
 
 .u-textMaxWidth,
 %u-textMaxWidth {
-	max-width: rem($text-max-width);
+	max-width: $text-max-width;
 }
 
 /**
@@ -44,10 +44,8 @@
  * word breaking (%u-textBreak).
  */
 
-%u-textJustify {
-	text-align: inherit;
-
-	@include breakpoint(medium) {
+@include breakpoint(medium) {
+	%u-textJustify {
 		text-align: justify !important;
 	}
 }
@@ -99,14 +97,6 @@
 %u-textInheritAllColor:focus,
 %u-textInheritAllColor:active {
 	color: inherit !important;
-}
-
-/**
- * Text underlining
- */
-
-%u-textUnderline {
-	@include underline(palette(blue, m-light));
 }
 
 /**

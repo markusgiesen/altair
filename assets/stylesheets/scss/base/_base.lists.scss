@@ -6,29 +6,37 @@
  * Basic list
  */
 
+.Copy ul,
+.Copy ol,
 .List {
-	margin-left: rhythm(1); // roughly equal to offset the outdent of a two-figure number (1 of 2)
+	@include rhythm(margin-left); // roughly equal to offset the outdent of a two-figure number (1 of 2)
 
 	li {
 		display: list-item;
 
-		> ul,
-		> ol {
-			margin-left: rhythm(1);
+		& > ul,
+		& > ol {
+			@include rhythm(margin-left);
 		}
 	}
 
 	@include breakpoint(medium) {
 		margin-left: 0; // reset left margin from medium and up
 	}
- }
-
- .List > li {
-	list-style-type: square; // e.g. disc, circle, square
 }
 
- ol.List > li {
-	list-style-type: decimal; // e.g. decimal, decimal-leading-zero, lower-roman, upper-roman, lower-greek, lower-latin, upper-latin, lower-alpha, upper-alpha, hebrew, etc.
+.Copy ul,
+.List {
+	> li {
+		list-style-type: square; // e.g. disc, circle, square
+	}
+}
+
+.Copy ol,
+ol.List {
+	> li {
+		list-style-type: decimal; // e.g. decimal, decimal-leading-zero, lower-roman, upper-roman, lower-greek, lower-latin, upper-latin, lower-alpha, upper-alpha, hebrew, etc.
+	}
 }
 
 /**
@@ -58,9 +66,9 @@
 		padding-left: 0;
 		list-style: none;
 	}
-	a {
-		@extend .Link; // don't use top/bottom padding together with %u-textUnderline extend only class (used by .Link) and/or block/inline-block!
-	}
+	// a {
+	// 	@extend .Link; // `.List--links a` directly added to work nicely with libsass
+	// }
 }
 
 /**
@@ -86,7 +94,7 @@
 	}
 	&.List--plain,
 	&.List--links {
-		margin-left: rhythm(1); // roughly equal to offset the outdent of a two-figure number (1 of 2)
+		@include rhythm(margin-left); // roughly equal to offset the outdent of a two-figure number (1 of 2)
 
 		@include breakpoint(medium) {
 			margin-left: 0; // reset left margin from medium and up

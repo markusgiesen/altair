@@ -1,19 +1,17 @@
 // --------------------------------------------------------------------------
-// Undertline mixins
+// Undertline (http://j.mp/1jEBz5g, http://codepen.io/ghepting/pen/tLnHK/)
 // --------------------------------------------------------------------------
 
 // Defaults
 // --------------------------------------------------------------------------
 
-$line-weight:                   1px !default;
-$line-offset:                   0px !default;
+$weight: 1px !default;
+$offset: 0px !default;
 
-// Underline
+// (One retina-pixel) underlining
 // --------------------------------------------------------------------------
-// A more beautiful (and one retina-pixel) underlining
-// Based on: http://j.mp/1jEBz5g and http://codepen.io/ghepting/pen/tLnHK/
 
-@mixin underline($color, $text-shadow-color: $background-color, $weight: $line-weight, $offset: $line-offset) {
+@mixin underline($color, $text-shadow-color: $background-color, $weight: $weight, $offset: $offset) {
 	position: relative;
 	background-image: linear-gradient(bottom, transparent, transparent $offset, $color $offset, $color $offset + $weight, transparent $offset + $weight); // The more beautiful underlining!
 	text-decoration: none;

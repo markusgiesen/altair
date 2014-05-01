@@ -7,13 +7,14 @@
  */
 
 .Alert {
+	@include rhythm(padding);
+
 	position: relative;
 	z-index: 100;
 	display: block;
 	overflow: hidden;
-	padding: rhythm(1);
 	width: 100%;
-	border: rem(4px) solid;
+	border: .25em solid;
 	background: $color-base-white;
 	color: $color-base-black;
 }
@@ -23,7 +24,7 @@
  */
 
 .Alert--inline {
-	border-color: palette(gray, x-light);
+	border-color: $color-gray-x-light;
 	z-index: auto;
 }
 
@@ -33,7 +34,7 @@
 
 .Alert--bar {
 	border: none;
-	border-bottom: rem(4px) solid;
+	border-bottom: .25em solid;
 
 	// Animation
 	&.js-alert {
@@ -67,11 +68,12 @@
  */
 
 .Alert--modal {
+	@include rhythm(padding);
+
 	position: fixed; // Better `relative` with lots of content in alert modal!
 	top: 10%;
 	left: 25%;
 	z-index: 9999;
-	padding: rhythm(1);
 	width: 50%;
 
 	.csstransforms & {
@@ -100,7 +102,7 @@
  */
 
 .Alert-message {
-	padding-right: rhythm(1.5);
+	@include rhythm(padding-right, 1.5);
 
 	a {
 		text-decoration: underline;
@@ -116,10 +118,10 @@
 
 .Alert-close {
 	@extend .PseudoLink;
+	@include rhythm(top);
+	@include rhythm(right);
 
 	position: absolute !important;
-	top: rhythm(1);
-	right: rhythm(1);
 	display: block;
 }
 
@@ -128,25 +130,25 @@
  */
 
 .Alert--success {
-	border-color: palette(green);
-	background-color: palette(green, quiet);
-	color: palette(green);
+	border-color: $color-base-green;
+	background-color: $color-green-quiet;
+	color: $color-base-green;
 }
 
 .Alert--error {
-	border-color: palette(red);
-	background-color: palette(red, quiet);
-	color: palette(red);
+	border-color: $color-base-red;
+	background-color: $color-red-quiet;
+	color: $color-base-red;
 }
 
 .Alert--warning {
-	border-color: palette(tangerine);
-	background-color: palette(tangerine, quiet);
-	color: palette(tangerine);
+	border-color: $color-base-tangerine;
+	background-color: $color-tangerine-quiet;
+	color: $color-base-tangerine;
 }
 
 .Alert--info {
-	border-color: palette(blue);
-	background-color: palette(blue, quiet);
-	color: palette(blue);
+	border-color: $color-base-blue;
+	background-color: $color-blue-quiet;
+	color: $color-base-blue;
 }

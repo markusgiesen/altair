@@ -20,10 +20,10 @@
  *
  * Example HTML:
  * <div class="BlockGrid BlockGrid--small1col BlockGrid--compact2col BlockGrid--medium4col">
- *     <div class="BlockGrid-cell BlockGrid-cell--1"></div>
- *     <div class="BlockGrid-cell BlockGrid-cell--2"></div>
- *     <div class="BlockGrid-cell BlockGrid-cell--3"></div>
- *     <div class="BlockGrid-cell BlockGrid-cell--4"></div>
+ *   <div class="BlockGrid-cell BlockGrid-cell--1"></div>
+ *   <div class="BlockGrid-cell BlockGrid-cell--2"></div>
+ *   <div class="BlockGrid-cell BlockGrid-cell--3"></div>
+ *   <div class="BlockGrid-cell BlockGrid-cell--4"></div>
  * </div>
  */
 
@@ -85,21 +85,23 @@
  * No explicit width by default. Rely on combining `BlockGrid-cell` with a dimension
  * utility or a component class that extends 'grid'.
  *
- * 1. Fundamentals of the non-float grid layout.
- * 2. Reset font size change made in `BlockGrid`.
- * 3. Keeps content correctly aligned with the grid direction.
- * 4. Controls vertical positioning of units.
- * 5. Make cells full-width by default.
+ * 1. Fundamentals of the non-float grid layout mechanism.
+ * 2. Make cells full-width by default.
+ * 3. Controls vertical positioning of units.
+ * 4. Keeps content correctly aligned with the grid direction.
+ * 5. Reset font size change made in `Grid`.
+ * 6. Plus reset font size change made in `Grid` to pixels for `no-ctm` browsers.
  */
 
 .BlockGrid-cell {
 	display: inline-block; /* 1 */
 	margin: 0;
 	padding: 0;
-	width: 100%; /* 5 */
-	vertical-align: top; /* 4 */
-	text-align: left; /* 3 */
-	font-size: 1rem; /* 2 */
+	width: 100%; /* 2 */
+	vertical-align: top; /* 3 */
+	text-align: left; /* 4 */
+	font-size: $base-font-size; /* 6 */
+	font-size: 1rem; /* 5 */
 }
 
 /**
@@ -121,22 +123,12 @@
 /* Em gutter */
 
 .BlockGrid--withGutter {
-	margin-right: rhythm(-.5); /* Removes the `gutter` right */
-	margin-left: rhythm(-.5); /* Removes the `gutter` right */
-
-	@if $oldie {
-		margin-right: -.5 * $grid-gutter-percentage; /* Removes the `gutter` right */
-		margin-left: -.5 * $grid-gutter-percentage; /* Removes the `gutter` right */
-	}
+	@include rhythm(margin-right, -.5); /* Removes the `gutter` right */
+	@include rhythm(margin-left, -.5); /* Removes the `gutter` right */
 
 	& > .BlockGrid-cell {
-		padding-right: rhythm(.5);
-		padding-left: rhythm(.5);
-
-		@if $oldie {
-			padding-right: .5 * $grid-gutter-percentage;
-			padding-left: .5 * $grid-gutter-percentage;
-		}
+		@include rhythm(padding-right, .5);
+		@include rhythm(padding-left, .5);
 	}
 }
 

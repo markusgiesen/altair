@@ -9,16 +9,11 @@
 //
 //   div.columns {
 //     border: 1px solid;
+//     width: 100%;
 //
-//     @include breakpoint(small,max){
-//       width: 100%;
-//     }
 //     @include breakpoint(medium){
 //       width: 30%;
 //       float: left;
-//     }
-//     @if oldie() {
-//       something to fix visual bugs in old IE
 //     }
 //   }
 
@@ -26,53 +21,45 @@
 // --------------------------------------------------------------------------
 
 $breaks: small, compact, medium, large, wide, huge !default;
-$oldie: false !default;
 
 // Breakpoints
 // --------------------------------------------------------------------------
 
-@mixin breakpoint($condition, $max-width: false) {
+@mixin breakpoint($context) {
 
-	// Start `$count`
-	$count: 1;
-
-	// Loop through the `breaks` to be included (by default all break(point)s)...
+	// Loop through each `break` to be included (by default all breaks)
 	@each $break in $breaks {
 
-		// If conditin meets break to be included, then...
-		@if $condition == $break {
+		@if $context == $break {
 
-			// Output a 'fixed' media query set for old IE (ignore breakpoints transparently)
-			@if $oldie {
-				// If max-width is true on any break but the last break (see $breaks in ie.scss)
-				@if $count < length($breaks) {
-					@if $max-width != "max" {
-						// Output content
-						@content;
-					}
-				}
-				// If last break, output max-width as well as non-max-width breakpoint
-				@else {
-					@content;
-				}
+			// If there's only one breakpoint, SASS will think it's a space separated list
+			@if length($breakpoints) == 2 and type-of(nth($breakpoints, 1)) != 'list' {
+				$breakpoints: append((), (nth($breakpoints, 1), nth($breakpoints, 2)));
+			}
 
-			} @else {
-				// Loop through the 'breakpoints' list (name / value pair)...
-				@each $breakpoint, $query in $breakpoints {
+			// Loop through each `breakpoint`
+			@each $breakpoint in $breakpoints {
+				@if $context == nth($breakpoint, 1) {
+					$length: length($breakpoint);
+					$value: false !default;
 
-					@if $condition == $breakpoint {
-						// If max-width is true, set media query to max-width...
-						@if $max-width == "max" {
-							@media (max-width: #{$query}) { @content; }
-						} @else {
-							// Otherise set to min-width.
-							@media (min-width: #{$query}) { @content; }
+					@for $i from 2 through $length {
+						// If it's the first item, override $value
+						@if $i == 2 {
+							$value: nth($breakpoint, $i);
 						}
+						// Else, join $value
+						@else {
+							$value: join($value, nth($breakpoint, $i));
+						}
+					}
+
+					// @media only screen and #{$value} {
+					@media (min-width: #{$value}) {
+						@content;
 					}
 				}
 			}
 		}
-		// Update `$count`
-		$count: $count + 1;
 	}
 }

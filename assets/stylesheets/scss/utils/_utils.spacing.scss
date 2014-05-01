@@ -10,24 +10,25 @@
  * Rhythm spacing = top + bottom margins
  */
 
-%u-spaceTrailerXS { margin-bottom: rhythm(.25); }
-%u-spaceTrailerS  { margin-bottom: rhythm(.5); }
+%u-spaceTrailerXS { @include rhythm(margin-bottom, .25 !important); }
+%u-spaceTrailerS  { @include rhythm(margin-bottom, .5 !important); }
 .u-spaceTrailerM,
-%u-spaceTrailerM  { margin-bottom: rhythm(1); }
-%u-spaceTrailerL  { margin-bottom: rhythm(2); }
-%u-spaceTrailerXL { margin-bottom: rhythm(4); }
+%u-spaceTrailerM  { @include rhythm(margin-bottom, 1 !important); }
+%u-spaceTrailerL  { @include rhythm(margin-bottom, 2 !important); }
+%u-spaceTrailerXL { @include rhythm(margin-bottom, 4 !important); }
 
-%u-spaceLeaderXS  { margin-top: rhythm(.25); }
-%u-spaceLeaderS   { margin-top: rhythm(.5); }
-%u-spaceLeaderM   { margin-top: rhythm(1); }
-%u-spaceLeaderL   { margin-top: rhythm(2); }
-%u-spaceLeaderXL  { margin-top: rhythm(4); }
+%u-spaceLeaderXS  { @include rhythm(margin-top, .25 !important); }
+%u-spaceLeaderS   { @include rhythm(margin-top, .5 !important); }
+.u-spaceLeaderM,
+%u-spaceLeaderM   { @include rhythm(margin-top, 1 !important); }
+%u-spaceLeaderL   { @include rhythm(margin-top, 2 !important); }
+%u-spaceLeaderXL  { @include rhythm(margin-top, 4 !important); }
 
-%u-spaceRhythmXS  { margin-top: rhythm(.25); margin-bottom: rhythm(.25); }
-%u-spaceRhythmS   { margin-top: rhythm(.5); margin-bottom: rhythm(.5); }
-%u-spaceRhythmM   { margin-top: rhythm(1); margin-bottom: rhythm(1); }
-%u-spaceRhythmL   { margin-top: rhythm(2); margin-bottom: rhythm(2); }
-%u-spaceRhythmXL  { margin-top: rhythm(4); margin-bottom: rhythm(4); }
+%u-spaceRhythmXS  { @include rhythm(margin-top, .25 !important); @include rhythm(margin-bottom, .25 !important); }
+%u-spaceRhythmS   { @include rhythm(margin-top, .5 !important); @include rhythm(margin-bottom, .5 !important); }
+%u-spaceRhythmM   { @include rhythm(margin-top, 1 !important); @include rhythm(margin-bottom, 1 !important); }
+%u-spaceRhythmL   { @include rhythm(margin-top, 2 !important); @include rhythm(margin-bottom, 2 !important); }
+%u-spaceRhythmXL  { @include rhythm(margin-top, 4 !important); @include rhythm(margin-bottom, 4 !important); }
 
 /**
  * Default spacing for between components,
@@ -59,45 +60,45 @@
 
 /* Extra small spacing */
 
-%u-spaceAxs { margin: rhythm(.25) !important; }
-%u-spaceVxs { margin-top: rhythm(.25) !important; margin-bottom: rhythm(.25) !important; }
-%u-spaceTxs { margin-top: rhythm(.25) !important; }
-%u-spaceRxs { margin-right: rhythm(.25) !important; }
-%u-spaceBxs { margin-bottom: rhythm(.25) !important; }
-%u-spaceLxs { margin-left: rhythm(.25) !important; }
+%u-spaceAxs { @include rhythm(margin, .25 !important); }
+%u-spaceVxs { @include rhythm(margin-top, .25 !important); @include rhythm(margin-bottom, .25 !important); }
+%u-spaceTxs { @include rhythm(margin-top, .25 !important); }
+%u-spaceRxs { @include rhythm(margin-right, .25 !important); }
+%u-spaceBxs { @include rhythm(margin-bottom, .25 !important); }
+%u-spaceLxs { @include rhythm(margin-left, .25 !important); }
 
 /* Small spacing */
 
-%u-spaceAs { margin: rhythm(2) !important; }
-%u-spaceVs { margin-top: rhythm(2) !important; margin-bottom: rhythm(2) !important; }
-%u-spaceTs { margin-top: rhythm(2) !important; }
-%u-spaceRs { margin-right: rhythm(2) !important; }
-%u-spaceBs { margin-bottom: rhythm(2) !important; }
-%u-spaceLs { margin-left: rhythm(2) !important; }
+%u-spaceAs { @include rhythm(margin, 2 !important); }
+%u-spaceVs { @include rhythm(margin-top, 2 !important); @include rhythm(margin-bottom, 2 !important); }
+%u-spaceTs { @include rhythm(margin-top, 2 !important); }
+%u-spaceRs { @include rhythm(margin-right, 2 !important); }
+%u-spaceBs { @include rhythm(margin-bottom, 2 !important); }
+%u-spaceLs { @include rhythm(margin-left, 2 !important); }
 
 /* Medium spacing */
 
-%u-spaceAm { margin: rhythm(4) !important; }
-%u-spaceVm { margin-top: rhythm(4) !important; margin-bottom: rhythm(4) !important; }
-%u-spaceTm { margin-top: rhythm(4) !important; }
-%u-spaceRm { margin-right: rhythm(4) !important; }
-%u-spaceBm { margin-bottom: rhythm(4) !important; }
-%u-spaceLm { margin-left: rhythm(4) !important; }
+%u-spaceAm { @include rhythm(margin, 4 !important); }
+%u-spaceVm { @include rhythm(margin-top, 4 !important); @include rhythm(margin-bottom, 4 !important); }
+%u-spaceTm { @include rhythm(margin-top, 4 !important); }
+%u-spaceRm { @include rhythm(margin-right, 4 !important); }
+%u-spaceBm { @include rhythm(margin-bottom, 4 !important); }
+%u-spaceLm { @include rhythm(margin-left, 4 !important); }
 
 /* Large spacing */
 
-%u-spaceAl { margin: rhythm(6) !important; }
-%u-spaceVl { margin-top: rhythm(6) !important; margin-bottom: rhythm(6) !important; }
-%u-spaceTl { margin-top: rhythm(6) !important; }
-%u-spaceRl { margin-right: rhythm(6) !important; }
-%u-spaceBl { margin-bottom: rhythm(6) !important; }
-%u-spaceLl { margin-left: rhythm(6) !important; }
+%u-spaceAl { @include rhythm(margin, 6 !important); }
+%u-spaceVl { @include rhythm(margin-top, 6 !important); @include rhythm(margin-bottom, 6 !important); }
+%u-spaceTl { @include rhythm(margin-top, 6 !important); }
+%u-spaceRl { @include rhythm(margin-right, 6 !important); }
+%u-spaceBl { @include rhythm(margin-bottom, 6 !important); }
+%u-spaceLl { @include rhythm(margin-left, 6 !important); }
 
 /* Extra large spacing */
 
-%u-spaceAxl { margin: rhythm(8) !important; }
-%u-spaceVxl { margin-top: rhythm(8) !important; margin-bottom: rhythm(8) !important; }
-%u-spaceTxl { margin-top: rhythm(8) !important; }
-%u-spaceRxl { margin-right: rhythm(8) !important; }
-%u-spaceBxl { margin-bottom: rhythm(8) !important; }
-%u-spaceLxl { margin-left: rhythm(8) !important; }
+%u-spaceAxl { @include rhythm(margin, 8 !important); }
+%u-spaceVxl { @include rhythm(margin-top, 8 !important); @include rhythm(margin-bottom, 8 !important); }
+%u-spaceTxl { @include rhythm(margin-top, 8 !important); }
+%u-spaceRxl { @include rhythm(margin-right, 8 !important); }
+%u-spaceBxl { @include rhythm(margin-bottom, 8 !important); }
+%u-spaceLxl { @include rhythm(margin-left, 8 !important); }

@@ -13,9 +13,9 @@
 			<?php echo kirbytext($page->multi_figure()); ?>
 			<?php echo kirbytext($page->imgrid()); ?>
 
-		</div>
+			<?php snippet('share_page'); ?>
 
-		<?php snippet('share_page'); ?>
+		</div>
 
 	</div>
 

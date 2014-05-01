@@ -3,17 +3,14 @@
    ========================================================================== */
 
 .Backdrop {
+	@include rgb-alpha(background-color, $color-base-black, .6);
+
 	position: fixed;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
 	z-index: 9998;
-	background: rgb-alpha($color-base-black, 60%);
-
-	@if $oldie {
-		filter: alpha(opacity = 60);
-	}
 
 	// Animation
 	&.js-backdrop {

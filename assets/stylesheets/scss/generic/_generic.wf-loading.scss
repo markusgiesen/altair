@@ -10,26 +10,14 @@
 @include breakpoint(compact) {
 	.wf-loading {
 		opacity: 0;
-
-		@if $oldie {
-			visibility: hidden;
-		}
 	}
 
 	.wf-active {
 		transition: opacity .16s ease-in-out;
 		opacity: 1;
-
-		@if $oldie {
-			visibility: visible;
-		}
 	}
 
 	.wf-inactive {
 		opacity: 1;
-
-		@if $oldie {
-			visibility: visible;
-		}
 	}
 }

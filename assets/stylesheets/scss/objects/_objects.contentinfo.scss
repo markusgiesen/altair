@@ -8,9 +8,9 @@
 	margin-top: 0;
 
 	.ctm & {
-		margin-top: rhythm(1.5);
+		@include rhythm(margin-top, 1.5);
 	}
 	footer {
-		padding: rhythm(1.5) 0;
+		@include rhythm(padding, 1.5 0);
 	}
 }

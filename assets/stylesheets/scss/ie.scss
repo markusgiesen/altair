@@ -15,18 +15,19 @@ $oldie: true;
 
 // Inlcude all media queries up to and including 'large' breakpoint
 
-$breaks: small, compact, medium, large;
+$breakpoints: small, compact, medium, large;
 
 // --------------------------------------------------------------------------
 // tools
 // --------------------------------------------------------------------------
 
+// @import "tools/tools.sass-list-maps"; // Adds list-based map functionality for libsass
 @import "tools/tools.breakpoints";
 @import "tools/tools.color-schemer";
 @import "tools/tools.functions";
 @import "tools/tools.font-families";
 @import "tools/tools.mixins";
-@import "tools/tools.typeset";
+@import "tools/tools.rhythm";
 @import "tools/tools.underline";
 
 // --------------------------------------------------------------------------
@@ -35,9 +36,8 @@ $breaks: small, compact, medium, large;
 
 @import "settings/settings.breakpoints";
 @import "settings/settings.colors";
-@import "settings/settings.miscellaneous";
+@import "settings/settings.page";
 @import "settings/settings.ratios";
-@import "settings/settings.type-scale";
 @import "settings/settings.typography";
 
 // --------------------------------------------------------------------------
@@ -119,8 +119,8 @@ $breaks: small, compact, medium, large;
 .OldieMessage {
 	display: block;
 	padding: 95px 1em 1em 1em;
-	background: palette(gray, x-light);
-	border: palette(gray);
+	background: $color-gray-x-light;
+	border: $color-base-gray;
 	color: $color-base-black;
 
 	a {

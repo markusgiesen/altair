@@ -10,7 +10,7 @@
 
 	/* Baseline */
 
-	// background-image: linear-gradient(to bottom, rgba(0,0,0,.15) 0%, transparent 5%, transparent 100%);
+	// background-image: linear-gradient(to bottom, rgba(0,0,0,.4) 0%, transparent 3%, transparent 100%);
 	// background-size: 100% $base-line-height + 0rem;
 
 	/* Base margins */
@@ -21,7 +21,7 @@
 	& > dl,
 	& > pre,
 	& > figure {
-		margin-bottom: rhythm(1);
+		@include rhythm(margin-bottom);
 
 		&:last-child {
 			margin-bottom: 0;
@@ -46,35 +46,27 @@
 		hyphens: none;
 	}
 
-	/* Text justification */
+	/**
+	 * Text justification + undo class
+	 */
 
 	p {
 		@extend %u-textBreak;
 		@extend %u-textJustify;
 	}
 
-	/**
-	 * Undo justification
-	 *
-	 * Add next to .Copy class: <div class="Copy u-textNoJustify">...</div> or
-	 * use inline directly on <p class="u-textNoJustify"> element.
-	 */
+	/* Add like this: <p class="u-textNoJustify"> */
 
-	p.u-textNoJustify,
-	&.u-textNoJustify p {
+	p.u-textNoJustify {
 		text-align: left !important;
 		word-wrap: inherit !important;
 	}
 
-	/**
-	 * No justification
-	*/
-
 	/* Indent paragraphs */
 
 	// p + p {
-	// 	margin-top: rhythm(-1);
-	// 	text-indent: rhythm(1);
+	// 	@include rhythm(margin-top);
+	// 	@include rhythm(text-indent);
 	// }
 
 	/* Headings
@@ -102,13 +94,13 @@
 	/* Block- and inline quotes
 	   ========================================================================== */
 
-	blockquote {
-		@extend %Blockquote;
-	}
+	// blockquote {
+	// 	@extend .Blockquote; // `.Copy  blockquote` directly added to work nicely with libsass
+	// }
 
-	q {
-		@extend %Quote;
-	}
+	// q {
+	// 	@extend .Quote; // `.Copy q` directly added to work nicely with libsass
+	// }
 
 	/* Inline Elements
 	   ========================================================================== */
@@ -140,7 +132,7 @@
 	}
 
 	ins {
-		@include underline(palette(gray, m-light), rgb(253,254,206));
+		@include underline($color-gray-m-light, rgb(253,254,206));
 
 		background-color: rgb(253,254,206);
 		color: $color-base-black;
@@ -167,7 +159,7 @@
 	}
 
 	code {
-		background-color: palette(gray, x-light);
+		background-color: $color-gray-x-light;
 	}
 
 	/* Lists
@@ -175,10 +167,10 @@
 
 	/* Unordered lists */
 
-	ul,
-	ol {
-		@extend .List;
-	}
+	// ul,
+	// ol {
+	// @extend .List; // `.Copy ul/ol` directly added to work nicely with libsass
+	// }
 
 	/* Definition lists */
 
@@ -189,21 +181,21 @@
 	}
 
 	dd {
-		margin-left: rhythm(1);
+		@include rhythm(margin-left);
 	}
 
 	/* Links
 	   ========================================================================== */
 
-	a {
-		@extend .Link;
-	}
+	// a {
+	// 	@extend .Link; // `.Copy a` directly added to work nicely with libsass
+	// }
 
 	/* Tables
 	   ========================================================================== */
 
-	table {
-		@extend .Table;
-	}
+	// table {
+	// 	@extend .Table; // `.Copy table` directly added to work nicely with libsass
+	// }
 
 }

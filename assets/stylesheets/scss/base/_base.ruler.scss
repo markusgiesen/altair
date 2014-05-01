@@ -8,10 +8,11 @@
  */
 
 %Ruler {
-	margin-top: - rem(2px);
-	padding-bottom: rhythm(1);
+	@include rhythm(padding-bottom);
+
+	margin-top: -.125em;
 	border: 0;
-	border-top: rem(2px) solid $color-base-black;
+	border-top: .125em solid $color-base-black;
 }
 
 /* Dotted rules */

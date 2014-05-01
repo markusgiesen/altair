@@ -20,9 +20,10 @@
  */
 
 .Button {
+	@include rhythm(padding, .5 1);
+
 	position: relative;
 	display: inline-block;
-	padding: rhythm(.5) rhythm(1);
 	border: none;
 	border-radius: 0; /* To remove rounded corners in Safari on iOS 5+ */
 	background: $color-base-black;
@@ -51,8 +52,8 @@
 	&:focus,
 	&:active {
 		top: 0 !important;
-		background: palette(gray, x-light) !important;
-		color: palette(gray, light) !important;
+		background: $color-gray-x-light !important;
+		color: $color-gray-light !important;
 		cursor: default !important;
 	}
 }
@@ -62,14 +63,14 @@
  */
 
 .Button--primary {
-	background: palette(blue);
+	background: $color-base-blue;
 	color: $color-base-white;
 
 	&:hover {
-		background: palette(blue, dark);
+		background: $color-blue-dark;
 	}
 	&:active {
-		background: palette(blue);
+		background: $color-base-blue;
 	}
 }
 
@@ -84,13 +85,13 @@
  */
 
 .Button--small {
-	margin-bottom: rhythm(.5);
-	padding: rhythm(.25);
+	@include rhythm(margin-bottom, .5);
+	@include rhythm(padding, .25);
 }
 
 .Button--large {
-	margin-bottom: rhythm(.5);
-	padding: rhythm(.75) rhythm(1);
+	@include rhythm(margin-bottom, .5);
+	@include rhythm(padding, .75 1);
 }
 
 /* Full width button */

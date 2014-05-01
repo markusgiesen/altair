@@ -4,22 +4,23 @@
 
 
 // --------------------------------------------------------------------------
-// Breakpoints to output (respond-to)
+// Breakpoints to be included
 // --------------------------------------------------------------------------
 
-// Include 'all' breaks (only un-comment to output other then 'all')
-// $breaks: small, compact, medium, large, wide, huge;
+$breaks: small, compact, medium, large, wide, huge;
 
 // --------------------------------------------------------------------------
 // tools
 // --------------------------------------------------------------------------
 
+
+// @import "tools/tools.sass-list-maps"; // Adds list-based map functionality for libsass
 @import "tools/tools.breakpoints";
 @import "tools/tools.color-schemer";
 @import "tools/tools.functions";
 @import "tools/tools.font-families";
 @import "tools/tools.mixins";
-@import "tools/tools.typeset";
+@import "tools/tools.rhythm";
 @import "tools/tools.underline";
 
 // --------------------------------------------------------------------------
@@ -28,9 +29,8 @@
 
 @import "settings/settings.breakpoints";
 @import "settings/settings.colors";
-@import "settings/settings.miscellaneous";
+@import "settings/settings.page";
 @import "settings/settings.ratios";
-@import "settings/settings.type-scale";
 @import "settings/settings.typography";
 
 // --------------------------------------------------------------------------

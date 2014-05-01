@@ -7,14 +7,6 @@
  */
 
 .Container {
-	@if $oldie {
-		// Fixed width for oldies
-		width: 960px;
-		margin-right: auto;
-		margin-left: auto;
-	}
-	@else {
-		padding-right: $contain-percentage;
-		padding-left: $contain-percentage;
-	}
+	padding-right: $contain-percentage;
+	padding-left: $contain-percentage;
 }

@@ -46,7 +46,7 @@
 // Some examples of $position for radial gradients:
 //   to left, to right, to top, to bottom, 45deg, etc.
 
-@mixin stripes($colors, $position: to left) {
+@mixin stripes($position, $colors) {
 	// $colors: if(type-of($colors) != 'list', compact($colors), $colors);
 	$stripes: 100% / length($colors);
 	$gradient: ();
@@ -58,6 +58,20 @@
 	}
 
 	background-image: linear-gradient($position, $gradient);
+}
+
+// RGBa with RGB fallback
+// --------------------------------------------------------------------------
+// Utilizes the `cs-mix` function of tools.color-schemer.scss
+// The `$color-background` variable is optional and defaults to `$color-base-white`
+// The `$color` variable can be: rgb(20,20,20), rgba(20,20,20,.8) (the `alpha`
+// value rgba is ignored), and #101010.
+// Example usage: `@include rgb-alpha(border-color, $color-base-black, .8);`
+// Dev dependency: tools.color-schemer.scss!
+
+@mixin rgb-alpha($property, $color, $percent, $background-color: $color-base-white) {
+	#{$property}: cs-mix($background-color, $color, $percent);
+	#{$property}: rgba($color, $percent);
 }
 
 // Input placeholder text

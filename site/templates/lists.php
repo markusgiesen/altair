@@ -71,7 +71,7 @@
 			<span class="u-isHiddenVisually">Smartphone</span>
 		</a>
 		<a href="#" class="IconAlone">
-			<span aria-hidden="true" class="Icon Icon--fixedWidth Icon--attachment"></span>
+			<span aria-hidden="true" class="Icon Icon--fixedWidth Icon--attach"></span>
 			<span class="u-isHiddenVisually">Attachment</span>
 		</a>
 

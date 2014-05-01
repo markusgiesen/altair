@@ -10,40 +10,69 @@
 	@extend %u-fontFeatureSettings;
 	@include heading-font(400);
 
-	max-width: rem($heading-max-width);
-	letter-spacing: rem(1px);
+	max-width: $heading-max-width;
+	letter-spacing: .01em;
 }
 
 /**
- * Heading sizes (vertical rhythm)
+ * Heading sizes
  */
 
 // .TeraHeading {}
 // .GigaHeading {}
 // .MegaHeading {}
 
+/* Alpha */
+
 .AlphaHeading {
 	@extend %u-headingSettings;
-	@include rhythm-font($alpha);
+	@include rhythm-font($ms-up3, 0, 1);
 }
+@include breakpoint(medium) {
+	.AlphaHeading {
+		@include rhythm-font($ms-up4);
+	}
+}
+@include breakpoint(wide) {
+	.AlphaHeading {
+		@include rhythm-font($ms-up5);
+	}
+}
+
+/* Beta */
 
 .BetaHeading {
 	@extend %u-headingSettings;
-	@include rhythm-font($beta);
+	@include rhythm-font($ms-up2, 0, 1);
 }
+@include breakpoint(medium) {
+	.BetaHeading { @include rhythm-font($ms-up3); }
+}
+@include breakpoint(wide) {
+	.BetaHeading {
+		@include rhythm-font($ms-up4);
+	}
+}
+
+/* Gamma */
 
 .GammaHeading {
 	@extend %u-headingSettings;
-	@include rhythm-font($gamma);
+	@include rhythm-font($ms-up1, 0, 1);
+}
+@include breakpoint(wide) {
+	.GammaHeading {
+		@include rhythm-font($ms-up2);
+	}
 }
 
 .DeltaHeading {
 	@extend %u-headingSettings;
-	@include rhythm-font($delta);
+	@include rhythm-font($ms-up1, 0, 1);
 }
 
 .EpsilonHeading,
 .ZetaHeading {
 	@extend %u-headingSettings;
-	@include rhythm-font($epsilon);
+	@include rhythm-font($ms-up0, 0, 0);
 }
