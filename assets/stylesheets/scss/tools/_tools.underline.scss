@@ -17,8 +17,8 @@ $offset: 0px !default;
 	text-decoration: none;
 	text-shadow: -1px -1px 0 $text-shadow-color, 1px -1px 0 $text-shadow-color, -1px 1px 0 $text-shadow-color, 1px 1px 0 $text-shadow-color; // Breaks underlining on descenders!
 
-	.no-cssgradient & {
-		text-decoration: udnerline !important;
+	.no-cssgradients & {
+		text-decoration: underline !important;
 	}
 
 	@include device-pixel-ratio(1.5) {
