@@ -123,8 +123,7 @@ if(!isset($prefetch)): $prefetch = false; endif;
 	<meta name="msapplication-TileColor" content="#222222">
 
 	<!-- Stylesheets -->
-	<!--[if (gt IE 8) | (IEMobile)]><!--><link rel="stylesheet" href="<?php echo url('assets/stylesheets/' . $env_suffix . '/' . $main_css . '.css'); ?>"><!---<![endif]-->
-	<!--[if (lt IE 9) & (!IEMobile)]><link rel="stylesheet" href="<?php echo url('assets/stylesheets/' . $env_suffix . '/' . $ie_css . '.css'); ?>"><![endif]-->
+	<link rel="stylesheet" href="<?php echo url('assets/stylesheets/' . $env_suffix . '/' . $main_css . '.css'); ?>">
 	<link rel="stylesheet" href="<?php echo url('assets/stylesheets/' . $env_suffix . '/' . $print_css . '.css'); ?>" media="print">
 
 	<!-- Head scripts (i.e. Typekit, WebFont Loader, ReSRC.it) -->
