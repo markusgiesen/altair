@@ -81,7 +81,9 @@
 	}
 
 	@include breakpoint(medium) {
-		@include rhythm(margin-left, -.75);
+		& {
+			@include rhythm(margin-left, -.75, $pixels: false);
+		}
 	}
 }
 

@@ -10,6 +10,9 @@
 %u-textMaxWidth {
 	max-width: $text-max-width;
 }
+.u-textMaxWidth {
+	@extend %u-textMaxWidth;
+}
 
 /**
  * Horizontal text alignment
@@ -44,9 +47,13 @@
  * word breaking (%u-textBreak).
  */
 
-@include breakpoint(medium) {
-	%u-textJustify {
-		text-align: justify !important;
+%u-textJustify {
+	text-align: inherit;
+
+	@include breakpoint(medium) {
+		& {
+			text-align: justify !important;
+		}
 	}
 }
 
@@ -112,7 +119,7 @@
  }
 
 %u-textSmall {
-	font-size: rhythm-font-size($ms-down1);
+	@include rhythm-font($ms-down1);
 }
 
 %u-textTime {

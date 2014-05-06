@@ -61,13 +61,13 @@ $base-line-height: 1.5 !default;
 // Rhythm unit (http://j.mp/PTojOV)
 // --------------------------------------------------------------------------
 
-@mixin rhythm($property, $lines-values: 1) {
+@mixin rhythm($property, $lines-values: 1, $pixels: true) {
 
 	// If there is only one (lines) value, return the property/value line for it
 	@if type-of($lines-values) == "number" {
 
 		// Frst print the property in pixels, then rems
-		#{$property}: $base-line-height * $base-font-size * $lines-values + 0px;
+		@if $pixels { #{$property}: $base-line-height * $base-font-size * $lines-values + 0px; }
 		#{$property}: $base-line-height * $lines-values + 0rem;
 	}
 
@@ -93,7 +93,7 @@ $base-line-height: 1.5 !default;
 		}
 
 		// Return the property and its list of converted values
-		#{$property}: $px-values;
+		@if $pixels { #{$property}: $px-values; }
 		#{$property}: $rem-values;
 	}
 }
@@ -101,16 +101,17 @@ $base-line-height: 1.5 !default;
 // Rhythm font size
 // --------------------------------------------------------------------------
 
-@mixin rhythm-font($size: $base-font-size, $leader: 0, $trailer: 0, $lines: 1) {
+// @mixin rhythm-font($size: $base-font-size, $leader: 0, $trailer: 0, $lines: 1) {
+@mixin rhythm-font($size: $base-font-size, $leader: 0, $trailer: 0, $lines: 1, $pixels: true) {
 
 	// Trailer margin
-	@if $trailer and $trailer != 0 { margin-bottom: rhythm($trailer); }
+	@if $trailer and $trailer != 0 { @include rhythm(margin-bottom, $trailer, $pixels); }
 
 	// Leading margin
-	@if $leader and $leader != 0 { padding-top: rhythm($leader); }
+	@if $leader and $leader != 0 { @include rhythm(padding-top, $leader, $pixels); }
 
 	// Font sizes (pixels first, then rem's)
-	font-size: $size;
+	@if $pixels { font-size: $size; }
 	font-size: rhythm-font-size($size);
 
 	// Line height

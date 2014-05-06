@@ -43,7 +43,7 @@
 // Rhythm font size value
 // --------------------------------------------------------------------------
 
-@function rhythm-font-size($size: $base-font-size, $pixels: false) {
+@function rhythm-font-size($size: $base-font-size) {
 	@return $size / $base-font-size + 0rem;
 }
 

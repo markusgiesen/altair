@@ -27,15 +27,12 @@
 .AlphaHeading {
 	@extend %u-headingSettings;
 	@include rhythm-font($ms-up3, 0, 1);
-}
-@include breakpoint(medium) {
-	.AlphaHeading {
-		@include rhythm-font($ms-up4);
+
+	@include breakpoint(medium) {
+		& { @include rhythm-font($ms-up4, $pixels: false);}
 	}
-}
-@include breakpoint(wide) {
-	.AlphaHeading {
-		@include rhythm-font($ms-up5);
+	@include breakpoint(wide) {
+		& { @include rhythm-font($ms-up5, $pixels: false); }
 	}
 }
 
@@ -44,13 +41,12 @@
 .BetaHeading {
 	@extend %u-headingSettings;
 	@include rhythm-font($ms-up2, 0, 1);
-}
-@include breakpoint(medium) {
-	.BetaHeading { @include rhythm-font($ms-up3); }
-}
-@include breakpoint(wide) {
-	.BetaHeading {
-		@include rhythm-font($ms-up4);
+
+	@include breakpoint(medium) {
+		& { @include rhythm-font($ms-up3, $pixels: false); }
+	}
+	@include breakpoint(wide) {
+		& { @include rhythm-font($ms-up4, $pixels: false); }
 	}
 }
 
@@ -59,10 +55,9 @@
 .GammaHeading {
 	@extend %u-headingSettings;
 	@include rhythm-font($ms-up1, 0, 1);
-}
-@include breakpoint(wide) {
-	.GammaHeading {
-		@include rhythm-font($ms-up2);
+
+	@include breakpoint(wide) {
+		& { @include rhythm-font($ms-up2, $pixels: false); }
 	}
 }
 
