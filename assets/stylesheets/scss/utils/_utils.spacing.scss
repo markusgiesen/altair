@@ -12,14 +12,13 @@
 
 %u-spaceTrailerXS { @include rhythm(margin-bottom, .25 !important); }
 %u-spaceTrailerS  { @include rhythm(margin-bottom, .5 !important); }
-.u-spaceTrailerM,
 %u-spaceTrailerM  { @include rhythm(margin-bottom, 1 !important); }
+.u-spaceTrailerM  { @extend %u-spaceTrailerM; }
 %u-spaceTrailerL  { @include rhythm(margin-bottom, 2 !important); }
 %u-spaceTrailerXL { @include rhythm(margin-bottom, 4 !important); }
 
 %u-spaceLeaderXS  { @include rhythm(margin-top, .25 !important); }
 %u-spaceLeaderS   { @include rhythm(margin-top, .5 !important); }
-.u-spaceLeaderM,
 %u-spaceLeaderM   { @include rhythm(margin-top, 1 !important); }
 %u-spaceLeaderL   { @include rhythm(margin-top, 2 !important); }
 %u-spaceLeaderXL  { @include rhythm(margin-top, 4 !important); }
