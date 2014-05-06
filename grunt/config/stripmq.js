@@ -2,7 +2,7 @@ module.exports = function(grunt) {
 
 	grunt.config('stripmq', {
 		options: {
-			width: 0,
+			width: '0em',
 			type: 'screen'
 		},
 		dist: {
