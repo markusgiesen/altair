@@ -13,13 +13,13 @@ if(c::get('environment') == 'local'):
 	$env_suffix = 'dev';
 	$main_css = 'main.dev';
 	$print_css = 'print.dev';
-	$ie_css = 'ie.dev';
+	$oldie_css = 'oldie.dev';
 	$head_js = 'head.scripts.dev';
 else:
 	$env_suffix = 'min';
 	$main_css = a::get($assets_css, 'main');
 	$print_css = a::get($assets_css, 'print');
-	$ie_css = a::get($assets_css, 'oldie');
+	$oldie_css = a::get($assets_css, 'oldie');
 	$head_js = a::get($assets_js, 'head');
 endif;
 
@@ -123,10 +123,11 @@ if(!isset($prefetch)): $prefetch = false; endif;
 	<meta name="msapplication-TileColor" content="#222222">
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="<?php echo url('assets/stylesheets/' . $env_suffix . '/' . $main_css . '.css'); ?>">
+	<!--[if (lt IE 9)]><link rel="stylesheet" href="<?php echo url('assets/stylesheets/' . $env_suffix . '/' . $oldie_css . '.css'); ?>"><![endif]-->
+	<!--[if (gt IE 8)]><!--><link rel="stylesheet" href="<?php echo url('assets/stylesheets/' . $env_suffix . '/' . $main_css . '.css'); ?>"><!---<![endif]-->
 	<link rel="stylesheet" href="<?php echo url('assets/stylesheets/' . $env_suffix . '/' . $print_css . '.css'); ?>" media="print">
 
-	<!-- Head scripts (i.e. Typekit, WebFont Loader, ReSRC.it) -->
+	<!-- Head scripts (Enable for Typekit, WebFont Loader or ReSRC.it!) -->
 	<!--
 	<script src="<?php echo url('assets/javascript/'. $env_suffix .'/' . $head_js . '.js'); ?>"></script>
 	-->
