@@ -20,10 +20,6 @@ module.exports = function(grunt) {
 			files: ['<%= project.scripts_dev %>/*.js'],
 			tasks: ['scripts-hint'],
 		},
-		// icons: {
-		// 	files: ['<%= project.design_assets %>/svg/*.svg'],
-		// 	tasks: ['icons'],
-		// },
 		livereload: {
 			options: { livereload: true },
 			files: [

@@ -21,7 +21,7 @@ module.exports = function(grunt) {
 					key: 'mobile',
 				},
 				{
-					src: '<%= project.styles_min %>/ie.min.css',
+					src: '<%= project.styles_min %>/oldie.min.css',
 					dest: '<%= project.styles_min %>/{{hash}}.css',
 					key: 'oldie',
 				},
