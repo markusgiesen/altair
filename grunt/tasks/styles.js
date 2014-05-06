@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 		grunt.loadNpmTasks('grunt-contrib-watch');
 		grunt.task.run(
 			'sass-concat',
-			'watch:styles'
+			'watch'
 		);
 	});
 
