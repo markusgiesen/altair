@@ -90,7 +90,6 @@
  * 3. Controls vertical positioning of units.
  * 4. Keeps content correctly aligned with the grid direction.
  * 5. Reset font size change made in `Grid`.
- * 6. Plus reset font size change made in `Grid` to pixels for `no-ctm` browsers.
  */
 
 .BlockGrid-cell {
@@ -100,7 +99,6 @@
 	width: 100%; /* 2 */
 	vertical-align: top; /* 3 */
 	text-align: left; /* 4 */
-	font-size: $base-font-size; /* 6 */
 	font-size: 1rem; /* 5 */
 }
 
