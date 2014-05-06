@@ -22,21 +22,14 @@
 // Rhythm value
 // --------------------------------------------------------------------------
 
-@function rhythm($lines: 1, $pixels: false) {
+@function rhythm($lines: 1) {
 
 	// If number of lines is zero, output unitless
 	@if $lines == 0 {
 		@return 0;
 	}
-
-	// Output respectivly px and rem unit values
 	@else {
-		@if $pixels {
-			@return $base-line-height * $base-font-size * $lines + 0px;
-		}
-		@else {
-			@return $base-line-height * $lines + 0rem;
-		}
+		@return $base-line-height * $lines + 0rem;
 	}
 }
 

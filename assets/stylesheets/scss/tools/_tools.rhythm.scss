@@ -61,13 +61,10 @@ $base-line-height: 1.5 !default;
 // Rhythm unit (http://j.mp/PTojOV)
 // --------------------------------------------------------------------------
 
-@mixin rhythm($property, $lines-values: 1, $pixels: true) {
+@mixin rhythm($property, $lines-values: 1) {
 
 	// If there is only one (lines) value, return the property/value line for it
 	@if type-of($lines-values) == "number" {
-
-		// Frst print the property in pixels, then rems
-		@if $pixels { #{$property}: $base-line-height * $base-font-size * $lines-values + 0px; }
 		#{$property}: $base-line-height * $lines-values + 0rem;
 	}
 
@@ -75,43 +72,37 @@ $base-line-height: 1.5 !default;
 	@else {
 
 		// Create empty lists to dump values into
-		$px-values: ();
-		$rem-values: ();
+		$values: ();
 
 		// Loop through the multuple (lines) values
 		@each $value in $lines-values {
 
 			// If the value is zero or not a number, return it
 			@if $value == 0 or type-of($value) != "number" {
-				$px-values: append($px-values, $value);
-				$rem-values: append($rem-values, $value);
+				$values: append($values, $value);
 			}
 			@else {
-				$px-values: append($px-values, rhythm($value, pixels));
-				$rem-values: append($rem-values, rhythm($value));
+				$values: append($values, rhythm($value));
 			}
 		}
 
 		// Return the property and its list of converted values
-		@if $pixels { #{$property}: $px-values; }
-		#{$property}: $rem-values;
+		#{$property}: $values;
 	}
 }
 
 // Rhythm font size
 // --------------------------------------------------------------------------
 
-// @mixin rhythm-font($size: $base-font-size, $leader: 0, $trailer: 0, $lines: 1) {
-@mixin rhythm-font($size: $base-font-size, $leader: 0, $trailer: 0, $lines: 1, $pixels: true) {
+@mixin rhythm-font($size: $base-font-size, $leader: 0, $trailer: 0, $lines: 1) {
 
 	// Trailer margin
-	@if $trailer and $trailer != 0 { @include rhythm(margin-bottom, $trailer, $pixels); }
+	@if $trailer and $trailer != 0 { @include rhythm(margin-bottom, $trailer); }
 
 	// Leading margin
-	@if $leader and $leader != 0 { @include rhythm(padding-top, $leader, $pixels); }
+	@if $leader and $leader != 0 { @include rhythm(padding-top, $leader); }
 
-	// Font sizes (pixels first, then rem's)
-	@if $pixels { font-size: $size; }
+	// Font sizes
 	font-size: rhythm-font-size($size);
 
 	// Line height
