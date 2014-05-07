@@ -5,6 +5,7 @@ module.exports = function(grunt) {
 		grunt.loadNpmTasks('grunt-pixrem');
 		grunt.loadNpmTasks('grunt-notify');
 		grunt.task.run(
+			'sass-concat',
 			'stripmq',
 			'pixrem',
 			'notify:oldie'
