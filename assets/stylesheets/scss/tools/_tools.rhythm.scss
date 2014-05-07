@@ -16,7 +16,7 @@ $base-line-height: 1.5 !default;
 // Generates procentual base font sizes for the different breakpoints.
 // Include in html or body element like this: @include base-font().
 
-@mixin base-font-size($sizes: $base-percentages) {
+@mixin base-font($sizes) {
 
 	// If there's only one breakpoint, SASS will think it's a space separated list
 	@if length($sizes) == 2 and type-of(nth($sizes, 1)) != 'list' {
@@ -58,49 +58,16 @@ $base-line-height: 1.5 !default;
 	}
 }
 
-// Rhythm unit (http://j.mp/PTojOV)
-// --------------------------------------------------------------------------
-
-@mixin rhythm($property, $lines-values: 1) {
-
-	// If there is only one (lines) value, return the property/value line for it
-	@if type-of($lines-values) == "number" {
-		#{$property}: $base-line-height * $lines-values + 0rem;
-	}
-
-	// Multple (lines) values
-	@else {
-
-		// Create empty lists to dump values into
-		$values: ();
-
-		// Loop through the multuple (lines) values
-		@each $value in $lines-values {
-
-			// If the value is zero or not a number, return it
-			@if $value == 0 or type-of($value) != "number" {
-				$values: append($values, $value);
-			}
-			@else {
-				$values: append($values, rhythm($value));
-			}
-		}
-
-		// Return the property and its list of converted values
-		#{$property}: $values;
-	}
-}
-
 // Rhythm font size
 // --------------------------------------------------------------------------
 
-@mixin rhythm-font($size: $base-font-size, $leader: 0, $trailer: 0, $lines: 1) {
+@mixin rhythm-font($size, $leader: 0, $trailer: 0, $lines: 1) {
 
 	// Trailer margin
-	@if $trailer and $trailer != 0 { @include rhythm(margin-bottom, $trailer); }
+	@if $trailer and $trailer != 0 { margin-bottom: rhythm($trailer); }
 
 	// Leading margin
-	@if $leader and $leader != 0 { @include rhythm(padding-top, $leader); }
+	@if $leader and $leader != 0 { padding-top: rhythm($leader); }
 
 	// Font sizes
 	font-size: rhythm-font-size($size);

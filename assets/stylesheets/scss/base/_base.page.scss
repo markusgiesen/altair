@@ -17,7 +17,7 @@
  */
 
 html {
-	@include base-font-size($base-percentages); /* [1] */
+	@include base-font($base-font-percentages); /* [1] */
 	@include sans-font(400);
 
 	// overflow-y: auto; /* [2] */

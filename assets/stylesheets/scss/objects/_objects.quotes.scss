@@ -47,11 +47,10 @@
 
 .Copy blockquote,
 .Blockquote {
-	@include rhythm(margin-top);
-	@include rhythm(margin-bottom);
-	@include rhythm(padding-left, .5);
-	@include rhythm(border-left, .25 solid $color-gray-m-light);
-
+	margin-top: rhythm(1);
+	margin-bottom: rhythm(1);
+	padding-left: rhythm(.5);
+	border-left: rhythm(.25) solid $color-gray-m-light;
 	color: $color-base-gray;
 	quotes: none;
 
@@ -82,7 +81,7 @@
 
 	@include breakpoint(medium) {
 		& {
-			@include rhythm(margin-left, -.75);
+			margin-left: rhythm(-.75);
 		}
 	}
 }

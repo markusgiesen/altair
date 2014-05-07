@@ -100,8 +100,7 @@
  */
 
 .CoverImage {
-	@include rhythm(margin, 0 auto 1);
-
+	margin: 0 auto rhythm(1);
 	// max-width: 62em; // set to your liking
 	max-height: 22em; // set to your liking
 	background-position: 50%;

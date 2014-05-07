@@ -8,14 +8,14 @@
 
 .Copy table,
 .Table {
-	@include rhythm(margin-bottom);
+	margin-bottom: rhythm(1);
 
 	width: 100%;
 
 	th,
 	td {
-		@include rhythm(padding-top, .5);
-		@include rhythm(padding-bottom, .5);
+		padding-top: rhythm(.5);
+		padding-bottom: rhythm(.5);
 
 		text-align: left;
 	}
@@ -71,7 +71,7 @@
 .Table--striped {
 	th,
 	td {
-		@include rhythm(padding, .5);
+		padding: rhythm(.5);
 	}
 	th {
 		background-color: $color-base-black;
@@ -103,19 +103,19 @@
 .Table--rounded {
 
 	thead th:first-child {
-		@include rhythm(border-top-left-radius, .5);
+		border-top-left-radius: rhythm(.5);
 	}
 
 	thead th:last-child {
-		@include rhythm(border-top-right-radius, .5);
+		border-top-right-radius: rhythm(.5);
 	}
 
 	tfoot td:first-child {
-		@include rhythm(border-bottom-left-radius, .5);
+		border-bottom-left-radius: rhythm(.5);
 	}
 
 	tfoot td:last-child {
-		@include rhythm(border-bottom-right-radius, .5);
+		border-bottom-right-radius: rhythm(.5);
 	}
 }
 
@@ -126,8 +126,8 @@
 .Table--bordered {
 	th,
 	td {
-		@include rhythm(padding-top, .5);
-		@include rhythm(padding-bottom, .5);
+		padding-top: rhythm(.5);
+		padding-bottom: rhythm(.5);
 
 		border: .125em solid $color-gray-m-light;
 

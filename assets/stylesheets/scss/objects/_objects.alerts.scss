@@ -7,12 +7,11 @@
  */
 
 .Alert {
-	@include rhythm(padding);
-
 	position: relative;
 	z-index: 100;
 	display: block;
 	overflow: hidden;
+	padding: rhythm(1);
 	width: 100%;
 	border: .25em solid;
 	background: $color-base-white;
@@ -68,12 +67,11 @@
  */
 
 .Alert--modal {
-	@include rhythm(padding);
-
 	position: fixed; // Better `relative` with lots of content in alert modal!
 	top: 10%;
 	left: 25%;
 	z-index: 9999;
+	padding: rhythm(1);
 	width: 50%;
 
 	.csstransforms & {
@@ -102,7 +100,7 @@
  */
 
 .Alert-message {
-	@include rhythm(padding-right, 1.5);
+	padding-right: rhythm(1.5);
 
 	a {
 		text-decoration: underline;
@@ -118,10 +116,10 @@
 
 .Alert-close {
 	@extend .PseudoLink;
-	@include rhythm(top);
-	@include rhythm(right);
 
 	position: absolute !important;
+	top: rhythm(1);
+	right: rhythm(1);
 	display: block;
 }
 

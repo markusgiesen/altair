@@ -21,7 +21,7 @@
 	& > dl,
 	& > pre,
 	& > figure {
-		@include rhythm(margin-bottom);
+		margin-bottom: rhythm(1);
 
 		&:last-child {
 			margin-bottom: 0;
@@ -65,8 +65,8 @@
 	/* Indent paragraphs */
 
 	// p + p {
-	// 	@include rhythm(margin-top);
-	// 	@include rhythm(text-indent);
+	// 	margin-top: rhythm(1);
+	// 	text-indent: rhythm(1);
 	// }
 
 	/* Headings
@@ -181,7 +181,7 @@
 	}
 
 	dd {
-		@include rhythm(margin-left);
+		margin-left: rhythm(1);
 	}
 
 	/* Links

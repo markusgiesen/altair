@@ -34,24 +34,21 @@ img {
 /* Image placement variations */
 
 .Image--right {
-	@include rhythm(margin-bottom, .5);
-	@include rhythm(margin-left, .5);
-
 	float: right;
+	margin-bottom: rhythm(.5);
+	margin-left: rhythm(.5);
 }
 
 .Image--left{
-	@include rhythm(margin-right, .5);
-	@include rhythm(margin-bottom, .5);
-
 	float: left;
+	margin-right: rhythm(.5);
+	margin-bottom: rhythm(.5);
 }
 
 .Image--center {
-	@include rhythm(margin-bottom, .5);
-
 	display: block;
 	margin-right: auto;
+	margin-bottom: rhythm(.5);
 	margin-left: auto;
 }
 

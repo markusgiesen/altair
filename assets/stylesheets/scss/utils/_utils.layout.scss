@@ -125,15 +125,13 @@
  */
 
 %u-objLeft {
-	@include rhythm(margin-right);
-
 	float: left !important;
+	margin-right: rhythm(1);
 }
 
 %u-objRight {
-	@include rhythm(margin-left);
-
 	float: right !important;
+	margin-left: rhythm(1);
 }
 
 /**

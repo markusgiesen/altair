@@ -9,14 +9,14 @@
 .Copy ul,
 .Copy ol,
 .List {
-	@include rhythm(margin-left); // roughly equal to offset the outdent of a two-figure number (1 of 2)
+	margin-left: rhythm(1); // roughly equal to offset the outdent of a two-figure number (1 of 2)
 
 	li {
 		display: list-item;
 
 		& > ul,
 		& > ol {
-			@include rhythm(margin-left);
+			margin-left: rhythm(1);
 		}
 	}
 
@@ -94,7 +94,7 @@ ol.List {
 	}
 	&.List--plain,
 	&.List--links {
-		@include rhythm(margin-left); // roughly equal to offset the outdent of a two-figure number (1 of 2)
+		margin-left: rhythm(1); // roughly equal to offset the outdent of a two-figure number (1 of 2)
 
 		@include breakpoint(medium) {
 			margin-left: 0; // reset left margin from medium and up

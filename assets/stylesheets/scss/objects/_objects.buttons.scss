@@ -20,10 +20,9 @@
  */
 
 .Button {
-	@include rhythm(padding, .5 1);
-
 	position: relative;
 	display: inline-block;
+	padding: rhythm(.5) rhythm(1);
 	border: none;
 	border-radius: 0; /* To remove rounded corners in Safari on iOS 5+ */
 	background: $color-base-black;
@@ -85,13 +84,13 @@
  */
 
 .Button--small {
-	@include rhythm(margin-bottom, .5);
-	@include rhythm(padding, .25);
+	margin-bottom: rhythm(.5);
+	padding: rhythm(.25);
 }
 
 .Button--large {
-	@include rhythm(margin-bottom, .5);
-	@include rhythm(padding, .75 1);
+	margin-bottom: rhythm(.5);
+	padding: rhythm(.75) rhythm(1);
 }
 
 /* Full width button */

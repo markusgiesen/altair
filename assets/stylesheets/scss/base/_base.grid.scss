@@ -146,12 +146,12 @@
 /* Em gutter */
 
 .Grid--withGutter {
-	@include rhythm(margin-right, -.5); /* Removes the `gutter` right */
-	@include rhythm(margin-left, -.5); /* Removes the `gutter` right */
+	margin-right: rhythm(-.5); /* Removes the `gutter` right */
+	margin-left: rhythm(-.5); /* Removes the `gutter` right */
 
 	& > .Grid-cell {
-		@include rhythm(padding-right, .5);
-		@include rhythm(padding-left, .5);
+		padding-right: rhythm(.5);
+		padding-left: rhythm(.5);
 	}
 }
 
