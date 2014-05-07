@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 			replace: true,
 		},
 		dist: {
-			src: '<%= project.styles_dev %>/oldie.concat.css',
+			src: '<%= project.styles_dev %>/oldie.dev.css',
 			dest: '<%= project.styles_dev %>/oldie.dev.css',
 		},
 	});

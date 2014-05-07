@@ -1,13 +1,14 @@
 module.exports = function(grunt) {
 
 	grunt.registerTask('sass-concat', [], function () {
-		// grunt.loadNpmTasks('grunt-contrib-sass');
 		grunt.loadNpmTasks('grunt-sass');
 		grunt.loadNpmTasks('grunt-autoprefixer');
 		grunt.loadNpmTasks('grunt-notify');
 		grunt.task.run(
 			'sass:debug',
-			'autoprefixer',
+			'autoprefixer:main',
+			'autoprefixer:mobile',
+			'autoprefixer:print',
 			'notify:styles'
 		);
 	});

@@ -7,7 +7,7 @@ module.exports = function(grunt) {
 		},
 		dist: {
 			files: {
-				'<%= project.styles_dev %>/oldie.concat.css': '<%= project.styles_dev %>/main.dev.css', // destination: [source]
+				'<%= project.styles_dev %>/oldie.dev.css': '<%= project.styles_dev %>/oldie.dev.css', // destination: [source]
 			},
 		},
 	});

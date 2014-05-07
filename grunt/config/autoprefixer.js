@@ -4,6 +4,7 @@ module.exports = function(grunt) {
 		options: {
 			browsers: ['> 1%', 'last 2 versions', 'ff 17', 'opera 12.1'], // Is default value; other example: ['last 2 version', 'ie 8', 'ie 9']
 			map: true,
+			cascade: true,
 		},
 		main: {
 			src: '<%= project.styles_dev %>/main.concat.css', // if only the `src` param is specified, the destination will be set automatically (and source files will be overwritten)
@@ -17,13 +18,15 @@ module.exports = function(grunt) {
 			src: '<%= project.styles_dev %>/print.concat.css',
 			dest: '<%= project.styles_dev %>/print.dev.css',
 		},
-		// oldie: {
-		// 	options: {
-		// 		browsers: ['ie 8', 'ie 9'],
-		// 	},
-		// 	src: '<%= project.styles_dev %>/ie.concat.css',
-		// 	dest: '<%= project.styles_dev %>/ie.dev.css',
-		// },
+		oldie: {
+			options: {
+				browsers: ['ie 8'],
+				map: false,
+				cascade: true,
+			},
+			src: '<%= project.styles_dev %>/main.concat.css',
+			dest: '<%= project.styles_dev %>/oldie.dev.css',
+		},
 	});
 
 };
