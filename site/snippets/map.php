@@ -17,8 +17,7 @@ if(!isset($class))   $class   = 'map';
 if(!isset($zoom))    $zoom    = 15;
 if(!isset($address)) $address = 'Mannheim, Germany';
 
-/////////////////////////////////////////////////////////////
-?>
+////////////////////////////////////////////////////////// ?>
 
 <?php if(!$instances): ?>
 	<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false"></script>

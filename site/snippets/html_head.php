@@ -47,8 +47,7 @@ if(!isset($prerender)): $prerender = false; endif;
 // 'snippet_detect('html_head', array('prefetch' => true));'
 if(!isset($prefetch)): $prefetch = false; endif;
 
-/////////////////////////////////////////////////////////////
-?>
+////////////////////////////////////////////////////////// ?>
 
 <!doctype html>
 <!-- <html manifest="/cache.appcache" lang="<?php echo $language_code; ?>"> -->

@@ -7,8 +7,7 @@
 if($site->uri->path(1) == '') { $shareUrl = $site->url(); } else { $shareUrl = $page->tinyurl(); } // make sure to enable tinyurl in config.php
 $twittertext = 'Check out this “' . $page->title() . '” page on ' . $site->title() . ': ' . $shareUrl;
 
-/////////////////////////////////////////////////////////////
-?>
+////////////////////////////////////////////////////////// ?>
 
 <aside class="u-spaceTrailerM">
 	<h2 class="DeltaHeading">Share this page</h2>

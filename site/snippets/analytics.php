@@ -51,7 +51,4 @@ if (c::get('analytics.tool') == false): ?>
 
 	<!-- NO TRACKING SET! -->
 
-<?php endif;
-
-/////////////////////////////////////////////////////////////
-?>
+<?php endif; ?>

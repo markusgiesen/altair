@@ -11,8 +11,7 @@ $form = new contactform(array(
 	'goto'     => $page->url() . '/status:thank-you'
 ));
 
-/////////////////////////////////////////////////////////////
-?>
+////////////////////////////////////////////////////////// ?>
 
 <form action="#contactform" method="post" id="contactform" class="Form">
 

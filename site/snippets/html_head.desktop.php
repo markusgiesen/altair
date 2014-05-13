@@ -53,8 +53,7 @@ if(!isset($prerender)): $prerender = false; endif;
 // 'snippet_detect('html_head', array('prefetch' => true));'
 if(!isset($prefetch)): $prefetch = false; endif;
 
-/////////////////////////////////////////////////////////////
-?>
+////////////////////////////////////////////////////////// ?>
 
 <!doctype html>
 <!--[if lte IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="<?php echo $language_code; ?>"> <![endif]-->
