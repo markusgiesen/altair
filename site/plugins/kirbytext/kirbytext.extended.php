@@ -46,9 +46,9 @@
 * 1) …
 *
 * * Fluid video:
-* 1) (fluidvideo: 77383196 type: vimeo)
-* 2) (fluidvideo: hXU63NXzg5A type: youtube ratio: 4by3)
-* 2) (fluidvideo: zJs9p-VNORw type: vimeo ratio: 2by1)
+* 1) (video: 77383196 type: vimeo)
+* 2) (video: hXU63NXzg5A type: youtube ratio: 4by3)
+* 2) (video: zJs9p-VNORw type: vimeo ratio: 2by1)
 *
 **/
 
@@ -68,7 +68,7 @@ class kirbytextExtended extends kirbytext {
 		$this->addTags('figure');
 		$this->addTags('imgrid');
 		$this->addTags('slider');
-		$this->addTags('fluidvideo');
+		$this->addTags('video');
 
 		// define custom attributes
 		$this->addAttributes('language', 'cite', 'link'); // quote attributes
@@ -76,7 +76,7 @@ class kirbytextExtended extends kirbytext {
 		$this->addAttributes('crop', 'hd', 'upscale', 'quality', 'alt'); // thumb attributes
 		$this->addAttributes('caption', 'container', 'breakfrom','offset', 'gridcenter', 'gridsingle'); // figure attributes
 		$this->addAttributes('images','margin','per-row','crop-last','container','hd', 'caption'); // imgrid attributes
-		$this->addAttributes('ratio', 'type'); // fluidvideo attributes
+		$this->addAttributes('ratio', 'type'); // video attributes
 	}
 
 	// Quote
@@ -471,7 +471,7 @@ class kirbytextExtended extends kirbytext {
 	}
 
 		// Fluid videos
-	function fluidvideo($params) {
+	function video($params) {
 
 		global $site;
 
@@ -486,7 +486,7 @@ class kirbytextExtended extends kirbytext {
 
 		// set default values for attribues
 		$page      = ($this->obj) ? $this->obj : $site->pages()->active();
-		$video     = $options['fluidvideo'];
+		$video     = $options['video'];
 		$type      = $options['type'];
 		$ratio     = $options['ratio'];
 
