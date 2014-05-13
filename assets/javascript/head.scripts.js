@@ -51,12 +51,25 @@
  *
  * Load the ReSRC script asynchronously. ReSRC delivers responsive images
  * on-demand, direct from the cloud.
- * For more information see: http://www.resrc.it/support
+ * For more information see: http://www.resrc.it/docs/javascript/0.7
  */
 
-//(function(d, t){
-//	var r = d.createElement(t),
-//	s = d.getElementsByTagName(t)[0];
-//	r.src = '//use.resrc.it';
-//	s.parentNode.insertBefore(r, s);
-//}(document, 'script'));
+// (function () {
+// 	var d = false;
+// 	var r = document.createElement('script');
+// 	r.src = '//use.resrc.it/0.7';
+// 	r.type = 'text/javascript';
+// 	r.async = 'true';
+// 	r.onload = r.onreadystatechange = function () {
+// 		var rs = this.readyState;
+// 		if (d || rs && rs != 'complete' && rs != 'loaded') return;
+// 		d = true;
+// 		try {
+// 			resrc.ready(function () {
+// 				resrc.resrc();
+// 			});
+// 		} catch (e) {}
+// 	};
+// 	var s = document.getElementsByTagName('script')[0];
+// 	s.parentNode.insertBefore(r, s);
+// })();
