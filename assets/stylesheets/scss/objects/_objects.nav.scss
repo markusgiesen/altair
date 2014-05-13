@@ -78,14 +78,37 @@
 	.ctm & {
 		position: fixed;
 		top: 0;
-		display: none;
-		overflow-y: auto;
+		z-index: $z-index-hidden;
+		opacity: 0;
 		margin-top: 0;
 		height: 100%;
+		transform: scale(1.32);
 	}
 	.is-openMainNav & {
-		display: block;
+		opacity: 100;
+		z-index: $z-index-nav-main;
+		overflow-y: auto;
+		transition: opacity .32s, transform .32s;
+		transform: scale(1);
+		-webkit-overflow-scrolling: touch; /* Adds momentum scrolling on iOS! */
 	}
+
+	// .ctm & {
+	// 	position: fixed;
+	// 	top: 0;
+	// 	margin-top: 0;
+	// 	height: 100%;
+	// 	opacity: 0;
+	// 	transform: scale(1.32);
+	// }
+	// .is-openMainNav & {
+	// 	overflow-y: auto;
+	// 	opacity: 1;
+	// 	display: block;
+	// 	transition: opacity .32s, transform .32s;
+	// 	transform: scale(1);
+	// 	-webkit-overflow-scrolling: touch; /* Adds momentum scrolling on iOS! */
+	// }
 }
 
 .is-openMainNav {
@@ -149,6 +172,7 @@
 	position: absolute;
 	top: rhythm(1);
 	right: $contain-percentage;
+	z-index: $z-index-nav-toggle;
 	display: block;
 	width: 44pt; /* Touch target sizes: http://j.mp/XJm4uJ */
 	height: 44pt; /* Use padding, or width/height to position icon, so it works nicely on touchdevices */

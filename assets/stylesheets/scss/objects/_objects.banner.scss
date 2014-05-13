@@ -5,5 +5,7 @@
 .Banner {
 	@include u-cf();
 
+	z-index: $z-index-banner;
 	padding: rhythm(1) $contain-percentage;
+	position: relative;
 }

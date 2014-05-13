@@ -32,6 +32,7 @@ $breaks: small, compact, medium, large, wide, huge;
 @import "settings/settings.page";
 @import "settings/settings.ratios";
 @import "settings/settings.typography";
+@import "settings/settings.z-indices";
 
 // --------------------------------------------------------------------------
 // generic
@@ -85,6 +86,7 @@ $breaks: small, compact, medium, large, wide, huge;
 @import "objects/objects.figure-image";
 @import "objects/objects.fluid-embed";
 @import "objects/objects.forms";
+@import "objects/objects.full-page-cover";
 @import "objects/objects.headings";
 @import "objects/objects.icon-fonts";
 @import "objects/objects.imgrid";
