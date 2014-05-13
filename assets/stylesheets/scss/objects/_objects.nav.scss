@@ -111,10 +111,6 @@
 	// }
 }
 
-.is-openMainNav {
-	overflow: hidden;
-}
-
 /* Main nav (list) */
 
 .NavMain-list {
@@ -160,6 +156,14 @@
 	// 		padding-left: rhythm(1);
 	// 	}
 	// }
+}
+
+/**
+ * Prevent double scrollbars when `.NavMain` is open
+ */
+
+html.is-openMainNav {
+	overflow: hidden;
 }
 
 /**
