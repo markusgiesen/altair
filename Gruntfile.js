@@ -38,31 +38,30 @@ module.exports = function(grunt) {
 		// JS files and order
 		jsfiles: {
 			head: [
+				'<%= project.scripts %>/vendor/ctm.js',
 				// '<%= project.scripts %>/vendor/typekit.min.js',
 				// '<%= project.scripts %>/vendor/webfont.min.js',
+				// '<%= project.scripts %>/vendor/resrc.js',
 				'<%= project.scripts %>/head.scripts.js',
 			],
 			main: {
 				checks: [
 					'<%= project.scripts %>/vendor/modernizr.dev.js',
 					// '<%= project.scripts %>/vendor/modernizr.min.js',
-					'<%= project.scripts %>/vendor/ctm.js',
 				],
 				polyfills: [
-					'<%= project.scripts %>/vendor/underscore.js',
 					'<%= project.scripts %>/polyfills/classlist.js',
 				],
 				plugins: [
-					'<%= project.scripts %>/plugins/echo.js',
-					'<%= project.scripts %>/plugins/instantclick.js',
 					'<%= project.scripts %>/plugins/transitionend.js',
 					'<%= project.scripts %>/plugins/smoothscroll.js',
 				],
-				other: [
-				// Utils -> WATCH OUT: the order of utils is important !!
+				utils: [
 					'<%= project.scripts %>/utils/extend.util.js',
 					'<%= project.scripts %>/utils/alerts.util.js',
 					// '<%= project.scripts %>/utils/ajax.util.js',
+				],
+				other: [
 				// Classes
 					'<%= project.scripts %>/classes/navmain.class.js',
 					'<%= project.scripts %>/classes/popup.class.js',
@@ -74,23 +73,20 @@ module.exports = function(grunt) {
 				checks: [
 					'<%= project.scripts %>/vendor/modernizr.dev.js',
 					// '<%= project.scripts %>/vendor/modernizr.min.js',
-					'<%= project.scripts %>/vendor/ctm.js',
 				],
 				polyfills: [
-					'<%= project.scripts %>/vendor/underscore.js',
 					'<%= project.scripts %>/polyfills/classlist.js',
 				],
 				plugins: [
-					'<%= project.scripts %>/plugins/echo.js',
-					'<%= project.scripts %>/plugins/instantclick.js',
 					'<%= project.scripts %>/plugins/transitionend.js',
 					'<%= project.scripts %>/plugins/smoothscroll.js',
 				],
-				other: [
-				// Utils -> WATCH OUT: the order of utils is important !!
+				utils: [
 					'<%= project.scripts %>/utils/extend.util.js',
 					'<%= project.scripts %>/utils/alerts.util.js',
 					// '<%= project.scripts %>/utils/ajax.util.js',
+				],
+				other: [
 				// Classes
 					'<%= project.scripts %>/classes/navmain.class.js',
 				// Main
