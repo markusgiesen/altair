@@ -2,7 +2,7 @@
 /**
 * Tag Extensions for Kirbytext
 *
-* Written by Jasper Rooduijn & Jonathan van Wunnik
+* Written by Jasper Rooduijn, Jonathan van Wunnik & Marijn Tijhuis
 * Inspired by: https://gist.github.com/2924148, http://getkirby.com/forum/general/topic:45, https://gist.github.com/1711983
 *
 * Blockquote usage:
@@ -13,20 +13,20 @@
 * 3) (blockquote: Bij fotografie is zien belangrijker dan de tools. lang: nl attribution: Jonathan van Wunnik)
 *
 * Custom list usage:
-* 1) (customlist: yamlfilename class: classname-to-add type: unordered order: default reverse: true)
 * -> Simply prints out a list from a yaml textfile. Extension should always be: .yaml
 * -> Type can be set: unordered, ordered, definition
 * -> Order can be set:  default, alphabetical, random
 * -> Reverse order can be set:  true
 * -> Classname is added to a wrapping <div>.
+* 1) (customlist: yamlfilename class: classname-to-add type: unordered order: default reverse: true)
 *
 * Widont usage:
+* -> If text contains more than 3 spaces, replace last space by a &nbsp:
 * 1) (widont: dit is een hele lange titel)
-* -> If text contains more than 3 spaces, replace last space by a &nbsp;
 *
 * No hyphen:
-* 1) (nohyphen: Bedrijf naam)
-* -> Wraps the passed text in a span with class .no-hyphen
+* -> Wraps the passed text in a span with class .no-hyphen:
+* 1) (nohyphen: Company name)
 *
 * Thumb usage:
 * 1) (thumb: myimage.jpg width: 400)
@@ -42,16 +42,13 @@
 * 4) (figure: myimage.jpg width: 2of3 height: 200 crop: true hd: true caption: Nice figure caption!)
 * 5) (figure: myimage.jpg width: width: 2of3 gridcenter: true caption: A centered image!)
 *
-* Figure can also be used as a 'Multifigure', usage:
-* 1) (figure: myimage.jpg | myimage2.jpg width: 1of2 | 1of2 breakfrom: compact)
+* And 'Multifigure' figure usage:
+* 6) (figure: myimage.jpg | myimage2.jpg width: 1of2 | 1of2 breakfrom: compact)
 *
-* Slider usage:
-* 1) …
-*
-* * Fluid video:
-* 1) (video: 77383196 type: vimeo)
-* 2) (video: hXU63NXzg5A type: youtube ratio: 4by3)
-* 2) (video: zJs9p-VNORw type: vimeo ratio: 2by1)
+* Fluid video:
+* 1) (video: 77383196 host: vimeo)
+* 2) (video: hXU63NXzg5A host: youtube ratio: 4by3)
+* 2) (video: zJs9p-VNORw host: vimeo ratio: 2by1)
 *
 **/
 
@@ -79,7 +76,7 @@ class kirbytextExtended extends kirbytext {
 		$this->addAttributes('crop', 'hd', 'upscale', 'quality', 'alt'); // thumb attributes
 		$this->addAttributes('caption', 'container', 'breakfrom','offset', 'gridcenter', 'gridsingle'); // figure attributes
 		$this->addAttributes('images','margin','per-row','crop-last','container','hd', 'caption'); // imgrid attributes
-		$this->addAttributes('ratio', 'type'); // video attributes
+		$this->addAttributes('host', 'ratio'); // video attributes
 	}
 
 	// Quote
@@ -207,7 +204,7 @@ class kirbytextExtended extends kirbytext {
 		// use kirby yaml parser to get the list items
 		$listitem = yaml($listcontent);
 
-		/* --- Ordering --- */
+		// Ordering //
 
 		if($options['order']=='alphabetical'){
 			// sort array on key order
@@ -224,7 +221,7 @@ class kirbytextExtended extends kirbytext {
 			shuffle($listitem);
 		}
 
-		/* --- Displaying --- */
+		// Displaying //
 
 		// lets loop through the listitems and output
 		foreach($listitem as $item_key => $item_value){ // loop the first tier
@@ -263,7 +260,7 @@ class kirbytextExtended extends kirbytext {
 
 			} // END loop the second tier
 
-		}  // END loop the first tier
+		} // END loop the first tier
 
 		$html .= '</'.$listtag.'>';
 
@@ -323,7 +320,7 @@ class kirbytextExtended extends kirbytext {
 			'alt'     => $options['alt']
 		));
 
-	  }
+	}
 
 	// Figure
 	function figure($params) {
@@ -381,14 +378,14 @@ class kirbytextExtended extends kirbytext {
 		if(empty($result)) return false;
 
 		// set variables for both single and multi figures
-		$upscale   = str::split($options['upscale']);
-		$hd        = str::split($options['hd']);
-		$caption   = str::split($options['caption']);
-		$container = str::split($options['container']);
-		$breakfrom = str::split($options['breakfrom']);
-		$offset    = str::split($options['offset']);
-		$gridcenter= str::split($options['gridcenter']);
-		$gridsingle= str::split($options['gridsingle']);
+		$upscale    = str::split($options['upscale']);
+		$hd         = str::split($options['hd']);
+		$caption    = str::split($options['caption']);
+		$container  = str::split($options['container']);
+		$breakfrom  = str::split($options['breakfrom']);
+		$offset     = str::split($options['offset']);
+		$gridcenter = str::split($options['gridcenter']);
+		$gridsingle = str::split($options['gridsingle']);
 
 		if($is_multifigure){
 			$widths    = str::split(str_replace(' ', '', $options['width']), '|');
@@ -437,7 +434,7 @@ class kirbytextExtended extends kirbytext {
 	}
 
 
-	// IMG grid
+	// Imgrid
 	function imgrid($params) {
 
 		global $site;
@@ -485,7 +482,7 @@ class kirbytextExtended extends kirbytext {
 
 	}
 
-		// Fluid videos
+	// Video
 	function video($params) {
 
 		global $site;
@@ -493,7 +490,7 @@ class kirbytextExtended extends kirbytext {
 		// set default values for attributes
 		$defaults = array(
 			'ratio'    => null,
-			'type'     => null,
+			'host'     => null,
 		);
 
 		// merge the given parameters with the default values
@@ -502,7 +499,7 @@ class kirbytextExtended extends kirbytext {
 		// set default values for attribues
 		$page      = ($this->obj) ? $this->obj : $site->pages()->active();
 		$video     = $options['video'];
-		$type      = $options['type'];
+		$host      = $options['host'];
 		$ratio     = $options['ratio'];
 
 		// fill the ratio string
@@ -517,10 +514,10 @@ class kirbytextExtended extends kirbytext {
 		$html = '<figure class="FluidEmbed '. $ratio .'">';
 
 		// display the embedcode
-		if($type == 'vimeo') {
+		if($host == 'vimeo') {
 			$html .= '<iframe src="//player.vimeo.com/video/' . $video . '?title=0&amp;byline=0&amp;portrait=0&amp;color=0000ff" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
 		}
-		elseif ($type == 'youtube') {
+		elseif ($host == 'youtube') {
 			$html .= '<iframe width="853" height="480" src="//www.youtube.com/embed/' . $video . '?rel=0" frameborder="0" allowfullscreen></iframe>';
 		}
 		else {
@@ -533,31 +530,5 @@ class kirbytextExtended extends kirbytext {
 		return $html;
 
 	}
-
-	// Slider
-	// function slider($params) {
-	//
-	// 	global $site;
-	//
-	//	// set default values for attribues
-	// 	$page   = ($this->obj) ? $this->obj : $site->pages()->active();
-	// 	$images = str::split($params['slider'], ' ');
-	// 	$result = array();
-	//
-	//	// check if there is an image
-	// 	if(empty($images)) return false;
-	// 	if($page->images()->count() == 0) return false;
-	//
-	// 	foreach($images as $img) {
-	// 		$imgObj = $page->images()->find($img);
-	// 		if($imgObj) $result[] = $imgObj;
-	// 	}
-	//
-	// 	if(empty($result)) return false;
-	//
-	//	// build tag with snippet
-	// 	return snippet('slider', array('images' => $result), true);
-	//
-	// }
 
 }
