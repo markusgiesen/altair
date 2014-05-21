@@ -22,13 +22,6 @@ if(cutsthemustard){
 			popuplink.addEventListener('click', popup.openWindow, false);
 		}
 
-		/* Initiate externalize event handlers (settings: http://j.mp/P3xv1i) */
-		// $('.js-external').externalize({relation: 'external nofollow', title: 'Opens link in new window'});
-		// $('a[href$=".pdf"]').externalize({ title: 'Opens PDF in a new window' });
-
-		/* Instant click */
-//		InstantClick.init(50,true);
-
 		/* Echo Lazyloading */
 //		Echo.init({
 //			offset: '0',
