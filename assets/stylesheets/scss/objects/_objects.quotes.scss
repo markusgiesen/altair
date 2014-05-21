@@ -9,10 +9,6 @@
 .Quote {
 	quotes: none;
 
-	// &:before,
-	// &:after {
-	// 	color: $blue;
-	// }
 	&:before { content: open-quote; }
 	&:after { content: close-quote; }
 
@@ -45,7 +41,6 @@
  * or at least eight lines.
  */
 
-.Copy blockquote,
 .Blockquote {
 	margin-top: rhythm(1);
 	margin-bottom: rhythm(1);
@@ -55,7 +50,7 @@
 	quotes: none;
 
 	p {
-		// @extend %Quote;
+		// @extend .Quote;
 
 		display: inline;
 		margin: 0;
@@ -66,16 +61,13 @@
 
 		&:before,
 		&:after {
-			color: $color-gray-dark;
 			-webkit-font-smoothing: antialiased;
 		}
 	}
 
-	footer {
-		cite {
-			&:before {
-				content: "— ";
-			}
+	figcaption {
+		&:before {
+			content: "— ";
 		}
 	}
 
@@ -87,11 +79,18 @@
 }
 
 /**
- * Ppull quote
+ * Pull quote
  *
  * Also known as a lift-out quote -- is a quotation
  * or excerpt from an article that is typically placed in a larger or distinctive
  * typeface on the same page (http://en.wikipedia.org/wiki/Pull_quote)
+ *
+ * Example HTML:
+ * <aside class="Pullquote">
+ *   <blockquote>It is the unofficial force—the Baker Street irregulars.</blockquote>
+ * </aside>
  */
 
- // To be added…
+.Pullquote {
+	@extend .Blockquote;
+}

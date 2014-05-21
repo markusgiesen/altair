@@ -6,8 +6,11 @@
 * Inspired by: https://gist.github.com/2924148, http://getkirby.com/forum/general/topic:45, https://gist.github.com/1711983
 *
 * Blockquote usage:
-* 1) (blockquote: My quote here cite: Jonathan van Wunnik)
-* 2) (blockquote: My quote here lang: fr cite: Jonathan van Wunnik link: http://artlantis.nl)
+* -> Markup based on A List Apart's article: http://j.mp/1oRDK9x, http://j.mp/1h7RLbF
+* -> The <cite> tag is not meant for people's names; according to the spec, it is only for works (not people)!
+* 1) (blockquote: Tomorrow is another day. attribution: Scarlett O'Hara in Margaret Mitchell's cite: Gone with the Wind)
+* 2) (blockquote: I'm going to make him an offer he can't refuse. attribution: Don Vito Corleone's famous line in cite: The Godfather link: http://www.imdb.com/title/tt0068646/)
+* 3) (blockquote: Bij fotografie is zien belangrijker dan de tools. lang: nl attribution: Jonathan van Wunnik)
 *
 * Custom list usage:
 * 1) (customlist: yamlfilename class: classname-to-add type: unordered order: default reverse: true)
@@ -71,7 +74,7 @@ class kirbytextExtended extends kirbytext {
 		$this->addTags('video');
 
 		// define custom attributes
-		$this->addAttributes('language', 'cite', 'link'); // quote attributes
+		$this->addAttributes('language', 'attribution', 'cite', 'link'); // (block)quote attributes
 		$this->addAttributes('source', 'class', 'type', 'order', 'reverse'); // list attributes
 		$this->addAttributes('crop', 'hd', 'upscale', 'quality', 'alt'); // thumb attributes
 		$this->addAttributes('caption', 'container', 'breakfrom','offset', 'gridcenter', 'gridsingle'); // figure attributes
@@ -91,7 +94,7 @@ class kirbytextExtended extends kirbytext {
 		$options = array_merge($defaults, $params);
 
 		// start the html output
-		$html  = '<q ';
+		$html  = '<q class="Quote" ';
 
 		// add the langguage
 		if(!empty($params['lang'])) {
@@ -111,34 +114,46 @@ class kirbytextExtended extends kirbytext {
 
 		// set default values for attributes
 		$defaults = array(
-			'language' => c::get('lang.default', 'en'),
-			'cite'     => false,
-			'link'     => false
+			'language'    => c::get('lang.default', 'en'),
+			'attribution' => false,
+			'cite'        => false,
+			'link'        => false
 		);
 
 		// merge the given parameters with the default values
 		$options			= array_merge($defaults, $params);
 
 		// start the html output
+		$html = '<figure class="Blockquote">';
+
+		// set language tag on blockquote
 		if(!empty($params['lang'])) {
-			$html  = '<blockquote lang="' . $params['lang'] . '">';
+			$html .= '<blockquote lang="' . $params['lang'] . '">';
 		} else {
-			$html  = '<blockquote lang="' . $options['language'] . '">';
-		}
-		$html .= '<p>' . html($options['blockquote']) . '</p>';
-
-		// only add citation if one is available
-		if(!empty($params['cite'])) {
-
-			if(!empty($params['link'])) {
-				$html .= '<footer><cite><a href="' . html($params['link']) . '" class="js-external">' . html($params['cite']) . '</a></cite></footer>';
-			} else {
-				$html .= '<footer><cite>' . html($params['cite']) . '</cite></footer>';
-			}
-
+			$html .= '<blockquote lang="' . $options['language'] . '">';
 		}
 
+		// set blockquote's text
+		$html .= '<p>' . smartypants($options['blockquote']) . '</p>';
+
+		// close the blockquote
 		$html .= '</blockquote>';
+
+		// open figcaption with attribution, citation and link if one is available
+		if(!empty($params['attribution'])) {
+			if(!empty($params['cite'])) {
+				if(!empty($params['link'])) {
+					$html .= '<figcaption>' . smartypants($params['attribution']) . ' <cite><a href="' . html($params['link']) . '" rel="external nofollow">' . smartypants($params['cite']) . '</a></cite></figcaption>';
+				} else {
+					$html .= '<figcaption>' . smartypants($params['attribution']) . ' <cite>' . smartypants($params['cite']) . '</cite></figcaption>';
+				}
+			} else {
+				$html .= '<figcaption>' . smartypants($params['attribution']) . '</figcaption>';
+			}
+		}
+
+		// close the html output
+		$html .= '</figure>';
 
 		return $html;
 

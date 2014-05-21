@@ -68,7 +68,7 @@ Because we use the widon't kirby extend, and the title contains more than 3 spac
 
 ## Paragraph {#paragraph}
 
-Donec quam felis, ultricies nec, pellentesque eu --- pretium quis, sem. Nulla consequat massa quis enim: (quote: This is an English inline quote). Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. **(nohyphen: These words will not be hyphenated)**. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+Donec quam felis, ultricies nec, pellentesque eu --- pretium quis, sem. And then Jonathan van Wunnik said, (quote: This is an English inline quote lang: en). Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. **(nohyphen: These words will not be hyphenated)**. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
 
 Donec blandit, quam et tempus egestas, nulla enim viverra orci, ac scelerisque massa felis non libero. Praesent eu dui vel arcu consectetur blandit malesuada a augue. In et.
 
@@ -78,11 +78,15 @@ Donec blandit, quam et tempus egestas, nulla enim viverra orci, ac scelerisque m
 
 Integer elit velit, suscipit sit amet commodo a, semper vel mi. Vestibulum sit amet sem orci. Aliquam imperdiet odio ut lectus adipiscing venenatis ac quis risus. Pellentesque facilisis gravida commodo. Donec non.
 
-(blockquote: A wise girl kisses but doesn't love, listens but doesnt believe, and leaves before she is left. cite: Marilyn Monroe link: http://www.great-quotes.com/quote/1378593)
+(blockquote: I'm going to make him an offer he can't refuse. attribution: Don Vito Corleone's famous line in cite: The Godfather link: http://www.imdb.com/title/tt0068646/)
 
 Cras facilisis suscipit porttitor. Aliquam erat volutpat. Integer commodo lacus ac nibh semper eget facilisis est lobortis. Sed dignissim, erat vitae gravida semper, orci metus porttitor mauris, et laoreet odio justo id tortor. Etiam.
 
-(blockquote: La vie est une maladie mortelle sexuellement transmissible. lang: fr cite: Woody Allen)
+(blockquote: A wise girl kisses but doesn't love, listens but doesnt believe, and leaves before she is left. attribution: Marilyn Monroe)
+
+Vivamus at neque at mi vestibulum condimentum sed sit amet arcu. Morbi mauris augue, ultricies eu semper quis, lacinia id quam. Proin.
+
+(blockquote: La vie est une maladie mortelle sexuellement transmissible. lang: fr attribution: Woody Allen)
 
 Donec blandit, quam et tempus egestas, nulla enim viverra orci, ac scelerisque massa felis non libero. Praesent eu dui vel arcu consectetur blandit malesuada a augue. In et.
 

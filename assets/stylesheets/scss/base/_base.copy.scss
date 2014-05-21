@@ -30,7 +30,7 @@
 
 	/* Max width and hyphenation */
 
-	p, ul, ol, dl, blockquote {
+	p, ul, ol, dl, .Blockquote {
 		@extend %u-textMaxWidth;
 		@extend %u-textHyphen;
 	}
@@ -91,16 +91,14 @@
 	h5 { @extend .EpsilonHeading; }
 	h6 { @extend .ZetaHeading; }
 
-	/* Block- and inline quotes
+	/* Pull, block- and run-in quotes
 	   ========================================================================== */
 
-	// blockquote {
-	// 	@extend .Blockquote; // `.Copy  blockquote` directly added to work nicely with libsass
-	// }
+	// .Quote {}
 
-	// q {
-	// 	@extend .Quote; // `.Copy q` directly added to work nicely with libsass
-	// }
+	// .Blockquote {}
+
+	// .Pullquote {}
 
 	/* Inline Elements
 	   ========================================================================== */
