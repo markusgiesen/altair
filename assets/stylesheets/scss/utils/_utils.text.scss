@@ -8,7 +8,7 @@
 
 .u-textMaxWidth,
 %u-textMaxWidth {
-	max-width: $text-max-width;
+	max-width: $copy-max-width;
 }
 .u-textMaxWidth {
 	@extend %u-textMaxWidth;
