@@ -66,6 +66,23 @@ if(count($gridcenter) > 0) {
 	$centerclass = ' Grid--alignCenter';
 }
 
+// if there's an alt tag
+if(count($caption) > 0) {
+	// Alt is same as (passed) caption in text
+	$alt = $caption[0];
+} else {
+	if(count($alt) > 0) {
+		// Alt is (passed) alt in text
+		$alt = $alt[0]; // Set the first offset, assuming you can only pass one offset
+	}
+	else {
+		// Alt is image file name
+		$alt = null;
+		// Alt attribute is empty
+		// $alt = '';
+	}
+}
+
 // ----------------------------------------------------------
 // Open figure tag
 // ----------------------------------------------------------
@@ -128,6 +145,7 @@ foreach($images as $image):
 		$class = $itemclassprefix.'-item';
 	}
 
+	// If there is an offset
 	if($i == 0 && isset($offset)) {
 		$class .= ' u-before' . $offset . '--' . $breakclass;
 	}
@@ -140,9 +158,10 @@ foreach($images as $image):
 		'upscale' => $img_upscale,
 		'hd'      => $img_hd,
 		'quality' => $quality,
-		'alt'     => '',
+		'alt'     => $alt,
 		'container' => $container_set,
-		'class'   => $class
+		'class'   => $class,
+		'lazyload' => true
 		// .u-size1of2--compact .u-before1of2--compact
 	));
 
