@@ -23,10 +23,10 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerTask('styles', [], function () {
-		grunt.loadNpmTasks('grunt-contrib-watch');
+		// grunt.loadNpmTasks('grunt-contrib-watch');
 		grunt.task.run(
-			'sass-concat',
-			'watch'
+			'sass-concat'
+			// 'watch'
 		);
 	});
 

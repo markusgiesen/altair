@@ -30,11 +30,11 @@ module.exports = function(grunt) {
 	grunt.registerTask('scripts', [], function () {
 		grunt.loadNpmTasks('grunt-contrib-concat');
 		grunt.loadNpmTasks('grunt-contrib-jshint');
-		grunt.loadNpmTasks('grunt-contrib-watch');
+		// grunt.loadNpmTasks('grunt-contrib-watch');
 		grunt.task.run(
 			'scripts-concat',
-			'scripts-hint',
-			'watch'
+			'scripts-hint'
+			// 'watch'
 		);
 	});
 
