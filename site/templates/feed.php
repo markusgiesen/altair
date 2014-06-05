@@ -16,7 +16,8 @@ snippet('feed', array(
 	'link' => url('<your-feed-channel>'),
 	'items' => $feed_items,
 	'descriptionField'  => 'text',
-	'descriptionLength' => 300
+	'descriptionLength' => 800,
+	'descriptionExcerpt' => false
 ));
 
 ?>

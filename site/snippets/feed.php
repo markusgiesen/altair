@@ -7,7 +7,7 @@
 /////////////////////////////////////////////////////////////
 
 // defaults
-if(!isset($descriptionExcerpt)) $descriptionExcerpt = true;
+if(!isset($descriptionExcerpt)) $descriptionExcerpt = false;
 
 // send the right header
 header('Content-type: text/xml; charset="utf-8"');
@@ -27,10 +27,9 @@ echo '<?xml version="1.0" encoding="utf-8"?>';
 		<generator><?php echo c::get('feed.generator', 'Kirby'); ?></generator>
 		<lastBuildDate><?php echo (isset($modified)) ? date('r', $modified) : date('r', $site->modified()); ?></lastBuildDate>
 		<atom:link href="<?php echo xml(thisURL()); ?>" rel="self" type="application/rss+xml" />
-
-		<?php if($page->description() || isset($description)): ?>
+	<?php if($page->description() || isset($description)): ?>
 		<description><?php echo (isset($description)) ? xml($description) : xml($page->description()); ?></description>
-		<?php endif; ?>
+	<?php endif; ?>
 
 		<?php foreach($items as $item): ?>
 		<item>
