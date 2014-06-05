@@ -26,6 +26,7 @@
 	}
 	&:active {
 		color: $color-blue-light;
+		// transition: none; // Check out article about UI feedback: http://bfred.it/notes/?p=46
 	}
 }
 

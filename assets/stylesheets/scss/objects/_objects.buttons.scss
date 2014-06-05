@@ -42,6 +42,7 @@
 .Button:active {
 	top: 1px;
 	outline: none;
+	// transition: none; // Check out article about UI feedback: http://bfred.it/notes/?p=46
 }
 
 .Button:disabled,
