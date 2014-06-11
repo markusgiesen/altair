@@ -12,15 +12,10 @@ if(cutsthemustard){
 		/* Initiate all available classes */
 		alerts.init(push_message);                // Init alerts
 		navMain.init();                           // Init main navigation
+		popup.init();                             // Init popup
 
 		/* Init example of an error in a modal box */
 		// alerts.addMessage({status: 'error', content: 'OMG! Something terrible must have happened here!', timeout: 0, type: 'box-modal'});
-
-		/* Initiate popup event handlers*/
-		var popuplink = document.querySelector('.js-popup');
-		if (popuplink !== null) {
-			popuplink.addEventListener('click', popup.openWindow, false);
-		}
 
 		/* Echo Lazyloading */
 //		Echo.init({

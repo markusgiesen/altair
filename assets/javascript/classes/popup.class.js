@@ -8,18 +8,23 @@
  */
 
 var popup = {
+
+	init: function(){
+
+		/* Initiate popup event handlers */
+		var popuplinks = document.querySelectorAll('.js-popup');
+		for (var i = 0; i < popuplinks.length; i++) {
+			if (popuplinks[i] !== null) {
+				popuplinks[i].addEventListener('click', popup.openWindow, false);
+			}
+		}
+
+	},
+
 	openWindow: function(event){
 		var url = event.currentTarget.getAttribute('href');
 
-		if(typeof event.data.h === 'undefined'){
-			event.data.h = 400;
-		}
-		if(typeof event.data.w === 'undefined'){
-			event.data.w = 650;
-		}
-
-		window.open(url, 'popupwin', 'height='+ event.data.h +',width='+ event.data.w +',resizable=1,toolbar=0,menubar=0,status=0,location=0,scrollbars=1');
+		window.open(url, 'popupwin', 'height=400,width=650,resizable=1,toolbar=0,menubar=0,status=0,location=0,scrollbars=1');
 		event.preventDefault();
 	}
 };
-
