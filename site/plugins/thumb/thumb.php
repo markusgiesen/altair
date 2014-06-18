@@ -32,6 +32,7 @@ class thumb {
 	var $status = array();
 	var $upscale = false;
 	var $upscaleHd = false;
+	var $upscaleResrc = false;
 	var $quality = 70;
 	var $qualityHd = 50;
 	var $alt = false;
@@ -41,13 +42,16 @@ class thumb {
 	var $container = false;
 	var $resrc = false;
 	var $resrc_params = false;
+	var $resrc_optimize = false;
+	var $lazyload = false;
 
 	function __construct($image, $options=array()) {
 
 	$this->root = c::get('thumb.cache.root', c::get('root') . '/thumbs');
 	$this->url  = c::get('thumb.cache.url',  c::get('url')  . '/thumbs');
-	$this->resrc = c::get('resrc');
-	$this->resrc_params = c::get('resrc.params');
+	$this->resrc = c::get('resrc', false);
+	$this->resrc_optimize = c::get('resrc.optimize', 'o=60(80)');
+	$this->lazyload = @$options['lazyload'];
 
 	// Check  if PHP memory limit is set in config
 	$this->mem = c::get('thumb.memory', $this->phpMemoryLimit);
@@ -70,14 +74,14 @@ class thumb {
 
 	// set container width if there's no 'inline' container (width)
 	if($this->resrc) {
-		// if resrc is set, always use the medium container
-		$container_width = c::get('thumb.medium.container');
+		// if resrc is set, always use the ReSRC container
+		$container_width = c::get('resrc.container');
 		// set resrc width based on device width (for the mobile first image)
 		if($_SESSION['isMobile']) { $param_width = c::get('resrc.initial.small') ; }
 		if($_SESSION['isTablet']) { $param_width = c::get('resrc.initial.compact'); }
 		if($_SESSION['isDesktop']) { $param_width = c::get('resrc.initial.medium'); }
 		// Build param string
-		$this->resrc_params = 's=W' . $param_width . '/o=60(80)';
+		$this->resrc_params = 's=w' . $param_width . '/' . $this->resrc_optimize;
 	}
 	else {
 		// if resrc is not set, use device dependent container
@@ -116,9 +120,9 @@ class thumb {
 	// set crop
 	$this->crop         = @$options['crop'];
 
-	// if resrc is set (in config)
+	// if resrc is set to treu (in config)
 	if($this->resrc) {
-		$this->hd = true; // set the hd value
+		$this->hd = false; // set the hd value alwasy to false
 		$this->quality = 100; // set the quality value
 	}
 	// if resrc is set to false (in config)
@@ -127,11 +131,11 @@ class thumb {
 		// set the hd value...
 		if(is_bool(a::get($options, 'hd'))) {
 			if(!(a::get($options, 'hd'))) {
-			// ...to false if options(hd) = boolean and set as false
-			$this->hd = false;
+				// ...to false if options(hd) = boolean and set as false
+				$this->hd = false;
 			} else {
-			// ...to true if options(hd) = boolean and set as true
-			$this->hd = true;
+				// ...to true if options(hd) = boolean and set as true
+				$this->hd = true;
 			}
 		}
 		else {
@@ -164,33 +168,37 @@ class thumb {
 	}
 
 	// set the upscale value...
-	if($this->hd) {
-		// if hd is true, set upscalethumb value to 1) upscale hd value set in config, else use 2) default value (false)
-		$upscalethumb = c::get('thumb.upscale.hd', $this->upscaleHd);
+	if($this->resrc) {
+		$upscalethumb = c::get('resrc.upscale', $this->upscaleResrc);
 	} else {
-		// else set upscalethumb value to 1) upscale value set in config, else use 3) default quality value (false)
-		$upscalethumb = c::get('thumb.upscale', $this->upscale);
+		if($this->hd) {
+			// if hd is true, set upscalethumb value to 1) upscale hd value set in config, else use 2) default value (false)
+			$upscalethumb = c::get('thumb.upscale.hd', $this->upscaleHd);
+		} else {
+			// else set upscalethumb value to 1) upscale value set in config, else use 3) default quality value (false)
+			$upscalethumb = c::get('thumb.upscale', $this->upscale);
+		}
 	}
 	if(is_bool(@$options['upscale'])) {
 		if(!($options['upscale'])) {
-		// ...to false if @options[upscale] = boolean and set as false
-		$this->upscale = false;
+			// ...to false if @options[upscale] = boolean and set as false
+			$this->upscale = false;
 		} else {
-		// ...to true if @options[upscale] = boolean and set as true
-		$this->upscale = true;
+			// ...to true if @options[upscale] = boolean and set as true
+			$this->upscale = true;
 		}
 	} else {
 		if(is_null(@$options['upscale'])) {
-		// ...to upscalethumb if @options[upscale] = not set (null)
-		$this->upscale = $upscalethumb;
+			// ...to upscalethumb if @options[upscale] = not set (null)
+			$this->upscale = $upscalethumb;
 		} else {
-		if(@$options['upscale'] != 'false') {
-			// ...to true if @options[upscale] = set as value string true
-			$this->upscale = true;
-		} else {
-			// ...to false if @options[upscale] = set as value string false
-			$this->upscale = false;
-		}
+			if(@$options['upscale'] != 'false') {
+				// ...to true if @options[upscale] = set as value string true
+				$this->upscale = true;
+			} else {
+				// ...to false if @options[upscale] = set as value string false
+				$this->upscale = false;
+			}
 		}
 	}
 
@@ -202,11 +210,16 @@ class thumb {
 
 	// set resrc class
 	if($this->resrc) {
-		// if there are custom classes passed, add a
+		// if there are custom classes passed, add a space
 		if(!empty($this->className)) {
 			$this->className .= ' ';
 		}
-		$this->className .= 'resrc';
+		if($this->lazyload) {
+			$this->className .= 'resrc-lazy';
+		}
+		else {
+			$this->className .= 'resrc';
+		}
 	}
 
 	// set the new size (pass multiplier as a variable so we can downsize hd sizes if needed)
@@ -229,10 +242,14 @@ class thumb {
 		$this->height = floor($this->height / $this->multiplier);
 	}
 
-	$resrc_domain_prefix = ($this->resrc) ? 'http://app.resrc.it/' . $this->resrc_params . '/' . c::get('resrc.domain') : '';
 	$resrc_src_prefix = (c::get('resrc.alternate')) ? 'data-' : '';
 
-	return '<img' . $class . ' ' . $resrc_src_prefix . 'src="' . $resrc_domain_prefix . $this->url() . '" width="' . $this->width . '" height="' . $this->height . '" alt="' . html($this->alt) . '" />';
+	if($this->lazyload) {
+		return '<img' . $class . ' src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAIAAAASFvFNAAAAEElEQVQIW2P48OkTBDHAWQCpuBD5y5j7pQAAAABJRU5ErkJggg==" data-src="' . $this->url() . '" width="' . $this->width . '" height="' . $this->height . '" alt="' . html($this->alt) . '" /><a href="' . $this->url() . '" class="Lazyloadmsg">View image: ' . html($this->alt) . '</a><noscript><img src="' . $this->url() . '" width="' . $this->width . '" height="' . $this->height . '" alt="' . html($this->alt) . '" /></noscript>';
+	}
+	else {
+		return '<img' . $class . ' ' . $resrc_src_prefix . 'src="' . $this->url() . '" width="' . $this->width . '" height="' . $this->height . '" alt="' . html($this->alt) . '" />';
+	}
 
 	}
 
@@ -256,11 +273,12 @@ class thumb {
 	}
 
 	function file() {
-	return $this->root . '/' . $this->filename();
+		return $this->root . '/' . $this->filename();
 	}
 
 	function url() {
-	return (error($this->status)) ? $this->obj->url() : $this->url . '/' . $this->filename();
+		$resrc_domain_prefix = ($this->resrc) ? 'http://app.resrc.it/' . $this->resrc_params . '/http://' . c::get('resrc.domain') : '';
+		return (error($this->status)) ? $this->obj->url() : $resrc_domain_prefix . $this->url . '/' . $this->filename();
 	}
 
 	function size($multiplier) {
@@ -273,7 +291,7 @@ class thumb {
 		$maxWidth  = $this->maxWidth;
 		$maxHeight = $this->maxHeight;
 	}
-	$upscale   = $this->upscale;
+	$upscale = $this->upscale;
 
 	// if we're cropping the image
 	if($this->crop == true) {

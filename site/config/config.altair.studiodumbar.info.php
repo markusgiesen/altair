@@ -67,7 +67,7 @@ Resrc.io setup
 */
 
 c::set('resrc', false);
-c::set('resrc.domain', 'http://altair.studiodumbar.info');
+c::set('resrc.domain', 'altair.studiodumbar.info');
 
 
 /*

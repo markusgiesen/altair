@@ -469,7 +469,7 @@ because it does not work behind firewall, etc.
 
 c::set('resrc', false);                          // set to true to use resrc for retina images
 c::set('resrc.alternate', false);                // use the alternate method (with data-src images) of resrc. This is called the 'Preferred approach' by ReSRC: http://www.resrc.it/tutorials/preferred
-c::set('resrc.domain', 'http://altair.com');     // set to true to use resrc for retina images
+c::set('resrc.domain', 'altair.com');            // set to true to use resrc for retina images
 c::set('resrc.params', 's=w280/o=60(80)');       // params (options) ReSRC will use generating the image. Without starting and trailing slash! See http://www.resrc.it/docs/resize for sizes and more
 c::set('resrc.initial.medium', 1024);            // 'medium' initial resrc image width, width of the first image that ReSRC generates
 c::set('resrc.initial.compact', 768);            // 'compact' initial resrc image width, width of the first image that ReSRC generates
