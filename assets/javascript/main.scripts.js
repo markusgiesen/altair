@@ -18,7 +18,7 @@ if(cutsthemustard){
 		// alerts.addMessage({status: 'error', content: 'OMG! Something terrible must have happened here!', timeout: 0, type: 'box-modal'});
 
 		/* Echo Lazyloading */
-//		Echo.init({
+//		echo.init({
 //			offset: '0',
 //			throttle: '50'
 //		});

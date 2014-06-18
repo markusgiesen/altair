@@ -22,7 +22,7 @@ if(cutsthemustard){
 //		InstantClick.init(50,true);
 
 		/* Echo Lazyloading */
-//		Echo.init({
+//		echo.init({
 //			offset: '0',
 //			throttle: '50'
 //		});
