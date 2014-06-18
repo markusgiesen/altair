@@ -3,6 +3,7 @@ module.exports = function(grunt) {
 	grunt.config('csso', {
 		compress: {
 			options: {
+				restructure: false, // Set to false to turn off ‘structural optimizations’ (http://bem.info/tools/optimizers/csso/description/)
 				banner: '<%= tag.banner %>',
 			},
 			files: {
