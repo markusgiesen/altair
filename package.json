@@ -27,7 +27,7 @@
     "grunt-imageoptim": "^1.4.1",
     "grunt-notify": "^0.2.20",
     "grunt-pixrem": "^0.1.2",
-    "grunt-sass": "^0.13.1",
+    "grunt-sass": "^0.14.0",
     "grunt-stripmq": "^0.0.4",
     "grunt-svgmin": "^0.4.0",
     "jshint-stylish": "^0.1.5"
