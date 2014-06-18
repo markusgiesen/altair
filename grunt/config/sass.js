@@ -4,6 +4,7 @@ module.exports = function(grunt) {
 		dist: {
 			options: {
 				outputStyle: 'nested', // nested or compressed
+				precision: 10, // number of digits to preserve after the dot (default is `10`)
 				sourceComments: 'none', // none, normal or map
 				sourceMap: false, // enable/disable Source Maps
 			},
@@ -16,6 +17,7 @@ module.exports = function(grunt) {
 		debug: {
 			options: {
 				outputStyle: 'nested', // nested or compressed
+				precision: 10, // number of digits to preserve after the dot (default is `10`)
 				sourceComments: 'map', // none, normal or map
 				sourceMap: true, // enable/disable Source Maps
 			},
