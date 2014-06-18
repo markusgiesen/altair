@@ -127,7 +127,7 @@ if(!isset($prefetch)): $prefetch = false; endif;
 	<link rel="stylesheet" href="<?php echo url('assets/stylesheets/' . $env_suffix . '/' . $main_css . '.css'); ?>">
 	<link rel="stylesheet" href="<?php echo url('assets/stylesheets/' . $env_suffix . '/' . $print_css . '.css'); ?>" media="print">
 
-	<!-- Head scripts (CuttingTheMustard, Typekit, WebFont Loader or ReSRC.it!) -->
+	<!-- Head scripts (Enable for CuttingTheMustard, Typekit, WebFont Loader or ReSRC.it!) -->
 	<script src="<?php echo url('assets/javascript/'. $env_suffix .'/' . $head_js . '.js'); ?>"></script>
 
 	<!-- Initialize empty array for possible messages -->
